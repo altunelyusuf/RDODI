@@ -1,0 +1,16 @@
+@prefix ipo: <http://example.org/rdodi/interactive-page-ontology#> .
+@prefix rva: <http://example.org/rdodi/widget-rules#> .
+@prefix rule: <http://example.org/rdodi/widget-admissibility#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+ipo:RegexEngine a owl:Class ; rdfs:subClassOf ipo:RunnableCodeTool ;
+    rdfs:label "Regex Engine"@en ;
+    skos:definition "A RunnableCodeTool alternative testing a regular expression against sample text using the browser's native RegExp engine, showing live matches. Added as Package S8g-e's extensibility proof: touches ONLY new triples, the umbrella ipo:RunnableCodeTool and the 4 existing engines are unmodified (hash-verified before/after)."@en ;
+    dcterms:source "Package S8g-e, InteractiveHTMLSurface roadmap -- extensibility proof for CR-S8.8."@en .
+
+rule:alt_RunnableCodeTool_Regex a rva:AlternativeWidgetRule, owl:NamedIndividual ;
+    rule:fromTaxonomy ipo:RunnableCodeTool ; rule:offersAlternative ipo:RegexEngine ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Regex testing is offered as a 5th alternative execution engine for RunnableCodeTool, added without modifying the umbrella or any existing engine."@en .

@@ -1,0 +1,39 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix ld: <http://example.org/rdodi/learning-design#> .
+<http://example.org/rdodi/learning-design> a owl:Ontology ; rdfs:label "RDODI Learning-Design Vocabulary"@en ;
+  owl:versionInfo "1.0.0" ; owl:versionIRI <http://example.org/rdodi/learning-design/1.0.0> ;
+  dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+  dcterms:rights "Copyright 2026 Yusuf Altunel. CC BY 4.0."@en ;
+  dcterms:rightsHolder <https://example.org/agent/yusuf-altunel> ;
+  dcterms:publisher <https://example.org/org/iku-ce> ;
+  dcterms:creator <https://example.org/agent/yusuf-altunel> ;
+  dcterms:created "2026-05-28"^^xsd:date ; dcterms:modified "2026-05-28"^^xsd:date ;
+  dcterms:identifier "learning-design" ;
+  prov:wasGeneratedBy <http://example.org/rdodi/learning-design/activity/release-1.0.0> .
+<http://example.org/rdodi/learning-design/activity/release-1.0.0> a prov:Activity ; rdfs:label "PP-stage vocab release 1.0.0"@en ;
+  prov:startedAtTime "2026-05-28T00:00:00Z"^^xsd:dateTime .
+ld:BloomLevel a owl:Class ; rdfs:label "BloomLevel"@en ; skos:definition "A cognitive level of the revised Bloom taxonomy (Anderson & Krathwohl 2001), ranked 1 Remember to 6 Create."@en .
+ld:bloomRank a owl:DatatypeProperty ; rdfs:label "bloomRank"@en ; skos:definition "Integer rank 1-6 of a Bloom level; higher subsumes lower for coverage."@en .
+ld:bloomLevel a owl:ObjectProperty ; rdfs:label "bloomLevel"@en ; skos:definition "Relates a learning objective to its target BloomLevel."@en .
+ld:cognitiveLevel a owl:ObjectProperty ; rdfs:label "cognitiveLevel"@en ; skos:definition "Relates an affordance or assessment item to the BloomLevel it exercises."@en .
+ld:WorkedExample a owl:Class ; rdfs:label "WorkedExample"@en ; skos:definition "A concrete worked instance demonstrating a concept end to end, grounded in a source."@en .
+ld:exemplifiesConcept a owl:ObjectProperty ; rdfs:label "exemplifiesConcept"@en ; skos:definition "Relates a worked example to the domain concept it makes concrete."@en .
+ld:AssessmentItem a owl:Class ; rdfs:label "AssessmentItem"@en ; skos:definition "A graded question with options, exactly one key, per-distractor rationale, and a cognitive level."@en .
+ld:hasOption a owl:ObjectProperty ; rdfs:label "hasOption"@en ; skos:definition "An option of an assessment item."@en .
+ld:hasCorrectOption a owl:ObjectProperty ; rdfs:label "hasCorrectOption"@en ; skos:definition "The single correct option (key) of an assessment item."@en .
+ld:distractorRationale a owl:DatatypeProperty ; rdfs:label "distractorRationale"@en ; skos:definition "Explanation of why a non-key option is wrong (one per distractor)."@en .
+ld:assessesObjective a owl:ObjectProperty ; rdfs:label "assessesObjective"@en ; skos:definition "Relates an assessment item to the learning objective it measures."@en .
+ld:AnswerOption a owl:Class ; rdfs:label "AnswerOption"@en ; skos:definition "One selectable option of an assessment item."@en .
+ld:Remember a ld:BloomLevel ; rdfs:label "Remember"@en ; ld:bloomRank 1 ; skos:definition "Retrieve relevant knowledge from memory."@en .
+ld:Understand a ld:BloomLevel ; rdfs:label "Understand"@en ; ld:bloomRank 2 ; skos:definition "Construct meaning from instructional messages."@en .
+ld:Apply a ld:BloomLevel ; rdfs:label "Apply"@en ; ld:bloomRank 3 ; skos:definition "Carry out a procedure in a given situation."@en .
+ld:Analyze a ld:BloomLevel ; rdfs:label "Analyze"@en ; ld:bloomRank 4 ; skos:definition "Break material into parts and determine relationships."@en .
+ld:Evaluate a ld:BloomLevel ; rdfs:label "Evaluate"@en ; ld:bloomRank 5 ; skos:definition "Make judgements based on criteria and standards."@en .
+ld:Create a ld:BloomLevel ; rdfs:label "Create"@en ; ld:bloomRank 6 ; skos:definition "Put elements together into a coherent or novel whole."@en .

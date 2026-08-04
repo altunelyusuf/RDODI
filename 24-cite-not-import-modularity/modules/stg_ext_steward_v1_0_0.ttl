@@ -1,0 +1,9 @@
+@prefix stg: <http://example.org/stg/governance#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+stg:AreaSteward a owl:Class ; rdfs:subClassOf stg:Steward ;
+  skos:definition "A steward accountable for a single governed area."@en ; dct:conformsTo <http://example.org/external-authority#ExternalOEAuthority> .
+stg:DomainSteward a owl:Class ; rdfs:subClassOf stg:Steward ;
+  skos:definition "A steward accountable for the whole governed domain."@en ; dct:conformsTo <http://example.org/external-authority#ExternalOEAuthority> .

@@ -1,0 +1,698 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdodi-research: <http://example.org/rdodi/research-ontology#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+rdodi-research:Assessed a rdodi-research:ResourceLifecycleState,
+        owl:NamedIndividual ;
+    rdfs:label "assessed"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.3"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Resource has been evaluated against ResearchScope criteria but no select/reject decision recorded yet."@en .
+
+rdodi-research:BuildBusinessCaseStage a _:nd70eba883a2c43308ba649f114f934c5b11,
+        rdodi-research:Stage,
+        owl:NamedIndividual ;
+    rdfs:label "Stage 2: Build Business Case"@en ;
+    rdodi-research:stageNumber 2 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Detailed investigation building business case"@en .
+
+rdodi-research:CQ1_ScopeFrame a owl:NamedIndividual ;
+    rdfs:label "What scope frame does a research effort use?"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2.md derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Given a ResearchProject or its ResearchScope, which ScopeFrame (PICO/SPICE/CIMO/Open/Keyword/Subtopic) operationalizes it?"@en .
+
+rdodi-research:CQ2_DiscoveryMethod a owl:NamedIndividual ;
+    rdfs:label "How was a resource discovered?"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2.md derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Given a DiscoveredResource, which DiscoveryAttempt found it and which DiscoveryMethod was used?"@en .
+
+rdodi-research:CQ3_SelectionStrategy a owl:NamedIndividual ;
+    rdfs:label "What selection strategy was applied?"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2.md derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Given a ResearchScope or a DiscoveredResource, which SelectionStrategy (or composition) applied?"@en .
+
+rdodi-research:CQ4_ResourceLifecycle a owl:NamedIndividual ;
+    rdfs:label "What is a resource's current state?"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2.md derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Given a DiscoveredResource, what is its ResourceLifecycleState?"@en .
+
+rdodi-research:CQ5_ACRLAuthority a owl:NamedIndividual ;
+    rdfs:label "What is a resource's authority for a use context?"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2.md derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Given a Publication, what authority assessment applies? Resolved by querying the §4.1 authority sub-properties."@en .
+
+rdodi-research:CQ6_CitationDiscourse a owl:NamedIndividual ;
+    rdfs:label "What is a resource's role in scholarly discourse?"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2.md derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Given a Publication, what supersedes/refutes/retracts relations does it have, and what is its discourseRole? Resolved by §4.5 citation properties."@en .
+
+rdodi-research:CQ7_SynthesisHandoff a owl:NamedIndividual ;
+    rdfs:label "What synthesis project consumes this research?"@en ;
+    dcterms:source "Sprint 7 contract wiring"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Resolved by querying :handsOffToSynthesis to find consuming os:SynthesisProject; follow os:includesActivity for synthesis activities; follow os:producesVersion for the SynthesizedDomainOntology."@en .
+
+rdodi-research:Cited a rdodi-research:ResourceLifecycleState,
+        owl:NamedIndividual ;
+    rdfs:label "cited"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.3"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> .
+
+rdodi-research:DevelopmentStage a _:nd70eba883a2c43308ba649f114f934c5b11,
+        rdodi-research:Stage,
+        owl:NamedIndividual ;
+    rdfs:label "Stage 3: Development"@en ;
+    rdodi-research:stageNumber 3 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Detailed design and development"@en .
+
+rdodi-research:Discovered a rdodi-research:ResourceLifecycleState,
+        owl:NamedIndividual ;
+    rdfs:label "discovered"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.3"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Resource has been located by a DiscoveryAttempt but not yet assessed."@en .
+
+rdodi-research:Discovery a _:nd70eba883a2c43308ba649f114f934c5b11,
+        rdodi-research:Stage,
+        owl:NamedIndividual ;
+    rdfs:label "Discovery"@en ;
+    rdodi-research:stageNumber 0 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Ideation and opportunity identification"@en .
+
+rdodi-research:KnownLimitations_v6_2_0 rdfs:label "Known structural limitations carried into v6.2.0"@en ;
+    rdfs:comment "RESIDUAL STRUCTURAL DEFECTS (not auto-patched, require expert review): (a) ~30 isolated classes — classes with no rdfs:subClassOf to a domain superclass, only owl:Thing implicit; (b) 1 subClassOf cycle involving Authorship (class is reachable from itself via non-reflexive subClassOf path); (c) 406 individuals typed by anonymous owl:Restriction class expressions — valid OWL DL but a quality smell. These are scheduled for v6.3.0 expert-review pass."@en .
+
+rdodi-research:LaunchStage a _:nd70eba883a2c43308ba649f114f934c5b11,
+        rdodi-research:Stage,
+        owl:NamedIndividual ;
+    rdfs:label "Stage 5: Launch"@en ;
+    rdodi-research:stageNumber 5 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Full commercialization"@en .
+
+rdodi-research:MRL1 a _:nd70eba883a2c43308ba649f114f934c5b12,
+        _:nd70eba883a2c43308ba649f114f934c5b13,
+        rdodi-research:ManufacturingReadinessLevel,
+        owl:NamedIndividual ;
+    rdfs:label "MRL 1: Basic Manufacturing Implications Identified"@en ;
+    rdodi-research:levelNumber 1 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:disjointWith rdodi-research:MRL10,
+        rdodi-research:MRL2,
+        rdodi-research:MRL3,
+        rdodi-research:MRL4,
+        rdodi-research:MRL5,
+        rdodi-research:MRL6,
+        rdodi-research:MRL7,
+        rdodi-research:MRL8,
+        rdodi-research:MRL9 ;
+    skos:definition "Basic research with manufacturing implications identified"@en .
+
+rdodi-research:Rejected a rdodi-research:ResourceLifecycleState,
+        owl:NamedIndividual ;
+    rdfs:label "rejected"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.3"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Resource has been rejected via a RejectionCriterion."@en .
+
+rdodi-research:SPARImportsAlignment_v6_3_0 a owl:NamedIndividual ;
+    rdfs:label "SPAR/VIVO/FRAPO/FOAF imports + CiTO/SCoRO/DataCite alignment v6.3.0"@en ;
+    skos:definition "Adds 9 owl:imports declarations so reasoners can consume the existing 22 owl:equivalentClass triples to FaBiO/FRAPO/VIVO. Adds 5 new rdfs:seeAlso alignments to CiTO (citation), SCoRO (contributorship), and DataCite (identifiers)."@en .
+
+rdodi-research:SPARImportsAlignment_v6_3_1 a owl:NamedIndividual ;
+    rdfs:label "SPAR + CiTO + DataCite alignment block v6.3.1"@en ;
+    dcterms:source "SPAR CiTO + DataCite retrieved 2026-05-06."@en ;
+    skos:definition "v6.3.1 closes the deferred CiTO/DataCite alignments by introducing 4 new classes (Citation, Identifier, DOI, ORCID) with rdfs:seeAlso to canonical SPAR URIs. Total: 4 new classes added."@en .
+
+rdodi-research:ScopingStage a _:nd70eba883a2c43308ba649f114f934c5b11,
+        rdodi-research:Stage,
+        owl:NamedIndividual ;
+    rdfs:label "Stage 1: Scoping"@en ;
+    rdodi-research:stageNumber 1 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Preliminary investigation and scoping"@en .
+
+rdodi-research:Selected a rdodi-research:ResourceLifecycleState,
+        owl:NamedIndividual ;
+    rdfs:label "selected"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.3"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Resource has been selected for inclusion in research synthesis."@en .
+
+rdodi-research:StandaloneRefactor_6.5.0 a owl:NamedIndividual ;
+    rdfs:label "Standalone refactor in 6.5.0"@en ;
+    dcterms:created "2026-05-07T00:00:00"^^xsd:dateTime ;
+    skos:definition "The ontology is now standalone — no transitive dependencies on external IRIs. rdfs:seeAlso and owl:equivalentClass annotations to external classes are preserved as informational claims."@en .
+
+rdodi-research:TRL1 a _:nd70eba883a2c43308ba649f114f934c5b12,
+        _:nd70eba883a2c43308ba649f114f934c5b14,
+        rdodi-research:TechnologyReadinessLevel,
+        owl:NamedIndividual ;
+    rdfs:label "TRL 1: Basic Principles Observed"@en ;
+    rdodi-research:levelNumber 1 ;
+    rdodi-research:precedesTRL rdodi-research:TRL2,
+        rdodi-research:TRL3,
+        rdodi-research:TRL4,
+        rdodi-research:TRL5,
+        rdodi-research:TRL6,
+        rdodi-research:TRL7,
+        rdodi-research:TRL8,
+        rdodi-research:TRL9 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:disjointWith rdodi-research:TRL2,
+        rdodi-research:TRL3,
+        rdodi-research:TRL4,
+        rdodi-research:TRL5,
+        rdodi-research:TRL6,
+        rdodi-research:TRL7,
+        rdodi-research:TRL8,
+        rdodi-research:TRL9 ;
+    skos:definition "Scientific research beginning with transition to applied research"@en .
+
+rdodi-research:TestingAndValidationStage a _:nd70eba883a2c43308ba649f114f934c5b11,
+        rdodi-research:Stage,
+        owl:NamedIndividual ;
+    rdfs:label "Stage 4: Testing and Validation"@en ;
+    rdodi-research:stageNumber 4 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Verification and validation"@en .
+
+rdodi-research:amount rdfs:domain <http://purl.org/cerif/frapo/Grant> ;
+    rdfs:range xsd:decimal .
+
+rdodi-research:collaboratesWith a owl:SymmetricProperty .
+
+rdodi-research:derivedFrom a owl:TransitiveProperty .
+
+rdodi-research:doi a owl:FunctionalProperty ;
+    rdfs:domain _:nd70eba883a2c43308ba649f114f934c5b4,
+        _:nd70eba883a2c43308ba649f114f934c5b5,
+        _:nd70eba883a2c43308ba649f114f934c5b8,
+        _:nd70eba883a2c43308ba649f114f934c5b9,
+        rdodi-research:Publication ;
+    rdfs:range xsd:string .
+
+rdodi-research:ledBy a owl:FunctionalProperty .
+
+rdodi-research:orcid a owl:FunctionalProperty ;
+    rdfs:domain foaf:Person ;
+    rdfs:range xsd:string ;
+    owl:equivalentProperty <http://vivoweb.org/ontology/core#orcidId> .
+
+rdodi-research:oversees owl:propertyChainAxiom ( rdodi-research:supervises rdodi-research:conducts ) .
+
+rdodi-research:partOf a owl:TransitiveProperty .
+
+<http://example.org/rdodi/research-ontology/abox> a owl:Ontology ;
+    rdfs:label "RDODI Research Ontology abox v1.0.1"@en ;
+    dcterms:created "2026-05-20"^^xsd:date ;
+    dcterms:creator <http://example.org/rdodi/agent/YusufAltunel> ;
+    dcterms:description "RDODI Research Ontology abox. Part of the four-subject RDODI ecosystem: Research, Domain, Document, Interactive Page."@en ;
+    dcterms:identifier "research_ontology_abox_v1_0_1" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-05-20"^^xsd:date ;
+    dcterms:publisher <http://example.org/rdodi/agent/IstanbulKulturUniversity> ;
+    dcterms:rights "Copyright (c) 2026 Yusuf Altunel. Licensed CC BY 4.0."@en ;
+    dcterms:rightsHolder <http://example.org/rdodi/agent/YusufAltunel> ;
+    rdfs:comment "RDODI v1.0.1 abox for the Research Ontology. Derived from 02-research-ontology/research_ontology_abox_v6_9_2.ttl (SHA-256 c0aa0c977e9b83eecfc2d453e9f73cec4bb2f81a5d3b7022f66cd23d9be89b70). ORIGINATION lineage: not a continuation of any prior ecosystem."@en ;
+    owl:versionIRI <http://example.org/rdodi/research-ontology/abox/1.0.1> ;
+    owl:versionInfo "1.0.1" ;
+    prov:wasAttributedTo <http://example.org/rdodi/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://example.org/rdodi/activity/RDODIOrigination_v1_0_1> .
+
+<http://purl.org/cerif/frapo/FundingAgency> rdfs:subClassOf foaf:Organization .
+
+<http://purl.org/cerif/frapo/funds> rdfs:domain <http://purl.org/cerif/frapo/Grant> ;
+    rdfs:range rdodi-research:ResearchProject ;
+    rdfs:subPropertyOf rdodi-research:funds ;
+    owl:equivalentProperty rdodi-research:funds .
+
+<http://purl.org/cerif/frapo/hasEndDate> rdfs:range xsd:dateTime ;
+    rdfs:subPropertyOf rdodi-research:endDate ;
+    owl:equivalentProperty rdodi-research:endDate .
+
+<http://purl.org/cerif/frapo/hasGrantNumber> rdfs:domain <http://purl.org/cerif/frapo/Grant> ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf rdodi-research:grantNumber ;
+    owl:equivalentProperty rdodi-research:grantNumber .
+
+<http://purl.org/cerif/frapo/hasStartDate> rdfs:range xsd:dateTime ;
+    rdfs:subPropertyOf rdodi-research:startDate ;
+    owl:equivalentProperty rdodi-research:startDate .
+
+<http://purl.org/spar/fabio#ConferencePaper> rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty rdodi-research:presentedAt ;
+            owl:someValuesFrom rdodi-research:Conference ],
+        _:nd70eba883a2c43308ba649f114f934c5b4,
+        _:nd70eba883a2c43308ba649f114f934c5b5,
+        _:nd70eba883a2c43308ba649f114f934c5b8,
+        _:nd70eba883a2c43308ba649f114f934c5b9 ;
+    owl:equivalentClass rdodi-research:ConferencePaper .
+
+<http://purl.org/spar/fabio#JournalArticle> rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty rdodi-research:publishedIn ;
+            owl:someValuesFrom rdodi-research:Journal ],
+        _:nd70eba883a2c43308ba649f114f934c5b4,
+        _:nd70eba883a2c43308ba649f114f934c5b5,
+        _:nd70eba883a2c43308ba649f114f934c5b8,
+        _:nd70eba883a2c43308ba649f114f934c5b9 ;
+    owl:equivalentClass rdodi-research:JournalArticle .
+
+<http://purl.org/spar/fabio#Preprint> rdfs:subClassOf _:nd70eba883a2c43308ba649f114f934c5b4,
+        _:nd70eba883a2c43308ba649f114f934c5b5,
+        _:nd70eba883a2c43308ba649f114f934c5b8,
+        _:nd70eba883a2c43308ba649f114f934c5b9 ;
+    owl:equivalentClass rdodi-research:Preprint .
+
+<http://purl.org/spar/fabio#Thesis> rdfs:subClassOf [ ],
+        _:nd70eba883a2c43308ba649f114f934c5b4,
+        _:nd70eba883a2c43308ba649f114f934c5b5,
+        _:nd70eba883a2c43308ba649f114f934c5b8,
+        _:nd70eba883a2c43308ba649f114f934c5b9 ;
+    owl:equivalentClass rdodi-research:Thesis .
+
+<http://vivoweb.org/ontology/core#Authorship> owl:equivalentClass rdodi-research:Authorship .
+
+<http://vivoweb.org/ontology/core#Department> rdfs:subClassOf foaf:Organization .
+
+<http://vivoweb.org/ontology/core#FacultyMember> rdfs:subClassOf foaf:Person .
+
+<http://vivoweb.org/ontology/core#University> rdfs:subClassOf foaf:Organization .
+
+<http://vivoweb.org/ontology/core#hasResearchArea> rdfs:domain foaf:Person ;
+    rdfs:range rdodi-research:ResearchArea ;
+    rdfs:subPropertyOf rdodi-research:hasResearchArea ;
+    owl:equivalentProperty rdodi-research:hasResearchArea .
+
+rdf:HTML a rdfs:Datatype .
+
+rdf:PlainLiteral a rdfs:Datatype .
+
+rdf:XMLLiteral a rdfs:Datatype .
+
+rdf:langString a rdfs:Datatype .
+
+rdfs:Literal a rdfs:Datatype .
+
+300000.0 a xsd:decimal .
+
+500000.0 a xsd:decimal .
+
+"10.1000/abc456" a xsd:string .
+
+"10.1000/def789" a xsd:string .
+
+"10.1000/xyz123" a xsd:string .
+
+"11111111-2222-3333-4444-555555555555" a xsd:string .
+
+"12345678-1234-5678-1234-567812345678" a xsd:string .
+
+"22222222-3333-4444-5555-666666666666" a xsd:string .
+
+"87654321-4321-8765-4321-876543218765" a xsd:string .
+
+"NSF-2024-AI4SE" a xsd:string .
+
+"TUBITAK-123E456" a xsd:string .
+
+rdodi-research:MRL2 a _:nd70eba883a2c43308ba649f114f934c5b12,
+        _:nd70eba883a2c43308ba649f114f934c5b13,
+        rdodi-research:ManufacturingReadinessLevel,
+        owl:NamedIndividual ;
+    rdfs:label "MRL 2: Manufacturing Concepts Identified"@en ;
+    rdodi-research:levelNumber 2 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:disjointWith rdodi-research:MRL10,
+        rdodi-research:MRL3,
+        rdodi-research:MRL4,
+        rdodi-research:MRL5,
+        rdodi-research:MRL6,
+        rdodi-research:MRL7,
+        rdodi-research:MRL8,
+        rdodi-research:MRL9 ;
+    skos:definition "Preliminary manufacturing concepts developed"@en .
+
+rdodi-research:authoredBy skos:closeMatch <http://vivoweb.org/ontology/core#author> .
+
+rdodi-research:publicationYear rdfs:domain _:nd70eba883a2c43308ba649f114f934c5b4,
+        _:nd70eba883a2c43308ba649f114f934c5b5,
+        _:nd70eba883a2c43308ba649f114f934c5b8,
+        _:nd70eba883a2c43308ba649f114f934c5b9,
+        rdodi-research:Publication ;
+    rdfs:range xsd:dateTime .
+
+rdodi-research:supervises a owl:AsymmetricProperty,
+        owl:IrreflexiveProperty .
+
+rdodi-research:MRL3 a _:nd70eba883a2c43308ba649f114f934c5b12,
+        _:nd70eba883a2c43308ba649f114f934c5b13,
+        rdodi-research:ManufacturingReadinessLevel,
+        owl:NamedIndividual ;
+    rdfs:label "MRL 3: Manufacturing Proof of Concept"@en ;
+    rdodi-research:levelNumber 3 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:disjointWith rdodi-research:MRL10,
+        rdodi-research:MRL4,
+        rdodi-research:MRL5,
+        rdodi-research:MRL6,
+        rdodi-research:MRL7,
+        rdodi-research:MRL8,
+        rdodi-research:MRL9 ;
+    skos:definition "Analytical and experimental proof of concept"@en .
+
+rdodi-research:TRL2 a _:nd70eba883a2c43308ba649f114f934c5b12,
+        _:nd70eba883a2c43308ba649f114f934c5b14,
+        rdodi-research:TechnologyReadinessLevel,
+        owl:NamedIndividual ;
+    rdfs:label "TRL 2: Technology Concept Formulated"@en ;
+    rdodi-research:levelNumber 2 ;
+    rdodi-research:precedesTRL rdodi-research:TRL3,
+        rdodi-research:TRL4,
+        rdodi-research:TRL5,
+        rdodi-research:TRL6,
+        rdodi-research:TRL7,
+        rdodi-research:TRL8,
+        rdodi-research:TRL9 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:disjointWith rdodi-research:TRL3,
+        rdodi-research:TRL4,
+        rdodi-research:TRL5,
+        rdodi-research:TRL6,
+        rdodi-research:TRL7,
+        rdodi-research:TRL8,
+        rdodi-research:TRL9 ;
+    skos:definition "Invention begins with practical applications identified"@en .
+
+<http://purl.org/spar/fabio#Dataset> rdfs:subClassOf _:nd70eba883a2c43308ba649f114f934c5b4,
+        _:nd70eba883a2c43308ba649f114f934c5b5,
+        _:nd70eba883a2c43308ba649f114f934c5b6,
+        _:nd70eba883a2c43308ba649f114f934c5b7,
+        _:nd70eba883a2c43308ba649f114f934c5b8,
+        _:nd70eba883a2c43308ba649f114f934c5b9,
+        dcat:Dataset ;
+    owl:equivalentClass rdodi-research:Dataset,
+        dcat:Dataset .
+
+dcat:Dataset rdfs:subClassOf _:nd70eba883a2c43308ba649f114f934c5b4,
+        _:nd70eba883a2c43308ba649f114f934c5b5,
+        _:nd70eba883a2c43308ba649f114f934c5b6,
+        _:nd70eba883a2c43308ba649f114f934c5b7,
+        _:nd70eba883a2c43308ba649f114f934c5b8,
+        _:nd70eba883a2c43308ba649f114f934c5b9,
+        <http://purl.org/spar/fabio#Dataset> ;
+    owl:equivalentClass rdodi-research:Dataset,
+        <http://purl.org/spar/fabio#Dataset> .
+
+rdodi-research:MRL4 a _:nd70eba883a2c43308ba649f114f934c5b12,
+        _:nd70eba883a2c43308ba649f114f934c5b13,
+        rdodi-research:ManufacturingReadinessLevel,
+        owl:NamedIndividual ;
+    rdfs:label "MRL 4: Laboratory Production Capability"@en ;
+    rdodi-research:levelNumber 4 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:disjointWith rdodi-research:MRL10,
+        rdodi-research:MRL5,
+        rdodi-research:MRL6,
+        rdodi-research:MRL7,
+        rdodi-research:MRL8,
+        rdodi-research:MRL9 ;
+    skos:definition "Capability to produce prototypes in laboratory"@en .
+
+rdodi-research:MRL5 a _:nd70eba883a2c43308ba649f114f934c5b12,
+        _:nd70eba883a2c43308ba649f114f934c5b13,
+        rdodi-research:ManufacturingReadinessLevel,
+        owl:NamedIndividual ;
+    rdfs:label "MRL 5: Production-Relevant Prototype Capability"@en ;
+    rdodi-research:levelNumber 5 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:disjointWith rdodi-research:MRL10,
+        rdodi-research:MRL6,
+        rdodi-research:MRL7,
+        rdodi-research:MRL8,
+        rdodi-research:MRL9 ;
+    skos:definition "Prototype production in simulated environment"@en .
+
+rdodi-research:TRL3 a _:nd70eba883a2c43308ba649f114f934c5b12,
+        _:nd70eba883a2c43308ba649f114f934c5b14,
+        rdodi-research:TechnologyReadinessLevel,
+        owl:NamedIndividual ;
+    rdfs:label "TRL 3: Experimental Proof of Concept"@en ;
+    rdodi-research:levelNumber 3 ;
+    rdodi-research:precedesTRL rdodi-research:TRL4,
+        rdodi-research:TRL5,
+        rdodi-research:TRL6,
+        rdodi-research:TRL7,
+        rdodi-research:TRL8,
+        rdodi-research:TRL9 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:disjointWith rdodi-research:TRL4,
+        rdodi-research:TRL5,
+        rdodi-research:TRL6,
+        rdodi-research:TRL7,
+        rdodi-research:TRL8,
+        rdodi-research:TRL9 ;
+    skos:definition "Active R&D with analytical and laboratory studies"@en .
+
+rdodi-research:MRL6 a _:nd70eba883a2c43308ba649f114f934c5b12,
+        _:nd70eba883a2c43308ba649f114f934c5b13,
+        rdodi-research:ManufacturingReadinessLevel,
+        owl:NamedIndividual ;
+    rdfs:label "MRL 6: Production-Relevant System Prototype"@en ;
+    rdodi-research:levelNumber 6 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:disjointWith rdodi-research:MRL10,
+        rdodi-research:MRL7,
+        rdodi-research:MRL8,
+        rdodi-research:MRL9 ;
+    skos:definition "Complete system prototype in production environment"@en .
+
+rdodi-research:MRL7 a _:nd70eba883a2c43308ba649f114f934c5b12,
+        _:nd70eba883a2c43308ba649f114f934c5b13,
+        rdodi-research:ManufacturingReadinessLevel,
+        owl:NamedIndividual ;
+    rdfs:label "MRL 7: Low-Rate Initial Production"@en ;
+    rdodi-research:levelNumber 7 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:disjointWith rdodi-research:MRL10,
+        rdodi-research:MRL8,
+        rdodi-research:MRL9 ;
+    skos:definition "Capability for low production rates"@en .
+
+rdodi-research:TRL4 a _:nd70eba883a2c43308ba649f114f934c5b12,
+        _:nd70eba883a2c43308ba649f114f934c5b14,
+        rdodi-research:TechnologyReadinessLevel,
+        owl:NamedIndividual ;
+    rdfs:label "TRL 4: Technology Validated in Lab"@en ;
+    rdodi-research:levelNumber 4 ;
+    rdodi-research:precedesTRL rdodi-research:TRL5,
+        rdodi-research:TRL6,
+        rdodi-research:TRL7,
+        rdodi-research:TRL8,
+        rdodi-research:TRL9 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:disjointWith rdodi-research:TRL5,
+        rdodi-research:TRL6,
+        rdodi-research:TRL7,
+        rdodi-research:TRL8,
+        rdodi-research:TRL9 ;
+    skos:definition "Basic technological components integrated in laboratory"@en .
+
+rdodi-research:MRL8 a _:nd70eba883a2c43308ba649f114f934c5b12,
+        _:nd70eba883a2c43308ba649f114f934c5b13,
+        rdodi-research:ManufacturingReadinessLevel,
+        owl:NamedIndividual ;
+    rdfs:label "MRL 8: Pilot Line Production Capability"@en ;
+    rdodi-research:levelNumber 8 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:disjointWith rdodi-research:MRL10,
+        rdodi-research:MRL9 ;
+    skos:definition "Moderate production rates capability"@en .
+
+rdodi-research:MRL9 a _:nd70eba883a2c43308ba649f114f934c5b12,
+        _:nd70eba883a2c43308ba649f114f934c5b13,
+        rdodi-research:ManufacturingReadinessLevel,
+        owl:NamedIndividual ;
+    rdfs:label "MRL 9: Full-Rate Production Capability"@en ;
+    rdodi-research:levelNumber 9 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:disjointWith rdodi-research:MRL10 ;
+    skos:definition "Full-rate production demonstrated"@en .
+
+rdodi-research:TRL5 a _:nd70eba883a2c43308ba649f114f934c5b12,
+        _:nd70eba883a2c43308ba649f114f934c5b14,
+        rdodi-research:TechnologyReadinessLevel,
+        owl:NamedIndividual ;
+    rdfs:label "TRL 5: Technology Validated in Relevant Environment"@en ;
+    rdodi-research:levelNumber 5 ;
+    rdodi-research:precedesTRL rdodi-research:TRL6,
+        rdodi-research:TRL7,
+        rdodi-research:TRL8,
+        rdodi-research:TRL9 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:disjointWith rdodi-research:TRL6,
+        rdodi-research:TRL7,
+        rdodi-research:TRL8,
+        rdodi-research:TRL9 ;
+    skos:definition "Technology ready for testing in simulated environment"@en .
+
+rdodi-research:MRL10 a _:nd70eba883a2c43308ba649f114f934c5b12,
+        _:nd70eba883a2c43308ba649f114f934c5b13,
+        rdodi-research:ManufacturingReadinessLevel,
+        owl:NamedIndividual ;
+    rdfs:label "MRL 10: Lean Production Excellence"@en ;
+    rdodi-research:levelNumber 10 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Lean production practices fully implemented"@en .
+
+rdodi-research:TRL6 a _:nd70eba883a2c43308ba649f114f934c5b12,
+        _:nd70eba883a2c43308ba649f114f934c5b14,
+        rdodi-research:TechnologyReadinessLevel,
+        owl:NamedIndividual ;
+    rdfs:label "TRL 6: Technology Demonstrated in Relevant Environment"@en ;
+    rdodi-research:levelNumber 6 ;
+    rdodi-research:precedesTRL rdodi-research:TRL7,
+        rdodi-research:TRL8,
+        rdodi-research:TRL9 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:disjointWith rdodi-research:TRL7,
+        rdodi-research:TRL8,
+        rdodi-research:TRL9 ;
+    skos:definition "Representative model or prototype demonstrated"@en .
+
+rdodi-research:TRL7 a _:nd70eba883a2c43308ba649f114f934c5b12,
+        _:nd70eba883a2c43308ba649f114f934c5b14,
+        rdodi-research:TechnologyReadinessLevel,
+        owl:NamedIndividual ;
+    rdfs:label "TRL 7: System Prototype in Operational Environment"@en ;
+    rdodi-research:levelNumber 7 ;
+    rdodi-research:precedesTRL rdodi-research:TRL8,
+        rdodi-research:TRL9 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:disjointWith rdodi-research:TRL8,
+        rdodi-research:TRL9 ;
+    skos:definition "Prototype near or at planned operational system"@en .
+
+rdodi-research:TRL8 a _:nd70eba883a2c43308ba649f114f934c5b12,
+        _:nd70eba883a2c43308ba649f114f934c5b14,
+        rdodi-research:TechnologyReadinessLevel,
+        owl:NamedIndividual ;
+    rdfs:label "TRL 8: System Complete and Qualified"@en ;
+    rdodi-research:levelNumber 8 ;
+    rdodi-research:precedesTRL rdodi-research:TRL9 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:disjointWith rdodi-research:TRL9 ;
+    skos:definition "Technology proven to work in final form"@en .
+
+rdodi-research:TRL9 a _:nd70eba883a2c43308ba649f114f934c5b12,
+        _:nd70eba883a2c43308ba649f114f934c5b14,
+        rdodi-research:TechnologyReadinessLevel,
+        owl:NamedIndividual ;
+    rdfs:label "TRL 9: Actual System Proven in Operations"@en ;
+    rdodi-research:levelNumber 9 ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Technology in final form and proven in operational environment"@en .
+
+<http://example.org/rdodi/research-ontology> dcterms:bibliographicCitation "Altunel, Y. (2026). PATCH bump v6.9.1 -> v6.9.2."@en ;
+    prov:wasRevisionOf <http://example.org/rdodi/research-ontology/6.9.1> .
+
+[] a owl:Restriction ;
+    owl:allValuesFrom rdodi-research:Dataset ;
+    owl:onProperty rdodi-research:contains .
+
+[] a owl:Restriction ;
+    owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onProperty rdodi-research:grantedTo .
+
+[] a owl:Restriction ;
+    owl:onProperty rdodi-research:licensesIP ;
+    owl:someValuesFrom rdodi-research:Patent .
+
+[] a owl:Restriction ;
+    owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onProperty rdodi-research:hasAccessPolicy .
+
+[] a owl:Restriction ;
+    owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+    owl:onProperty rdodi-research:embargoDate .
+
+[] a owl:Restriction ;
+    owl:minCardinality 1 ;
+    owl:onProperty rdodi-research:hasAccessPolicy .
+
+_:nd70eba883a2c43308ba649f114f934c5b24 rdf:first rdodi-research:TechnologyReadinessLevel ;
+    rdf:rest ( rdodi-research:ManufacturingReadinessLevel ) .
+
+_:nd70eba883a2c43308ba649f114f934c5b26 owl:inverseOf rdodi-research:authored .
+
+_:nd70eba883a2c43308ba649f114f934c5b7 a owl:Restriction ;
+    owl:onProperty rdodi-research:depositsIn ;
+    owl:someValuesFrom rdodi-research:Repository .
+
+_:nd70eba883a2c43308ba649f114f934c5b11 a owl:Restriction ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onProperty rdodi-research:stageNumber .
+
+_:nd70eba883a2c43308ba649f114f934c5b4 a owl:Restriction ;
+    owl:minCardinality 1 ;
+    owl:onProperty _:nd70eba883a2c43308ba649f114f934c5b26 .
+
+_:nd70eba883a2c43308ba649f114f934c5b8 a owl:Restriction ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onProperty rdodi-research:publicationYear .
+
+_:nd70eba883a2c43308ba649f114f934c5b9 a owl:Restriction ;
+    owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onProperty rdodi-research:authoredBy .
+
+_:nd70eba883a2c43308ba649f114f934c5b14 a owl:Restriction ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onProperty rdodi-research:levelNumber .
+
+_:nd70eba883a2c43308ba649f114f934c5b13 a owl:Restriction ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onProperty rdodi-research:levelNumber .
+
+_:nd70eba883a2c43308ba649f114f934c5b12 owl:unionOf _:nd70eba883a2c43308ba649f114f934c5b24 .
+

@@ -1,0 +1,9 @@
+@prefix intent: <http://example.org/rdodi/intent#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix d: <http://rdodi.org/demo/domain#> .
+<http://example.org/rdodi/intent#demo_course_intent> a intent:Intent, owl:NamedIndividual ;
+    intent:intendedGenre "course-document" ;
+    intent:declaredAudience "students new to project quality management" ;
+    intent:scopeNote "Introductory study companion; cost-of-quality and change/configuration control are required." ;
+    intent:mustCoverConcept d:ChangeControl, d:CostOfGoodQuality, d:CostOfPoorQuality, d:ConfigurationManagement ;
+    intent:excludedConcept d:DevOpsQualityCulture .

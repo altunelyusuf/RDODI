@@ -1,0 +1,56 @@
+@prefix ipo: <http://example.org/rdodi/interactive-page-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<http://example.org/rdodi/s6-exemplar/page> a ipo:InteractiveHTMLSurface, owl:NamedIndividual ;
+    rdfs:label "S6 exemplar: cryptography domain, InteractiveHTMLSurface"@en ;
+    dcterms:source "InteractiveHTMLSurface_backlog_roadmap_v1_0_0.md (frozen f5b7be06...), Package S6 -- the mandatory generate-and-gate-check proof, per the RDODI Goal and Profile Charter's own generality rule (F105: prove by generation)."@en ;
+    ipo:includesNavigationPattern <http://example.org/rdodi/s6-exemplar/AnchorLinks>,
+        <http://example.org/rdodi/s6-exemplar/RoutedViewNavigation>,
+        <http://example.org/rdodi/s6-exemplar/SubPageTabs>,
+        <http://example.org/rdodi/s6-exemplar/PrimaryNavigation>,
+        <http://example.org/rdodi/s6-exemplar/TreeNavigation> ;
+    ipo:includesWayfindingAffordance <http://example.org/rdodi/s6-exemplar/Breadcrumb>,
+        <http://example.org/rdodi/s6-exemplar/SkipToContent>,
+        <http://example.org/rdodi/s6-exemplar/Tooltip>,
+        <http://example.org/rdodi/s6-exemplar/OverflowTabBar> ;
+    ipo:usesUIPattern <http://example.org/rdodi/s6-exemplar/ContextMenu>,
+        <http://example.org/rdodi/s6-exemplar/ResponsiveLayout>,
+        <http://example.org/rdodi/s6-exemplar/Animation>,
+        <http://example.org/rdodi/s6-exemplar/Canvas2DVisualization>,
+        <http://example.org/rdodi/s6-exemplar/ThreeDimensionalVisualization>,
+        <http://example.org/rdodi/s6-exemplar/LightMode>,
+        <http://example.org/rdodi/s6-exemplar/Simulation>,
+        <http://example.org/rdodi/s6-exemplar/CitationLink>,
+        <http://example.org/rdodi/s6-exemplar/CurrentLocationIndicator>,
+        <http://example.org/rdodi/s6-exemplar/FocusIndicator> .
+
+<http://example.org/rdodi/s6-exemplar/AnchorLinks> a ipo:AnchorLinks .
+<http://example.org/rdodi/s6-exemplar/RoutedViewNavigation> a ipo:RoutedViewNavigation .
+<http://example.org/rdodi/s6-exemplar/SubPageTabs> a ipo:SubPageTabs .
+<http://example.org/rdodi/s6-exemplar/PrimaryNavigation> a ipo:PrimaryNavigation .
+<http://example.org/rdodi/s6-exemplar/TreeNavigation> a ipo:TreeNavigation .
+<http://example.org/rdodi/s6-exemplar/Breadcrumb> a ipo:Breadcrumb .
+<http://example.org/rdodi/s6-exemplar/SkipToContent> a ipo:SkipToContent .
+<http://example.org/rdodi/s6-exemplar/Tooltip> a ipo:Tooltip .
+<http://example.org/rdodi/s6-exemplar/OverflowTabBar> a ipo:OverflowTabBar .
+<http://example.org/rdodi/s6-exemplar/ContextMenu> a ipo:ContextMenu .
+<http://example.org/rdodi/s6-exemplar/ResponsiveLayout> a ipo:ResponsiveLayout .
+<http://example.org/rdodi/s6-exemplar/Animation> a ipo:Animation .
+<http://example.org/rdodi/s6-exemplar/Canvas2DVisualization> a ipo:Canvas2DVisualization .
+<http://example.org/rdodi/s6-exemplar/ThreeDimensionalVisualization> a ipo:ThreeDimensionalVisualization .
+<http://example.org/rdodi/s6-exemplar/LightMode> a ipo:LightMode .
+<http://example.org/rdodi/s6-exemplar/Simulation> a ipo:Simulation .
+<http://example.org/rdodi/s6-exemplar/CitationLink> a ipo:CitationLink .
+
+# S8b: genuinely realized as a side effect of static-markup-first PrimaryNavigation (aria-current on the
+# active menuitem) -- not part of the original 17 Mandatory, disclosed honestly as an emergent, TRUE
+# realization (declaring it is accurate; suppressing the signature to hide it would not be).
+<http://example.org/rdodi/s6-exemplar/CurrentLocationIndicator> a ipo:CurrentLocationIndicator .
+
+# S11 (user-reported bug-fix round): genuinely realized as a side effect of adding proper :focus-visible
+# outline styling to subtabs and the tree-group-toggle button for keyboard accessibility -- a real, honest
+# FocusIndicator realization, not a signature collision (unlike the earlier Tooltip :focus case, which was
+# fixed by REMOVING the collision since it served a different purpose there).
+<http://example.org/rdodi/s6-exemplar/FocusIndicator> a ipo:FocusIndicator .

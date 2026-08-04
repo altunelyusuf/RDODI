@@ -1,0 +1,34 @@
+@prefix rva:  <http://example.org/rdodi/widget-rules#> .
+@prefix ipo:  <http://example.org/rdodi/interactive-page-ontology#> .
+@prefix rule: <http://example.org/rdodi/widget-admissibility#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/rdodi/surface-composition/s3> a owl:Ontology ;
+    owl:versionIRI <http://example.org/rdodi/surface-composition/s3/1.0.0> ;
+    owl:versionInfo "1.0.0" ;
+    dcterms:modified "2026-07-02"^^xsd:date ;
+    rdfs:comment "InteractiveHTMLSurface Package S3: visual/graphics. Mandatory: user's literal spec (Animation, Canvas2DVisualization, ThreeDimensionalVisualization, LightMode). Optional: ChartWidget (gap-analysis) + ThemeSwitcher (user's literal 'optionally multiple-themes')."@en .
+
+rule:mand_Animation a rva:MandatoryWidgetRule, owl:NamedIndividual ;
+    rule:mandatesWidget ipo:Animation ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Animations are a user-specified default for InteractiveHTMLSurface."@en .
+rule:mand_Canvas2DVisualization a rva:MandatoryWidgetRule, owl:NamedIndividual ;
+    rule:mandatesWidget ipo:Canvas2DVisualization ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "2D graphics/visual components are a user-specified default for InteractiveHTMLSurface."@en .
+rule:mand_ThreeDimensionalVisualization a rva:MandatoryWidgetRule, owl:NamedIndividual ;
+    rule:mandatesWidget ipo:ThreeDimensionalVisualization ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "3D graphics/visual components are a user-specified default for InteractiveHTMLSurface."@en .
+rule:mand_LightMode a rva:MandatoryWidgetRule, owl:NamedIndividual ;
+    rule:mandatesWidget ipo:LightMode ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Light mode is the user-specified default theme for InteractiveHTMLSurface."@en .
+
+rule:opt_ThemeSwitcher a rva:OptionalWidgetRule, owl:NamedIndividual ;
+    rule:offersWidget ipo:ThemeSwitcher ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Multi-theme switching (including dark mode) is offered as optional, exactly matching the user's literal wording: 'optionally multiple-themes as light is a default.'"@en .
+rule:opt_ChartWidget a rva:OptionalWidgetRule, owl:NamedIndividual ;
+    rule:offersWidget ipo:ChartWidget ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Chart/graph visualization is offered as optional -- a gap-analysis addition, not part of the user's literal spec."@en .

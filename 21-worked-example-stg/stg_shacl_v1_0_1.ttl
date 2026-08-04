@@ -1,0 +1,14 @@
+@prefix sh:  <http://www.w3.org/ns/shacl#> .
+@prefix stg: <http://example.org/stg/governance#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+stg:GovernedAreaShape a sh:NodeShape ; sh:targetClass stg:GovernedArea ;
+  sh:property [ sh:path stg:hasSteward ; sh:minCount 1 ; sh:message "governed area needs a steward" ] ;
+  sh:property [ sh:path stg:hasPolicy ;  sh:minCount 1 ; sh:message "governed area needs a policy" ] ;
+  sh:property [ sh:path stg:mapsToDomainClass ; sh:minCount 1 ; sh:message "governed area must map to a domain class" ] .
+
+stg:PolicyShape a sh:NodeShape ; sh:targetClass stg:GovernancePolicy ;
+  sh:property [ sh:path stg:appliesToArea ; sh:minCount 1 ; sh:message "policy must apply to an area" ] .
+
+stg:DomainShape a sh:NodeShape ; sh:targetClass stg:GovernedDomain ;
+  sh:property [ sh:path stg:governsArea ; sh:minCount 1 ; sh:message "governed domain must govern areas" ] .

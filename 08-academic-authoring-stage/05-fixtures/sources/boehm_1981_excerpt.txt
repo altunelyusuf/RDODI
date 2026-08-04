@@ -1,0 +1,10 @@
+Software defects discovered after deployment cost dramatically more to correct than defects caught
+early in the lifecycle. Across empirical studies the cost ratio between a requirements-phase defect
+and a production-phase defect has been observed to range from approximately ten to one hundred,
+with the upper bound being most consistent in large systems where downstream rework involves
+re-running integration and acceptance tests across multiple subsystems. The economic implication
+for management is that prevention investment, measured as a fraction of total project cost, is
+recovered many times over in reduced rework cost. This pattern was first systematically reported in
+software engineering economics and has since been corroborated in subsequent industry surveys.
+The shift-left principle as practised in modern continuous-integration environments operationalises
+this finding at higher cadence than was feasible at the time of the original measurement.

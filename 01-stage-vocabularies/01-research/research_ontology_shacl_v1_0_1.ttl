@@ -1,0 +1,67 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/rdodi/research-ontology> dcterms:bibliographicCitation "Altunel, Y. (2026). PATCH bump v6.9.1 -> v6.9.2."@en ;
+    prov:wasRevisionOf <http://example.org/rdodi/research-ontology/6.9.1> .
+
+<http://example.org/rdodi/research-ontology/shacl> a owl:Ontology ;
+    rdfs:label "RDODI Research Ontology shacl v1.0.1"@en ;
+    dcterms:created "2026-05-20"^^xsd:date ;
+    dcterms:creator <http://example.org/rdodi/agent/YusufAltunel> ;
+    dcterms:description "RDODI Research Ontology shacl. Part of the four-subject RDODI ecosystem: Research, Domain, Document, Interactive Page."@en ;
+    dcterms:identifier "research_ontology_shacl_v1_0_1" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-05-20"^^xsd:date ;
+    dcterms:publisher <http://example.org/rdodi/agent/IstanbulKulturUniversity> ;
+    dcterms:rights "Copyright (c) 2026 Yusuf Altunel. Licensed CC BY 4.0."@en ;
+    dcterms:rightsHolder <http://example.org/rdodi/agent/YusufAltunel> ;
+    rdfs:comment "RDODI v1.0.1 shacl for the Research Ontology. Derived from 02-research-ontology/research_ontology_shacl_v6_9_2.ttl (SHA-256 9e8c0330717d1e55b15b21f96c0a94b441541414c1865fbcba69e8de0bb3b0b8). ORIGINATION lineage: not a continuation of any prior ecosystem."@en ;
+    owl:versionIRI <http://example.org/rdodi/research-ontology/shacl/1.0.1> ;
+    owl:versionInfo "1.0.1" ;
+    prov:wasAttributedTo <http://example.org/rdodi/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://example.org/rdodi/activity/RDODIOrigination_v1_0_1> .
+
+[] sh:message "Instance of Acceptance SHOULD have at least one rdfs:label."@en ;
+    sh:minCount 1 ;
+    sh:path rdfs:label ;
+    sh:severity sh:Warning .
+
+[] sh:message "Instance of AccessPolicy SHOULD have at least one rdfs:label."@en ;
+    sh:minCount 1 ;
+    sh:path rdfs:label ;
+    sh:severity sh:Warning .
+
+[] sh:message "Instance of Accessibility SHOULD have at least one rdfs:label."@en ;
+    sh:minCount 1 ;
+    sh:path rdfs:label ;
+    sh:severity sh:Warning .
+
+[] sh:message "Instance of AlphaVersion SHOULD have at least one rdfs:label."@en ;
+    sh:minCount 1 ;
+    sh:path rdfs:label ;
+    sh:severity sh:Warning .
+
+[] sh:message "Instance of AltMetric SHOULD have at least one rdfs:label."@en ;
+    sh:minCount 1 ;
+    sh:path rdfs:label ;
+    sh:severity sh:Warning .
+
+[] sh:message "Instance of AnalysisStage SHOULD have at least one rdfs:label."@en ;
+    sh:minCount 1 ;
+    sh:path rdfs:label ;
+    sh:severity sh:Warning .
+
+[] sh:message "Instance of AppliedResearch SHOULD have at least one rdfs:label."@en ;
+    sh:minCount 1 ;
+    sh:path rdfs:label ;
+    sh:severity sh:Warning .
+
+[] sh:message "Instance of ArchivalStage SHOULD have at least one rdfs:label."@en ;
+    sh:minCount 1 ;
+    sh:path rdfs:label ;
+    sh:severity sh:Warning .
+

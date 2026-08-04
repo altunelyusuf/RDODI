@@ -1,0 +1,79 @@
+@prefix ns1: <http://example.org/crypto/domain#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ns1:DigitalSignature a owl:Class ;
+    rdfs:label "Digital signature" ;
+    ns1:definition "Signing a message with a private key so anyone can verify authenticity with the public key." ;
+    ns1:extendedTreatment "Signing a message with a private key so anyone can verify authenticity with the public key. This is a core concept in applied cryptography." ;
+    rdfs:subClassOf ns1:Protocols .
+
+ns1:PublicKey a owl:Class ;
+    rdfs:label "Public-key cryptography" ;
+    ns1:definition "A key pair where the public key encrypts/verifies and the private key decrypts/signs (e.g. RSA, ECC)." ;
+    ns1:extendedTreatment "A key pair where the public key encrypts/verifies and the private key decrypts/signs (e.g. RSA, ECC). This is a core concept in applied cryptography." ;
+    rdfs:subClassOf ns1:Primitives .
+
+ns1:TLS a owl:Class ;
+    rdfs:label "TLS" ;
+    ns1:definition "The protocol securing web traffic: a handshake negotiates keys, then symmetric encryption protects data." ;
+    ns1:extendedTreatment "The protocol securing web traffic: a handshake negotiates keys, then symmetric encryption protects data. This is a core concept in applied cryptography." ;
+    rdfs:subClassOf ns1:Protocols .
+
+ns1:case_HashFunction_0 a ns1:ExampleCase ;
+    ns1:caseCode """@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ex: <http://ex.org/> .
+ex:sha256 a skos:Concept ;
+  skos:prefLabel "SHA-256"@en ;
+  skos:altLabel  "SHA2-256"@en ;
+  skos:altLabel  "Secure Hash Algorithm 256"@en .""" ;
+    ns1:caseCodeLang "turtle" ;
+    ns1:exampleDomain "Integrity" ;
+    ns1:exampleText "A concept with several names all resolving to one hash algorithm." ;
+    ns1:ofConcept ns1:HashFunction .
+
+ns1:case_SymmetricCipher_0 a ns1:ExampleCase ;
+    ns1:caseCode """@prefix ex: <http://ex.org/> .
+ex:msg1 ex:encryptedWith ex:aes256 ; ex:key ex:sharedKey .""" ;
+    ns1:caseCodeLang "turtle" ;
+    ns1:exampleDomain "Messaging" ;
+    ns1:exampleText "AES-256 encrypts a message under a shared key." ;
+    ns1:ofConcept ns1:SymmetricCipher .
+
+ns1:ontology a owl:Ontology ;
+    ns1:pageSubtitle "pipeline-generated domain primer" ;
+    ns1:pageTitle "Applied Cryptography" ;
+    ns1:taxonomyLabel "Algorithm families" .
+
+ns1:pub_aes a ns1:Publication ;
+    rdfs:label "FIPS 197: Advanced Encryption Standard" ;
+    ns1:pubAuthor "NIST" ;
+    ns1:pubUrl "https://csrc.nist.gov/pubs/fips/197/final" .
+
+ns1:HashFunction a owl:Class ;
+    rdfs:label "Hash function" ;
+    ns1:definition "A one-way function mapping data to a fixed-size digest (e.g. SHA-256). Used for integrity and commitments." ;
+    ns1:extendedTreatment "A one-way function mapping data to a fixed-size digest (e.g. SHA-256). Used for integrity and commitments. This is a core concept in applied cryptography." ;
+    rdfs:subClassOf ns1:Primitives .
+
+ns1:SymmetricCipher a owl:Class ;
+    rdfs:label "Symmetric cipher" ;
+    ns1:definition "A cipher where the same key encrypts and decrypts (e.g. AES). Fast, but the key must be shared securely." ;
+    ns1:extendedTreatment "A cipher where the same key encrypts and decrypts (e.g. AES). Fast, but the key must be shared securely. This is a core concept in applied cryptography." ;
+    rdfs:subClassOf ns1:Primitives .
+
+ns1:Protocols a owl:Class ;
+    rdfs:label "Protocols" ;
+    ns1:definition "How primitives combine into secure communication (TLS, signatures)." ;
+    ns1:shortLabel "Protocols" ;
+    rdfs:subClassOf ns1:SemanticTechnologyArea .
+
+ns1:SemanticTechnologyArea a owl:Class ;
+    rdfs:label "Domain area" .
+
+ns1:Primitives a owl:Class ;
+    rdfs:label "Cryptographic primitives" ;
+    ns1:definition "The building blocks: ciphers, hashes, and key exchange." ;
+    ns1:shortLabel "Cryptographic" ;
+    rdfs:subClassOf ns1:SemanticTechnologyArea .
+

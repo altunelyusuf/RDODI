@@ -1,0 +1,324 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdodi-domain: <http://example.org/rdodi/domain-ontology#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+rdodi-domain:AuthoredForDomainOntologyV1 a owl:Class ;
+    rdfs:label "Authored For Domain Ontology v1"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:SourceProvenance ;
+    skos:definition "Provenance tier for classes net-new in this v1.0.0 release with no prior basis in any other subject."@en .
+
+rdodi-domain:AxiomatizationActivity a owl:Class ;
+    rdfs:label "Axiomatization Activity"@en ;
+    dcterms:source "2012)."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:Activity ;
+    skos:definition "Activity adding OWL 2 DL axioms (disjointness, equivalence, restriction, characteristic) that enable reasoning."@en .
+
+rdodi-domain:CompetencyQuestionDrivenMethod a owl:Class ;
+    rdfs:label "Competency-Question-Driven Method"@en ;
+    dcterms:source "Gruninger & Fox (1995), Methodology for the Design and Evaluation of Ontologies."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:TaxonomyConstructionMethod ;
+    skos:definition "Drive concept selection by the competency questions the ontology must answer. ORTHOGONAL to the three directional methods (made explicit v1.1.0): TopDown/BottomUp/MiddleOut are pairwise disjoint, but this method is deliberately excluded from that disjointness -- an activity may apply it IN COMBINATION with a directional method (e.g. top-down traversal driven by competency questions)."@en .
+
+rdodi-domain:ConceptualizationActivity a owl:Class ;
+    rdfs:label "Conceptualization Activity"@en ;
+    dcterms:source "Preserved from ontology_synthesis_v1_0_1.ttl (os:ConceptualizationActivity)."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:Activity ;
+    skos:definition "Activity producing the candidate concept inventory from input material before formalisation in OWL."@en .
+
+rdodi-domain:CorpusDrivenMethod a owl:Class ;
+    rdfs:label "Corpus-Driven Method"@en ;
+    dcterms:source "Cimiano (2006), Ontology Learning and Population from Text."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:TaxonomyConstructionMethod ;
+    skos:definition "Extract candidate concepts and relations from a domain corpus by NLP/statistical analysis."@en .
+
+rdodi-domain:DomainAnalysisActivity a owl:Class ;
+    rdfs:label "Domain Analysis Activity"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0; method classically named in METHONTOLOGY (Fernandez-Lopez et al. 1997)."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:Activity ;
+    skos:definition "Activity identifying the scope, purpose, intended users, and competency questions of the domain ontology."@en .
+
+rdodi-domain:DomainAxiomSet a owl:Class ;
+    rdfs:label "Domain Axiom Set"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:DomainOntologyArtifact ;
+    skos:definition "The OWL 2 DL axiom component of a DomainOntologyArtifact (disjointness, equivalence, restrictions, characteristics)."@en .
+
+rdodi-domain:DomainCorpus a owl:Class ;
+    rdfs:label "Domain Corpus"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0; corpus-driven taxonomy construction is a recognised OE methodology (Cimiano 2006, Gomez-Perez et al. 2004)."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:MethodologyInput ;
+    skos:definition "Body of domain-specific textual or structured material from which candidate concepts are extracted."@en .
+
+rdodi-domain:DomainTaxonomy a owl:Class ;
+    rdfs:label "Domain Taxonomy"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:DomainOntologyArtifact ;
+    skos:definition "The class hierarchy component of a DomainOntologyArtifact, expressed via rdfs:subClassOf."@en .
+
+rdodi-domain:ProvenancePreservationRecord a owl:Class ;
+    rdfs:label "Provenance Preservation Record"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf prov:Entity ;
+    skos:definition "PROV-O entity recording the lineage from MethodologyInput artefacts through Activity instances to a DomainOntologyArtifact, enabling auditing of which input contributed which output concept. MECHANISM (made explicit v1.1.0, RDODI finding F9): the lineage hops are expressed with STANDARD PROV-O properties on the participating resources themselves (prov:used on the Activity, prov:wasGeneratedBy on the produced artifact, prov:wasDerivedFrom between artifacts); this module deliberately mints no parallel lineage vocabulary (reuse-before-build). A record asserting lineage it does not carry in PROV-O terms is decorative."@en .
+
+rdodi-domain:RelationshipInductionActivity a owl:Class ;
+    rdfs:label "Relationship Induction Activity"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:Activity ;
+    skos:definition "Activity identifying object properties (associations) and data properties (attributes) connecting concepts, with their domains, ranges, and characteristics."@en .
+
+rdodi-domain:ReportSubjectInput a owl:Class ;
+    rdfs:label "Report Subject Input"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:SourceProvenance ;
+    skos:definition "Provenance tier for classes that link to Report Ontology entities downstream."@en .
+
+rdodi-domain:ReportSubjectMaterial a owl:Class ;
+    rdfs:label "Report Subject Material"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:MethodologyInput ;
+    skos:definition "Structured material from the Report Ontology subject (sections, subjects, artifact-kind specs) consumed to ground domain structure in report-deliverable form."@en .
+
+rdodi-domain:ResearchInput a owl:Class ;
+    rdfs:label "Research Input"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0 to formalise consumption of Research Ontology artefacts."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:MethodologyInput ;
+    skos:definition "Material from the Research Ontology subject (publications, datasets, research projects, FAIR-classified outputs) consumed as input to domain conceptualisation."@en .
+
+rdodi-domain:ResearchSubjectInput a owl:Class ;
+    rdfs:label "Research Subject Input"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:SourceProvenance ;
+    skos:definition "Provenance tier for classes that consume Research Ontology entities as input material."@en .
+
+rdodi-domain:SourceVocabulary a owl:Class ;
+    rdfs:label "Source Vocabulary"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:MethodologyInput ;
+    skos:definition "Pre-existing vocabulary or ontology (SKOS taxonomy, foundational ontology, domain glossary) reused or aligned-to during domain ontology authoring."@en .
+
+rdodi-domain:TaxonomyConstructionActivity a owl:Class ;
+    rdfs:label "Taxonomy Construction Activity"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:Activity ;
+    skos:definition "Activity arranging concepts into rdfs:subClassOf hierarchies, applying top-down, bottom-up, or middle-out methods."@en .
+
+rdodi-domain:TopDownTaxonomyMethod a owl:Class ;
+    rdfs:label "Top-Down Taxonomy Method"@en ;
+    dcterms:source "Uschold & King (1995), classical OE method."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:TaxonomyConstructionMethod ;
+    owl:disjointWith rdodi-domain:BottomUpTaxonomyMethod,
+        rdodi-domain:MiddleOutTaxonomyMethod ;
+    skos:definition "Identify root concepts first, then refine downward by specialisation."@en .
+
+rdodi-domain:ValidationActivity a owl:Class ;
+    rdfs:label "Validation Activity"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:Activity ;
+    skos:definition "Activity running consistency, conformance, and competency-question-coverage checks on the produced ontology. A validation whose result is not recorded is not evidence of validity (made explicit v1.1.0 per proposal F2/B2): this module carries no outcome vocabulary by design -- check results live in RDODI's pipeline gate outputs (pyshacl reports, definition-conformance-gate runs), attached to the run via PROV-O, not asserted as in-module individuals."@en .
+
+rdodi-domain:appliesMethod a owl:ObjectProperty ;
+    rdfs:label "applies method"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0. Domain narrowed v1.1.0 per an externally-reviewed enhancement proposal F6/A1."@en ;
+    rdfs:domain rdodi-domain:TaxonomyConstructionActivity ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:range rdodi-domain:TaxonomyConstructionMethod ;
+    skos:definition "Records which TaxonomyConstructionMethod was applied in a given TaxonomyConstructionActivity. Domain deliberately narrowed (v1.1.0) from Activity: only taxonomy construction applies these methods, per TaxonomyConstructionActivity's own definition; as previously declared, a ValidationActivity could conformantly apply TopDownTaxonomyMethod."@en .
+
+rdodi-domain:consumes a owl:ObjectProperty ;
+    rdfs:label "consumes"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0; aligned with prov:used."@en ;
+    rdfs:domain rdodi-domain:Activity ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:range rdodi-domain:MethodologyInput ;
+    rdfs:subPropertyOf prov:used ;
+    skos:definition "Links an Activity to a MethodologyInput it consumes."@en .
+
+rdodi-domain:derivedFromResearchSubject a owl:ObjectProperty ;
+    rdfs:label "derived from research subject"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0 as pipeline-linkage property. Definition added v1.1.0 (RDODI finding F8)."@en ;
+    rdfs:domain rdodi-domain:DomainOntologyArtifact ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    skos:definition "Links a DomainOntologyArtifact upstream to the Research-stage subject it was derived from. The absence of rdfs:range is INTENTIONAL: the target lives in the Research module's namespace (research-ontology), and declaring a local range would create a cross-module coupling this stage vocabulary deliberately avoids."@en .
+
+rdodi-domain:feedsReportSubject a owl:ObjectProperty ;
+    rdfs:label "feeds report subject"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0 as pipeline-linkage property. Definition added v1.1.0 (RDODI finding F8)."@en ;
+    rdfs:domain rdodi-domain:DomainOntologyArtifact ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    skos:definition "Links a DomainOntologyArtifact downstream to the Document/Report-stage subject it feeds. The absence of rdfs:range is INTENTIONAL: the target lives in the Document module's namespace (document-ontology), and declaring a local range would create a cross-module coupling this stage vocabulary deliberately avoids."@en .
+
+rdodi-domain:hasCompetencyQuestion a owl:ObjectProperty ;
+    rdfs:label "has competency question"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0."@en ;
+    rdfs:domain rdodi-domain:DomainOntologyArtifact ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:range rdodi-domain:CompetencyQuestionSet ;
+    skos:definition "Links a DomainOntologyArtifact to the CompetencyQuestionSet it must answer."@en .
+
+rdodi-domain:hasQualityAssessment a owl:ObjectProperty ;
+    rdfs:label "has quality assessment"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0."@en ;
+    rdfs:domain rdodi-domain:DomainOntologyArtifact ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:range rdodi-domain:QualityDimension ;
+    skos:definition "Links a DomainOntologyArtifact to a QualityDimension it has been assessed against."@en .
+
+rdodi-domain:hasSourceProvenance a owl:ObjectProperty ;
+    rdfs:label "has source provenance"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:range rdodi-domain:SourceProvenance ;
+    skos:definition "Links any mixed-source class or individual to its source-tier classifier. The absence of rdfs:domain is INTENTIONAL breadth (made explicit v1.1.0 per proposal F7/A2): any resource in any RDODI module may carry a source tier; declaring a local domain would wrongly scope the tier system to this module."@en .
+
+rdodi-domain:produces a owl:ObjectProperty ;
+    rdfs:label "produces"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0; aligned with prov:generated."@en ;
+    rdfs:domain rdodi-domain:Activity ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:range rdodi-domain:DomainOntologyArtifact ;
+    skos:definition "Links an Activity to the DomainOntologyArtifact (or component) it produces."@en .
+
+<http://example.org/rdodi/domain-ontology/tbox> a owl:Ontology ;
+    rdfs:label "RDODI Domain Ontology tbox v1.1.1 (public edition)"@en ;
+    dcterms:created "2026-05-20"^^xsd:date ;
+    dcterms:creator <http://example.org/rdodi/agent/YusufAltunel> ;
+    dcterms:description "RDODI Domain Ontology tbox. Part of the four-subject RDODI ecosystem: Research, Domain, Document, Interactive Page."@en ;
+    dcterms:identifier "domain_ontology_tbox_v1_1_1" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-08-03"^^xsd:date ;
+    dcterms:publisher <http://example.org/rdodi/agent/IstanbulKulturUniversity> ;
+    dcterms:rights "Copyright (c) 2026 Yusuf Altunel. Licensed CC BY 4.0."@en ;
+    dcterms:rightsHolder <http://example.org/rdodi/agent/YusufAltunel> ;
+    rdfs:comment "RDODI tbox for the Domain Ontology. Derived from 01-domain-ontology/domain_ontology_tbox_v1_0_0.ttl (SHA-256 c867034ddcb42096ef68294386c7f00aa5053812d4e502e2ba31899187db0556). v1.1.0 (MINOR, additive): adopts Tier A/B and selected Tier C of an externally-reviewed enhancement proposal (verified independently against SHA-pinned bytes before adoption), amended where evidence contradicted it, plus two RDODI-side findings (F8 property-definition gaps, F9 ProvenancePreservationRecord unexpressible lineage)."@en ;
+    owl:versionIRI <http://example.org/rdodi/domain-ontology/tbox/public/1.1.1> ;
+    owl:versionInfo "1.1.1" ;
+    owl:priorVersion <http://example.org/rdodi/domain-ontology/tbox/1.1.0> ;
+    prov:wasAttributedTo <http://example.org/rdodi/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://example.org/rdodi/activity/RDODIOrigination_v1_0_1> .
+
+rdodi-domain:BottomUpTaxonomyMethod a owl:Class ;
+    rdfs:label "Bottom-Up Taxonomy Method"@en ;
+    dcterms:source "Uschold & King (1995), classical OE method."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:TaxonomyConstructionMethod ;
+    owl:disjointWith rdodi-domain:MiddleOutTaxonomyMethod ;
+    skos:definition "Identify most specific concepts first, then generalise upward by abstraction."@en .
+
+rdodi-domain:CompetencyQuestionSet a owl:Class ;
+    rdfs:label "Competency Question Set"@en ;
+    dcterms:source "Pattern preserved from ontology_synthesis_v1_0_1.ttl (CompetencyQuestionInputs)."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:MethodologyInput ;
+    skos:definition "The collection of competency questions that a domain ontology must be able to answer, used in the RDODI domain stage as the coverage target against which ontology completeness is assessed. Grounded in the competency-question methodology of ontology engineering (Gruninger & Fox 1995)."@en .
+
+rdodi-domain:QualityDimension a owl:Class ;
+    rdfs:label "Quality Dimension"@en ;
+    dcterms:source "Conceptual basis: ontology_synthesis_v1_0_1.ttl (os:QualityDimension). The eight quality-dimension individuals below retain their ISO/IEC 25010:2023 source citations from os:."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    skos:definition "Measurable attribute against which a produced Domain Ontology is assessed. A dimension is the NAME OF a measurement, not a measurement (made explicit v1.1.0 per proposal F3/B1): an individual of this class carries no observed value, threshold, method, or timestamp. Readings against a dimension are recorded in RDODI's pipeline gate outputs (SHACL reports, conformance-gate reports), referenced via provenance -- naming a dimension is not evidence of assessment."@en .
+
+rdodi-domain:MiddleOutTaxonomyMethod a owl:Class ;
+    rdfs:label "Middle-Out Taxonomy Method"@en ;
+    dcterms:source "Uschold & King (1995), classical OE method."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf rdodi-domain:TaxonomyConstructionMethod ;
+    skos:definition "Identify core concepts at the middle level, then generalise and specialise in both directions."@en .
+
+rdodi-domain:SourceProvenance a owl:Class ;
+    rdfs:label "Source Provenance"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    skos:definition "Top-level tier classifier for the origin of any Domain Ontology class or individual. Every mixed-source artefact MUST carry a hasSourceProvenance assertion to one of its subclasses."@en .
+
+rdodi-domain:MethodologyInput a owl:Class ;
+    rdfs:label "Methodology Input"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    skos:definition "Top-level class for artefacts consumed by the domain-ontology authoring methodology."@en .
+
+rdodi-domain:TaxonomyConstructionMethod a owl:Class ;
+    rdfs:label "Taxonomy Construction Method"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0; classical OE methods (Gomez-Perez 2004, Uschold & King 1995)."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    skos:definition "Method employed in a TaxonomyConstructionActivity. Disjoint subclasses cover the three classical OE strategies plus two corpus-driven ones."@en .
+
+rdodi-domain:DomainOntologyArtifact a owl:Class ;
+    rdfs:label "Domain Ontology Artifact"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    skos:definition "The OWL/Turtle artefact produced by applying the methodology — typically a 3-file (TBox, ABox, SHACL) triplet per OE Ecosystem convention."@en .
+
+rdodi-domain:Activity a owl:Class ;
+    rdfs:label "Activity"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0; aligned with PROV-O Activity."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:subClassOf prov:Activity ;
+    skos:definition "Top-level activity class for the domain-ontology authoring methodology."@en .
+
+<http://example.org/rdodi/domain-ontology> dcterms:bibliographicCitation "Altunel, Y. (2026). Origination release v1.0.0."@en ;
+    dcterms:source "Quality dimension subclasses retain ISO/IEC 25010:2023 attributions from that source."@en .
+
+
+# ---- v1.1.0 additions ----
+# A3 (amended): the six activities are pairwise disjoint. NOTE: deliberately NOT extended to the
+# four methods -- the existing pairwise disjointness among the three directional methods excludes
+# CompetencyQuestionDrivenMethod by design (orthogonal, combinable); see its definition.
+[] a owl:AllDisjointClasses ;
+    owl:members ( rdodi-domain:DomainAnalysisActivity rdodi-domain:ConceptualizationActivity
+                  rdodi-domain:TaxonomyConstructionActivity rdodi-domain:RelationshipInductionActivity
+                  rdodi-domain:AxiomatizationActivity rdodi-domain:ValidationActivity ) .
+
+# C2: CompetencyQuestion made first-class -- executes what CompetencyQuestionSet's own definition
+# already promises ("the coverage target against which ontology completeness is assessed").
+rdodi-domain:CompetencyQuestion a owl:Class ;
+    rdfs:label "Competency Question"@en ;
+    dcterms:source "Gruninger & Fox (1995), Methodology for the Design and Evaluation of Ontologies. Adopted v1.1.0 per an externally-reviewed enhancement proposal F4/C2."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    skos:definition "A single question that a produced Domain Ontology must be able to answer, individually recordable and individually checkable. Members of a CompetencyQuestionSet; the falsifiable unit of the Gruninger & Fox coverage criterion -- a set whose questions cannot be enumerated cannot have its coverage assessed."@en .
+
+rdodi-domain:containsCompetencyQuestion a owl:ObjectProperty ;
+    rdfs:label "contains competency question"@en ;
+    dcterms:source "Adopted v1.1.0 per proposal F4/C2."@en ;
+    rdfs:domain rdodi-domain:CompetencyQuestionSet ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:range rdodi-domain:CompetencyQuestion ;
+    skos:definition "Membership: links a CompetencyQuestionSet to each CompetencyQuestion it contains. A set with no members is visible as such, not silently empty."@en .
+
+rdodi-domain:answeredBy a owl:ObjectProperty ;
+    rdfs:label "answered by"@en ;
+    dcterms:source "Adopted v1.1.0 per proposal F4/C2."@en ;
+    rdfs:domain rdodi-domain:CompetencyQuestion ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:range rdodi-domain:DomainOntologyArtifact ;
+    skos:definition "Records that a CompetencyQuestion is answerable by a given DomainOntologyArtifact. Coverage = the proportion of a set's questions carrying this link; a question without it is an open gap, visible rather than assumed closed."@en .
+
+# C3 (weak form, per the proposal's own stated trade-off and this module's actual iterative practice):
+# dependency between activities, NOT a strict temporal total order.
+rdodi-domain:dependsOnActivity a owl:ObjectProperty ;
+    rdfs:label "depends on activity"@en ;
+    dcterms:source "Adopted v1.1.0 per proposal F1/C3, weak form: the activity definitions imply dependency (e.g. Conceptualization 'before formalisation'; Validation on 'the produced ontology'), and RDODI authoring practice is iterative, so a strict order would be false."@en ;
+    rdfs:domain rdodi-domain:Activity ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    rdfs:range rdodi-domain:Activity ;
+    skos:definition "Records that an Activity consumed the output of another Activity. A dependency relation, NOT a temporal total order: iterative loops (e.g. Validation findings feeding a renewed Conceptualization) are permitted and expected. An AxiomatizationActivity with no recorded dependency on a conceptualization-bearing activity is the F1 gap made visible."@en .

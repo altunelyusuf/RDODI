@@ -1,0 +1,264 @@
+@prefix dc1: <http://purl.org/dc/terms/> .
+@prefix ip: <http://example.org/rdodi/demo-page#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/rdodi/demo-page> a owl:Ontology ;
+    rdfs:label "Ch.9 PQM Interactive Page"@en ;
+    dc1:created "2026-05-27"^^xsd:date ;
+    dc1:creator "Pipeline Stage 4" ;
+    dc1:description "Stage 4 ABox. Each page-section individual has dcterms:source linking to its Stage 3 Section."@en ;
+    dc1:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dc1:modified "2026-05-27"^^xsd:date ;
+    dc1:publisher "Pipeline run" ;
+    dc1:rights "Copyright (c) 2026. Licensed CC BY 4.0."@en ;
+    dc1:title "Ch.9 PQM Interactive Page ABox v1.0.1"@en ;
+    rdfs:comment "Stage 4 ABox: per-section page individuals linked back to Stage 3 Sections."@en ;
+    owl:imports <http://example.org/rdodi/demo-document/1.0.0> ;
+    owl:priorVersion <http://example.org/rdodi/demo-page/1.0.0> ;
+    owl:versionIRI <http://example.org/rdodi/demo-page/1.0.1> ;
+    owl:versionInfo "1.0.1" ;
+    prov:wasAttributedTo "Pipeline orchestrator (Stage 4)" .
+
+ip:Page_Section_CMMI a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_CMMI"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_CMMI> .
+
+ip:Page_Section_CaseStudy a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_CaseStudy"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_CaseStudy> .
+
+ip:Page_Section_CheckSheet a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_CheckSheet"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_CheckSheet> .
+
+ip:Page_Section_ConformanceToRequirements a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_ConformanceToRequirements"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_ConformanceToRequirements> .
+
+ip:Page_Section_ContinuousImprovement a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_ContinuousImprovement"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_ContinuousImprovement> .
+
+ip:Page_Section_ControlChart a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_ControlChart"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_ControlChart> .
+
+ip:Page_Section_CostOfQuality a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_CostOfQuality"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_CostOfQuality> .
+
+ip:Page_Section_Craftsmanship a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_Craftsmanship"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_Craftsmanship> .
+
+ip:Page_Section_CrosbyPhilosophy a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_CrosbyPhilosophy"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_CrosbyPhilosophy> .
+
+ip:Page_Section_CustomerSatisfaction a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_CustomerSatisfaction"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_CustomerSatisfaction> .
+
+ip:Page_Section_DemingPhilosophy a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_DemingPhilosophy"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_DemingPhilosophy> .
+
+ip:Page_Section_EveryonesResponsibility a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_EveryonesResponsibility"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_EveryonesResponsibility> .
+
+ip:Page_Section_ExternalFailureCost a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_ExternalFailureCost"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_ExternalFailureCost> .
+
+ip:Page_Section_FactBasedManagement a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_FactBasedManagement"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_FactBasedManagement> .
+
+ip:Page_Section_FitnessForUse a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_FitnessForUse"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_FitnessForUse> .
+
+ip:Page_Section_Flowchart a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_Flowchart"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_Flowchart> .
+
+ip:Page_Section_Grade a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_Grade"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_Grade> .
+
+ip:Page_Section_Histogram a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_Histogram"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_Histogram> .
+
+ip:Page_Section_ImproveProcess a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_ImproveProcess"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_ImproveProcess> .
+
+ip:Page_Section_Inspection a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_Inspection"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_Inspection> .
+
+ip:Page_Section_InspectionCost a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_InspectionCost"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_InspectionCost> .
+
+ip:Page_Section_InternalFailureCost a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_InternalFailureCost"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_InternalFailureCost> .
+
+ip:Page_Section_IshikawaContribution a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_IshikawaContribution"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_IshikawaContribution> .
+
+ip:Page_Section_IshikawaDiagram a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_IshikawaDiagram"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_IshikawaDiagram> .
+
+ip:Page_Section_JuranPhilosophy a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_JuranPhilosophy"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_JuranPhilosophy> .
+
+ip:Page_Section_Level1Initial a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_Level1Initial"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_Level1Initial> .
+
+ip:Page_Section_Level2Repeatable a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_Level2Repeatable"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_Level2Repeatable> .
+
+ip:Page_Section_Level3Defined a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_Level3Defined"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_Level3Defined> .
+
+ip:Page_Section_Level4Managed a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_Level4Managed"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_Level4Managed> .
+
+ip:Page_Section_Level5Optimizing a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_Level5Optimizing"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_Level5Optimizing> .
+
+ip:Page_Section_PQMConcept a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_PQMConcept"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_PQMConcept> .
+
+ip:Page_Section_PQMPlan a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_PQMPlan"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_PQMPlan> .
+
+ip:Page_Section_ParetoChart a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_ParetoChart"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_ParetoChart> .
+
+ip:Page_Section_PayToPlay a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_PayToPlay"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_PayToPlay> .
+
+ip:Page_Section_PreventionCost a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_PreventionCost"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_PreventionCost> .
+
+ip:Page_Section_PreventionNotInspection a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_PreventionNotInspection"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_PreventionNotInspection> .
+
+ip:Page_Section_Process a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_Process"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_Process> .
+
+ip:Page_Section_ProcessCapability a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_ProcessCapability"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_ProcessCapability> .
+
+ip:Page_Section_ProcessCapabilityConcept a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_ProcessCapabilityConcept"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_ProcessCapabilityConcept> .
+
+ip:Page_Section_ProcessMaturity a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_ProcessMaturity"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_ProcessMaturity> .
+
+ip:Page_Section_ProcessPerformance a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_ProcessPerformance"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_ProcessPerformance> .
+
+ip:Page_Section_QualityAssurance a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_QualityAssurance"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_QualityAssurance> .
+
+ip:Page_Section_QualityControl a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_QualityControl"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_QualityControl> .
+
+ip:Page_Section_QualityDefinition a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_QualityDefinition"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_QualityDefinition> .
+
+ip:Page_Section_QualityManagementPlanning a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_QualityManagementPlanning"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_QualityManagementPlanning> .
+
+ip:Page_Section_QualityMetric a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_QualityMetric"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_QualityMetric> .
+
+ip:Page_Section_QualityPhilosophy a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_QualityPhilosophy"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_QualityPhilosophy> .
+
+ip:Page_Section_QualityProcess a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_QualityProcess"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_QualityProcess> .
+
+ip:Page_Section_QualityStandard a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_QualityStandard"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_QualityStandard> .
+
+ip:Page_Section_QualityTool a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_QualityTool"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_QualityTool> .
+
+ip:Page_Section_ScatterDiagram a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_ScatterDiagram"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_ScatterDiagram> .
+
+ip:Page_Section_ScientificManagement a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_ScientificManagement"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_ScientificManagement> .
+
+ip:Page_Section_ShewhartContribution a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_ShewhartContribution"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_ShewhartContribution> .
+
+ip:Page_Section_SpeedVsQuality a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_SpeedVsQuality"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_SpeedVsQuality> .
+
+ip:Page_Section_TQMTradition a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_TQMTradition"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_TQMTradition> .
+
+ip:Page_Section_Tolerance a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_Tolerance"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_Tolerance> .
+
+ip:Page_Section_Validation a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_Validation"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_Validation> .
+
+ip:Page_Section_Verification a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_Verification"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_Verification> .
+
+ip:Page_Section_Walkthrough a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_Walkthrough"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_Walkthrough> .
+
+ip:Page_Section_ZeroDefects a owl:NamedIndividual ;
+    rdfs:label "Page section for Section_ZeroDefects"@en ;
+    dc1:source <http://example.org/rdodi/demo-document-abox#Section_ZeroDefects> .
+

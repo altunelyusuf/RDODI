@@ -1,0 +1,21 @@
+@prefix rva:  <http://example.org/rdodi/widget-rules#> .
+@prefix ipo:  <http://example.org/rdodi/interactive-page-ontology#> .
+@prefix rule: <http://example.org/rdodi/widget-admissibility#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/rdodi/surface-composition> a owl:Ontology ;
+    owl:versionIRI <http://example.org/rdodi/surface-composition/1.0.0> ;
+    owl:versionInfo "1.0.0" ;
+    dcterms:modified "2026-07-02"^^xsd:date ;
+    rdfs:comment "RDODI InteractiveHTMLSurface roadmap, Package S0. Properties realizing rva:MandatoryWidgetRule/OptionalWidgetRule against a target surface. Reuses the existing rule: namespace (Package 4) rather than minting a new one -- L-64 non-duplication."@en .
+
+rule:mandatesWidget a owl:ObjectProperty ; rdfs:domain rva:MandatoryWidgetRule ;
+    rdfs:comment "the widget/pattern class this mandatory rule requires"@en .
+rule:offersWidget a owl:ObjectProperty ; rdfs:domain rva:OptionalWidgetRule ;
+    rdfs:comment "the widget/pattern class this optional rule permits"@en .
+rule:forSurface a owl:ObjectProperty ; rdfs:range ipo:InteractiveHTMLSurface ;
+    rdfs:comment "the surface class this mandatory/optional rule applies to -- generic, reusable by future surfaces (not just InteractiveHTMLSurface)"@en .

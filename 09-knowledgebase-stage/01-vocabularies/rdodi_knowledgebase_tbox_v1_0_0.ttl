@@ -1,0 +1,124 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix kb: <http://example.org/rdodi/knowledgebase#> .
+
+<http://example.org/rdodi/knowledgebase> a owl:Ontology ;
+    rdfs:label "RDODI Knowledgebase Ontology (Stage KB, ecosystem v1.8.0)"@en ;
+    skos:definition "TBox for an RDODI-specific lessons-learned and best-practices knowledgebase that encodes proposed and adopted patterns as graph individuals with evidence, coverage-checks against existing OE BP/L codes, integration recommendations, and pattern status."@en ;
+    owl:versionInfo "1.0.0" ;
+    owl:versionIRI <http://example.org/rdodi/knowledgebase/1.0.0> ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:rights "Copyright 2026 Yusuf Altunel. CC BY 4.0."@en ;
+    dcterms:rightsHolder <https://example.org/agent/yusuf-altunel> ;
+    dcterms:publisher <https://example.org/org/iku-ce> ;
+    dcterms:creator <https://example.org/agent/yusuf-altunel> ;
+    dcterms:created "2026-05-28"^^xsd:date ;
+    dcterms:modified "2026-05-28"^^xsd:date ;
+    dcterms:identifier "knowledgebase" ;
+    dcterms:source "RDODI_Session_Lessons_Proposal_v1_0_0.md (user upload, mined from predecessor + current RDODI sessions)"@en ;
+    prov:wasGeneratedBy <http://example.org/rdodi/knowledgebase/activity/release-1.0.0> .
+
+<http://example.org/rdodi/knowledgebase/activity/release-1.0.0> a prov:Activity ;
+    rdfs:label "KB-stage TBox release 1.0.0"@en ;
+    prov:startedAtTime "2026-05-28T00:00:00Z"^^xsd:dateTime ;
+    prov:used <http://example.org/rdodi/knowledgebase/source/lessons_proposal_v1_0_0> .
+
+# ---- Pattern classes ----
+kb:LessonsLearnedPattern a owl:Class ; rdfs:label "LessonsLearnedPattern"@en ;
+    skos:definition "A LessonsLearnedPattern is a procedure-level or design-level pattern derived from session experience and recorded for inheritance by future RDODI work; it carries evidence, a coverage-check against existing discipline, an integration recommendation, and a status."@en .
+
+kb:RDODISpecificPattern a owl:Class ; rdfs:label "RDODISpecificPattern"@en ;
+    rdfs:subClassOf kb:LessonsLearnedPattern ;
+    skos:definition "An RDODISpecificPattern is a LessonsLearnedPattern whose subject matter is the RDODI four-stage pipeline, its gates, its widget stage, or its procedure conventions."@en .
+
+kb:CrossCuttingPattern a owl:Class ; rdfs:label "CrossCuttingPattern"@en ;
+    rdfs:subClassOf kb:LessonsLearnedPattern ;
+    skos:definition "A CrossCuttingPattern is a LessonsLearnedPattern that applies in the RDODI session but also has an OE-general counterpart held in the OE governance session; each carries a companionPattern link to its OE counterpart."@en .
+
+# ---- Evidence ----
+kb:PatternEvidence a owl:Class ; rdfs:label "PatternEvidence"@en ;
+    skos:definition "PatternEvidence anchors a LessonsLearnedPattern to a verifiable source: a transcript line, an artifact, or a session decision; absence of evidence is a SHACL Violation."@en .
+
+kb:TranscriptCitation a owl:Class ; rdfs:label "TranscriptCitation"@en ;
+    rdfs:subClassOf kb:PatternEvidence ;
+    skos:definition "A TranscriptCitation references a line in a session transcript; when the transcript is not locally available the provenanceSession property labels it as external."@en .
+
+kb:ArtifactReference a owl:Class ; rdfs:label "ArtifactReference"@en ;
+    rdfs:subClassOf kb:PatternEvidence ;
+    skos:definition "An ArtifactReference points to a specific file or version in an RDODI ecosystem release that demonstrates a pattern in operation."@en .
+
+kb:SessionDecisionRecord a owl:Class ; rdfs:label "SessionDecisionRecord"@en ;
+    rdfs:subClassOf kb:PatternEvidence ;
+    skos:definition "A SessionDecisionRecord cites a recorded decision made in a session bootstrap or session-closure document."@en .
+
+# ---- Coverage check (against OE BP/L or other artefacts) ----
+kb:CoverageCheck a owl:Class ; rdfs:label "CoverageCheck"@en ;
+    skos:definition "A CoverageCheck records, for a pattern, what existing discipline (OE BP/L codes, prior blueprint findings, prior procedure clauses) covers part of the pattern and where the pattern adds something new; this is the L-72 dedup discipline applied to lessons themselves."@en .
+
+# ---- Integration recommendation ----
+kb:IntegrationRecommendation a owl:Class ; rdfs:label "IntegrationRecommendation"@en ;
+    skos:definition "An IntegrationRecommendation names how a pattern should be integrated into the RDODI ecosystem (as a blueprint finding, procedure addendum, methodology note, or gate refinement)."@en .
+
+kb:BlueprintFindingRecommendation a owl:Class ; rdfs:label "BlueprintFindingRecommendation"@en ;
+    rdfs:subClassOf kb:IntegrationRecommendation ;
+    skos:definition "A BlueprintFindingRecommendation proposes adding the pattern as a numbered finding in the methodology blueprint."@en .
+
+kb:ProcedureAddendumRecommendation a owl:Class ; rdfs:label "ProcedureAddendumRecommendation"@en ;
+    rdfs:subClassOf kb:IntegrationRecommendation ;
+    skos:definition "A ProcedureAddendumRecommendation proposes adding a clause to the four-stage pipeline procedure document."@en .
+
+kb:MethodologyNoteRecommendation a owl:Class ; rdfs:label "MethodologyNoteRecommendation"@en ;
+    rdfs:subClassOf kb:IntegrationRecommendation ;
+    skos:definition "A MethodologyNoteRecommendation proposes a methodology note rather than a gate or procedure change."@en .
+
+kb:GateRefinementRecommendation a owl:Class ; rdfs:label "GateRefinementRecommendation"@en ;
+    rdfs:subClassOf kb:IntegrationRecommendation ;
+    skos:definition "A GateRefinementRecommendation proposes refining an existing gate (such as adding an intermediate tier value or asymmetric pass/fail design)."@en .
+
+# ---- Pattern status ----
+kb:PatternStatus a owl:Class ; rdfs:label "PatternStatus"@en ;
+    skos:definition "PatternStatus partitions patterns into proposal lifecycle states; a pattern that is already operational at the gate level but lacks blueprint codification is AlreadyAdoptedAtGateLevel rather than Ratified."@en .
+
+kb:Proposed a kb:PatternStatus ; rdfs:label "Proposed"@en ;
+    skos:definition "The Proposed status marks a pattern offered for ratification; the user is the ratifier and Claude must not silently promote it."@en .
+
+kb:AlreadyAdoptedAtGateLevel a kb:PatternStatus ; rdfs:label "AlreadyAdoptedAtGateLevel"@en ;
+    skos:definition "The AlreadyAdoptedAtGateLevel status marks a pattern whose mechanism is already operational in a gate or procedure but whose reasoning is not yet recorded in the methodology blueprint."@en .
+
+kb:Ratified a kb:PatternStatus ; rdfs:label "Ratified"@en ;
+    skos:definition "The Ratified status marks a pattern accepted by the RDODI session ratifier and integrated into the procedure or blueprint."@en .
+
+# ---- Object properties ----
+kb:patternEvidence a owl:ObjectProperty ; rdfs:label "patternEvidence"@en ;
+    skos:definition "The patternEvidence property relates a LessonsLearnedPattern to one of its PatternEvidence individuals."@en .
+kb:coversExisting a owl:ObjectProperty ; rdfs:label "coversExisting"@en ;
+    skos:definition "The coversExisting property relates a pattern to a CoverageCheck recording what existing discipline overlaps with it."@en .
+kb:recommendsIntegration a owl:ObjectProperty ; rdfs:label "recommendsIntegration"@en ;
+    skos:definition "The recommendsIntegration property relates a pattern to an IntegrationRecommendation."@en .
+kb:patternStatus a owl:ObjectProperty ; rdfs:label "patternStatus"@en ;
+    skos:definition "The patternStatus property relates a pattern to its PatternStatus."@en .
+kb:companionPattern a owl:ObjectProperty ; rdfs:label "companionPattern"@en ;
+    skos:definition "The companionPattern property relates a CrossCuttingPattern to its OE-general counterpart in the OE session's companion file."@en .
+kb:relatedOEDiscipline a owl:ObjectProperty ; rdfs:label "relatedOEDiscipline"@en ;
+    skos:definition "The relatedOEDiscipline property relates a pattern or coverage-check to a verified OE BP/L code (verified against kb_abox_v1_35_0)."@en .
+
+# ---- Datatype properties ----
+kb:transcriptLineRef a owl:DatatypeProperty ; rdfs:label "transcriptLineRef"@en ;
+    skos:definition "The transcriptLineRef property carries an integer line number in a session transcript."@en .
+kb:provenanceSession a owl:DatatypeProperty ; rdfs:label "provenanceSession"@en ;
+    skos:definition "The provenanceSession property labels evidence by its session of origin (predecessor-session, current-session, or external) so non-local references are explicitly flagged."@en .
+kb:adoptionLocation a owl:DatatypeProperty ; rdfs:label "adoptionLocation"@en ;
+    skos:definition "The adoptionLocation property names the file or version where a pattern is already operational (an honest pointer, not an authority claim)."@en .
+kb:externalReference a owl:DatatypeProperty ; rdfs:label "externalReference"@en ;
+    skos:definition "The externalReference property carries a verbatim reference to an external artifact (such as a methodology-blueprint finding number from a predecessor session) that is not present in the current ecosystem; preserved for audit trail."@en .
+kb:proposedAddendumText a owl:DatatypeProperty ; rdfs:label "proposedAddendumText"@en ;
+    skos:definition "The proposedAddendumText property carries the verbatim text the pattern recommends adding to procedure or blueprint."@en .
+kb:quotedSourceText a owl:DatatypeProperty ; rdfs:label "quotedSourceText"@en ;
+    skos:definition "The quotedSourceText property carries a verbatim quotation from the source proposal as evidence for a pattern."@en .
+kb:patternCode a owl:DatatypeProperty ; rdfs:label "patternCode"@en ;
+    skos:definition "The patternCode property carries the pattern's local identifier (R1, R2, R3...) as used in the source proposal."@en .

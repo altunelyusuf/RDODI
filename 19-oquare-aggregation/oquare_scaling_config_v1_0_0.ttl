@@ -1,0 +1,29 @@
+@prefix oq:  <http://example.org/rdodi/oquare-scaling#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+
+oq: a owl:Ontology ; owl:versionInfo "1.0.0" ;
+  dct:source "Scaling bands + characteristic matrix attributed to the OQuaRE quality model (Duque-Ramos et al.)." ;
+  rdfs:comment "DECLARED, VERIFY-AGAINST-SOURCE config. These band edges and groupings are configured inputs to a transparent aggregation, NOT asserted canonical OQuaRE values. Replace with the exact published bands to obtain OQuaRE-exact scores. Output is INDICATIVE, not a certification (L-66)."@en .
+
+# Per-metric scaling: direction + 4 band edges (-> 1..5). VERIFY against the published OQuaRE scale.
+oq:s_RROnto a oq:Scaling ; oq:metric "RROnto" ; oq:direction "higher_better" ; oq:b1 0.1 ; oq:b2 0.2 ; oq:b3 0.3 ; oq:b4 0.4 .
+oq:s_INROnto a oq:Scaling ; oq:metric "INROnto" ; oq:direction "higher_better" ; oq:b1 0.3 ; oq:b2 0.5 ; oq:b3 0.7 ; oq:b4 0.9 .
+oq:s_ANOnto a oq:Scaling ; oq:metric "ANOnto" ; oq:direction "higher_better" ; oq:b1 0.4 ; oq:b2 0.6 ; oq:b3 0.8 ; oq:b4 1.0 .
+oq:s_AROnto a oq:Scaling ; oq:metric "AROnto" ; oq:direction "higher_better" ; oq:b1 0.1 ; oq:b2 0.3 ; oq:b3 0.5 ; oq:b4 0.7 .
+oq:s_TMOnto a oq:Scaling ; oq:metric "TMOnto" ; oq:direction "lower_better" ; oq:b1 0.1 ; oq:b2 0.2 ; oq:b3 0.3 ; oq:b4 0.4 .
+oq:s_CBOOnto a oq:Scaling ; oq:metric "CBOOnto" ; oq:direction "lower_better" ; oq:b1 1.0 ; oq:b2 2.0 ; oq:b3 3.0 ; oq:b4 4.0 .
+oq:s_LCOMOnto a oq:Scaling ; oq:metric "LCOMOnto" ; oq:direction "lower_better" ; oq:b1 1.5 ; oq:b2 3.0 ; oq:b3 5.0 ; oq:b4 8.0 .
+oq:s_WMCOnto a oq:Scaling ; oq:metric "WMCOnto" ; oq:direction "lower_better" ; oq:b1 1.0 ; oq:b2 2.0 ; oq:b3 4.0 ; oq:b4 6.0 .
+oq:s_NOMOnto a oq:Scaling ; oq:metric "NOMOnto" ; oq:direction "lower_better" ; oq:b1 1.0 ; oq:b2 2.0 ; oq:b3 4.0 ; oq:b4 6.0 .
+oq:s_DITOnto a oq:Scaling ; oq:metric "DITOnto" ; oq:direction "lower_better" ; oq:b1 2.0 ; oq:b2 4.0 ; oq:b3 6.0 ; oq:b4 8.0 .
+oq:s_NOCOnto a oq:Scaling ; oq:metric "NOCOnto" ; oq:direction "lower_better" ; oq:b1 1.0 ; oq:b2 2.0 ; oq:b3 4.0 ; oq:b4 6.0 .
+
+# Characteristic -> constituent metrics (ISO/IEC 25000-aligned groupings; VERIFY against the published matrix).
+oq:c_Structural a oq:Characteristic ; oq:characteristic "Structural" ;
+  oq:includesMetric "RROnto","INROnto","TMOnto","CBOOnto","LCOMOnto" .
+oq:c_Maintainability a oq:Characteristic ; oq:characteristic "Maintainability" ;
+  oq:includesMetric "WMCOnto","NOMOnto","DITOnto","NOCOnto","CBOOnto" .
+oq:c_FunctionalAdequacy a oq:Characteristic ; oq:characteristic "FunctionalAdequacy" ;
+  oq:includesMetric "ANOnto","AROnto","INROnto" .

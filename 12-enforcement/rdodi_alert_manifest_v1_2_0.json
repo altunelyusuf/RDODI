@@ -1,0 +1,159 @@
+{
+  "manifest_version": "1.2.0",
+  "purpose": "Preflight discipline any LLM must satisfy when driving the RDODI pipeline. Each check must be PROVEN this run.",
+  "governing_rule": "A fact in context is NOT a verified fact (L-80). Prove by action this run, never assert from memory.",
+  "checks": [
+    {
+      "id": "A1",
+      "phase": "before_planning",
+      "rule": "Read the stage's own governing ontology this run (view/parse the file).",
+      "proven_by": "fresh_file_hash_recorded_this_run",
+      "finding": "F100,F20,F72",
+      "blocking": true
+    },
+    {
+      "id": "A2",
+      "phase": "before_planning",
+      "rule": "Ground options in the ontology's choice space, not generic sense.",
+      "proven_by": "options_reference_ontology_classes",
+      "finding": "F100",
+      "blocking": true
+    },
+    {
+      "id": "A2-bis",
+      "phase": "before_planning",
+      "rule": "Self-elicit before drafting (report & page stages): adopt expert frame, name deficiencies, decide transforms+structure; state the frame. Lever not gate; not self-certification.",
+      "proven_by": "frame_stated_pre_draft",
+      "finding": "F106",
+      "blocking": false
+    },
+    {
+      "id": "A3",
+      "phase": "before_planning",
+      "rule": "Read/parse actual source inputs; SHA-verify vs manifest.",
+      "proven_by": "input_files_hashed_this_run",
+      "finding": "F81,BP-D2",
+      "blocking": true
+    },
+    {
+      "id": "B1",
+      "phase": "producing",
+      "rule": "Produce the stage's required ABox typed against its ontology; markdown/HTML is not a conformant stage artifact.",
+      "proven_by": "abox_typed_against_ontology_ns",
+      "finding": "F100",
+      "blocking": true
+    },
+    {
+      "id": "B3",
+      "phase": "producing",
+      "rule": "Verify every external/historical claim before writing it.",
+      "proven_by": "web_or_catalogue_lookup_this_run",
+      "finding": "F39,F92",
+      "blocking": true
+    },
+    {
+      "id": "B4",
+      "phase": "producing",
+      "rule": "Verify every reference points to the actual work, not a review of it.",
+      "proven_by": "points_to_type_check",
+      "finding": "F86",
+      "blocking": true
+    },
+    {
+      "id": "C1",
+      "phase": "after_edit",
+      "rule": "Confirm the edit landed (occurrence count).",
+      "proven_by": "keyword_count_after_edit",
+      "finding": "F92,F94",
+      "blocking": true
+    },
+    {
+      "id": "C2",
+      "phase": "after_edit",
+      "rule": "Run regression guard (citations/concepts/sections/tables/figures not dropped).",
+      "proven_by": "verify_no_regression",
+      "finding": "F90",
+      "blocking": true
+    },
+    {
+      "id": "C3",
+      "phase": "after_edit",
+      "rule": "Re-derive every stated number from the artifact.",
+      "proven_by": "reconcile_numbers",
+      "finding": "F81,F3",
+      "blocking": true
+    },
+    {
+      "id": "C4",
+      "phase": "after_edit",
+      "rule": "Exact normalised matching for checks; fuzzy only proposes.",
+      "proven_by": "exact_match_substrate",
+      "finding": "session_fuzzy_errors",
+      "blocking": true
+    },
+    {
+      "id": "D1",
+      "phase": "before_ship",
+      "rule": "Run stage-conformance gate (read+typed+SHACL-conformed per stage).",
+      "proven_by": "stage_conformance_gate_all_conformant",
+      "finding": "F100",
+      "blocking": true
+    },
+    {
+      "id": "D2",
+      "phase": "before_ship",
+      "rule": "Run content verification suite.",
+      "proven_by": "orchestrator_mechanical_floor_pass",
+      "finding": "F90,F92",
+      "blocking": true
+    },
+    {
+      "id": "D3",
+      "phase": "before_ship",
+      "rule": "Surface warrant + intent to human; never self-certify content truth.",
+      "proven_by": "validation_sheet_emitted",
+      "finding": "self_certification_limit,F39",
+      "blocking": false
+    },
+    {
+      "id": "D4",
+      "phase": "before_ship",
+      "rule": "Release-completeness (R13): new lessons that emerged this session are recorded to the governed store before calling the release complete.",
+      "proven_by": "lessons_recorded_this_session",
+      "finding": "R13",
+      "blocking": true
+    },
+    {
+      "id": "E1",
+      "phase": "always",
+      "rule": "Increment version on every rebuild.",
+      "proven_by": "version_bumped",
+      "finding": "standing",
+      "blocking": true
+    },
+    {
+      "id": "E2",
+      "phase": "always",
+      "rule": "Additive=MINOR, breaking=MAJOR, no silent removals.",
+      "proven_by": "additive_triple_check",
+      "finding": "BP-D7",
+      "blocking": true
+    },
+    {
+      "id": "E4",
+      "phase": "always",
+      "rule": "Report at true magnitude; verify the check before trusting a reported regression; never soften a real gap.",
+      "proven_by": "honest_magnitude",
+      "finding": "F85,F96",
+      "blocking": false
+    },
+    {
+      "id": "E5",
+      "phase": "always",
+      "rule": "If you cannot prove it this run, say 'not verified'.",
+      "proven_by": "no_unproven_assertions",
+      "finding": "L-80,L-81",
+      "blocking": true
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+name: OE gates (public edition)
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install rdflib pyshacl
+      - name: Gate 0 — manifest self-check
+        run: |
+          python3 - << 'PY'
+          import hashlib, re, sys
+          man = {m.group(2): m.group(1) for l in open('MANIFEST_SHA256_v1_0_0.txt')
+                 if (m := re.match(r'^([0-9a-f]{64})\s+(\S.*?)\s+\(\d+b\)$', l.strip()))}
+          ok = sum(1 for p,h in man.items() if hashlib.sha256(open(p,'rb').read()).hexdigest()==h)
+          print(f'{ok}/{len(man)}'); sys.exit(0 if ok==len(man) else 1)
+          PY
+      - name: Gate P — parse every TTL
+        run: |
+          python3 - << 'PY'
+          import glob, sys, rdflib
+          bad = []
+          fs = glob.glob('**/*.ttl', recursive=True)
+          for f in fs:
+              try: rdflib.Graph().parse(f, format='turtle')
+              except Exception as e: bad.append((f, str(e)[:80]))
+          print(f'parsed {len(fs)-len(bad)}/{len(fs)}'); [print('FAIL:',*b) for b in bad]; sys.exit(1 if bad else 0)
+          PY
+      - name: Gate S — domain SHACL
+        run: |
+          python3 - << 'PY'
+          import rdflib, pyshacl, sys
+          d = rdflib.Graph(); d.parse('01-stage-vocabularies/02-domain/domain_ontology_tbox_v1_1_1.ttl'); d.parse('01-stage-vocabularies/02-domain/domain_ontology_abox_v1_0_1.ttl')
+          s = rdflib.Graph(); s.parse('01-stage-vocabularies/02-domain/domain_ontology_shacl_v1_1_0.ttl')
+          c,_,rt = pyshacl.validate(d, shacl_graph=s, inference='rdfs')
+          v = rt.count('Severity: sh:Violation'); print(f'conforms={c} violations={v}'); sys.exit(0 if v==0 else 1)
+          PY

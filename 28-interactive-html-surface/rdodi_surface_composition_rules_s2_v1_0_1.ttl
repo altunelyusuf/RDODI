@@ -1,0 +1,34 @@
+@prefix rva:  <http://example.org/rdodi/widget-rules#> .
+@prefix ipo:  <http://example.org/rdodi/interactive-page-ontology#> .
+@prefix rule: <http://example.org/rdodi/widget-admissibility#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/rdodi/surface-composition/s2> a owl:Ontology ;
+    owl:versionIRI <http://example.org/rdodi/surface-composition/s2/1.0.0> ;
+    owl:versionInfo "1.0.0" ;
+    dcterms:modified "2026-07-02"^^xsd:date ;
+    rdfs:comment "InteractiveHTMLSurface Package S2: interaction/technical-content widgets. Mandatory: user-specified defaults (ContextMenu, Tooltip, Simulation). Optional: gap-analysis additions, per roadmap G5 (DataTable, CopyCodeButton, MathRendering) -- allocation corrected from the roadmap's ambiguous S2/G5 phrasing, disclosed in CHANGELOG."@en .
+
+rule:mand_ContextMenu a rva:MandatoryWidgetRule, owl:NamedIndividual ;
+    rule:mandatesWidget ipo:ContextMenu ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Right-click context-sensitive pop-up menu is a user-specified default for InteractiveHTMLSurface."@en .
+rule:mand_Tooltip a rva:MandatoryWidgetRule, owl:NamedIndividual ;
+    rule:mandatesWidget ipo:Tooltip ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Hover tooltip on technical subjects/terms is a user-specified default for InteractiveHTMLSurface."@en .
+rule:mand_Simulation a rva:MandatoryWidgetRule, owl:NamedIndividual ;
+    rule:mandatesWidget ipo:Simulation ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Simulations are a user-specified default for InteractiveHTMLSurface."@en .
+
+rule:opt_DataTable a rva:OptionalWidgetRule, owl:NamedIndividual ;
+    rule:offersWidget ipo:DataTable ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Data tables are offered as an optional widget -- a gap-analysis addition, not part of the user's literal spec, per roadmap G5."@en .
+rule:opt_CopyCodeButton a rva:OptionalWidgetRule, owl:NamedIndividual ;
+    rule:offersWidget ipo:CopyCodeButton ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Copy-code button is offered as an optional widget, per roadmap G5's explicit classification."@en .
+rule:opt_MathRendering a rva:OptionalWidgetRule, owl:NamedIndividual ;
+    rule:offersWidget ipo:MathRendering ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Math rendering is offered as an optional widget, per roadmap G5's explicit classification."@en .

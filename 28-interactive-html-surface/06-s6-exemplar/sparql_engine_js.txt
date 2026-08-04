@@ -1,0 +1,67 @@
+function sparqlExecute(query, triples) {
+  const selMatch = query.match(/SELECT\s+(DISTINCT\s+)?(.+?)\s+WHERE/is);
+  if (!selMatch) throw new Error('expected SELECT ... WHERE');
+  const vars = selMatch[2].trim() === '*' ? null : selMatch[2].trim().split(/\s+/);
+  const whereMatch = query.match(/WHERE\s*\{(.+)\}/is);
+  if (!whereMatch) throw new Error('expected WHERE { ... }');
+  let body = whereMatch[1];
+  const filterMatches = [...body.matchAll(/FILTER\s*\(([^)]+)\)/gi)];
+  body = body.replace(/FILTER\s*\([^)]+\)/gi, '');
+  const patterns = body.split('.').map(p => p.trim()).filter(p => p.length > 0)
+    .map(p => {
+      const parts = p.split(/\s+/);
+      if (parts.length < 3) throw new Error('malformed triple pattern: ' + p);
+      return { s: parts[0], p: parts[1], o: parts.slice(2).join(' ').replace(/^"|"$/g, '') };
+    });
+  function isVar(t) { return t.startsWith('?'); }
+  let bindings = [{}];
+  for (const pat of patterns) {
+    const next = [];
+    for (const b of bindings) {
+      const sVal = isVar(pat.s) ? (b[pat.s] ?? null) : pat.s;
+      const pVal = isVar(pat.p) ? (b[pat.p] ?? null) : pat.p;
+      const oVal = isVar(pat.o) ? (b[pat.o] ?? null) : pat.o;
+      for (const t of triples) {
+        if (sVal !== null && t.s !== sVal) continue;
+        if (pVal !== null && t.p !== pVal) continue;
+        if (oVal !== null && t.o !== oVal) continue;
+        const nb = Object.assign({}, b);
+        if (isVar(pat.s)) nb[pat.s] = t.s;
+        if (isVar(pat.p)) nb[pat.p] = t.p;
+        if (isVar(pat.o)) nb[pat.o] = t.o;
+        next.push(nb);
+      }
+    }
+    bindings = next;
+  }
+  for (const fm of filterMatches) {
+    const cond = fm[1].trim();
+    const cmp = cond.match(/(\?\w+)\s*(=|!=|>|<|>=|<=)\s*"?([^")]+)"?/);
+    if (cmp) {
+      const [, v, op, val] = cmp;
+      bindings = bindings.filter(b => {
+        const bv = b[v]; if (bv === undefined) return false;
+        const nbv = Number(bv), nval = Number(val);
+        const useNum = !isNaN(nbv) && !isNaN(nval);
+        const l = useNum ? nbv : bv, r = useNum ? nval : val;
+        if (op === '=') return l === r; if (op === '!=') return l !== r;
+        if (op === '>') return l > r; if (op === '<') return l < r;
+        if (op === '>=') return l >= r; if (op === '<=') return l <= r;
+        return true;
+      });
+    }
+  }
+  const orderMatch = query.match(/ORDER BY\s+(DESC\()?(\?\w+)\)?/i);
+  if (orderMatch) {
+    const v = orderMatch[2]; const desc = !!orderMatch[1];
+    bindings.sort((a, b) => {
+      const av = a[v], bv = b[v];
+      const r = String(av).localeCompare(String(bv), undefined, {numeric: true});
+      return desc ? -r : r;
+    });
+  }
+  const limitMatch = query.match(/LIMIT\s+(\d+)/i);
+  if (limitMatch) bindings = bindings.slice(0, parseInt(limitMatch[1]));
+  const outVars = vars || (bindings.length ? Object.keys(bindings[0]) : []);
+  return { vars: outVars, rows: bindings.map(b => outVars.map(v => b[v] ?? '')) };
+}

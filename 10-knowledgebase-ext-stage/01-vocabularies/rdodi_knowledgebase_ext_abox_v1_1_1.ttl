@@ -1,0 +1,2247 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix kbx: <http://example.org/rdodi/knowledgebase-ext#> .
+@prefix kbxi: <http://example.org/rdodi/knowledgebase-ext/instance#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/rdodi/knowledgebase-ext/instance> a owl:Ontology ;
+    rdfs:label "RDODI KB-EXT ABox PATCH v1.0.1 — catalogues + resolution records"@en,
+        "RDODI KB-EXT ABox v1.0.0 — 60 external knowledge items"@en ;
+    dcterms:created "2026-05-28"^^xsd:date,
+        "2026-05-29"^^xsd:date ;
+    dcterms:creator <https://example.org/agent/yusuf-altunel> ;
+    dcterms:identifier "knowledgebase-ext/instance" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-05-28"^^xsd:date,
+        "2026-05-29"^^xsd:date ;
+    dcterms:publisher <https://example.org/org/iku-ce> ;
+    dcterms:rights "Copyright 2026 Yusuf Altunel. CC BY 4.0."@en ;
+    dcterms:rightsHolder <https://example.org/agent/yusuf-altunel> ;
+    dcterms:source "Additive PATCH to v1.0.0 ABox; loaded together at runtime."@en,
+        "Compiled from training-time knowledge of canonical standards bodies and methodology references; each item carries a consultationStatus tag (Consulted/Reconstructed/RequiresConsultation) reflecting BP-D41/L-40 honesty."@en ;
+    owl:priorVersion <http://example.org/rdodi/knowledgebase-ext/instance/1.0.0> ;
+    owl:versionIRI <http://example.org/rdodi/knowledgebase-ext/instance/1.0.0>,
+        <http://example.org/rdodi/knowledgebase-ext/instance/1.0.1> ;
+    owl:versionInfo "1.0.0",
+        "1.0.1" .
+
+kbxi:acm_citation a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "ACM Reference Format"@en ;
+    kbx:anchorURL "https://www.acm.org/publications/authors/reference-formatting" ;
+    kbx:applicabilityNote "Required for ACM venues; otherwise functionally equivalent to IEEE for short reference lists." ;
+    kbx:appliesToStage kbx:Stage3Document ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:ieee_citation ;
+    kbx:firstPublished "2017"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "ACM" ;
+    dcterms:source "https://www.acm.org/publications/authors/reference-formatting"@en ;
+    skos:definition "The ACM Reference Format is mandated for ACM publications and uses a specific numeric or author-year format depending on conference."@en .
+
+kbxi:cat_acl_anthology a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "ACL Anthology"@en ;
+    kbx:anchorURL "https://aclanthology.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for the venues it covers; canonical resolver for NLP literature with stable ACL Anthology identifiers (e.g. P19-1001)." ;
+    kbx:catalogueOperator "Association for Computational Linguistics" ;
+    kbx:catalogueScope "ACL, NAACL, EMNLP, COLING, EACL conference proceedings; TACL journal." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "2002"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://aclanthology.org/"@en ;
+    skos:definition "The ACL Anthology is the Association for Computational Linguistics' open archive of NLP and computational linguistics research."@en .
+
+kbxi:cat_arxiv a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "arXiv"@en ;
+    kbx:anchorURL "https://arxiv.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for confirming a preprint exists with that arXiv ID; NOT a peer-review certification. Many arXiv papers are subsequently published with different titles or content; the arXiv version may differ from the published version." ;
+    kbx:catalogueOperator "Cornell University (Simons Foundation funded)" ;
+    kbx:catalogueScope "Preprints (peer-reviewed and not); long-form research notes; published versions when authors deposit." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1991"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://arxiv.org/"@en ;
+    skos:definition "arXiv is the open-access preprint server for physics, mathematics, computer science, quantitative biology, statistics, electrical engineering, economics, and finance; preprints are versioned and stable."@en .
+
+kbxi:cat_biorxiv a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "bioRxiv"@en ;
+    kbx:anchorURL "https://www.biorxiv.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Same caveat as arXiv: preprint deposit does not imply peer review." ;
+    kbx:catalogueOperator "Cold Spring Harbor Laboratory" ;
+    kbx:catalogueScope "Biology preprints across all subfields." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "2013"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://www.biorxiv.org/"@en ;
+    skos:definition "bioRxiv is the Cold Spring Harbor preprint server for biology, the biomedical counterpart to arXiv."@en .
+
+kbxi:cat_dart_europe a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "DART-Europe E-theses Portal"@en ;
+    kbx:anchorURL "https://www.dart-europe.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for confirming a thesis exists; metadata quality depends on the source repository." ;
+    kbx:catalogueOperator "LIBER + national thesis services" ;
+    kbx:catalogueScope "Doctoral theses from European universities." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "2005"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://www.dart-europe.org/"@en ;
+    skos:definition "DART-Europe is the European portal for full-text open-access doctoral theses, partnered with the LIBER European research libraries association."@en .
+
+kbxi:cat_dblp a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "DBLP Computer Science Bibliography"@en ;
+    kbx:anchorURL "https://dblp.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research,
+        kbx:Stage2DomainOntology ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for CS metadata; DBLP keys are stable identifiers and the database is curated by humans for author disambiguation. The gold standard for verifying CS conference paper metadata." ;
+    kbx:catalogueOperator "Schloss Dagstuhl Leibniz Center for Informatics" ;
+    kbx:catalogueScope "CS conferences and journals; author disambiguation; venue history." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1993"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://dblp.org/"@en ;
+    skos:definition "DBLP is the editorially curated bibliography of computer-science publications, particularly authoritative for conference and journal metadata; maintained at the University of Trier and Schloss Dagstuhl."@en .
+
+kbxi:cat_dergipark a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "DergiPark"@en ;
+    kbx:anchorURL "https://dergipark.org.tr/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is procedural — DergiPark is a hosting platform; editorial authority belongs to each journal. A DergiPark hit confirms hosting, not journal quality." ;
+    kbx:catalogueOperator "TÜBİTAK ULAKBİM" ;
+    kbx:catalogueScope "Turkish academic journals hosted on the DergiPark platform; many TR Dizin journals are also on DergiPark." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "2013"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://dergipark.org.tr/"@en ;
+    skos:definition "DergiPark is the TÜBİTAK ULAKBİM-operated open-access publishing platform hosting Turkish academic journals."@en .
+
+kbxi:cat_epo_espacenet a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "European Patent Office Espacenet"@en ;
+    kbx:anchorURL "https://worldwide.espacenet.com/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:CrossStageGovernance ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is DEFINITIVE for European patents and HIGH for cross-jurisdiction patent search." ;
+    kbx:catalogueOperator "European Patent Office" ;
+    kbx:catalogueScope "European and worldwide patents." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1998"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://worldwide.espacenet.com/"@en ;
+    skos:definition "Espacenet is the European Patent Office's free patent-search service covering over 140 million patent documents worldwide."@en .
+
+kbxi:cat_google_scholar a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "Google Scholar"@en ;
+    kbx:anchorURL "https://scholar.google.com/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is LOW: Google Scholar is not curated. A hit confirms only that something exists at that URL with that title at the time of crawl. Use only as discovery tool; verify any positive hit in a curated catalogue (Crossref / DBLP / publisher) before relying on metadata." ;
+    kbx:catalogueOperator "Google" ;
+    kbx:catalogueScope "The widest scholarly coverage available; includes grey literature, non-peer-reviewed work, and predatory journals indistinguishably." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "2004"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://scholar.google.com/"@en ;
+    skos:definition "Google Scholar is Google's broad scholarly index covering papers, books, theses, preprints, and patents across all fields."@en .
+
+kbxi:cat_iec_webstore a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "IEC Webstore"@en ;
+    kbx:anchorURL "https://webstore.iec.ch/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:CrossStageGovernance ;
+    kbx:catalogueAccessModel "Mixed" ;
+    kbx:catalogueAuthorityNote "Authority is DEFINITIVE for IEC standards; ISO/IEC joint standards resolve in both this and ISO OBP." ;
+    kbx:catalogueOperator "International Electrotechnical Commission" ;
+    kbx:catalogueScope "IEC standards; joint ISO/IEC standards in electrotechnology and electronics." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1906"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    dcterms:source "https://webstore.iec.ch/"@en ;
+    skos:definition "The IEC Webstore is the catalogue and storefront for International Electrotechnical Commission publications."@en .
+
+kbxi:cat_ieee_xplore a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "IEEE Xplore Digital Library"@en ;
+    kbx:anchorURL "https://ieeexplore.ieee.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research,
+        kbx:Stage2DomainOntology ;
+    kbx:catalogueAccessModel "Subscription (IEEE members and institutional licences)" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for IEEE-published works and IEEE standards; the canonical resolver for IEEE works including the IEEE citation format." ;
+    kbx:catalogueOperator "IEEE" ;
+    kbx:catalogueScope "IEEE-published conferences and journals (Transactions on Software Engineering, Transactions on Knowledge and Data Engineering, etc.); IEEE standards including IEEE 802 series." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "2000"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://ieeexplore.ieee.org/"@en ;
+    skos:definition "IEEE Xplore is the Institute of Electrical and Electronics Engineers' full-text catalogue of IEEE conferences, journals, magazines, and IEEE standards."@en .
+
+kbxi:cat_ietf_datatracker a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "IETF Datatracker"@en ;
+    kbx:anchorURL "https://datatracker.ietf.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:CrossStageGovernance ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is DEFINITIVE for IETF process and document state; complementary to the RFC Editor index for in-progress work." ;
+    kbx:catalogueOperator "IETF" ;
+    kbx:catalogueScope "Active and historical Internet-Drafts; status transitions; working-group history." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "2003"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    dcterms:source "https://datatracker.ietf.org/"@en ;
+    skos:definition "The IETF Datatracker is the working tool of the IETF, indexing Internet-Drafts, RFCs, working groups, and the standards-track lifecycle."@en .
+
+kbxi:cat_ietf_rfc a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "IETF RFC Index"@en ;
+    kbx:anchorURL "https://www.rfc-editor.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:CrossStageGovernance,
+        kbx:Stage4InteractivePage ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is DEFINITIVE for IETF works; the RFC number is the stable identifier and the canonical text of every RFC is permanently archived." ;
+    kbx:catalogueOperator "IETF / RFC Editor" ;
+    kbx:catalogueScope "Internet standards: HTTP, TCP/IP, JSON, OAuth, TLS, IRI, and thousands of supporting specifications." ;
+    kbx:consultationStatus kbx:Consulted ;
+    kbx:firstPublished "1969"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    dcterms:source "https://www.rfc-editor.org/"@en ;
+    skos:definition "The IETF RFC Index is the canonical listing of Internet Engineering Task Force Request for Comments documents including Internet Standards, Best Current Practices, Informational, and Experimental RFCs."@en .
+
+kbxi:cat_inspec a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "INSPEC"@en ;
+    kbx:anchorURL "https://www.theiet.org/inspec/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Subscription" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for engineering literature; complementary to IEEE Xplore for non-IEEE engineering venues." ;
+    kbx:catalogueOperator "Institution of Engineering and Technology (IET)" ;
+    kbx:catalogueScope "Engineering and physics literature; CS conferences and journals overlap with IEEE Xplore." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1969"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://www.theiet.org/inspec/"@en ;
+    skos:definition "INSPEC is the IET's bibliographic database for physics, electrical engineering, electronics, computing, control engineering, and information technology."@en .
+
+kbxi:cat_jstor a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "JSTOR"@en ;
+    kbx:anchorURL "https://www.jstor.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Subscription (institutional)" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for the works it indexes; particularly useful for verifying older works that pre-date DOI registration." ;
+    kbx:catalogueOperator "ITHAKA (non-profit)" ;
+    kbx:catalogueScope "Older journal runs across humanities, social sciences, and some sciences; the historical literature is a strength." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1995"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://www.jstor.org/"@en ;
+    skos:definition "JSTOR is a digital library of academic journals, books, and primary sources, particularly strong in humanities and social sciences."@en .
+
+kbxi:cat_library_of_congress a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "Library of Congress Online Catalog"@en ;
+    kbx:anchorURL "https://catalog.loc.gov/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research,
+        kbx:Stage3Document ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is DEFINITIVE for books published in or for the U.S. market; LCCN is stable." ;
+    kbx:catalogueOperator "U.S. Library of Congress" ;
+    kbx:catalogueScope "Books, monographs, periodicals; the legal-deposit catalogue for U.S. publishing." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1800"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://catalog.loc.gov/"@en ;
+    skos:definition "The Library of Congress Online Catalog is the U.S. Library of Congress's bibliographic database; LCCN (Library of Congress Control Number) is the canonical identifier."@en .
+
+kbxi:cat_mathscinet a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "MathSciNet"@en ;
+    kbx:anchorURL "https://mathscinet.ams.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Subscription" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for mathematics literature; the MR number is the canonical mathematics-specific identifier." ;
+    kbx:catalogueOperator "American Mathematical Society" ;
+    kbx:catalogueScope "Mathematics journals, books, conference proceedings; theoretical computer science overlap." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1980"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://mathscinet.ams.org/"@en ;
+    skos:definition "MathSciNet is the American Mathematical Society's review database for mathematics literature with curated reviews and the MR (Mathematical Reviews) identifier."@en .
+
+kbxi:cat_nist_publications a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "NIST Publications"@en ;
+    kbx:anchorURL "https://www.nist.gov/publications" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:CrossStageGovernance ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is DEFINITIVE for NIST publications; the SP/FIPS/NISTIR number is the stable identifier." ;
+    kbx:catalogueOperator "U.S. National Institute of Standards and Technology" ;
+    kbx:catalogueScope "Cryptography (FIPS 186, FIPS 197, FIPS 140), cybersecurity (NIST SP 800 series), software measurement, metrology." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1901"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    dcterms:source "https://www.nist.gov/publications"@en ;
+    skos:definition "The NIST Publications portal indexes National Institute of Standards and Technology publications including Special Publications (SP), Federal Information Processing Standards (FIPS), and NISTIR reports."@en .
+
+kbxi:cat_oasis_standards a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "OASIS Standards"@en ;
+    kbx:anchorURL "https://www.oasis-open.org/standards/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:CrossStageGovernance ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is DEFINITIVE for OASIS standards." ;
+    kbx:catalogueOperator "OASIS Open" ;
+    kbx:catalogueScope "Industry standards in cybersecurity (STIX, TAXII), content (DITA, OpenDocument Format), interoperability (SAML, WS-*)." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1993"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    dcterms:source "https://www.oasis-open.org/standards/"@en ;
+    skos:definition "The OASIS Standards listing is the catalogue of Organization for the Advancement of Structured Information Standards specifications."@en .
+
+kbxi:cat_openalex a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "OpenAlex"@en ;
+    kbx:anchorURL "https://openalex.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is moderate; OpenAlex aggregates from many sources and applies automatic concept tagging that may introduce noise. Strong for citation graphs, weaker for exact metadata correctness compared to Crossref or DBLP." ;
+    kbx:catalogueOperator "OurResearch (non-profit)" ;
+    kbx:catalogueScope "Works across all fields with broad coverage from the post-2000 literature; uses heuristic concept extraction." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "2022"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://openalex.org/"@en ;
+    skos:definition "OpenAlex is a fully open scholarly index containing hundreds of millions of works with author, institution, concept, and citation metadata; the successor to Microsoft Academic."@en .
+
+kbxi:cat_openlibrary a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "Open Library"@en ;
+    kbx:anchorURL "https://openlibrary.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research,
+        kbx:Stage3Document ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is MODERATE; editorial control is less strict than Library of Congress or WorldCat. Useful for cross-checking ISBNs." ;
+    kbx:catalogueOperator "Internet Archive" ;
+    kbx:catalogueScope "Books across all fields; coverage is good but editorial quality varies." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "2006"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://openlibrary.org/"@en ;
+    skos:definition "Open Library is an Internet Archive project providing a free catalogue of books with cross-linked ISBN, OCLC, LCCN, and other identifiers."@en .
+
+kbxi:cat_proquest_dissertations a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "ProQuest Dissertations & Theses"@en ;
+    kbx:anchorURL "https://www.proquest.com/products-services/pqdtglobal.html" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Subscription" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for U.S. and many international dissertations; UMI/ProQuest order number is the canonical identifier." ;
+    kbx:catalogueOperator "ProQuest (Clarivate)" ;
+    kbx:catalogueScope "Dissertations and theses globally with particular U.S. depth." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1938"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://www.proquest.com/products-services/pqdtglobal.html"@en ;
+    skos:definition "ProQuest Dissertations & Theses is the comprehensive commercial database of doctoral dissertations and master's theses, particularly authoritative for U.S. dissertations."@en .
+
+kbxi:cat_pubmed a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "PubMed"@en ;
+    kbx:anchorURL "https://pubmed.ncbi.nlm.nih.gov/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for biomedical metadata; PMID is the canonical biomedical paper identifier." ;
+    kbx:catalogueOperator "U.S. National Library of Medicine (NIH)" ;
+    kbx:catalogueScope "Biomedical journals; some bioinformatics overlap with CS." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1996"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://pubmed.ncbi.nlm.nih.gov/"@en ;
+    skos:definition "PubMed is the U.S. National Library of Medicine's free index of biomedical and life-sciences literature, including the MEDLINE citation database."@en .
+
+kbxi:cat_sage_journals a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "SAGE Journals"@en ;
+    kbx:anchorURL "https://journals.sagepub.com/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Subscription" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for SAGE-published works." ;
+    kbx:catalogueOperator "SAGE Publications" ;
+    kbx:catalogueScope "SAGE journals; particularly strong in social-science methodology relevant to qualitative and mixed-methods research." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1999"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://journals.sagepub.com/"@en ;
+    skos:definition "SAGE Journals is the SAGE Publications platform indexing SAGE-published journals across social sciences, humanities, science, technology, and medicine."@en .
+
+kbxi:cat_sciencedirect a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "ScienceDirect"@en ;
+    kbx:anchorURL "https://www.sciencedirect.com/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Subscription" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for Elsevier-published works." ;
+    kbx:catalogueOperator "Elsevier" ;
+    kbx:catalogueScope "Elsevier journals (Information & Software Technology, Journal of Systems and Software, Knowledge-Based Systems, Computers & Education) and books." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1997"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://www.sciencedirect.com/"@en ;
+    skos:definition "ScienceDirect is the Elsevier platform indexing Elsevier-published journals and books."@en .
+
+kbxi:cat_semantic_scholar a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "Semantic Scholar"@en ;
+    kbx:anchorURL "https://www.semanticscholar.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is moderate; influential-citation classification and TLDRs are ML-generated and may misrepresent the paper. Useful for discovery; not authoritative for metadata correctness." ;
+    kbx:catalogueOperator "Allen Institute for AI" ;
+    kbx:catalogueScope "Computer science and biomedicine particularly well-covered; broader fields lighter." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "2015"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://www.semanticscholar.org/"@en ;
+    skos:definition "Semantic Scholar is the Allen Institute for AI's scholarly index with TLDR summaries, influential-citation classification, and the S2 corpus for ML research."@en .
+
+kbxi:cat_springer_link a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "SpringerLink"@en ;
+    kbx:anchorURL "https://link.springer.com/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research,
+        kbx:Stage2DomainOntology ;
+    kbx:catalogueAccessModel "Subscription" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for Springer-published works; LNCS volumes are the canonical resolution path for many CS conference proceedings." ;
+    kbx:catalogueOperator "Springer Nature" ;
+    kbx:catalogueScope "Springer journals and conference series; Lecture Notes in Computer Science is canonical here." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1996"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://link.springer.com/"@en ;
+    skos:definition "SpringerLink is the Springer Nature platform indexing Springer-published journals, books, conference proceedings (including LNCS, LNAI, LNBI), and reference works."@en .
+
+kbxi:cat_taylor_francis a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "Taylor & Francis Online"@en ;
+    kbx:anchorURL "https://www.tandfonline.com/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Subscription" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for T&F-published works." ;
+    kbx:catalogueOperator "Taylor & Francis Group (Informa)" ;
+    kbx:catalogueScope "T&F/Routledge journals and books; humanities and social-science coverage particularly strong." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1997"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://www.tandfonline.com/"@en ;
+    skos:definition "Taylor & Francis Online indexes Taylor & Francis and Routledge journals and books across science, technology, social sciences, and humanities."@en .
+
+kbxi:cat_tr_dizin a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "TR Dizin"@en ;
+    kbx:anchorURL "https://search.trdizin.gov.tr/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for journals indexed in TR Dizin; inclusion is editorial." ;
+    kbx:catalogueOperator "TÜBİTAK ULAKBİM" ;
+    kbx:catalogueScope "Curated Turkish academic journals meeting TÜBİTAK quality criteria." ;
+    kbx:consultationStatus kbx:RequiresConsultation ;
+    kbx:firstPublished "2002"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://search.trdizin.gov.tr/"@en ;
+    skos:definition "TR Dizin is the TÜBİTAK ULAKBİM-operated index of curated Turkish academic journals across all disciplines."@en .
+
+kbxi:cat_tubitak_ulakbim a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "TÜBİTAK ULAKBİM"@en ;
+    kbx:anchorURL "https://ulakbim.tubitak.gov.tr/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:CrossStageGovernance,
+        kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is DEFINITIVE for the Turkish academic ecosystem; TR Dizin is the curated journal index." ;
+    kbx:catalogueOperator "TÜBİTAK (Turkish national research council)" ;
+    kbx:catalogueScope "Turkish academic journals; researcher and institutional databases; the national academic-information infrastructure." ;
+    kbx:consultationStatus kbx:RequiresConsultation ;
+    kbx:firstPublished "1996"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://ulakbim.tubitak.gov.tr/"@en ;
+    skos:definition "TÜBİTAK ULAKBİM (Turkish National Academic Network and Information Center) operates the national academic infrastructure including TR Dizin and other research-information services for Turkish academia."@en .
+
+kbxi:cat_uspto a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "United States Patent and Trademark Office"@en ;
+    kbx:anchorURL "https://www.uspto.gov/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:CrossStageGovernance ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is DEFINITIVE for U.S. patents; patent number is the stable identifier." ;
+    kbx:catalogueOperator "U.S. Patent and Trademark Office" ;
+    kbx:catalogueScope "U.S. patents; many seminal CS works exist as patents (early algorithms, hardware) and resolve here." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1790"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://www.uspto.gov/"@en ;
+    skos:definition "The USPTO is the official patent and trademark database of the United States, with full-text search of U.S. patents and applications."@en .
+
+kbxi:cat_wikidata a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "Wikidata Bibliographic Records"@en ;
+    kbx:anchorURL "https://www.wikidata.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:CrossStageGovernance,
+        kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority varies by item; well-known works have authoritative cross-linked metadata, niche works may have user-edited records. Useful as a triangulation point across other catalogues." ;
+    kbx:catalogueOperator "Wikimedia Foundation" ;
+    kbx:catalogueScope "Editorially curated by Wikipedia/Wikidata community; uneven coverage." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "2012"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    dcterms:source "https://www.wikidata.org/"@en ;
+    skos:definition "Wikidata holds millions of bibliographic items (Q-numbers for works) with cross-linked DOI, ORCID, OpenLibrary, and other identifiers."@en .
+
+kbxi:cat_wiley_online a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "Wiley Online Library"@en ;
+    kbx:anchorURL "https://onlinelibrary.wiley.com/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Subscription" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for Wiley-published works." ;
+    kbx:catalogueOperator "John Wiley & Sons" ;
+    kbx:catalogueScope "Wiley journals and books; some CS journals (e.g. Software: Practice and Experience)." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1997"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://onlinelibrary.wiley.com/"@en ;
+    skos:definition "Wiley Online Library indexes Wiley-published journals, books, and reference works across physical sciences, life sciences, social sciences, and humanities."@en .
+
+kbxi:cat_worldcat a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "WorldCat"@en ;
+    kbx:anchorURL "https://www.worldcat.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research,
+        kbx:Stage3Document ;
+    kbx:catalogueAccessModel "Open (interface)" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for confirming existence of a book; the catalogue aggregates library records which may have minor variations." ;
+    kbx:catalogueOperator "OCLC" ;
+    kbx:catalogueScope "Books and library holdings across thousands of libraries; useful for confirming a book exists with that ISBN." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1971"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://www.worldcat.org/"@en ;
+    skos:definition "WorldCat is the OCLC global union catalogue aggregating library catalogues worldwide."@en .
+
+kbxi:cat_yok_tez a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "YÖK Ulusal Tez Merkezi"@en ;
+    kbx:anchorURL "https://tez.yok.gov.tr/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is DEFINITIVE for Turkish theses; the YÖK Tez number is the canonical identifier." ;
+    kbx:catalogueOperator "Yükseköğretim Kurulu (YÖK)" ;
+    kbx:catalogueScope "Turkish doctoral and master's theses; mandatory deposit for Turkish universities." ;
+    kbx:consultationStatus kbx:RequiresConsultation ;
+    kbx:firstPublished "1987"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://tez.yok.gov.tr/"@en ;
+    skos:definition "YÖK Ulusal Tez Merkezi (Turkish Council of Higher Education National Thesis Center) is the national catalogue of Turkish doctoral and master's theses."@en .
+
+kbxi:cat_zenodo a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "Zenodo"@en ;
+    kbx:anchorURL "https://zenodo.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:CrossStageGovernance,
+        kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for confirming a specific deposited artefact exists at a specific DOI; quality of deposited content is the depositor's responsibility (not peer-reviewed)." ;
+    kbx:catalogueOperator "CERN / European Commission" ;
+    kbx:catalogueScope "Research artefacts of any type; popular for software releases and data deposits accompanying papers." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "2013"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://zenodo.org/"@en ;
+    skos:definition "Zenodo is a CERN-operated open repository for research outputs including data, software, posters, and presentations with DOI assignment."@en .
+
+kbxi:cmmi_v3 a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "CMMI v3.0 (2023)"@en ;
+    kbx:anchorURL "https://cmmiinstitute.com/" ;
+    kbx:applicabilityNote "Already cited in the Ch.9 v1.5.0 bundle; v3 practice content distinguishes current practice from the model Marchewka described in 2014 and requires primary-source check." ;
+    kbx:appliesToStage kbx:CrossStageGovernance ;
+    kbx:consultationStatus kbx:RequiresConsultation ;
+    kbx:firstPublished "2023"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ProcessKnowledge ;
+    kbx:standardsBody "CMMI Institute / ISACA" ;
+    dcterms:source "https://cmmiinstitute.com/"@en ;
+    skos:definition "CMMI v3.0 consolidates CMMI for Development, Services, and Supplier Management with sharpened data-informed-improvement focus."@en .
+
+kbxi:competency_questions_gruninger_fox a kbx:Methodology,
+        owl:NamedIndividual ;
+    rdfs:label "Grüninger & Fox Competency-Question Method"@en ;
+    kbx:applicabilityNote "Already operational in the RDODI domain ontology via rdom:hasCompetencyQuestion; this item records the original method for the audit trail." ;
+    kbx:appliesToStage kbx:Stage2DomainOntology ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:methontology ;
+    kbx:firstPublished "1995"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ProcessKnowledge ;
+    kbx:standardsBody "Grüninger & Fox (Toronto)" ;
+    dcterms:source "Grüninger & Fox Competency-Question Method (canonical bibliographic identifier; see anchorURL when available)"@en ;
+    skos:definition "Grüninger & Fox proposed competency questions as the discipline for specifying what an ontology must answer; the RDODI domain ontology already declares hasCompetencyQuestion."@en .
+
+kbxi:doi_handle a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "DOI (Digital Object Identifier) — ISO 26324"@en ;
+    kbx:anchorURL "https://www.iso.org/standard/43506.html" ;
+    kbx:applicabilityNote "Use DOIs as canonical anchors for cited primary sources wherever available; preferred over URLs in Stage-1 citation individuals." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueResolution kbxi:rec_doi_handle_12 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:orcid ;
+    kbx:firstPublished "2012"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "ISO" ;
+    dcterms:source "https://www.iso.org/standard/43506.html"@en ;
+    skos:definition "DOI is ISO 26324, the standard for persistent identification of digital objects, administered by the International DOI Foundation."@en .
+
+kbxi:ieee_software_eng_guidelines a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "ACM/IEEE Empirical SE Reporting Guidelines"@en ;
+    kbx:applicabilityNote "Adopt the reporting structure when Stage 1 includes a primary empirical study; the exact checklist version is field-specific and requires primary-source confirmation." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:consultationStatus kbx:RequiresConsultation ;
+    kbx:contrastsWith kbxi:kitchenham_slr,
+        kbxi:prisma_2020 ;
+    kbx:firstPublished "2012"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ProcessKnowledge ;
+    kbx:standardsBody "ACM/IEEE/Springer EMSE" ;
+    dcterms:source "ACM/IEEE Empirical SE Reporting Guidelines (canonical bibliographic identifier; see anchorURL when available)"@en ;
+    skos:definition "Reporting standards for empirical software engineering studies developed in the ACM/IEEE tradition (e.g., Wohlin et al.'s Experimentation in SE, the EMSE journal guidelines)."@en .
+
+kbxi:iso_ieee_12207 a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "ISO/IEC/IEEE 12207 — Software Lifecycle Processes"@en ;
+    kbx:anchorURL "https://www.iso.org/standard/63712.html" ;
+    kbx:applicabilityNote "Cross-stage process reference; the RDODI pipeline maps onto a small subset of 12207's technical processes." ;
+    kbx:appliesToStage kbx:CrossStageGovernance ;
+    kbx:catalogueResolution kbxi:rec_iso_ieee_12207_10 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:iso_25010 ;
+    kbx:firstPublished "2017"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ProcessKnowledge ;
+    kbx:standardsBody "ISO/IEC/IEEE" ;
+    dcterms:source "https://www.iso.org/standard/63712.html"@en ;
+    skos:definition "ISO/IEC/IEEE 12207 defines a common framework for software lifecycle processes including agreement, organizational, technical, and management processes."@en .
+
+kbxi:oops_scanner a kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "OOPS! Ontology Pitfall Scanner"@en ;
+    kbx:anchorURL "https://oops.linkeddata.es/" ;
+    kbx:applicabilityNote "Lightweight Stage-2 verification supplement; catches modelling errors SHACL safeguards may not (because SHACL checks data conformance, not modelling style)." ;
+    kbx:appliesToStage kbx:Stage2DomainOntology ;
+    kbx:catalogueResolution kbxi:rec_oops_scanner_21 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:oquare ;
+    kbx:firstPublished "2014"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:standardsBody "Universidad Politécnica de Madrid" ;
+    dcterms:source "https://oops.linkeddata.es/"@en ;
+    skos:definition "OOPS! is a web-based ontology pitfall scanner that detects common modelling pitfalls (e.g., creating polysemous elements, missing inverse relationships, recursive definitions)."@en .
+
+kbxi:prospero a kbx:BestPractice,
+        owl:NamedIndividual ;
+    rdfs:label "PROSPERO Systematic-Review Registration"@en ;
+    kbx:anchorURL "https://www.crd.york.ac.uk/prospero/" ;
+    kbx:applicabilityNote "Register Stage-1 reviews of substantial scope before search; the practice is rare in CS but disciplines exactly the kind of scope-drift the BP-D31 inventory is meant to prevent." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "2011"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ProcessKnowledge ;
+    kbx:standardsBody "University of York / NIHR" ;
+    dcterms:source "https://www.crd.york.ac.uk/prospero/"@en ;
+    skos:definition "PROSPERO is the international prospective register for systematic reviews maintained by NIHR; pre-registration disciplines scope and reduces selective reporting."@en .
+
+kbxi:prov_o a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "W3C PROV-O — Provenance Ontology"@en ;
+    kbx:anchorURL "https://www.w3.org/TR/prov-o/" ;
+    kbx:applicabilityNote "Already used in BP-D24 ontology metadata across the ecosystem via prov:wasGeneratedBy and prov:Activity." ;
+    kbx:appliesToStage kbx:CrossStageGovernance,
+        kbx:Stage2DomainOntology ;
+    kbx:catalogueResolution kbxi:rec_prov_o_7 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Consulted ;
+    kbx:firstPublished "2013"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "W3C" ;
+    dcterms:source "https://www.w3.org/TR/prov-o/"@en ;
+    skos:definition "PROV-O is the W3C Recommendation for a provenance ontology with Activity, Entity, Agent, and a small set of relations."@en .
+
+kbxi:rdfs a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "RDF Schema 1.1 (RDFS)"@en ;
+    kbx:anchorURL "https://www.w3.org/TR/rdf-schema/" ;
+    kbx:applicabilityNote "Used in every domain ontology in the ecosystem for rdfs:subClassOf hierarchy; pyshacl inference=rdfs depends on it." ;
+    kbx:appliesToStage kbx:Stage2DomainOntology ;
+    kbx:catalogueResolution kbxi:rec_rdfs_2 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Consulted ;
+    kbx:contrastsWith kbxi:owl2 ;
+    kbx:firstPublished "2014"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "W3C" ;
+    dcterms:source "https://www.w3.org/TR/rdf-schema/"@en ;
+    skos:definition "RDF Schema is the W3C vocabulary for class and property hierarchy underlying OWL 2."@en .
+
+kbxi:reproducibility_crisis a kbx:EmpiricalStudy,
+        owl:NamedIndividual ;
+    rdfs:label "The Reproducibility Crisis Literature"@en ;
+    kbx:applicabilityNote "Motivates the verify-before-publishing discipline (L-65) and the manifest-self-verify pattern; specific findings vary by field and require primary-source check before quoting figures." ;
+    kbx:appliesToStage kbx:CrossStageGovernance,
+        kbx:Stage1Research ;
+    kbx:consultationStatus kbx:RequiresConsultation ;
+    kbx:contrastsWith kbxi:acm_artifact_review,
+        kbxi:fair_principles ;
+    kbx:firstPublished "2015"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:EmpiricalKnowledge ;
+    kbx:standardsBody "Multiple authors (Open Science Collaboration 2015; Collberg & Proebsting 2016; Baker 2016)" ;
+    dcterms:source "The Reproducibility Crisis Literature (canonical bibliographic identifier; see anchorURL when available)"@en ;
+    skos:definition "A body of meta-studies across psychology, biomedicine, and computer science documenting low rates of independent reproduction; the canonical CS-adjacent entry point is Collberg & Proebsting on software reproducibility."@en .
+
+kbxi:robot_toolkit a kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "ROBOT — OBO-Foundry Toolkit"@en ;
+    kbx:anchorURL "http://robot.obolibrary.org/" ;
+    kbx:applicabilityNote "Useful for Stage-2 release pipelines; the RDODI pipeline reproduces several ROBOT behaviours in Python but ROBOT is the canonical reference implementation." ;
+    kbx:appliesToStage kbx:CrossStageGovernance,
+        kbx:Stage2DomainOntology ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "2019"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ToolingKnowledge ;
+    kbx:standardsBody "OBO Foundry / Berkeley Lab" ;
+    dcterms:source "http://robot.obolibrary.org/"@en ;
+    skos:definition "ROBOT is a command-line toolkit for ontology build pipelines (extract, merge, reason, report, validate) developed for the OBO Foundry."@en .
+
+kbxi:shacl a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "SHACL — Shapes Constraint Language"@en ;
+    kbx:anchorURL "https://www.w3.org/TR/shacl/" ;
+    kbx:applicabilityNote "Every safeguard graph in the ecosystem is SHACL; pySHACL is the runtime; the validator names shape version and method beside any '0 violations' claim." ;
+    kbx:appliesToStage kbx:Stage2DomainOntology,
+        kbx:Stage4InteractivePage ;
+    kbx:catalogueResolution kbxi:rec_shacl_4 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Consulted ;
+    kbx:firstPublished "2017"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:standardsBody "W3C" ;
+    dcterms:source "https://www.w3.org/TR/shacl/"@en ;
+    skos:definition "SHACL is the W3C Recommendation for validating RDF graphs against constraint shapes with explicit severity levels (Info, Warning, Violation)."@en .
+
+kbxi:skos a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "SKOS — Simple Knowledge Organization System"@en ;
+    kbx:anchorURL "https://www.w3.org/TR/skos-reference/" ;
+    kbx:applicabilityNote "skos:definition is the verbatim-definition predicate across the pipeline; the OE ceremony depends on programmatic extraction of these literals." ;
+    kbx:appliesToStage kbx:Stage2DomainOntology ;
+    kbx:catalogueResolution kbxi:rec_skos_3 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Consulted ;
+    kbx:contrastsWith kbxi:owl2 ;
+    kbx:firstPublished "2009"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "W3C" ;
+    dcterms:source "https://www.w3.org/TR/skos-reference/"@en ;
+    skos:definition "SKOS is the W3C Recommendation for representing thesauri, taxonomies, and classification schemes; skos:definition is the discipline's chosen definition predicate."@en .
+
+kbxi:web_platform_tests a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "Web Platform Tests (WPT)"@en ;
+    kbx:anchorURL "https://web-platform-tests.org/" ;
+    kbx:applicabilityNote "Reference for understanding what is and is not portable across browsers; useful when Stage 4 considers experimental web platform features." ;
+    kbx:appliesToStage kbx:Stage4InteractivePage ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:playwright ;
+    kbx:firstPublished "2013"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:standardsBody "W3C / browser vendor community" ;
+    dcterms:source "https://web-platform-tests.org/"@en ;
+    skos:definition "The Web Platform Tests project is a cross-browser test suite for the web platform, maintained by browser vendors collectively."@en .
+
+kbxi:zotero a kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "Zotero Reference Manager"@en ;
+    kbx:anchorURL "https://www.zotero.org/" ;
+    kbx:applicabilityNote "Practical Stage-1 ingest tool when many sources must be captured and de-duplicated before the BP-D31 inventory is fixed." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "2006"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ToolingKnowledge ;
+    kbx:standardsBody "Roy Rosenzweig Center for History and New Media" ;
+    dcterms:source "https://www.zotero.org/"@en ;
+    skos:definition "Zotero is an open-source reference manager with browser capture, citation-style support via CSL, and BibTeX export."@en .
+
+kbxi:acm_artifact_review a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "ACM Artifact Review and Badging"@en ;
+    kbx:anchorURL "https://www.acm.org/publications/policies/artifact-review-and-badging-current" ;
+    kbx:applicabilityNote "Stage-1 + cross-stage: when an RDODI bundle accompanies a publication, the bundle's self-verifying manifests and re-runnable gates directly satisfy the Available and Reusable badges." ;
+    kbx:appliesToStage kbx:CrossStageGovernance,
+        kbx:Stage1Research ;
+    kbx:catalogueResolution kbxi:rec_acm_artifact_review_27 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:fair_principles ;
+    kbx:firstPublished "2020"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:standardsBody "ACM" ;
+    dcterms:source "https://www.acm.org/publications/policies/artifact-review-and-badging-current"@en ;
+    skos:definition "The ACM Artifact Review and Badging policy attaches reproducibility badges (Artifacts Evaluated — Functional, Reusable, Available; Results Reproduced) to publications based on independent evaluation."@en .
+
+kbxi:apa_7 a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "APA 7th Edition Citation Style"@en ;
+    kbx:anchorURL "https://apastyle.apa.org/" ;
+    kbx:applicabilityNote "Default citation style for educational artefacts targeting an undergraduate audience in many regions; specific in-text-citation rules require primary-source check." ;
+    kbx:appliesToStage kbx:Stage3Document ;
+    kbx:consultationStatus kbx:RequiresConsultation ;
+    kbx:contrastsWith kbxi:iso_690 ;
+    kbx:firstPublished "2019"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "American Psychological Association" ;
+    dcterms:source "https://apastyle.apa.org/"@en ;
+    skos:definition "The Publication Manual of the American Psychological Association, 7th edition, governs citation and writing conventions in the social and behavioural sciences and is widely adopted in education."@en .
+
+kbxi:cat_acm_dl a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "ACM Digital Library"@en ;
+    kbx:anchorURL "https://dl.acm.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:Stage1Research,
+        kbx:Stage4InteractivePage ;
+    kbx:catalogueAccessModel "Subscription (ACM members open access; institutional licences)" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for ACM-published works; the Guide section's metadata is editorial. ACM is the canonical resolver for ACM conference papers including the standard ACM Reference Format identifier." ;
+    kbx:catalogueOperator "Association for Computing Machinery" ;
+    kbx:catalogueScope "ACM-published conferences (SIGCHI, SIGGRAPH, SIGMOD, KDD, etc.) and ACM journals (Communications of the ACM, ACM Computing Surveys, TODS, TOPLAS); the Guide adds non-ACM CS literature." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "1997"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://dl.acm.org/"@en ;
+    skos:definition "The ACM Digital Library is the Association for Computing Machinery's full-text catalogue of ACM-published conferences and journals plus the Guide to Computing Literature."@en .
+
+kbxi:cat_orcid_registry a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "ORCID Registry"@en ;
+    kbx:anchorURL "https://orcid.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:CrossStageGovernance ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is HIGH for confirming a researcher's identity and asserted affiliations; the researcher controls the profile." ;
+    kbx:catalogueOperator "ORCID Inc." ;
+    kbx:catalogueScope "Researchers globally; cross-linked to publications via Crossref, DataCite, and direct deposit." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "2012"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    dcterms:source "https://orcid.org/"@en ;
+    skos:definition "The ORCID Registry is the authoritative database of ORCID iD individual researcher identifiers with researcher-controlled profile data."@en .
+
+kbxi:clark_mayer_elearning a kbx:EmpiricalStudy,
+        owl:NamedIndividual ;
+    rdfs:label "Clark & Mayer — E-Learning and the Science of Instruction"@en ;
+    kbx:applicabilityNote "Practitioner-tier synthesis useful when Stage 4 must justify widget design to an academic audience." ;
+    kbx:appliesToStage kbx:Stage4InteractivePage ;
+    kbx:consultationStatus kbx:RequiresConsultation ;
+    kbx:contrastsWith kbxi:mayer_multimedia_principles,
+        kbxi:sweller_cognitive_load ;
+    kbx:firstPublished "2003"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:EmpiricalKnowledge ;
+    kbx:standardsBody "Ruth Clark & Richard Mayer (Wiley/Pfeiffer)" ;
+    dcterms:source "Clark & Mayer — E-Learning and the Science of Instruction (canonical bibliographic identifier; see anchorURL when available)"@en ;
+    skos:definition "Clark and Mayer synthesise the empirical e-learning literature into practitioner principles for designing computer-mediated learning."@en .
+
+kbxi:conventional_commits a kbx:BestPractice,
+        owl:NamedIndividual ;
+    rdfs:label "Conventional Commits 1.0.0"@en ;
+    kbx:anchorURL "https://www.conventionalcommits.org/" ;
+    kbx:applicabilityNote "Useful when the ecosystem moves to a git-tracked workflow; commit prefixes map onto SemVer MINOR/PATCH/BREAKING." ;
+    kbx:appliesToStage kbx:CrossStageGovernance ;
+    kbx:catalogueResolution kbxi:rec_conventional_commits_18 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:semver_2 ;
+    kbx:firstPublished "2018"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "Conventional Commits community" ;
+    dcterms:source "https://www.conventionalcommits.org/"@en ;
+    skos:definition "Conventional Commits specifies a lightweight commit-message convention that pairs with SemVer to automate release notes."@en .
+
+kbxi:cypress a kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "Cypress End-to-End Testing Framework"@en ;
+    kbx:anchorURL "https://www.cypress.io/" ;
+    kbx:applicabilityNote "Alternative to Playwright for Stage-4 widget testing when the toolchain is JavaScript-native." ;
+    kbx:appliesToStage kbx:Stage4InteractivePage ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:playwright ;
+    kbx:firstPublished "2017"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ToolingKnowledge ;
+    kbx:standardsBody "Cypress.io" ;
+    dcterms:source "https://www.cypress.io/"@en ;
+    skos:definition "Cypress is a JavaScript-only browser-testing framework focused on developer experience with time-travelling debugging."@en .
+
+kbxi:diataxis a kbx:Methodology,
+        owl:NamedIndividual ;
+    rdfs:label "Diátaxis Documentation Framework"@en ;
+    kbx:anchorURL "https://diataxis.fr/" ;
+    kbx:applicabilityNote "Adopt Diátaxis to separate Stage-3 narrative (Explanation) from Stage-4 widget tutorials and reference glossary; the AA stage's paragraph types already map to Diátaxis kinds." ;
+    kbx:appliesToStage kbx:Stage3Document ;
+    kbx:catalogueResolution kbxi:rec_diataxis_14 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Consulted ;
+    kbx:contrastsWith kbxi:google_dev_doc_style,
+        kbxi:microsoft_style_guide ;
+    kbx:firstPublished "2017"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ProcessKnowledge ;
+    kbx:standardsBody "Daniele Procida" ;
+    dcterms:source "https://diataxis.fr/"@en ;
+    skos:definition "Diátaxis is a documentation framework that partitions technical documentation into four kinds — Tutorial, How-To Guide, Reference, and Explanation — with distinct purposes and writing styles."@en .
+
+kbxi:elk_reasoner a kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "ELK OWL EL Reasoner"@en ;
+    kbx:anchorURL "https://www.cs.ox.ac.uk/isg/tools/ELK/" ;
+    kbx:applicabilityNote "When the Stage-2 ontology stays in the EL profile and scales to thousands of classes, ELK is the practical reasoner." ;
+    kbx:appliesToStage kbx:Stage2DomainOntology ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:hermit_reasoner,
+        kbxi:pellet_reasoner ;
+    kbx:firstPublished "2011"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ToolingKnowledge ;
+    kbx:standardsBody "Oxford & Ulm" ;
+    dcterms:source "https://www.cs.ox.ac.uk/isg/tools/ELK/"@en ;
+    skos:definition "ELK is a fast reasoner specifically for the OWL 2 EL profile, suitable for large biomedical-scale ontologies."@en .
+
+kbxi:ieee_citation a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "IEEE Citation Style"@en ;
+    kbx:anchorURL "https://ieeeauthorcenter.ieee.org/" ;
+    kbx:applicabilityNote "Default citation style for engineering and computer-science publications; the numeric form is friendly to long reference lists typical of technical writing." ;
+    kbx:appliesToStage kbx:Stage3Document ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:apa_7,
+        kbxi:iso_690 ;
+    kbx:firstPublished "1962"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "IEEE" ;
+    dcterms:source "https://ieeeauthorcenter.ieee.org/"@en ;
+    skos:definition "The IEEE Editorial Style Manual specifies numeric in-text citations and reference formatting for IEEE publications and the broader engineering literature."@en .
+
+kbxi:inclusive_components a kbx:BestPractice,
+        owl:NamedIndividual ;
+    rdfs:label "Inclusive Components (Heydon Pickering)"@en ;
+    kbx:anchorURL "https://inclusive-components.design/" ;
+    kbx:applicabilityNote "Pragmatic complement to WAI-ARIA APG; the patterns ship with rationale, code, and accessibility tests." ;
+    kbx:appliesToStage kbx:Stage4InteractivePage ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:wai_aria_authoring ;
+    kbx:firstPublished "2018"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ProcessKnowledge ;
+    kbx:standardsBody "Heydon Pickering" ;
+    dcterms:source "https://inclusive-components.design/"@en ;
+    skos:definition "Inclusive Components is a pattern catalogue for accessible interactive web components, often more practical than the WAI-ARIA APG for working developers."@en .
+
+kbxi:iso_25023 a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "ISO/IEC 25023:2016 — Measurement of System and Software Product Quality"@en ;
+    kbx:anchorURL "https://www.iso.org/standard/35747.html" ;
+    kbx:applicabilityNote "Companion to ISO/IEC 25010 when quantitative measures of product quality are required." ;
+    kbx:appliesToStage kbx:CrossStageGovernance ;
+    kbx:catalogueResolution kbxi:rec_iso_25023_9 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:iso_25010 ;
+    kbx:firstPublished "2016"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "ISO/IEC" ;
+    dcterms:source "https://www.iso.org/standard/35747.html"@en ;
+    skos:definition "ISO/IEC 25023 supplies measures for the sub-characteristics defined in ISO/IEC 25010."@en .
+
+kbxi:keep_a_changelog a kbx:BestPractice,
+        owl:NamedIndividual ;
+    rdfs:label "Keep a Changelog 1.1.0"@en ;
+    kbx:anchorURL "https://keepachangelog.com/" ;
+    kbx:applicabilityNote "The ecosystem's README_vN.md files already follow a Keep-a-Changelog-style structure; formalising this would aid downstream readers." ;
+    kbx:appliesToStage kbx:CrossStageGovernance ;
+    kbx:catalogueResolution kbxi:rec_keep_a_changelog_19 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:semver_2 ;
+    kbx:firstPublished "2014"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "Keep a Changelog community" ;
+    dcterms:source "https://keepachangelog.com/"@en ;
+    skos:definition "Keep a Changelog specifies a structured CHANGELOG.md convention with Added/Changed/Deprecated/Removed/Fixed/Security sections."@en .
+
+kbxi:nielsen_heuristics a kbx:BestPractice,
+        owl:NamedIndividual ;
+    rdfs:label "Nielsen's 10 Usability Heuristics"@en ;
+    kbx:anchorURL "https://www.nngroup.com/articles/ten-usability-heuristics/" ;
+    kbx:applicabilityNote "Already named in the RDODI page ontology as rpg:UsabilityHeuristic; this item records the canonical source." ;
+    kbx:appliesToStage kbx:Stage4InteractivePage ;
+    kbx:catalogueResolution kbxi:rec_nielsen_heuristics_16 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:shneiderman_golden_rules ;
+    kbx:firstPublished "1994"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ProcessKnowledge ;
+    kbx:standardsBody "Nielsen Norman Group" ;
+    dcterms:source "https://www.nngroup.com/articles/ten-usability-heuristics/"@en ;
+    skos:definition "Nielsen's 10 heuristics (visibility of system status, match between system and real world, user control and freedom, etc.) are the canonical lightweight heuristic-evaluation framework."@en .
+
+kbxi:odp_portal a kbx:BestPractice,
+        owl:NamedIndividual ;
+    rdfs:label "Ontology Design Patterns (ODP) portal"@en ;
+    kbx:anchorURL "http://ontologydesignpatterns.org/" ;
+    kbx:applicabilityNote "When Stage 2 needs a recurring modelling structure, check ODP before inventing; complements NeOn's reuse scenarios." ;
+    kbx:appliesToStage kbx:Stage2DomainOntology ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:neon_methodology ;
+    kbx:firstPublished "2008"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "ODP Community" ;
+    dcterms:source "http://ontologydesignpatterns.org/"@en ;
+    skos:definition "The ODP portal catalogues content and logical design patterns for reuse in ontology engineering."@en .
+
+kbxi:ontology_engineering_uschold_king a kbx:Methodology,
+        owl:NamedIndividual ;
+    rdfs:label "Uschold & King Skeleton Methodology"@en ;
+    kbx:applicabilityNote "Historical anchor for the methodology lineage; specific claims about its steps should be verified against the AAAI proceedings." ;
+    kbx:appliesToStage kbx:Stage2DomainOntology ;
+    kbx:consultationStatus kbx:RequiresConsultation ;
+    kbx:contrastsWith kbxi:methontology ;
+    kbx:firstPublished "1995"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ProcessKnowledge ;
+    kbx:standardsBody "Uschold & King; later King & Schreiber" ;
+    dcterms:source "Uschold & King Skeleton Methodology (canonical bibliographic identifier; see anchorURL when available)"@en ;
+    skos:definition "Uschold and King's early skeleton methodology proposed identifying purpose, capturing ontology, coding, and integrating existing ontologies — the lineage of subsequent ontology-engineering processes."@en .
+
+kbxi:ontometric a kbx:Methodology,
+        owl:NamedIndividual ;
+    rdfs:label "OntoMetric Framework"@en ;
+    kbx:applicabilityNote "Selection framework when Stage-2 must choose among existing ontologies; specific metric thresholds require primary-source check." ;
+    kbx:appliesToStage kbx:Stage2DomainOntology ;
+    kbx:consultationStatus kbx:RequiresConsultation ;
+    kbx:contrastsWith kbxi:ontoqa,
+        kbxi:oquare ;
+    kbx:firstPublished "2004"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:standardsBody "Lozano-Tello & Gómez-Pérez" ;
+    dcterms:source "OntoMetric Framework (canonical bibliographic identifier; see anchorURL when available)"@en ;
+    skos:definition "OntoMetric (Lozano-Tello & Gómez-Pérez) provides a hierarchical framework for evaluating and selecting ontologies based on a multilevel taxonomy of metrics."@en .
+
+kbxi:ontoqa a kbx:Methodology,
+        owl:NamedIndividual ;
+    rdfs:label "OntoQA — Ontology Quality Analysis"@en ;
+    kbx:applicabilityNote "Useful complement to OQuaRE when Stage-2 evaluation needs simple comparable schema-level numbers; less comprehensive than OQuaRE but easier to compute." ;
+    kbx:appliesToStage kbx:Stage2DomainOntology ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:ontometric,
+        kbxi:oquare ;
+    kbx:firstPublished "2005"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:standardsBody "Tartir, Arpinar, Moore, Sheth, Aleman-Meza" ;
+    dcterms:source "OntoQA — Ontology Quality Analysis (canonical bibliographic identifier; see anchorURL when available)"@en ;
+    skos:definition "OntoQA proposes a small set of schema-level and instance-level metrics (relationship richness, attribute richness, inheritance richness, class richness) for ontology evaluation."@en .
+
+kbxi:openssf_best_practices a kbx:BestPractice,
+        owl:NamedIndividual ;
+    rdfs:label "OpenSSF Best Practices Badge"@en ;
+    kbx:anchorURL "https://www.bestpractices.dev/" ;
+    kbx:applicabilityNote "Relevant if the RDODI ecosystem is released as open-source software; the badge structure formalises governance disclosures." ;
+    kbx:appliesToStage kbx:CrossStageGovernance ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:reuse_specification ;
+    kbx:firstPublished "2015"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:standardsBody "OpenSSF / Linux Foundation" ;
+    dcterms:source "https://www.bestpractices.dev/"@en ;
+    skos:definition "The OpenSSF Best Practices Badge (formerly CII Best Practices) certifies open-source projects against a checklist of security, sustainability, and licensing criteria."@en .
+
+kbxi:orcid a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "ORCID — Open Researcher and Contributor ID"@en ;
+    kbx:anchorURL "https://orcid.org/" ;
+    kbx:applicabilityNote "Use ORCID as the authoritative researcher identifier in PROV-O agent records and citation metadata across all stages." ;
+    kbx:appliesToStage kbx:CrossStageGovernance,
+        kbx:Stage1Research ;
+    kbx:catalogueResolution kbxi:rec_orcid_20 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Reconstructed ;
+    kbx:firstPublished "2012"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "ORCID Inc." ;
+    dcterms:source "https://orcid.org/"@en ;
+    skos:definition "ORCID is a persistent digital identifier distinguishing researchers and linking their contributions across systems."@en .
+
+kbxi:pandoc a kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "Pandoc Universal Document Converter"@en ;
+    kbx:anchorURL "https://pandoc.org/" ;
+    kbx:applicabilityNote "Practical tool for converting Stage-3 Markdown reports to PDF/DOCX/LaTeX for academic submission while preserving citations via CSL." ;
+    kbx:appliesToStage kbx:Stage3Document ;
+    kbx:catalogueResolution kbxi:rec_pandoc_25 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Consulted ;
+    kbx:contrastsWith kbxi:bibtex_csl,
+        kbxi:mkdocs,
+        kbxi:sphinx ;
+    kbx:firstPublished "2006"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ToolingKnowledge ;
+    kbx:standardsBody "John MacFarlane" ;
+    dcterms:source "https://pandoc.org/"@en ;
+    skos:definition "Pandoc is a universal document converter supporting Markdown, LaTeX, HTML, DOCX, and dozens of other formats with citation-style language (CSL) support."@en .
+
+kbxi:protege a kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "Protégé Ontology Editor"@en ;
+    kbx:anchorURL "https://protege.stanford.edu/" ;
+    kbx:applicabilityNote "Standard interactive editor for Stage-2 TBox work; the RDODI ecosystem's TTLs open in Protégé without modification." ;
+    kbx:appliesToStage kbx:Stage2DomainOntology ;
+    kbx:catalogueResolution kbxi:rec_protege_26 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Consulted ;
+    kbx:contrastsWith kbxi:topbraid_composer ;
+    kbx:firstPublished "2000"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ToolingKnowledge ;
+    kbx:standardsBody "Stanford BMIR" ;
+    dcterms:source "https://protege.stanford.edu/"@en ;
+    skos:definition "Protégé is the open-source ontology editor maintained at Stanford BMIR, supporting OWL 2, reasoning, and a plugin ecosystem."@en .
+
+kbxi:puppeteer a kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "Puppeteer Browser Automation"@en ;
+    kbx:anchorURL "https://pptr.dev/" ;
+    kbx:applicabilityNote "Predecessor of Playwright (originating team overlap); single-browser scope makes it appropriate when the Stage-4 surface only targets Chromium." ;
+    kbx:appliesToStage kbx:Stage4InteractivePage ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:playwright ;
+    kbx:firstPublished "2017"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ToolingKnowledge ;
+    kbx:standardsBody "Google Chrome team" ;
+    dcterms:source "https://pptr.dev/"@en ;
+    skos:definition "Puppeteer is a Node library that provides a high-level API to control Chromium-based browsers over the DevTools Protocol."@en .
+
+kbxi:rec_acm_artifact_review_27 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: acm_artifact_review via acm_dl"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "publications/policies/artifact-review-and-badging-current" ;
+    kbx:resolvedIn kbxi:cat_acm_dl ;
+    kbx:resolvedTitle "ACM Artifact Review and Badging" ;
+    kbx:resolvedURL "https://www.acm.org/publications/policies/artifact-review-and-badging-current" ;
+    kbx:resolvedYear "2020"^^xsd:gYear ;
+    kbx:resolverNote "ACM publication policy; the URL is the canonical reference." ;
+    skos:definition "CatalogueRecord asserting that acm_artifact_review was located in acm_dl with identifier Policy URL=publications/policies/artifact-review-and-badging-current at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_axe_core_15 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: axe_core via software_heritage"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "github.com/dequelabs/axe-core" ;
+    kbx:resolvedIn kbxi:cat_software_heritage ;
+    kbx:resolvedTitle "axe-core accessibility engine" ;
+    kbx:resolvedURL "https://github.com/dequelabs/axe-core" ;
+    kbx:resolvedYear "2015"^^xsd:gYear ;
+    kbx:resolverNote "Open-source project; Software Heritage archives the repository state. A SWHID would be more precise; this record uses the canonical repo URL." ;
+    skos:definition "CatalogueRecord asserting that axe_core was located in software_heritage with identifier GitHub repo=github.com/dequelabs/axe-core at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_bibtex_csl_23 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: bibtex_csl via doi_org"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "citationstyles.org" ;
+    kbx:resolvedIn kbxi:cat_doi_org ;
+    kbx:resolvedTitle "Citation Style Language" ;
+    kbx:resolvedURL "https://citationstyles.org/" ;
+    kbx:resolvedYear "2010"^^xsd:gYear ;
+    kbx:resolverNote "CSL is the community standard hosted at citationstyles.org; BibTeX is older (1985) and has no single canonical URL but is universally known. This resolution covers CSL specifically." ;
+    skos:definition "CatalogueRecord asserting that bibtex_csl was located in doi_org with identifier URL anchor=citationstyles.org at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_conventional_commits_18 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: conventional_commits via doi_org"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "conventionalcommits.org" ;
+    kbx:resolvedIn kbxi:cat_doi_org ;
+    kbx:resolvedTitle "Conventional Commits 1.0.0" ;
+    kbx:resolvedURL "https://www.conventionalcommits.org/" ;
+    kbx:resolvedYear "2018"^^xsd:gYear ;
+    kbx:resolverNote "Community standard; current version is 1.0.0." ;
+    skos:definition "CatalogueRecord asserting that conventional_commits was located in doi_org with identifier URL anchor=conventionalcommits.org at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_diataxis_14 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: diataxis via doi_org"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "diataxis.fr" ;
+    kbx:resolvedIn kbxi:cat_doi_org ;
+    kbx:resolvedTitle "Diátaxis Documentation Framework" ;
+    kbx:resolvedURL "https://diataxis.fr/" ;
+    kbx:resolvedYear "2017"^^xsd:gYear ;
+    kbx:resolverNote "Diátaxis is a framework hosted at diataxis.fr; not assigned a DOI. URL is the canonical anchor." ;
+    skos:definition "CatalogueRecord asserting that diataxis was located in doi_org with identifier URL anchor=diataxis.fr at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_doi_handle_12 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: doi_handle via iso_obp"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "ISO 26324:2012" ;
+    kbx:resolvedIn kbxi:cat_iso_obp ;
+    kbx:resolvedTitle "Information and documentation — Digital object identifier system" ;
+    kbx:resolvedURL "https://www.iso.org/standard/43506.html" ;
+    kbx:resolvedYear "2012"^^xsd:gYear ;
+    kbx:resolverNote "ISO standard underpinning the DOI system." ;
+    skos:definition "CatalogueRecord asserting that doi_handle was located in iso_obp with identifier ISO catalogue number=ISO 26324:2012 at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_fair_principles_13 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: fair_principles via crossref"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "10.1038/sdata.2016.18" ;
+    kbx:resolvedIn kbxi:cat_crossref ;
+    kbx:resolvedTitle "The FAIR Guiding Principles for scientific data management and stewardship" ;
+    kbx:resolvedURL "https://doi.org/10.1038/sdata.2016.18" ;
+    kbx:resolvedYear "2016"^^xsd:gYear ;
+    kbx:resolverNote "Wilkinson et al., Scientific Data; DOI is canonical anchor." ;
+    skos:definition "CatalogueRecord asserting that fair_principles was located in crossref with identifier DOI=10.1038/sdata.2016.18 at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_iso_25010_8 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: iso_25010 via iso_obp"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "ISO/IEC 25010:2011" ;
+    kbx:resolvedIn kbxi:cat_iso_obp ;
+    kbx:resolvedTitle "Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — System and software quality models" ;
+    kbx:resolvedURL "https://www.iso.org/standard/35733.html" ;
+    kbx:resolvedYear "2011"^^xsd:gYear ;
+    kbx:resolverNote "ISO catalogue number is canonical; 2011 edition." ;
+    skos:definition "CatalogueRecord asserting that iso_25010 was located in iso_obp with identifier ISO catalogue number=ISO/IEC 25010:2011 at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_iso_25023_9 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: iso_25023 via iso_obp"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "ISO/IEC 25023:2016" ;
+    kbx:resolvedIn kbxi:cat_iso_obp ;
+    kbx:resolvedTitle "Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — Measurement of system and software product quality" ;
+    kbx:resolvedURL "https://www.iso.org/standard/35747.html" ;
+    kbx:resolvedYear "2016"^^xsd:gYear ;
+    kbx:resolverNote "ISO catalogue number is canonical; 2016 edition." ;
+    skos:definition "CatalogueRecord asserting that iso_25023 was located in iso_obp with identifier ISO catalogue number=ISO/IEC 25023:2016 at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_iso_690_11 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: iso_690 via iso_obp"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "ISO 690:2021" ;
+    kbx:resolvedIn kbxi:cat_iso_obp ;
+    kbx:resolvedTitle "Information and documentation — Guidelines for bibliographic references and citations to information resources" ;
+    kbx:resolvedURL "https://www.iso.org/standard/72642.html" ;
+    kbx:resolvedYear "2021"^^xsd:gYear ;
+    kbx:resolverNote "Current edition is 2021." ;
+    skos:definition "CatalogueRecord asserting that iso_690 was located in iso_obp with identifier ISO catalogue number=ISO 690:2021 at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_iso_ieee_12207_10 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: iso_ieee_12207 via iso_obp"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "ISO/IEC/IEEE 12207:2017" ;
+    kbx:resolvedIn kbxi:cat_iso_obp ;
+    kbx:resolvedTitle "Systems and software engineering — Software life cycle processes" ;
+    kbx:resolvedURL "https://www.iso.org/standard/63712.html" ;
+    kbx:resolvedYear "2017"^^xsd:gYear ;
+    kbx:resolverNote "Joint ISO/IEC/IEEE standard; resolves in both ISO OBP and IEEE Xplore." ;
+    skos:definition "CatalogueRecord asserting that iso_ieee_12207 was located in iso_obp with identifier ISO catalogue number=ISO/IEC/IEEE 12207:2017 at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_keep_a_changelog_19 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: keep_a_changelog via doi_org"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "keepachangelog.com" ;
+    kbx:resolvedIn kbxi:cat_doi_org ;
+    kbx:resolvedTitle "Keep a Changelog 1.1.0" ;
+    kbx:resolvedURL "https://keepachangelog.com/" ;
+    kbx:resolvedYear "2014"^^xsd:gYear ;
+    kbx:resolverNote "Community standard; current version is 1.1.0." ;
+    skos:definition "CatalogueRecord asserting that keep_a_changelog was located in doi_org with identifier URL anchor=keepachangelog.com at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_nielsen_heuristics_16 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: nielsen_heuristics via doi_org"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "nngroup.com/articles/ten-usability-heuristics" ;
+    kbx:resolvedIn kbxi:cat_doi_org ;
+    kbx:resolvedTitle "10 Usability Heuristics for User Interface Design" ;
+    kbx:resolvedURL "https://www.nngroup.com/articles/ten-usability-heuristics/" ;
+    kbx:resolvedYear "1994"^^xsd:gYear ;
+    kbx:resolverNote "Heuristics first published 1994 by Nielsen; the canonical online statement is at nngroup.com. Not DOI-assigned; URL anchor is canonical." ;
+    skos:definition "CatalogueRecord asserting that nielsen_heuristics was located in doi_org with identifier URL anchor=nngroup.com/articles/ten-usability-heuristics at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_oops_scanner_21 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: oops_scanner via doi_org"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "oops.linkeddata.es" ;
+    kbx:resolvedIn kbxi:cat_doi_org ;
+    kbx:resolvedTitle "OOPS! (OntOlogy Pitfall Scanner!)" ;
+    kbx:resolvedURL "https://oops.linkeddata.es/" ;
+    kbx:resolvedYear "2014"^^xsd:gYear ;
+    kbx:resolverNote "Tool URL is the canonical access point. A companion paper exists in the International Journal on Semantic Web and Information Systems (IJSWIS) — DOI would be a more rigorous anchor but is not asserted here." ;
+    skos:definition "CatalogueRecord asserting that oops_scanner was located in doi_org with identifier URL anchor=oops.linkeddata.es at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_orcid_20 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: orcid via orcid_registry"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "orcid.org" ;
+    kbx:resolvedIn kbxi:cat_orcid_registry ;
+    kbx:resolvedTitle "ORCID — Open Researcher and Contributor ID" ;
+    kbx:resolvedURL "https://orcid.org/" ;
+    kbx:resolvedYear "2012"^^xsd:gYear ;
+    kbx:resolverNote "ORCID is itself the canonical resolver for individual ORCID iDs." ;
+    skos:definition "CatalogueRecord asserting that orcid was located in orcid_registry with identifier Registry URL=orcid.org at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_owl2_1 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: owl2 via w3c_tr"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "owl2-overview" ;
+    kbx:resolvedIn kbxi:cat_w3c_tr ;
+    kbx:resolvedTitle "OWL 2 Web Ontology Language Document Overview (Second Edition)" ;
+    kbx:resolvedURL "https://www.w3.org/TR/owl2-overview/" ;
+    kbx:resolvedYear "2012"^^xsd:gYear ;
+    kbx:resolverNote "W3C TR shortnames are stable canonical identifiers; this is a W3C Recommendation." ;
+    skos:definition "CatalogueRecord asserting that owl2 was located in w3c_tr with identifier W3C TR shortname=owl2-overview at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_pandoc_25 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: pandoc via software_heritage"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "github.com/jgm/pandoc" ;
+    kbx:resolvedIn kbxi:cat_software_heritage ;
+    kbx:resolvedTitle "Pandoc — universal document converter" ;
+    kbx:resolvedURL "https://github.com/jgm/pandoc" ;
+    kbx:resolvedYear "2006"^^xsd:gYear ;
+    kbx:resolverNote "John MacFarlane's project; pandoc.org is the documentation site." ;
+    skos:definition "CatalogueRecord asserting that pandoc was located in software_heritage with identifier GitHub repo=github.com/jgm/pandoc at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_playwright_24 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: playwright via software_heritage"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "github.com/microsoft/playwright" ;
+    kbx:resolvedIn kbxi:cat_software_heritage ;
+    kbx:resolvedTitle "Playwright" ;
+    kbx:resolvedURL "https://github.com/microsoft/playwright" ;
+    kbx:resolvedYear "2020"^^xsd:gYear ;
+    kbx:resolverNote "Open-source project maintained by Microsoft; Playwright.dev is the documentation site." ;
+    skos:definition "CatalogueRecord asserting that playwright was located in software_heritage with identifier GitHub repo=github.com/microsoft/playwright at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_prisma_2020_22 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: prisma_2020 via crossref"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "10.1136/bmj.n71" ;
+    kbx:resolvedIn kbxi:cat_crossref ;
+    kbx:resolvedTitle "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews" ;
+    kbx:resolvedURL "https://doi.org/10.1136/bmj.n71" ;
+    kbx:resolvedYear "2021"^^xsd:gYear ;
+    kbx:resolverNote "Page et al., BMJ 2021;372:n71. DOI is canonical anchor; this is the official statement publication." ;
+    skos:definition "CatalogueRecord asserting that prisma_2020 was located in crossref with identifier DOI=10.1136/bmj.n71 at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_protege_26 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: protege via doi_org"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "protege.stanford.edu" ;
+    kbx:resolvedIn kbxi:cat_doi_org ;
+    kbx:resolvedTitle "Protégé Ontology Editor" ;
+    kbx:resolvedURL "https://protege.stanford.edu/" ;
+    kbx:resolvedYear "2000"^^xsd:gYear ;
+    kbx:resolverNote "Stanford BMIR project; the protege.stanford.edu site is canonical." ;
+    skos:definition "CatalogueRecord asserting that protege was located in doi_org with identifier URL anchor=protege.stanford.edu at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_prov_o_7 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: prov_o via w3c_tr"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "prov-o" ;
+    kbx:resolvedIn kbxi:cat_w3c_tr ;
+    kbx:resolvedTitle "PROV-O: The PROV Ontology" ;
+    kbx:resolvedURL "https://www.w3.org/TR/prov-o/" ;
+    kbx:resolvedYear "2013"^^xsd:gYear ;
+    kbx:resolverNote "W3C Recommendation." ;
+    skos:definition "CatalogueRecord asserting that prov_o was located in w3c_tr with identifier W3C TR shortname=prov-o at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_rdfs_2 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: rdfs via w3c_tr"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "rdf-schema" ;
+    kbx:resolvedIn kbxi:cat_w3c_tr ;
+    kbx:resolvedTitle "RDF Schema 1.1" ;
+    kbx:resolvedURL "https://www.w3.org/TR/rdf-schema/" ;
+    kbx:resolvedYear "2014"^^xsd:gYear ;
+    kbx:resolverNote "W3C Recommendation; shortname 'rdf-schema' is canonical." ;
+    skos:definition "CatalogueRecord asserting that rdfs was located in w3c_tr with identifier W3C TR shortname=rdf-schema at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_semver_2_17 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: semver_2 via doi_org"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "semver.org/spec/v2.0.0" ;
+    kbx:resolvedIn kbxi:cat_doi_org ;
+    kbx:resolvedTitle "Semantic Versioning 2.0.0" ;
+    kbx:resolvedURL "https://semver.org/spec/v2.0.0.html" ;
+    kbx:resolvedYear "2013"^^xsd:gYear ;
+    kbx:resolverNote "Community standard hosted at semver.org; specification version is 2.0.0." ;
+    skos:definition "CatalogueRecord asserting that semver_2 was located in doi_org with identifier URL anchor=semver.org/spec/v2.0.0 at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_shacl_4 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: shacl via w3c_tr"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "shacl" ;
+    kbx:resolvedIn kbxi:cat_w3c_tr ;
+    kbx:resolvedTitle "Shapes Constraint Language (SHACL)" ;
+    kbx:resolvedURL "https://www.w3.org/TR/shacl/" ;
+    kbx:resolvedYear "2017"^^xsd:gYear ;
+    kbx:resolverNote "W3C Recommendation; shortname 'shacl' is canonical." ;
+    skos:definition "CatalogueRecord asserting that shacl was located in w3c_tr with identifier W3C TR shortname=shacl at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_skos_3 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: skos via w3c_tr"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "skos-reference" ;
+    kbx:resolvedIn kbxi:cat_w3c_tr ;
+    kbx:resolvedTitle "SKOS Simple Knowledge Organization System Reference" ;
+    kbx:resolvedURL "https://www.w3.org/TR/skos-reference/" ;
+    kbx:resolvedYear "2009"^^xsd:gYear ;
+    kbx:resolverNote "W3C Recommendation; shortname 'skos-reference' is canonical." ;
+    skos:definition "CatalogueRecord asserting that skos was located in w3c_tr with identifier W3C TR shortname=skos-reference at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_wai_aria_authoring_6 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: wai_aria_authoring via w3c_tr"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "wai-aria-practices" ;
+    kbx:resolvedIn kbxi:cat_w3c_tr ;
+    kbx:resolvedTitle "WAI-ARIA Authoring Practices Guide" ;
+    kbx:resolvedURL "https://www.w3.org/WAI/ARIA/apg/" ;
+    kbx:resolvedYear "2023"^^xsd:gYear ;
+    kbx:resolverNote "Working Group Note (not a Recommendation); the APG URL is canonical." ;
+    skos:definition "CatalogueRecord asserting that wai_aria_authoring was located in w3c_tr with identifier W3C TR shortname=wai-aria-practices at 2026-05-29T00:00:00Z."@en .
+
+kbxi:rec_wcag_2_2_5 a kbx:CatalogueRecord,
+        owl:NamedIndividual ;
+    rdfs:label "Catalogue resolution: wcag_2_2 via w3c_tr"@en ;
+    kbx:resolvedAtUTC "2026-05-29T00:00:00+00:00"^^xsd:dateTime ;
+    kbx:resolvedIdentifier "WCAG22" ;
+    kbx:resolvedIn kbxi:cat_w3c_tr ;
+    kbx:resolvedTitle "Web Content Accessibility Guidelines (WCAG) 2.2" ;
+    kbx:resolvedURL "https://www.w3.org/TR/WCAG22/" ;
+    kbx:resolvedYear "2023"^^xsd:gYear ;
+    kbx:resolverNote "W3C Recommendation; shortname 'WCAG22' is canonical." ;
+    skos:definition "CatalogueRecord asserting that wcag_2_2 was located in w3c_tr with identifier W3C TR shortname=WCAG22 at 2026-05-29T00:00:00Z."@en .
+
+kbxi:reuse_specification a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "REUSE Specification 3.2"@en ;
+    kbx:anchorURL "https://reuse.software/" ;
+    kbx:applicabilityNote "Useful when ecosystem releases include source files alongside ontologies; SPDX-License-Identifier comments make licensing machine-checkable." ;
+    kbx:appliesToStage kbx:CrossStageGovernance ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:openssf_best_practices ;
+    kbx:firstPublished "2017"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "Free Software Foundation Europe" ;
+    dcterms:source "https://reuse.software/"@en ;
+    skos:definition "REUSE is the Free Software Foundation Europe's specification for declaring SPDX licenses at the file level using SPDX-License-Identifier comments."@en .
+
+kbxi:shneiderman_golden_rules a kbx:BestPractice,
+        owl:NamedIndividual ;
+    rdfs:label "Shneiderman's Eight Golden Rules of Interface Design"@en ;
+    kbx:applicabilityNote "Complementary to Nielsen; pairs particularly well for evaluating data-dense academic interactive surfaces." ;
+    kbx:appliesToStage kbx:Stage4InteractivePage ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:nielsen_heuristics ;
+    kbx:firstPublished "1986"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ProcessKnowledge ;
+    kbx:standardsBody "Ben Shneiderman, Designing the User Interface" ;
+    dcterms:source "Shneiderman's Eight Golden Rules of Interface Design (canonical bibliographic identifier; see anchorURL when available)"@en ;
+    skos:definition "Shneiderman's eight golden rules (strive for consistency, enable shortcuts, offer feedback, design dialogs to yield closure, etc.) are an alternative to Nielsen's heuristics."@en .
+
+kbxi:sword_stylish_academic a kbx:BestPractice,
+        owl:NamedIndividual ;
+    rdfs:label "Sword — Stylish Academic Writing"@en ;
+    kbx:applicabilityNote "Complement to Williams when the issue is jargon density rather than sentence structure; specific techniques require primary-source check." ;
+    kbx:appliesToStage kbx:Stage3Document ;
+    kbx:consultationStatus kbx:RequiresConsultation ;
+    kbx:contrastsWith kbxi:williams_style ;
+    kbx:firstPublished "2012"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ProcessKnowledge ;
+    kbx:standardsBody "Helen Sword (Harvard University Press)" ;
+    dcterms:source "Sword — Stylish Academic Writing (canonical bibliographic identifier; see anchorURL when available)"@en ;
+    skos:definition "Helen Sword's Stylish Academic Writing argues against academic obscurity and offers concrete techniques for clear scholarly prose."@en .
+
+kbxi:topbraid_composer a kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "TopBraid Composer"@en ;
+    kbx:anchorURL "https://www.topquadrant.com/products/topbraid-composer/" ;
+    kbx:applicabilityNote "Commercial alternative to Protégé with stronger SHACL editing affordances; relevant when SHACL development is the bottleneck." ;
+    kbx:appliesToStage kbx:Stage2DomainOntology ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:protege ;
+    kbx:firstPublished "2006"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ToolingKnowledge ;
+    kbx:standardsBody "TopQuadrant" ;
+    dcterms:source "https://www.topquadrant.com/products/topbraid-composer/"@en ;
+    skos:definition "TopBraid Composer is a commercial ontology and data-modelling environment with strong SHACL support and a SPARQL workbench."@en .
+
+kbxi:wcag_2_2 a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "WCAG 2.2 — Web Content Accessibility Guidelines"@en ;
+    kbx:anchorURL "https://www.w3.org/TR/WCAG22/" ;
+    kbx:applicabilityNote "Already the target of the PP-stage WCAG gate using axe-core; the v1.2.0 page passes wcag2aa with 0 violations." ;
+    kbx:appliesToStage kbx:CrossStageGovernance,
+        kbx:Stage4InteractivePage ;
+    kbx:catalogueResolution kbxi:rec_wcag_2_2_5 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Consulted ;
+    kbx:contrastsWith kbxi:wai_aria_authoring ;
+    kbx:firstPublished "2023"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:standardsBody "W3C" ;
+    dcterms:source "https://www.w3.org/TR/WCAG22/"@en ;
+    skos:definition "WCAG 2.2 is the W3C Recommendation specifying success criteria at conformance levels A, AA, and AAA for web content accessibility."@en .
+
+kbxi:williams_style a kbx:BestPractice,
+        owl:NamedIndividual ;
+    rdfs:label "Williams — Style: Lessons in Clarity and Grace"@en ;
+    kbx:applicabilityNote "When AA-stage readability is in the FK 18–22 band, Williams' techniques (subject-verb proximity, verb-led sentences, paragraph cohesion) lower density without dumbing content down." ;
+    kbx:appliesToStage kbx:Stage3Document ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:sword_stylish_academic ;
+    kbx:firstPublished "1981"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ProcessKnowledge ;
+    kbx:standardsBody "Joseph M. Williams (University of Chicago Press)" ;
+    dcterms:source "Williams — Style: Lessons in Clarity and Grace (canonical bibliographic identifier; see anchorURL when available)"@en ;
+    skos:definition "Joseph Williams' Style is a standard reference on sentence-level clarity and academic prose discipline."@en .
+
+kbxi:axe_core a kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "axe-core Accessibility Engine"@en ;
+    kbx:anchorURL "https://github.com/dequelabs/axe-core" ;
+    kbx:applicabilityNote "Already integrated into the PP-stage Stage4.WCAG gate; the v1.2.0 page passes wcag2aa with 0 violations." ;
+    kbx:appliesToStage kbx:Stage4InteractivePage ;
+    kbx:catalogueResolution kbxi:rec_axe_core_15 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Consulted ;
+    kbx:contrastsWith kbxi:pa11y,
+        kbxi:wave ;
+    kbx:firstPublished "2015"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:standardsBody "Deque Systems" ;
+    dcterms:source "https://github.com/dequelabs/axe-core"@en ;
+    skos:definition "axe-core is an open-source library for automated accessibility testing, used by major accessibility tools (Lighthouse, Pa11y, jest-axe)."@en .
+
+kbxi:bibtex_csl a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "BibTeX and Citation Style Language (CSL)"@en ;
+    kbx:anchorURL "https://citationstyles.org/" ;
+    kbx:applicabilityNote "Use CSL for rendering and BibTeX for storage; the AA stage's bibliographic metadata maps onto BibTeX fields directly." ;
+    kbx:appliesToStage kbx:Stage1Research,
+        kbx:Stage3Document ;
+    kbx:catalogueResolution kbxi:rec_bibtex_csl_23 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Consulted ;
+    kbx:firstPublished "2010"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "CSL community / Zotero" ;
+    dcterms:source "https://citationstyles.org/"@en ;
+    skos:definition "BibTeX is the de facto bibliographic format for technical writing; CSL is the W3C-community Citation Style Language standardising how citations are rendered across thousands of journal styles."@en .
+
+kbxi:cat_crossref a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "Crossref"@en ;
+    kbx:anchorURL "https://www.crossref.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:CrossStageGovernance,
+        kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is high for DOI-registered works; Crossref records the metadata the publisher deposits, so a Crossref hit confirms registration but not content correctness. Some pre-2000 works lack DOIs and will not resolve here." ;
+    kbx:catalogueOperator "Crossref (non-profit)" ;
+    kbx:catalogueScope "DOI-registered journals, conferences, books, datasets, and preprints across all fields." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "2000"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://www.crossref.org/"@en ;
+    skos:definition "Crossref is the principal DOI registration agency for scholarly content, providing metadata for tens of millions of works and the canonical resolver behind doi.org."@en .
+
+kbxi:fair_principles a kbx:BestPractice,
+        owl:NamedIndividual ;
+    rdfs:label "FAIR Data Principles"@en ;
+    kbx:anchorURL "https://doi.org/10.1038/sdata.2016.18" ;
+    kbx:applicabilityNote "Stage-1 citation sets and Stage-2 ontology releases should be FAIR-compliant; the ecosystem already publishes versioned IRIs and machine-readable manifests, which discharge several FAIR criteria." ;
+    kbx:appliesToStage kbx:CrossStageGovernance,
+        kbx:Stage1Research ;
+    kbx:catalogueResolution kbxi:rec_fair_principles_13 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Reconstructed ;
+    kbx:firstPublished "2016"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "GO FAIR / Wilkinson et al." ;
+    dcterms:source "https://doi.org/10.1038/sdata.2016.18"@en ;
+    skos:definition "The FAIR principles (Findable, Accessible, Interoperable, Reusable) prescribe how research data and artefacts should be made available for reuse."@en .
+
+kbxi:google_dev_doc_style a kbx:BestPractice,
+        owl:NamedIndividual ;
+    rdfs:label "Google Developer Documentation Style Guide"@en ;
+    kbx:anchorURL "https://developers.google.com/style" ;
+    kbx:applicabilityNote "Alternative to Microsoft style guide; the inclusive-language section is particularly strong and applies cross-cutting." ;
+    kbx:appliesToStage kbx:Stage3Document ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:microsoft_style_guide ;
+    kbx:firstPublished "2017"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "Google" ;
+    dcterms:source "https://developers.google.com/style"@en ;
+    skos:definition "Google's developer documentation style guide is a public guide covering tone, structure, accessibility, and inclusive language."@en .
+
+kbxi:hermit_reasoner a kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "HermiT OWL Reasoner"@en ;
+    kbx:anchorURL "http://www.hermit-reasoner.com/" ;
+    kbx:applicabilityNote "Use HermiT for satisfiability and classification verification; the OE-side investigations have used HermiT in prior sprints." ;
+    kbx:appliesToStage kbx:Stage2DomainOntology ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:elk_reasoner,
+        kbxi:pellet_reasoner ;
+    kbx:firstPublished "2009"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:standardsBody "University of Oxford" ;
+    dcterms:source "http://www.hermit-reasoner.com/"@en ;
+    skos:definition "HermiT is an OWL 2 DL reasoner used for satisfiability checking, classification, and consistency verification."@en .
+
+kbxi:iso_690 a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "ISO 690 — Bibliographic References"@en ;
+    kbx:anchorURL "https://www.iso.org/standard/72642.html" ;
+    kbx:applicabilityNote "Use ISO 690 as the fallback when no field-specific citation style (APA/IEEE/ACM) is mandated by the publication target." ;
+    kbx:appliesToStage kbx:Stage3Document ;
+    kbx:catalogueResolution kbxi:rec_iso_690_11 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:bibtex_csl ;
+    kbx:firstPublished "2021"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "ISO" ;
+    dcterms:source "https://www.iso.org/standard/72642.html"@en ;
+    skos:definition "ISO 690 is the international standard for bibliographic references and citations to information resources."@en .
+
+kbxi:mayer_multimedia_principles a kbx:EmpiricalStudy,
+        owl:NamedIndividual ;
+    rdfs:label "Mayer's Principles of Multimedia Learning"@en ;
+    kbx:applicabilityNote "Directly relevant to Stage-4 interactive widgets; specific principles (segmenting, signaling) inform widget design but require primary-source check before quoting effect sizes." ;
+    kbx:appliesToStage kbx:Stage4InteractivePage ;
+    kbx:consultationStatus kbx:RequiresConsultation ;
+    kbx:contrastsWith kbxi:clark_mayer_elearning,
+        kbxi:sweller_cognitive_load ;
+    kbx:firstPublished "2001"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:EmpiricalKnowledge ;
+    kbx:standardsBody "Richard E. Mayer (UC Santa Barbara)" ;
+    dcterms:source "Mayer's Principles of Multimedia Learning (canonical bibliographic identifier; see anchorURL when available)"@en ;
+    skos:definition "Richard Mayer's principles (multimedia, coherence, signaling, redundancy, spatial contiguity, temporal contiguity, segmenting, pre-training, modality, personalization, voice, image) summarise empirical findings on learning from multimedia."@en .
+
+kbxi:microsoft_style_guide a kbx:BestPractice,
+        owl:NamedIndividual ;
+    rdfs:label "Microsoft Writing Style Guide"@en ;
+    kbx:anchorURL "https://learn.microsoft.com/en-us/style-guide/welcome/" ;
+    kbx:applicabilityNote "Useful when Stage-3 produces practitioner-facing documentation; prescribes register, capitalisation, and structural conventions." ;
+    kbx:appliesToStage kbx:Stage3Document ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:diataxis,
+        kbxi:google_dev_doc_style ;
+    kbx:firstPublished "2018"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "Microsoft" ;
+    dcterms:source "https://learn.microsoft.com/en-us/style-guide/welcome/"@en ;
+    skos:definition "The Microsoft Writing Style Guide standardises voice, terminology, and structure for software documentation across Microsoft's documentation surface."@en .
+
+kbxi:mkdocs a kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "MkDocs Documentation Generator"@en ;
+    kbx:anchorURL "https://www.mkdocs.org/" ;
+    kbx:applicabilityNote "Lighter-weight alternative to Sphinx when Stage-3 output is Markdown and a flat documentation site is acceptable." ;
+    kbx:appliesToStage kbx:Stage3Document ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:sphinx ;
+    kbx:firstPublished "2014"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ToolingKnowledge ;
+    kbx:standardsBody "MkDocs community" ;
+    dcterms:source "https://www.mkdocs.org/"@en ;
+    skos:definition "MkDocs is a Markdown-native static-site generator for documentation, popular for its simplicity and Material theme."@en .
+
+kbxi:neon_methodology a kbx:Methodology,
+        owl:NamedIndividual ;
+    rdfs:label "NeOn Methodology for Ontology Engineering"@en ;
+    kbx:applicabilityNote "Use NeOn's reuse scenarios when Stage 2 must integrate existing public ontologies; complements METHONTOLOGY's process discipline." ;
+    kbx:appliesToStage kbx:Stage2DomainOntology ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:methontology,
+        kbxi:odp_portal ;
+    kbx:firstPublished "2012"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ProcessKnowledge ;
+    kbx:standardsBody "Suárez-Figueroa, Gómez-Pérez et al." ;
+    dcterms:source "NeOn Methodology for Ontology Engineering (canonical bibliographic identifier; see anchorURL when available)"@en ;
+    skos:definition "The NeOn Methodology provides scenarios for collaborative ontology development, ontology re-use, and ontology design patterns; the NeOn Book is the canonical reference."@en .
+
+kbxi:owl2 a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "OWL 2 Web Ontology Language"@en ;
+    kbx:anchorURL "https://www.w3.org/TR/owl2-overview/" ;
+    kbx:applicabilityNote "The TBox language for every Stage-2 domain ontology in the RDODI pipeline; the ecosystem's TBoxes are already OWL 2 compatible." ;
+    kbx:appliesToStage kbx:Stage2DomainOntology ;
+    kbx:catalogueResolution kbxi:rec_owl2_1 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Consulted ;
+    kbx:firstPublished "2012"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "W3C" ;
+    dcterms:source "https://www.w3.org/TR/owl2-overview/"@en ;
+    skos:definition "OWL 2 is the W3C Recommendation specifying the Web Ontology Language with its profiles (EL, QL, RL) and Direct Semantics / RDF-Based Semantics."@en .
+
+kbxi:pa11y a kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "Pa11y Accessibility Tester"@en ;
+    kbx:anchorURL "https://pa11y.org/" ;
+    kbx:applicabilityNote "CLI alternative to running axe-core via Playwright; useful when WCAG verification must be wired into CI." ;
+    kbx:appliesToStage kbx:Stage4InteractivePage ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:axe_core,
+        kbxi:wave ;
+    kbx:firstPublished "2013"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:standardsBody "Pa11y community" ;
+    dcterms:source "https://pa11y.org/"@en ;
+    skos:definition "Pa11y is a command-line accessibility tester that can run axe-core or HTML_CodeSniffer rules and produce machine-readable reports."@en .
+
+kbxi:pellet_reasoner a kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "Pellet OWL Reasoner"@en ;
+    kbx:applicabilityNote "Alternative to HermiT with better explanation services; relevant when an inconsistency must be diagnosed, not just detected." ;
+    kbx:appliesToStage kbx:Stage2DomainOntology ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:hermit_reasoner ;
+    kbx:firstPublished "2007"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:standardsBody "Clark & Parsia / Stardog" ;
+    dcterms:source "Pellet OWL Reasoner (canonical bibliographic identifier; see anchorURL when available)"@en ;
+    skos:definition "Pellet is an OWL 2 DL reasoner supporting incremental reasoning and explanation services."@en .
+
+kbxi:semver_2 a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "Semantic Versioning 2.0.0"@en ;
+    kbx:anchorURL "https://semver.org/spec/v2.0.0.html" ;
+    kbx:applicabilityNote "The ecosystem follows SemVer strictly per BP-D6/BP-D7; v1.7.0 → v1.8.0 → v1.9.0 are MINOR additive releases." ;
+    kbx:appliesToStage kbx:CrossStageGovernance ;
+    kbx:catalogueResolution kbxi:rec_semver_2_17 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Consulted ;
+    kbx:contrastsWith kbxi:conventional_commits,
+        kbxi:keep_a_changelog ;
+    kbx:firstPublished "2013"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "Tom Preston-Werner / community" ;
+    dcterms:source "https://semver.org/spec/v2.0.0.html"@en ;
+    skos:definition "SemVer 2.0.0 specifies MAJOR.MINOR.PATCH versioning with documented criteria for each bump."@en .
+
+kbxi:sphinx a kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "Sphinx Documentation Generator"@en ;
+    kbx:anchorURL "https://www.sphinx-doc.org/" ;
+    kbx:applicabilityNote "Useful when Stage 3 outputs a website rather than a single document; supports cross-references that map naturally onto rdoc:mappedToClass." ;
+    kbx:appliesToStage kbx:Stage3Document ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:mkdocs,
+        kbxi:pandoc ;
+    kbx:firstPublished "2008"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ToolingKnowledge ;
+    kbx:standardsBody "Sphinx community" ;
+    dcterms:source "https://www.sphinx-doc.org/"@en ;
+    skos:definition "Sphinx is the de facto documentation generator for Python and many other projects, with reStructuredText (and increasingly Markdown via MyST) as input."@en .
+
+kbxi:sweller_cognitive_load a kbx:EmpiricalStudy,
+        owl:NamedIndividual ;
+    rdfs:label "Sweller's Cognitive Load Theory"@en ;
+    kbx:applicabilityNote "Motivates the AA-stage paragraph-typing discipline and the Stage-4 widget asymmetry (one widget per concept, not per attribute); specific load measures require primary-source check." ;
+    kbx:appliesToStage kbx:Stage4InteractivePage ;
+    kbx:consultationStatus kbx:RequiresConsultation ;
+    kbx:contrastsWith kbxi:mayer_multimedia_principles ;
+    kbx:firstPublished "1988"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:EmpiricalKnowledge ;
+    kbx:standardsBody "John Sweller and colleagues (UNSW)" ;
+    dcterms:source "Sweller's Cognitive Load Theory (canonical bibliographic identifier; see anchorURL when available)"@en ;
+    skos:definition "Cognitive Load Theory (Sweller and colleagues) partitions cognitive load into intrinsic, extraneous, and germane, with implications for instructional design."@en .
+
+kbxi:wai_aria_authoring a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "WAI-ARIA Authoring Practices Guide"@en ;
+    kbx:anchorURL "https://www.w3.org/WAI/ARIA/apg/" ;
+    kbx:applicabilityNote "Consult the APG before adding any new interactive widget pattern to Stage 4; canonical patterns for accordion, tablist, dialog, listbox." ;
+    kbx:appliesToStage kbx:Stage4InteractivePage ;
+    kbx:catalogueResolution kbxi:rec_wai_aria_authoring_6 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:inclusive_components,
+        kbxi:wcag_2_2 ;
+    kbx:firstPublished "2023"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "W3C" ;
+    dcterms:source "https://www.w3.org/WAI/ARIA/apg/"@en ;
+    skos:definition "The WAI-ARIA Authoring Practices Guide (APG) describes how to use ARIA roles, states, and properties for common UI patterns such as dialogs, menus, tabs, and accordions."@en .
+
+kbxi:wave a kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "WAVE Web Accessibility Evaluation Tool"@en ;
+    kbx:anchorURL "https://wave.webaim.org/" ;
+    kbx:applicabilityNote "Useful for manual review of individual pages; complements automated axe-core runs." ;
+    kbx:appliesToStage kbx:Stage4InteractivePage ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:axe_core,
+        kbxi:pa11y ;
+    kbx:firstPublished "2001"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:standardsBody "WebAIM (Utah State University)" ;
+    dcterms:source "https://wave.webaim.org/"@en ;
+    skos:definition "WAVE is a web-based accessibility evaluation tool maintained by WebAIM that flags accessibility issues with a visual overlay."@en .
+
+kbxi:webster_watson_2002 a kbx:Methodology,
+        owl:NamedIndividual ;
+    rdfs:label "Webster & Watson — Literature Review as Method"@en ;
+    kbx:applicabilityNote "Use the concept matrix to organise the Stage-1 inventory before naming the BP-D31 denominator; the concept-centric stance maps directly onto the RDODI inventory model." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:kitchenham_slr,
+        kbxi:prisma_2020 ;
+    kbx:firstPublished "2002"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ProcessKnowledge ;
+    kbx:standardsBody "MIS Quarterly" ;
+    dcterms:source "Webster & Watson — Literature Review as Method (canonical bibliographic identifier; see anchorURL when available)"@en ;
+    skos:definition "Webster and Watson's 'Analyzing the Past to Prepare for the Future' establishes a concept-centric (not author-centric) approach to literature review and the building of a concept matrix."@en .
+
+kbxi:cat_software_heritage a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "Software Heritage"@en ;
+    kbx:anchorURL "https://www.softwareheritage.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:CrossStageGovernance ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is DEFINITIVE for confirming a specific code state existed at a specific time; SWHID is content-addressed (hash-based) so a SWHID is tamper-proof." ;
+    kbx:catalogueOperator "Inria + UNESCO + sponsors" ;
+    kbx:catalogueScope "Source code from GitHub, GitLab, Bitbucket, Debian, and other forges; permanent identifiers survive upstream deletion." ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:firstPublished "2016"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://www.softwareheritage.org/"@en ;
+    skos:definition "Software Heritage is the universal source-code archive preserving software with content-addressed identifiers (SWHID) for files, directories, revisions, releases, and snapshots."@en .
+
+kbxi:iso_25010 a kbx:Standard,
+        owl:NamedIndividual ;
+    rdfs:label "ISO/IEC 25010:2011 — Systems and Software Quality Models"@en ;
+    kbx:anchorURL "https://www.iso.org/standard/35733.html" ;
+    kbx:applicabilityNote "Already named in the PP-stage standards-conformance manifest and used as the anchor for OQuaRE; the AA stage extends this into authoring quality." ;
+    kbx:appliesToStage kbx:CrossStageGovernance,
+        kbx:Stage2DomainOntology ;
+    kbx:catalogueResolution kbxi:rec_iso_25010_8 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Consulted ;
+    kbx:contrastsWith kbxi:iso_25023,
+        kbxi:oquare ;
+    kbx:firstPublished "2011"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    kbx:standardsBody "ISO/IEC" ;
+    dcterms:source "https://www.iso.org/standard/35733.html"@en ;
+    skos:definition "ISO/IEC 25010 (part of the SQuaRE 25000-series) defines product quality and quality-in-use models with characteristics and sub-characteristics."@en .
+
+kbxi:kitchenham_slr a kbx:Methodology,
+        owl:NamedIndividual ;
+    rdfs:label "Kitchenham Systematic Literature Review for Software Engineering"@en ;
+    kbx:applicabilityNote "The canonical methodology when Stage 1 surveys SE literature; pairs naturally with PRISMA for transparent reporting." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:prisma_2020,
+        kbxi:webster_watson_2002 ;
+    kbx:firstPublished "2007"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ProcessKnowledge ;
+    kbx:standardsBody "Keele University & Durham University (technical report tradition)" ;
+    dcterms:source "Kitchenham Systematic Literature Review for Software Engineering (canonical bibliographic identifier; see anchorURL when available)"@en ;
+    skos:definition "Kitchenham's guidelines adapt systematic-review methodology to software engineering, formalising research questions, search strategy, study selection, quality assessment, and data extraction."@en .
+
+kbxi:methontology a kbx:Methodology,
+        owl:NamedIndividual ;
+    rdfs:label "METHONTOLOGY — Ontology Engineering Methodology"@en ;
+    kbx:applicabilityNote "Canonical reference for the Stage-2 build process; the RDODI pipeline's conceptualization-then-implementation sequence follows the METHONTOLOGY shape." ;
+    kbx:appliesToStage kbx:Stage2DomainOntology ;
+    kbx:consultationStatus kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:neon_methodology,
+        kbxi:ontology_engineering_uschold_king ;
+    kbx:firstPublished "1997"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ProcessKnowledge ;
+    kbx:standardsBody "Fernández-López, Gómez-Pérez, Juristo (UPM)" ;
+    dcterms:source "METHONTOLOGY — Ontology Engineering Methodology (canonical bibliographic identifier; see anchorURL when available)"@en ;
+    skos:definition "METHONTOLOGY is the ontology engineering methodology developed at Universidad Politécnica de Madrid that structures the process into specification, conceptualization, formalization, implementation, and maintenance."@en .
+
+kbxi:playwright a kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "Playwright End-to-End Testing Framework"@en ;
+    kbx:anchorURL "https://playwright.dev/" ;
+    kbx:applicabilityNote "Already used in the PP-stage design-test harness; the v1.2.0 widget design-tests are 6/6 PASS via Playwright headless." ;
+    kbx:appliesToStage kbx:Stage4InteractivePage ;
+    kbx:catalogueResolution kbxi:rec_playwright_24 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Consulted ;
+    kbx:contrastsWith kbxi:cypress,
+        kbxi:puppeteer ;
+    kbx:firstPublished "2020"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ToolingKnowledge ;
+    kbx:standardsBody "Microsoft" ;
+    dcterms:source "https://playwright.dev/"@en ;
+    skos:definition "Playwright is a Node/Python framework for automating browsers across Chromium, Firefox, and WebKit with reliable async waiting."@en .
+
+kbxi:prisma_2020 a kbx:Methodology,
+        owl:NamedIndividual ;
+    rdfs:label "PRISMA 2020 Statement"@en ;
+    kbx:anchorURL "https://www.prisma-statement.org/" ;
+    kbx:applicabilityNote "Apply PRISMA when Stage 1 produces a systematic review of source literature for a chapter; the checklist disciplines inclusion/exclusion and search reporting that BP-D31 coverage measures presuppose." ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:catalogueResolution kbxi:rec_prisma_2020_22 ;
+    kbx:consultationStatus kbx:CatalogueVerified,
+        kbx:Reconstructed ;
+    kbx:contrastsWith kbxi:kitchenham_slr,
+        kbxi:webster_watson_2002 ;
+    kbx:firstPublished "2021"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:ProcessKnowledge ;
+    kbx:standardsBody "PRISMA Group" ;
+    dcterms:source "https://www.prisma-statement.org/"@en ;
+    skos:definition "PRISMA 2020 is the Preferred Reporting Items for Systematic Reviews and Meta-Analyses checklist and flow diagram for transparent reporting of systematic reviews."@en .
+
+kbxi:oquare a kbx:Methodology,
+        owl:NamedIndividual ;
+    rdfs:label "OQuaRE Ontology Quality Evaluation Framework"@en ;
+    kbx:applicabilityNote "The L-72-cited anchor for the RDODI quality vocabulary; PP-stage standards-conformance manifest names OQuaRE alongside ISO/IEC 25010." ;
+    kbx:appliesToStage kbx:CrossStageGovernance,
+        kbx:Stage2DomainOntology ;
+    kbx:consultationStatus kbx:Consulted ;
+    kbx:contrastsWith kbxi:iso_25010 ;
+    kbx:firstPublished "2016"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:standardsBody "Duque-Ramos, Fernández-Breis et al." ;
+    dcterms:source "OQuaRE Ontology Quality Evaluation Framework (canonical bibliographic identifier; see anchorURL when available)"@en ;
+    skos:definition "OQuaRE adapts ISO/IEC 25000 (SQuaRE) to ontology quality, defining quality characteristics and sub-characteristics with measurable metrics for ontology evaluation."@en .
+
+kbxi:cat_iso_obp a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "ISO Online Browsing Platform"@en ;
+    kbx:anchorURL "https://www.iso.org/standards.html" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:CrossStageGovernance,
+        kbx:Stage2DomainOntology,
+        kbx:Stage3Document ;
+    kbx:catalogueAccessModel "Mixed (catalogue open; full text subscription via national bodies)" ;
+    kbx:catalogueAuthorityNote "Authority is DEFINITIVE for ISO standards; the ISO catalogue number (e.g. 'ISO/IEC 25010:2011') is the stable identifier." ;
+    kbx:catalogueOperator "International Organization for Standardization" ;
+    kbx:catalogueScope "ISO standards across all fields including ISO/IEC 25000 series (SQuaRE), ISO/IEC 12207, ISO 690, ISO 26324 (DOI)." ;
+    kbx:consultationStatus kbx:Consulted ;
+    kbx:firstPublished "1947"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    dcterms:source "https://www.iso.org/standards.html"@en ;
+    skos:definition "The ISO Online Browsing Platform (OBP) is the official catalogue for International Organization for Standardization publications."@en .
+
+kbxi:cat_w3c_tr a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "W3C Technical Reports"@en ;
+    kbx:anchorURL "https://www.w3.org/TR/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:CrossStageGovernance,
+        kbx:Stage2DomainOntology,
+        kbx:Stage4InteractivePage ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is DEFINITIVE for W3C standards; the W3C TR shortname (e.g. 'shacl', 'owl2-overview') is the stable identifier." ;
+    kbx:catalogueOperator "World Wide Web Consortium" ;
+    kbx:catalogueScope "W3C standards: HTML, CSS, SVG, OWL 2, RDF, SPARQL, SHACL, SKOS, WCAG, WAI-ARIA, PROV-O." ;
+    kbx:consultationStatus kbx:Consulted ;
+    kbx:firstPublished "1996"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:StructuralKnowledge ;
+    dcterms:source "https://www.w3.org/TR/"@en ;
+    skos:definition "The W3C Technical Reports listing is the canonical index of W3C specifications including Recommendations, Candidate Recommendations, Working Drafts, and Notes."@en .
+
+kbxi:cat_doi_org a kbx:BibliographicCatalogue,
+        kbx:Tool,
+        owl:NamedIndividual ;
+    rdfs:label "DOI.org Resolver"@en ;
+    kbx:anchorURL "https://www.doi.org/" ;
+    kbx:applicabilityNote "Bibliographic catalogue used to verify item existence and metadata via the catalogue-resolution layer (KB-EXT v1.0.1)." ;
+    kbx:appliesToStage kbx:CrossStageGovernance,
+        kbx:Stage1Research ;
+    kbx:catalogueAccessModel "Open" ;
+    kbx:catalogueAuthorityNote "Authority is procedural: doi.org redirects to the publisher's metadata page. A resolving DOI confirms the identifier exists and is owned by the named registrant; the destination page must still be inspected for the actual metadata." ;
+    kbx:catalogueOperator "International DOI Foundation" ;
+    kbx:catalogueScope "Any work with a registered DOI." ;
+    kbx:consultationStatus kbx:Consulted ;
+    kbx:firstPublished "2000"^^xsd:gYear ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    dcterms:source "https://www.doi.org/"@en ;
+    skos:definition "doi.org is the authoritative DOI resolution service operated by the International DOI Foundation."@en .
+
+
+# ============================================================
+# v1.1.0 ADDITIVE: authority-tier assignment for all catalogues
+# Subjects use kbxi: (instance ns); tiers use kbx: (TBox ns).
+# Tier derived from each catalogue's pre-existing authorityNote keyword.
+# ============================================================
+
+kbxi:cat_acl_anthology kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_acm_dl kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_arxiv kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_biorxiv kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_crossref kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_dart_europe kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_dblp kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_dergipark kbx:hasAuthorityTier kbx:Tier_Moderate .
+kbxi:cat_doi_org kbx:hasAuthorityTier kbx:Tier_Moderate .
+kbxi:cat_epo_espacenet kbx:hasAuthorityTier kbx:Tier_Definitive .
+kbxi:cat_google_scholar kbx:hasAuthorityTier kbx:Tier_Low .
+kbxi:cat_iec_webstore kbx:hasAuthorityTier kbx:Tier_Definitive .
+kbxi:cat_ieee_xplore kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_ietf_datatracker kbx:hasAuthorityTier kbx:Tier_Definitive .
+kbxi:cat_ietf_rfc kbx:hasAuthorityTier kbx:Tier_Definitive .
+kbxi:cat_inspec kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_iso_obp kbx:hasAuthorityTier kbx:Tier_Definitive .
+kbxi:cat_jstor kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_library_of_congress kbx:hasAuthorityTier kbx:Tier_Definitive .
+kbxi:cat_mathscinet kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_nist_publications kbx:hasAuthorityTier kbx:Tier_Definitive .
+kbxi:cat_oasis_standards kbx:hasAuthorityTier kbx:Tier_Definitive .
+kbxi:cat_openalex kbx:hasAuthorityTier kbx:Tier_Moderate .
+kbxi:cat_openlibrary kbx:hasAuthorityTier kbx:Tier_Moderate .
+kbxi:cat_orcid_registry kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_proquest_dissertations kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_pubmed kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_sage_journals kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_sciencedirect kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_semantic_scholar kbx:hasAuthorityTier kbx:Tier_Moderate .
+kbxi:cat_software_heritage kbx:hasAuthorityTier kbx:Tier_Definitive .
+kbxi:cat_springer_link kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_taylor_francis kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_tr_dizin kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_tubitak_ulakbim kbx:hasAuthorityTier kbx:Tier_Definitive .
+kbxi:cat_uspto kbx:hasAuthorityTier kbx:Tier_Definitive .
+kbxi:cat_w3c_tr kbx:hasAuthorityTier kbx:Tier_Definitive .
+kbxi:cat_wikidata kbx:hasAuthorityTier kbx:Tier_Moderate .
+kbxi:cat_wiley_online kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_worldcat kbx:hasAuthorityTier kbx:Tier_High .
+kbxi:cat_yok_tez kbx:hasAuthorityTier kbx:Tier_Definitive .
+kbxi:cat_zenodo kbx:hasAuthorityTier kbx:Tier_High .
+
+# ------------------------------------------------------------
+# v1.1.0 ADDITIVE: commercial/crowd-sourced sources as Low-tier
+# catalogues (previously used as resolution sources without being
+# registered, letting a sales listing pass as CatalogueVerified).
+# ------------------------------------------------------------
+
+kbxi:cat_amazon a kbx:BibliographicCatalogue ;
+    rdfs:label "Amazon Books"@en ;
+    kbx:catalogueAuthorityNote "Commercial bookseller listing. Confirms a sellable edition exists with an ISBN/ASIN at crawl time; metadata is seller-supplied and frequently conflates editions. Never sufficient alone for a High-tier metadata claim."@en ;
+    kbx:hasAuthorityTier kbx:Tier_Low .
+
+kbxi:cat_abebooks a kbx:BibliographicCatalogue ;
+    rdfs:label "AbeBooks"@en ;
+    kbx:catalogueAuthorityNote "Commercial used-book marketplace aggregating many sellers; per-listing metadata varies and is not editorially controlled."@en ;
+    kbx:hasAuthorityTier kbx:Tier_Low .
+
+kbxi:cat_biblio a kbx:BibliographicCatalogue ;
+    rdfs:label "Biblio"@en ;
+    kbx:catalogueAuthorityNote "Commercial used/rare-book marketplace; same caveat as AbeBooks. LoC fields it copies must be confirmed at the Library of Congress to count as Definitive."@en ;
+    kbx:hasAuthorityTier kbx:Tier_Low .
+
+kbxi:cat_goodreads a kbx:BibliographicCatalogue ;
+    rdfs:label "Goodreads"@en ;
+    kbx:catalogueAuthorityNote "Crowd-sourced social-cataloging site (Amazon-owned); user-created edition records, inconsistently merged. Discovery only."@en ;
+    kbx:hasAuthorityTier kbx:Tier_Low .
+
+kbxi:cat_internet_archive a kbx:BibliographicCatalogue ;
+    rdfs:label "Internet Archive / Open Library scans"@en ;
+    kbx:catalogueAuthorityNote "Confirms a borrowable scan exists; embedded catalog fields are imported from OCLC/LoC and, where attributed, can be promoted to that source once confirmed there. On its own, Low for metadata."@en ;
+    kbx:hasAuthorityTier kbx:Tier_Low .
+
+kbxi:cat_publisher_site a kbx:BibliographicCatalogue ;
+    rdfs:label "Publisher product page (generic)"@en ;
+    kbx:catalogueAuthorityNote "Publisher landing/sales page. For the publisher's own works can be High (issuer of record); for third-party works it is a sales page. Defaults Low when used as a generic web hit; promote per-resolution only when the publisher is the work's actual publisher."@en ;
+    kbx:hasAuthorityTier kbx:Tier_Low .
+
+
+# v1.1.1 PATCH: complete SHACL-required catalogue properties on the 6 commercial catalogues
+
+kbxi:cat_amazon dcterms:source <https://www.amazon.com/> ;
+    kbx:catalogueAccessModel "Open (interface)" ;
+    kbx:catalogueOperator "Amazon.com, Inc." ;
+    kbx:catalogueScope "Commercial retail listings for in-print and many out-of-print books; seller-supplied metadata."@en ;
+    kbx:applicabilityNote "Commercial/crowd-sourced source used ONLY as a Low-tier discovery pre-filter; any positive hit must be confirmed in a higher-tier catalogue before a metadata claim (R11)."@en ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:consultationStatus kbx:RequiresConsultation ;
+    skos:definition "Amazon.com (Amazon.com, Inc.) — registered at Tier_Low so that a resolution resting on it is visibly low-authority and never mistaken for an authoritative (Definitive/High) verdict."@en .
+
+kbxi:cat_abebooks dcterms:source <https://www.abebooks.com/> ;
+    kbx:catalogueAccessModel "Open (interface)" ;
+    kbx:catalogueOperator "AbeBooks Inc. (Amazon)" ;
+    kbx:catalogueScope "Marketplace aggregating many independent sellers; per-listing bibliographic fields vary by seller."@en ;
+    kbx:applicabilityNote "Commercial/crowd-sourced source used ONLY as a Low-tier discovery pre-filter; any positive hit must be confirmed in a higher-tier catalogue before a metadata claim (R11)."@en ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:consultationStatus kbx:RequiresConsultation ;
+    skos:definition "AbeBooks (Amazon-owned) — registered at Tier_Low so that a resolution resting on it is visibly low-authority and never mistaken for an authoritative (Definitive/High) verdict."@en .
+
+kbxi:cat_biblio dcterms:source <https://www.biblio.com/> ;
+    kbx:catalogueAccessModel "Open (interface)" ;
+    kbx:catalogueOperator "Biblio, Inc." ;
+    kbx:catalogueScope "Used and rare book marketplace; occasionally surfaces library-copied fields requiring confirmation at source."@en ;
+    kbx:applicabilityNote "Commercial/crowd-sourced source used ONLY as a Low-tier discovery pre-filter; any positive hit must be confirmed in a higher-tier catalogue before a metadata claim (R11)."@en ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:consultationStatus kbx:RequiresConsultation ;
+    skos:definition "Biblio.com — registered at Tier_Low so that a resolution resting on it is visibly low-authority and never mistaken for an authoritative (Definitive/High) verdict."@en .
+
+kbxi:cat_goodreads dcterms:source <https://www.goodreads.com/> ;
+    kbx:catalogueAccessModel "Open (interface)" ;
+    kbx:catalogueOperator "Goodreads / Amazon" ;
+    kbx:catalogueScope "Crowd-sourced social cataloging; user-created, inconsistently merged edition records."@en ;
+    kbx:applicabilityNote "Commercial/crowd-sourced source used ONLY as a Low-tier discovery pre-filter; any positive hit must be confirmed in a higher-tier catalogue before a metadata claim (R11)."@en ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:consultationStatus kbx:RequiresConsultation ;
+    skos:definition "Goodreads (Amazon-owned) — registered at Tier_Low so that a resolution resting on it is visibly low-authority and never mistaken for an authoritative (Definitive/High) verdict."@en .
+
+kbxi:cat_internet_archive dcterms:source <https://archive.org/> ;
+    kbx:catalogueAccessModel "Open (interface)" ;
+    kbx:catalogueOperator "Internet Archive" ;
+    kbx:catalogueScope "Scanned and borrowable copies; embedded catalog fields imported from OCLC/LoC, attribution-dependent."@en ;
+    kbx:applicabilityNote "Commercial/crowd-sourced source used ONLY as a Low-tier discovery pre-filter; any positive hit must be confirmed in a higher-tier catalogue before a metadata claim (R11)."@en ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:consultationStatus kbx:RequiresConsultation ;
+    skos:definition "Internet Archive / Open Library — registered at Tier_Low so that a resolution resting on it is visibly low-authority and never mistaken for an authoritative (Definitive/High) verdict."@en .
+
+kbxi:cat_publisher_site dcterms:source <https://example.org/publisher/> ;
+    kbx:catalogueAccessModel "Open (interface)" ;
+    kbx:catalogueOperator "Various publishers" ;
+    kbx:catalogueScope "A publisher landing/sales page; authoritative only for the publisher of record for its own works."@en ;
+    kbx:applicabilityNote "Commercial/crowd-sourced source used ONLY as a Low-tier discovery pre-filter; any positive hit must be confirmed in a higher-tier catalogue before a metadata claim (R11)."@en ;
+    kbx:appliesToStage kbx:Stage1Research ;
+    kbx:knowledgeKind kbx:VerificationKnowledge ;
+    kbx:consultationStatus kbx:RequiresConsultation ;
+    skos:definition "Publisher product page (generic) — registered at Tier_Low so that a resolution resting on it is visibly low-authority and never mistaken for an authoritative (Definitive/High) verdict."@en .

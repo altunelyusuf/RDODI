@@ -1,0 +1,51 @@
+@prefix stg:  <http://example.org/stg/governance#> .
+@prefix scp:  <http://rdodi.org/scp/domain#> .
+@prefix extauth:  <http://example.org/external-authority#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+
+# Governed domain (= SemanticTechnology, the whole domain) + area-category spine (SemanticTechnologyArea)
+stg:SemTechGovernance a stg:GovernedDomain, owl:NamedIndividual ; rdfs:label "Semantic technologies governance"@en ;
+  stg:mapsToDomainClass scp:SemanticTechnology ; stg:areaCategory scp:SemanticTechnologyArea ;
+  dct:source "Governed-domain root; area category = scp:SemanticTechnologyArea." ;
+  stg:governsArea stg:gov_Foundations, stg:gov_W3CStack, stg:gov_LayeredOntology, stg:gov_KnowledgeGraphs .
+
+# OE-governance module references the external OE authority as authority (CITE-NOT-IMPORT)
+stg:OEGovernanceModule a stg:GovernanceModule, owl:NamedIndividual ; rdfs:label "OE-governance module"@en ;
+  stg:referencesAuthority extauth:ExternalOEAuthority ;
+  dct:source "References the external OE authority (OE Pack) as the ontology-engineering governance authority; not imported." .
+
+# 4 concrete governed areas, each mapped to its SCP class, with a steward and a policy
+stg:gov_Foundations a stg:GovernedArea, owl:NamedIndividual ; rdfs:label "Foundations (governed)"@en ;
+  stg:mapsToDomainClass scp:Foundations ; stg:hasSteward stg:steward_Foundations ; stg:hasPolicy stg:pol_Foundations ;
+  dct:source "Governed area mapped to scp:Foundations." .
+stg:gov_W3CStack a stg:GovernedArea, owl:NamedIndividual ; rdfs:label "W3C stack (governed)"@en ;
+  stg:mapsToDomainClass scp:W3CStack ; stg:hasSteward stg:steward_W3CStack ; stg:hasPolicy stg:pol_W3CStack ;
+  dct:source "Governed area mapped to scp:W3CStack." .
+stg:gov_LayeredOntology a stg:GovernedArea, owl:NamedIndividual ; rdfs:label "Layered ontology (governed)"@en ;
+  stg:mapsToDomainClass scp:LayeredOntology ; stg:hasSteward stg:steward_Layered ; stg:hasPolicy stg:pol_Layered ;
+  dct:source "Governed area mapped to scp:LayeredOntology." .
+stg:gov_KnowledgeGraphs a stg:GovernedArea, owl:NamedIndividual ; rdfs:label "Knowledge graphs (governed)"@en ;
+  stg:mapsToDomainClass scp:KnowledgeGraphs ; stg:hasSteward stg:steward_KG ; stg:hasPolicy stg:pol_KG ;
+  dct:source "Governed area mapped to scp:KnowledgeGraphs." .
+
+# Stewards
+stg:steward_Foundations a stg:Steward, owl:NamedIndividual ; rdfs:label "Foundations steward"@en .
+stg:steward_W3CStack a stg:Steward, owl:NamedIndividual ; rdfs:label "W3C-stack steward"@en .
+stg:steward_Layered a stg:Steward, owl:NamedIndividual ; rdfs:label "Layered-ontology steward"@en .
+stg:steward_KG a stg:Steward, owl:NamedIndividual ; rdfs:label "Knowledge-graphs steward"@en .
+
+# Policies (each applies to its area, each carries a conformance rule)
+stg:pol_Foundations a stg:GovernancePolicy, owl:NamedIndividual ; rdfs:label "Foundations policy"@en ;
+  stg:appliesToArea stg:gov_Foundations ; stg:hasConformanceRule stg:rule_def_sourced .
+stg:pol_W3CStack a stg:GovernancePolicy, owl:NamedIndividual ; rdfs:label "W3C-stack policy"@en ;
+  stg:appliesToArea stg:gov_W3CStack ; stg:hasConformanceRule stg:rule_def_sourced .
+stg:pol_Layered a stg:GovernancePolicy, owl:NamedIndividual ; rdfs:label "Layered-ontology policy"@en ;
+  stg:appliesToArea stg:gov_LayeredOntology ; stg:hasConformanceRule stg:rule_def_sourced .
+stg:pol_KG a stg:GovernancePolicy, owl:NamedIndividual ; rdfs:label "Knowledge-graphs policy"@en ;
+  stg:appliesToArea stg:gov_KnowledgeGraphs ; stg:hasConformanceRule stg:rule_def_sourced .
+
+# Conformance rule (shared)
+stg:rule_def_sourced a stg:ConformanceRule, owl:NamedIndividual ; rdfs:label "Concepts must carry a real source"@en ;
+  dct:source "Governance rule: every governed concept carries a verifiable dcterms:source." .

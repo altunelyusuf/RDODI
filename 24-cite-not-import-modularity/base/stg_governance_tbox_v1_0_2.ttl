@@ -1,0 +1,65 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix stg: <http://example.org/stg/governance#> .
+
+stg: a owl:Ontology ;
+    rdfs:comment "STG-RDODI-candidate governance layer. Subject: the semantic-technologies domain (SCP). References the external OE authority as authority (cite-not-import). Built blind for comparison (pre-reg e14a076b)."@en ;
+    owl:versionInfo "1.0.1" .
+
+stg:appliesToArea a owl:ObjectProperty ;
+    rdfs:domain stg:GovernancePolicy ;
+    rdfs:range stg:GovernedArea .
+
+stg:areaCategory a owl:ObjectProperty ;
+    rdfs:comment "the domain class categorising governed areas (scp:SemanticTechnologyArea)"@en ;
+    rdfs:domain stg:GovernedDomain .
+
+stg:governsArea a owl:ObjectProperty ;
+    rdfs:domain stg:GovernedDomain ;
+    rdfs:range stg:GovernedArea .
+
+stg:hasConformanceRule a owl:ObjectProperty ;
+    rdfs:domain stg:GovernancePolicy ;
+    rdfs:range stg:ConformanceRule .
+
+stg:hasPolicy a owl:ObjectProperty ;
+    rdfs:domain stg:GovernedArea ;
+    rdfs:range stg:GovernancePolicy .
+
+stg:hasSteward a owl:ObjectProperty ;
+    rdfs:domain stg:GovernedArea ;
+    rdfs:range stg:Steward .
+
+stg:mapsToDomainClass a owl:ObjectProperty ;
+    rdfs:comment "links a governed domain OR area to its SCP class (no rdfs:domain: used by both GovernedDomain and GovernedArea)"@en .
+
+stg:referencesAuthority a owl:ObjectProperty ;
+    rdfs:comment "CITE-NOT-IMPORT: references an external authority (e.g. the external OE authority) without owl:imports (L-64)."@en ;
+    rdfs:domain stg:GovernanceModule .
+
+stg:ConformanceRule a owl:Class ;
+    dct:conformsTo <http://example.org/external-authority#ExternalOEAuthority> ;
+    skos:definition "A checkable rule governed content must satisfy."@en .
+
+stg:GovernanceModule a owl:Class ;
+    dct:conformsTo <http://example.org/external-authority#ExternalOEAuthority> ;
+    skos:definition "A governance unit referencing an external authority for a cell."@en .
+
+stg:Steward a owl:Class ;
+    dct:conformsTo <http://example.org/external-authority#ExternalOEAuthority> ;
+    skos:definition "A party accountable for a governed area."@en .
+
+stg:GovernedDomain a owl:Class ;
+    dct:conformsTo <http://example.org/external-authority#ExternalOEAuthority> ;
+    skos:definition "The overall domain placed under governance."@en .
+
+stg:GovernancePolicy a owl:Class ;
+    dct:conformsTo <http://example.org/external-authority#ExternalOEAuthority> ;
+    skos:definition "A normative statement governing an area."@en .
+
+stg:GovernedArea a owl:Class ;
+    dct:conformsTo <http://example.org/external-authority#ExternalOEAuthority> ;
+    skos:definition "A concrete sub-area of the governed domain."@en .
+

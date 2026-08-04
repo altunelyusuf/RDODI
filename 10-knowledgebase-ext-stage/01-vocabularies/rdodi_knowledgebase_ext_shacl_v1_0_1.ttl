@@ -1,0 +1,83 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix kbx: <http://example.org/rdodi/knowledgebase-ext#> .
+@prefix kbxsh: <http://example.org/rdodi/knowledgebase-ext/shapes#> .
+
+# ============================================================
+# v1.0.0 shapes preserved
+# ============================================================
+
+kbxsh:ItemShape a sh:NodeShape ;
+    sh:targetClass kbx:ExternalKnowledgeItem ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every ExternalKnowledgeItem must carry an rdfs:label." ] ;
+    sh:property [ sh:path skos:definition ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every ExternalKnowledgeItem must carry a skos:definition." ] ;
+    sh:property [ sh:path kbx:appliesToStage ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every ExternalKnowledgeItem must link to at least one kbx:PipelineStage." ] ;
+    sh:property [ sh:path kbx:knowledgeKind ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every ExternalKnowledgeItem must declare its kbx:knowledgeKind." ] ;
+    sh:property [ sh:path kbx:consultationStatus ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every ExternalKnowledgeItem must declare kbx:consultationStatus." ] ;
+    sh:property [ sh:path kbx:applicabilityNote ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every ExternalKnowledgeItem must carry kbx:applicabilityNote." ] ;
+    sh:property [ sh:path dcterms:source ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every ExternalKnowledgeItem must carry dcterms:source." ] .
+
+kbxsh:StandardShape a sh:NodeShape ;
+    sh:targetClass kbx:Standard ;
+    sh:property [ sh:path kbx:standardsBody ; sh:minCount 1 ; sh:severity sh:Warning ;
+                  sh:message "A Standard SHOULD carry kbx:standardsBody." ] .
+
+kbxsh:ContrastShape a sh:NodeShape ;
+    sh:targetClass kbx:ExternalKnowledgeItem ;
+    sh:property [ sh:path kbx:contrastsWith ; sh:nodeKind sh:IRI ; sh:severity sh:Warning ;
+                  sh:message "kbx:contrastsWith values should be IRIs of other ExternalKnowledgeItems." ] .
+
+# ============================================================
+# v1.0.1 ADDITIONS — catalogue-layer shapes
+# ============================================================
+
+kbxsh:BibliographicCatalogueShape a sh:NodeShape ;
+    sh:targetClass kbx:BibliographicCatalogue ;
+    sh:property [ sh:path kbx:catalogueScope ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every BibliographicCatalogue must declare kbx:catalogueScope (what kinds of works it indexes)." ] ;
+    sh:property [ sh:path kbx:catalogueAccessModel ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every BibliographicCatalogue must declare kbx:catalogueAccessModel (Open, Subscription, Mixed, NationalBody)." ] ;
+    sh:property [ sh:path kbx:catalogueOperator ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every BibliographicCatalogue must declare kbx:catalogueOperator." ] ;
+    sh:property [ sh:path kbx:catalogueAuthorityNote ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every BibliographicCatalogue must carry kbx:catalogueAuthorityNote (honest disclosure of what a hit in this catalogue proves and does not prove)." ] .
+
+kbxsh:CatalogueRecordShape a sh:NodeShape ;
+    sh:targetClass kbx:CatalogueRecord ;
+    sh:property [ sh:path kbx:resolvedIn ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every CatalogueRecord must declare kbx:resolvedIn linking to a BibliographicCatalogue." ] ;
+    sh:property [ sh:path kbx:resolvedAtUTC ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every CatalogueRecord must declare kbx:resolvedAtUTC (ISO-8601 timestamp for drift detection)." ] ;
+    sh:property [ sh:path kbx:resolvedIdentifier ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every CatalogueRecord must declare kbx:resolvedIdentifier (DOI, ISBN, RFC number, W3C TR shortname, ISO catalogue number, etc.)." ] ;
+    sh:property [ sh:path kbx:resolvedURL ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every CatalogueRecord must declare kbx:resolvedURL (canonical URL at resolution time)." ] ;
+    sh:property [ sh:path kbx:resolvedTitle ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every CatalogueRecord must declare kbx:resolvedTitle as returned by the catalogue." ] .
+
+# CatalogueVerified items MUST have at least one catalogueResolution
+# (use sh:sparql to express the conditional constraint: if status=CatalogueVerified then catalogueResolution minCount 1)
+kbxsh:CatalogueVerifiedItemShape a sh:NodeShape ;
+    sh:targetClass kbx:ExternalKnowledgeItem ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+                sh:message "An item with kbx:CatalogueVerified consultation status must carry at least one kbx:catalogueResolution." ;
+                sh:severity sh:Violation ;
+                sh:prefixes [ sh:declare [ sh:prefix "kbx" ; sh:namespace "http://example.org/rdodi/knowledgebase-ext#"^^xsd:anyURI ] ] ;
+                sh:select """
+                    SELECT $this WHERE {
+                      $this kbx:consultationStatus kbx:CatalogueVerified .
+                      FILTER NOT EXISTS { $this kbx:catalogueResolution ?rec }
+                    }
+                """ ] .

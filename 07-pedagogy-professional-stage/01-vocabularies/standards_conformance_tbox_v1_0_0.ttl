@@ -1,0 +1,39 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix sc: <http://example.org/rdodi/standards-conformance#> .
+<http://example.org/rdodi/standards-conformance> a owl:Ontology ; rdfs:label "RDODI Standards-Conformance Vocabulary (ISO/IEC 25010 + OQuaRE anchored)"@en ;
+  owl:versionInfo "1.0.0" ; owl:versionIRI <http://example.org/rdodi/standards-conformance/1.0.0> ;
+  dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+  dcterms:rights "Copyright 2026 Yusuf Altunel. CC BY 4.0."@en ;
+  dcterms:rightsHolder <https://example.org/agent/yusuf-altunel> ;
+  dcterms:publisher <https://example.org/org/iku-ce> ;
+  dcterms:creator <https://example.org/agent/yusuf-altunel> ;
+  dcterms:created "2026-05-28"^^xsd:date ; dcterms:modified "2026-05-28"^^xsd:date ;
+  dcterms:identifier "standards-conformance" ;
+  prov:wasGeneratedBy <http://example.org/rdodi/standards-conformance/activity/release-1.0.0> .
+<http://example.org/rdodi/standards-conformance/activity/release-1.0.0> a prov:Activity ; rdfs:label "PP-stage vocab release 1.0.0"@en ;
+  prov:startedAtTime "2026-05-28T00:00:00Z"^^xsd:dateTime .
+sc:DeliveryProfile a owl:Class ; rdfs:label "DeliveryProfile"@en ; skos:definition "A declared claim level whose mandatory gate set the artifact must pass; blocks over-claiming."@en .
+sc:CompanionProfile a sc:DeliveryProfile ; rdfs:label "Companion"@en ; skos:definition "A supplement to a primary text/lecture; single-source permitted; base RDODI convention only."@en .
+sc:CoursewareProfile a sc:DeliveryProfile ; rdfs:label "Courseware"@en ; skos:definition "Standalone teaching material; requires assessment rigor, Bloom coverage, WCAG AA, model-provenance, and an educator attestation."@en .
+sc:ResearchGradeProfile a sc:DeliveryProfile ; rdfs:label "ResearchGrade"@en ; skos:definition "Citable academic material; requires multi-source primary-standard citation and a domain-expert attestation."@en .
+sc:ProfessionalToolProfile a sc:DeliveryProfile ; rdfs:label "ProfessionalTool"@en ; skos:definition "An instrument used for real decisions; requires all numeric widgets Validated and a practitioner attestation."@en .
+sc:hasDeliveryProfile a owl:ObjectProperty ; rdfs:label "hasDeliveryProfile"@en ; skos:definition "Declares the artifact's claimed DeliveryProfile."@en .
+sc:StandardsConformanceManifest a owl:Class ; rdfs:label "StandardsConformanceManifest"@en ; skos:definition "Records which external standards the artifact claims and the evidence type for each."@en .
+sc:Standard a owl:Class ; rdfs:label "Standard"@en ; skos:definition "An external standard an artifact may claim conformance to."@en .
+sc:claimsStandard a owl:ObjectProperty ; rdfs:label "claimsStandard"@en ; skos:definition "Relates a manifest to a claimed Standard."@en .
+sc:conformanceEvidence a owl:ObjectProperty ; rdfs:label "conformanceEvidence"@en ; skos:definition "Relates a claimed Standard to its evidence (AutomatedCheck or Attestation)."@en .
+sc:AutomatedCheck a owl:Class ; rdfs:label "AutomatedCheck"@en ; skos:definition "Evidence produced by a runnable gate."@en .
+sc:WCAG_2_2_AA a sc:Standard ; rdfs:label "WCAG 2.2 AA"@en ; skos:definition "Web Content Accessibility Guidelines 2.2, Level AA."@en .
+sc:ISO_IEC_25010 a sc:Standard ; rdfs:label "ISO/IEC 25010"@en ; skos:definition "Systems and software quality models (anchors OQuaRE)."@en .
+sc:Bloom_Revised a sc:Standard ; rdfs:label "Bloom Revised Taxonomy"@en ; skos:definition "Anderson & Krathwohl 2001 cognitive taxonomy."@en .
+sc:OQuaRE a sc:Standard ; rdfs:label "OQuaRE"@en ; skos:definition "Ontology quality evaluation framework (Duque-Ramos 2016) aligned to ISO/IEC 25010."@en .
+sc:PMBOK a sc:Standard ; rdfs:label "PMBOK Guide"@en ; skos:definition "PMI body of knowledge."@en .
+sc:CMMI a sc:Standard ; rdfs:label "CMMI"@en ; skos:definition "SEI Capability Maturity Model Integration."@en .
+sc:minIndependentSources a owl:DatatypeProperty ; rdfs:label "minIndependentSources"@en ; skos:definition "Minimum independent sources a profile requires."@en .

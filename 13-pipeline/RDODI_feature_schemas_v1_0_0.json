@@ -1,0 +1,123 @@
+{
+ "modelComparison": {
+  "scenario": "str",
+  "lenses": [
+   {
+    "key": "str",
+    "title": "str",
+    "note": "str"
+   }
+  ]
+ },
+ "layeredArchitecture": {
+  "title": "str",
+  "intro": "str",
+  "layers": [
+   {
+    "name": "str",
+    "role": "str",
+    "color": "#hex",
+    "contents": [
+     "str"
+    ]
+   }
+  ],
+  "dependency": "str",
+  "mapping": {
+   "cols": [
+    "str"
+   ],
+   "rows": [
+    [
+     "str"
+    ]
+   ]
+  },
+  "takeaway": "str"
+ },
+ "techCompareRich": {
+  "scenario": "str",
+  "techs": [
+   {
+    "tech": "str",
+    "color": "#hex",
+    "repr_kind": "code|table",
+    "code": "str",
+    "lang": "str",
+    "table": {
+     "cols": [
+      "str"
+     ],
+     "rows": [
+      [
+       "str"
+      ]
+     ]
+    },
+    "note": "str",
+    "recommended": "bool?"
+   }
+  ],
+  "table_summary": {
+   "cols": [
+    "str"
+   ],
+   "rows": [
+    [
+     "str"
+    ]
+   ]
+  }
+ },
+ "idGlossary": {
+  "source": "str",
+  "note": "str",
+  "entries": [
+   [
+    "id",
+    "label",
+    "url",
+    "desc"
+   ]
+  ],
+  "reads_as": "str",
+  "live_result": "str?"
+ },
+ "quizBank": [
+  {
+   "sec": "str",
+   "type": "deduce|concept|error",
+   "q": "str",
+   "code": "str?",
+   "opts": [
+    "str"
+   ],
+   "correct": "int",
+   "explain": "str"
+  }
+ ],
+ "inferenceContrast": {
+  "cards": [
+   {
+    "title": "str",
+    "code": "str",
+    "note": "str"
+   }
+  ]
+ },
+ "axiomReference": {
+  "cols": [
+   "str"
+  ],
+  "groups": [
+   {
+    "name": "str",
+    "rows": [
+     [
+      "str"
+     ]
+    ]
+   }
+  ]
+ }
+}

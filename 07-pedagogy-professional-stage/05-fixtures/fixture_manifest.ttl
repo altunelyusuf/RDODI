@@ -1,0 +1,4 @@
+@prefix fix: <http://example.org/fixture#> .
+@prefix sc: <http://example.org/rdodi/standards-conformance#> .
+fix:manifest a sc:StandardsConformanceManifest ; sc:claimsStandard sc:WCAG_2_2_AA , sc:Bloom_Revised .
+fix:surface sc:hasDeliveryProfile sc:CoursewareProfile .

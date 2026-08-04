@@ -1,0 +1,95 @@
+@prefix doc:     <http://example.org/rdodi/document-ontology#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/rdodi/document-ontology/abox> a owl:Ontology ;
+    owl:versionIRI <http://example.org/rdodi/document-ontology/abox/public/1.1.1> ;
+    owl:versionInfo "1.1.1" ;
+    owl:priorVersion <http://example.org/rdodi/document-ontology/abox/1.1.0> ;
+    dcterms:modified "2026-08-03"^^xsd:date ;
+    rdfs:comment "Populates doc:ArtifactGenre with the 12 genres named in document_ontology_tbox_v1_0_1's own ArtifactGenre definition (11 original + thesis, the confirmed-missing genre), each with an ArtifactKindSpec linking to a CitationForm. Citation-form-per-genre mapping is DERIVED from document_ontology_tbox_v1_0_1's own CitationForm skos:definition (explicit: academic reports->Harvard/IEEE, technical reports->numbered footnotes, handbooks/FAQs->parenthetical inline); extended to the remaining genres by standard academic convention, disclosed as convention-based, not literature-measured. hasStructuralTemplate/hasVoiceConstraint deliberately DEFERRED (not fabricated). Distinct from the 3 profile-specific individuals already in 01-profiles/rdodi_profiles_abox_v1_0_0.ttl (course-document/technical-report/whitepaper), which mint their own separate genre individuals for output-profile purposes; this file is the canonical genre catalogue."@en .
+
+# ---- Citation forms (4, matching document_ontology_tbox's own CitationForm definition text) ----
+doc:cf_Harvard a doc:CitationForm, owl:NamedIndividual ; rdfs:label "Harvard in-text + alphabetical references"@en ;
+    dcterms:source "document_ontology_tbox_v1_0_1 CitationForm definition: 'Harvard in-text + alphabetical References list'."@en .
+doc:cf_NumberedFootnote a doc:CitationForm, owl:NamedIndividual ; rdfs:label "numbered footnotes + bibliography"@en ;
+    dcterms:source "document_ontology_tbox_v1_0_1 CitationForm definition: 'numbered footnotes + bibliography'."@en .
+doc:cf_IEEE a doc:CitationForm, owl:NamedIndividual ; rdfs:label "IEEE-style square-bracketed numbers"@en ;
+    dcterms:source "document_ontology_tbox_v1_0_1 CitationForm definition: 'IEEE-style square-bracketed numbers'."@en .
+doc:cf_ParentheticalInline a doc:CitationForm, owl:NamedIndividual ; rdfs:label "parenthetical inline references"@en ;
+    dcterms:source "document_ontology_tbox_v1_0_1 CitationForm definition: 'handbooks and FAQs typically use parenthetical inline references'."@en .
+
+# ---- Genres (12: 11 from the TBox comment + thesis) + ArtifactKindSpec (hasGenre + hasCitationForm) ----
+doc:genre_ResearchReport a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "research-report"@en .
+doc:kind_ResearchReport a doc:ArtifactKindSpec, owl:NamedIndividual ; rdfs:label "research-report kind spec"@en ;
+    doc:hasGenre doc:genre_ResearchReport ;
+    doc:hasCitationForm doc:cf_Harvard ;
+    dcterms:source "Citation-form choice: academic research reports use Harvard or IEEE (TBox stated convention; Harvard chosen)."@en .
+
+doc:genre_LiteratureReview a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "literature-review"@en .
+doc:kind_LiteratureReview a doc:ArtifactKindSpec, owl:NamedIndividual ; rdfs:label "literature-review kind spec"@en ;
+    doc:hasGenre doc:genre_LiteratureReview ;
+    doc:hasCitationForm doc:cf_Harvard ;
+    dcterms:source "Citation-form choice: academic convention, same register as research-report."@en .
+
+doc:genre_TechnicalReport a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "technical-report"@en .
+doc:kind_TechnicalReport a doc:ArtifactKindSpec, owl:NamedIndividual ; rdfs:label "technical-report kind spec"@en ;
+    doc:hasGenre doc:genre_TechnicalReport ;
+    doc:hasCitationForm doc:cf_NumberedFootnote ;
+    dcterms:source "Citation-form choice: TBox stated convention: technical reports use numbered footnotes."@en .
+
+doc:genre_ChapterCommentary a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "chapter-commentary"@en .
+doc:kind_ChapterCommentary a doc:ArtifactKindSpec, owl:NamedIndividual ; rdfs:label "chapter-commentary kind spec"@en ;
+    doc:hasGenre doc:genre_ChapterCommentary ;
+    doc:hasCitationForm doc:cf_Harvard ;
+    dcterms:source "Citation-form choice: academic prose convention."@en .
+
+doc:genre_Handbook a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "handbook"@en .
+doc:kind_Handbook a doc:ArtifactKindSpec, owl:NamedIndividual ; rdfs:label "handbook kind spec"@en ;
+    doc:hasGenre doc:genre_Handbook ;
+    doc:hasCitationForm doc:cf_ParentheticalInline ;
+    dcterms:source "Citation-form choice: TBox stated convention: handbooks use parenthetical inline references."@en .
+
+doc:genre_FAQ a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "FAQ"@en .
+doc:kind_FAQ a doc:ArtifactKindSpec, owl:NamedIndividual ; rdfs:label "FAQ kind spec"@en ;
+    doc:hasGenre doc:genre_FAQ ;
+    doc:hasCitationForm doc:cf_ParentheticalInline ;
+    dcterms:source "Citation-form choice: TBox stated convention: FAQs use parenthetical inline references."@en .
+
+doc:genre_StudyGuide a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "study-guide"@en .
+doc:kind_StudyGuide a doc:ArtifactKindSpec, owl:NamedIndividual ; rdfs:label "study-guide kind spec"@en ;
+    doc:hasGenre doc:genre_StudyGuide ;
+    doc:hasCitationForm doc:cf_ParentheticalInline ;
+    dcterms:source "Citation-form choice: pedagogical register, same convention class as handbook/FAQ."@en .
+
+doc:genre_CourseDocument a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "course-document"@en .
+doc:kind_CourseDocument a doc:ArtifactKindSpec, owl:NamedIndividual ; rdfs:label "course-document kind spec"@en ;
+    doc:hasGenre doc:genre_CourseDocument ;
+    doc:hasCitationForm doc:cf_Harvard ;
+    dcterms:source "Citation-form choice: matches existing prof:CourseCompanionKind pattern (cite_Academic)."@en .
+
+doc:genre_ConferencePaper a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "conference-paper"@en .
+doc:kind_ConferencePaper a doc:ArtifactKindSpec, owl:NamedIndividual ; rdfs:label "conference-paper kind spec"@en ;
+    doc:hasGenre doc:genre_ConferencePaper ;
+    doc:hasCitationForm doc:cf_IEEE ;
+    dcterms:source "Citation-form choice: academic-conference convention (TBox: academic reports use Harvard or IEEE; IEEE chosen)."@en .
+
+doc:genre_JournalArticle a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "journal-article"@en .
+doc:kind_JournalArticle a doc:ArtifactKindSpec, owl:NamedIndividual ; rdfs:label "journal-article kind spec"@en ;
+    doc:hasGenre doc:genre_JournalArticle ;
+    doc:hasCitationForm doc:cf_Harvard ;
+    dcterms:source "Citation-form choice: academic convention."@en .
+
+doc:genre_WhitePaper a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "white-paper"@en .
+doc:kind_WhitePaper a doc:ArtifactKindSpec, owl:NamedIndividual ; rdfs:label "white-paper kind spec"@en ;
+    doc:hasGenre doc:genre_WhitePaper ;
+    doc:hasCitationForm doc:cf_ParentheticalInline ;
+    dcterms:source "Citation-form choice: matches existing prof:WhitepaperKind pattern (cite_InlineLinked)."@en .
+
+doc:genre_Thesis a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "thesis"@en .
+doc:kind_Thesis a doc:ArtifactKindSpec, owl:NamedIndividual ; rdfs:label "thesis kind spec"@en ;
+    doc:hasGenre doc:genre_Thesis ;
+    doc:hasCitationForm doc:cf_Harvard ;
+    dcterms:source "Citation-form choice: standard academic thesis convention; CONFIRMED-MISSING genre this package adds."@en .

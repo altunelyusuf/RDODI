@@ -1,0 +1,66 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdodi-page: <http://example.org/rdodi/interactive-page-ontology#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+#####################################################################
+# RDODI Stage-4 vocabulary delta v1.1.0 (PROPOSED)
+# Additive over interactive_page_ontology_tbox_v1_0_1.ttl (204 classes).
+# Intended to merge into canonical Stage-4 TBox -> versionInfo "1.1.0".
+# All parents (UIPattern, MacroNavigationPattern, WayfindingAffordance,
+# ArchitecturePattern, Tabs, Menu) are existing canonical classes.
+#####################################################################
+
+<http://example.org/rdodi/interactive-page-ontology/tbox/delta>
+    a owl:Ontology ;
+    rdfs:label "RDODI interactive-page TBox — navigation capabilities delta (proposed v1.1.0)"@en ;
+    owl:versionInfo "1.1.0-proposed" ;
+    dcterms:source "RDODI Enhancement Proposal — Stage-4 Interactive-Surface Navigation Capabilities v1.0.0; an externally verified reference implementation (sha256 dd80b79d...)."@en .
+
+### --- New: routed multi-view navigation (A2) ---
+rdodi-page:RoutedViewNavigation a owl:Class ;
+    rdfs:label "routed view navigation"@en ;
+    rdfs:subClassOf rdodi-page:MacroNavigationPattern ;
+    skos:definition "Macro navigation in which each top-level section is presented as its own self-contained view (sub-page); exactly one view is shown at a time, selected by a primary menu, an explorer tree, sub-tabs, or the URL fragment. Switches existing ApplicationView instances rather than scrolling a single long page."@en ;
+    dcterms:source "W3C-WAI ARIA Authoring Practices Guide (landmark/navigation regions); SPA route semantics, reusing rdodi-page:ApplicationView ('analogous to a route in SPA frameworks')."@en .
+
+rdodi-page:ClientSideRouter a owl:Class ;
+    rdfs:label "client-side router"@en ;
+    rdfs:subClassOf rdodi-page:ArchitecturePattern ;
+    skos:definition "A client-side hash/history router that resolves the current location to exactly one ApplicationView, hides the others, and synchronizes the active-location indicators (menu aria-current, tree aria-selected, sub-tab aria-current). No server round-trip; degrades to anchor links when scripting is unavailable."@en ;
+    dcterms:source "W3C HTML history/hashchange; WAI-ARIA aria-current. Reuses rdodi-page:AnchorLinks as the no-script fallback."@en .
+
+### --- New: sub-page tabs (A3), specializing existing Tabs ---
+rdodi-page:SubPageTabs a owl:Class ;
+    rdfs:label "sub-page tabs"@en ;
+    rdfs:subClassOf rdodi-page:Tabs ;
+    skos:definition "Tab-styled navigation links under a parent section that route between its sibling sub-pages (one tab per child entry, plus an overview tab). Realized as navigation links — not in-place panel swaps — so each tab is a routable sub-page with its own location."@en ;
+    dcterms:source "W3C-WAI ARIA APG Tabs pattern (visual idiom); realized as navigation per WAI-ARIA links, since targets are distinct routes."@en .
+
+### --- New: differentiated explorer iconography (A4) ---
+rdodi-page:DifferentiatedNodeIconography a owl:Class ;
+    rdfs:label "differentiated node iconography"@en ;
+    rdfs:subClassOf rdodi-page:WayfindingAffordance ;
+    skos:definition "Explorer-tree iconography that visually differentiates node level: parent nodes carry a folder icon whose open/closed state is bound to expansion (aria-expanded); leaf nodes carry a document icon. Aids orientation by encoding hierarchy in the glyph. Icons are original vector art (no third-party assets)."@en ;
+    dcterms:source "W3C-WAI ARIA APG Tree View (group vs item semantics); desktop file-explorer disclosure convention."@en .
+
+### --- New: overflow-safe primary menu (A5) ---
+rdodi-page:OverflowTabBar a owl:Class ;
+    rdfs:label "overflow tab bar"@en ;
+    rdfs:subClassOf rdodi-page:WayfindingAffordance ;
+    skos:definition "A single-row primary-navigation bar that scrolls horizontally on overflow instead of wrapping to additional rows, with an edge-fade overflow cue and an underline active-route indicator. Keeps the primary menu legible and stable across widths without reflowing the header."@en ;
+    dcterms:source "W3C-WAI ARIA role=menubar with aria-current; horizontal-overflow scroll-container convention. Refines rdodi-page:PrimaryNavigation presentation."@en .
+
+### --- Reconciliation: classes present in vendored v1.0.2 but absent from canonical v1.0.1 ---
+rdodi-page:TreeNavigation a owl:Class ;
+    rdfs:label "tree navigation"@en ;
+    rdfs:subClassOf rdodi-page:MacroNavigationPattern ;
+    skos:definition "A hierarchical, expandable/collapsible explorer of the artifact's sections, navigable by keyboard (arrow keys, Home/End, expand/collapse), with the current location indicated by aria-selected. Often co-serves as the table of contents."@en ;
+    dcterms:source "W3C-WAI ARIA APG Tree View pattern. Reconciles interactive_page_ontology_tbox_v1_0_2 (vendored) into canonical."@en .
+
+rdodi-page:ContextMenu a owl:Class ;
+    rdfs:label "context menu"@en ;
+    rdfs:subClassOf rdodi-page:Menu ;
+    skos:definition "A menu of context actions for a focused section, opened by the contextmenu event or the Shift+F10 / ContextMenu key, dismissed by Escape with focus returned to the originating element."@en ;
+    dcterms:source "W3C-WAI ARIA role=menu; WAI-ARIA APG Menu keyboard model. Reconciles interactive_page_ontology_tbox_v1_0_2 (vendored) into canonical; Menu already subsumes context menus."@en .

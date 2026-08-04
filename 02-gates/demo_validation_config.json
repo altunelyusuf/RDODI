@@ -1,0 +1,12 @@
+{
+  "research": "/mnt/user-data/outputs/demo_pipeline_v1_0_1/demo_research_v1_0_1.ttl",
+  "domain_tbox": "/mnt/user-data/outputs/demo_pipeline_v1_0_1/demo_domain_tbox_v1_0_1.ttl",
+  "domain_abox": "/mnt/user-data/outputs/demo_pipeline_v1_0_1/demo_domain_abox_v1_0_1.ttl",
+  "domain_shacl": "/mnt/user-data/outputs/demo_pipeline_v1_0_1/demo_domain_shacl_v1_0_1.ttl",
+  "document_ttl": "/mnt/user-data/outputs/demo_pipeline_v1_0_1/demo_document_v1_0_1.ttl",
+  "page_ttl": "/mnt/user-data/outputs/demo_pipeline_v1_0_1/demo_page_v1_0_1.ttl",
+  "rdodi_doc_tbox": "/home/claude/work/rdodi-v1_0_1/03-document-ontology/document_ontology_tbox_v1_0_1.ttl",
+  "rdodi_doc_shacl": "/home/claude/work/rdodi-v1_0_1/03-document-ontology/document_ontology_shacl_v1_0_1.ttl",
+  "rdodi_page_tbox": "/home/claude/work/rdodi-v1_0_1/04-interactive-page-ontology/interactive_page_ontology_tbox_v1_0_1.ttl",
+  "rdodi_page_shacl": "/home/claude/work/rdodi-v1_0_1/04-interactive-page-ontology/interactive_page_ontology_shacl_v1_0_1.ttl"
+}

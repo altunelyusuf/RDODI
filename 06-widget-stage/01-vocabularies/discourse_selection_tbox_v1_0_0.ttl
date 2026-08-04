@@ -1,0 +1,62 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ds: <http://example.org/rdodi/discourse-selection#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix wp: <http://example.org/widget-primitives#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/rdodi/discourse-selection> a owl:Ontology ;
+    rdfs:label "RDODI Discourse-Driven Widget Selection TBox v1.0.0"@en ;
+    dcterms:created "2026-05-28"^^xsd:date ;
+    owl:versionIRI <http://example.org/rdodi/discourse-selection/1.0.0> ;
+    owl:versionInfo "1.0.0" ;
+    skos:scopeNote "ORIGINATED layer (Phase 2) — no prior art in any existing file. Models how a source passage's discourse features auto-select a fitting widget primitive. Feature taxonomy anchored in RST (Mann & Thompson 1987) and Shneiderman's Task-by-Data-Type taxonomy (1996), per L-72 reuse-before-invent / BP-D41 verification."@en .
+
+ds:DataPatternFeature a owl:Class ;
+    rdfs:label "Data Pattern Feature"@en ;
+    dcterms:source "Shneiderman, 'The Eyes Have It', IEEE VL 1996, DOI:10.1109/VL.1996.545307 (verified 2026-05-28)" ;
+    rdfs:subClassOf ds:DiscourseFeature ;
+    skos:definition "A discourse feature defined by the data type / analytic task a passage describes (e.g. temporal-monotone series, K-category enumeration, multi-attribute relational set). Anchored in Shneiderman's Task-by-Data-Type Taxonomy (1996): 7 data types (1D/2D/3D/temporal/multidimensional/tree/network) x 7 tasks (overview/zoom/filter/details/relate/history/extract)."@en .
+
+ds:RhetoricalStructureFeature a owl:Class ;
+    rdfs:label "Rhetorical Structure Feature"@en ;
+    dcterms:source "Mann & Thompson, Rhetorical Structure Theory, 1987/1988" ;
+    rdfs:subClassOf ds:DiscourseFeature ;
+    skos:definition "A discourse feature defined by an RST coherence relation between text spans (e.g. Cause, Contrast, Sequence, Condition). Anchored in Rhetorical Structure Theory (Mann, W.C. & Thompson, S.A. 1987/1988)."@en .
+
+ds:autoSelectsWhen a owl:ObjectProperty ;
+    rdfs:label "auto-selects when"@en ;
+    dcterms:source "Originated Phase 2" ;
+    rdfs:domain wp:WidgetPrimitive ;
+    rdfs:range ds:DiscourseFeature ;
+    skos:definition "Links a widget primitive to the discourse feature whose presence in a passage auto-selects that primitive. This is the core of the self-adapting selector: the pipeline detects features in source text and fires the primitives whose autoSelectsWhen feature is present. NOT a manual menu — the mapping IS the selection rule."@en .
+
+ds:detectionRule a owl:DatatypeProperty ;
+    rdfs:label "detection rule"@en ;
+    rdfs:domain ds:DiscourseFeature ;
+    rdfs:range xsd:string ;
+    skos:definition "The rule by which the feature is detected in a passage. For TIER-A features this is a mechanical test; for TIER-C it is the interpretive question routed to an LLM/human judge."@en .
+
+ds:hasDetectionTier a owl:ObjectProperty ;
+    rdfs:label "has detection tier"@en ;
+    rdfs:domain ds:DiscourseFeature ;
+    rdfs:range ds:DetectionTier ;
+    skos:definition "Records whether detecting this feature is mechanical (TIER-A) or interpretive (TIER-C)."@en .
+
+ds:selectionWarrant a owl:DatatypeProperty ;
+    rdfs:label "selection warrant"@en ;
+    rdfs:domain wp:WidgetPrimitive ;
+    rdfs:range xsd:string ;
+    skos:definition "Emitted at selection time: the textual evidence (the passage span + which feature fired) justifying why this widget was auto-selected. Makes every auto-selection auditable, so a TIER-C mis-selection is catchable after the fact without ever risking content correctness."@en .
+
+ds:DetectionTier a owl:Class ;
+    rdfs:label "Detection Tier"@en ;
+    dcterms:source "Originated Phase 2; tier discipline from blueprint F39/F53" ;
+    skos:definition "Whether a feature's presence in a passage is mechanically checkable (TIER-A: e.g. an explicit enumerated list of named categories) or requires interpretation (TIER-C: e.g. 'this passage is ABOUT asymmetric pressure'). Per the project's tier discipline, TIER-C auto-selection is acceptable here because mis-selecting a widget affects fitness-of-form, never correctness of displayed content."@en .
+
+ds:DiscourseFeature a owl:Class ;
+    rdfs:label "Discourse Feature"@en ;
+    dcterms:source "Originated Phase 2; subclass anchors RST 1987 + Shneiderman 1996" ;
+    skos:definition "A detectable property of a source passage that warrants a particular widget primitive. Two kinds (see subclasses): rhetorical-structure features (from RST coherence relations) and data-pattern features (from Shneiderman's data-type/task taxonomy). A feature is the EVIDENCE half of an auto-selection: the selector fires a widget only when the passage exhibits the feature the widget's autoSelectsWhen names."@en .
+

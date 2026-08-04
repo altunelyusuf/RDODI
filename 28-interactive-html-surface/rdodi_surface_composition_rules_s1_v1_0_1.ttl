@@ -1,0 +1,45 @@
+@prefix rva:  <http://example.org/rdodi/widget-rules#> .
+@prefix ipo:  <http://example.org/rdodi/interactive-page-ontology#> .
+@prefix rule: <http://example.org/rdodi/widget-admissibility#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/rdodi/surface-composition/s1> a owl:Ontology ;
+    owl:versionIRI <http://example.org/rdodi/surface-composition/s1/1.0.0> ;
+    owl:versionInfo "1.0.0" ;
+    dcterms:modified "2026-07-02"^^xsd:date ;
+    rdfs:comment "InteractiveHTMLSurface Package S1: mandatory navigation/structure defaults, per the user's explicit spec (6 already-real classes) + 3 new WCAG/UX-grounded additions."@en .
+
+# ---- 6 already-real classes, user-specified as defaults ----
+rule:mand_PrimaryNavigation a rva:MandatoryWidgetRule, owl:NamedIndividual ;
+    rule:mandatesWidget ipo:PrimaryNavigation ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Always-visible top-level menu is a user-specified default for InteractiveHTMLSurface."@en .
+rule:mand_TreeNavigation a rva:MandatoryWidgetRule, owl:NamedIndividual ;
+    rule:mandatesWidget ipo:TreeNavigation ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Left iconized hierarchic menu is a user-specified default for InteractiveHTMLSurface."@en .
+rule:mand_SubPageTabs a rva:MandatoryWidgetRule, owl:NamedIndividual ;
+    rule:mandatesWidget ipo:SubPageTabs ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Sub-tabs with sub-pages (instead of a long scrolling page) is a user-specified default."@en .
+rule:mand_RoutedViewNavigation a rva:MandatoryWidgetRule, owl:NamedIndividual ;
+    rule:mandatesWidget ipo:RoutedViewNavigation ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Routed multi-view structure underlies the sub-tabs/sub-pages default the user specified."@en .
+rule:mand_OverflowTabBar a rva:MandatoryWidgetRule, owl:NamedIndividual ;
+    rule:mandatesWidget ipo:OverflowTabBar ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Overflow handling for the sub-tab bar is required whenever tabs exceed available width."@en .
+rule:mand_AnchorLinks a rva:MandatoryWidgetRule, owl:NamedIndividual ;
+    rule:mandatesWidget ipo:AnchorLinks ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "In-page forward/backward navigation links is a user-specified default for InteractiveHTMLSurface."@en .
+
+# ---- 3 new classes, declared Mandatory (baseline UX/accessibility, disclosed as our own extension not the user's literal list) ----
+rule:mand_Breadcrumb a rva:MandatoryWidgetRule, owl:NamedIndividual ;
+    rule:mandatesWidget ipo:Breadcrumb ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Breadcrumb wayfinding is declared Mandatory as a baseline navigation default, extending (not part of) the user's literal list."@en .
+rule:mand_SkipToContent a rva:MandatoryWidgetRule, owl:NamedIndividual ;
+    rule:mandatesWidget ipo:SkipToContent ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Skip-to-content is declared Mandatory: WCAG 2.4.1 baseline accessibility, not optional by design."@en .
+rule:mand_ResponsiveLayout a rva:MandatoryWidgetRule, owl:NamedIndividual ;
+    rule:mandatesWidget ipo:ResponsiveLayout ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Responsive layout is declared Mandatory: mobile/narrow-viewport compatibility is a baseline default, not optional."@en .

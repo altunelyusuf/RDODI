@@ -1,0 +1,12 @@
+@prefix stg: <http://example.org/stg/governance#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+# cite-not-import: references stg:GovernancePolicy by IRI; NO owl:imports
+stg:SourcingPolicy a owl:Class ; rdfs:subClassOf stg:GovernancePolicy ;
+  skos:definition "A policy requiring every governed term to carry a verifiable source."@en ; dct:conformsTo <http://example.org/external-authority#ExternalOEAuthority> .
+stg:NamingPolicy a owl:Class ; rdfs:subClassOf stg:GovernancePolicy ;
+  skos:definition "A policy constraining identifier and label conventions."@en ; dct:conformsTo <http://example.org/external-authority#ExternalOEAuthority> .
+stg:VersioningPolicy a owl:Class ; rdfs:subClassOf stg:GovernancePolicy ;
+  skos:definition "A policy governing version increments and lineage records."@en ; dct:conformsTo <http://example.org/external-authority#ExternalOEAuthority> .

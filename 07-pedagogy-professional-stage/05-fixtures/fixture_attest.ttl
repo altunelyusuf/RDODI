@@ -1,0 +1,8 @@
+@prefix fix: <http://example.org/fixture#> .
+@prefix at: <http://example.org/rdodi/attestation#> .
+@prefix sc: <http://example.org/rdodi/standards-conformance#> .
+fix:att1 a at:ReviewAttestation ;
+  at:reviewer "Y. Altunel" ; at:reviewerRole "educator" ;
+  at:standardReviewedAgainst sc:Bloom_Revised ; at:verdict "pass" ;
+  at:attestedAtTime "2026-05-28T12:00:00Z" ; at:attestationScope "pedagogical-soundness" ;
+  at:artifactHash "e03cb097a27ba1e068055d02f4e1a41a3495bb4832051fd7ef3bcd887980d40b" .

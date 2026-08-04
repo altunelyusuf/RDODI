@@ -1,0 +1,58 @@
+@prefix demo: <http://example.org/demo-pqm#> .
+@prefix aa: <http://example.org/rdodi/academic-authoring#> .
+@prefix rres: <http://example.org/rdodi/research-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+# minimal domain TBox: one area class + one concept under it
+demo:DemoArea a owl:Class ; rdfs:label "Demo Area"@en ; skos:definition "An area class for AA fixture."@en .
+demo:DemoConcept a owl:Class ; rdfs:label "Demo Concept"@en ; rdfs:subClassOf demo:DemoArea ; skos:definition "A concept under DemoArea."@en .
+
+# citations (one Consulted, one Reconstructed)
+demo:cite_demo_consulted a rres:Citation, aa:ConsultedSource, owl:NamedIndividual ;
+  rdfs:label "Consulted demo cite" .
+
+demo:cite_demo_consulted2 a rres:Citation, aa:ConsultedSource, owl:NamedIndividual ;
+  rdfs:label "Second consulted demo cite" .
+demo:cite_demo_reconstructed a rres:Citation, aa:ReconstructedSource, owl:NamedIndividual ;
+  rdfs:label "Reconstructed demo cite" .
+
+# treatment of DemoArea: needs Abstract + Background + Discussion + Implications
+demo:treat_DemoArea a aa:ExtendedTreatment, owl:NamedIndividual ;
+  aa:treats demo:DemoArea ;
+  aa:hasParagraph demo:p_da_abs , demo:p_da_bg , demo:p_da_dis , demo:p_da_imp .
+
+demo:p_da_abs a aa:AbstractParagraph ; aa:paragraphOrder 1 ;
+  aa:paragraphText "The Demo Area appears to play a central organising role; subsequent paragraphs typically develop its background, its conceptual discussion, and its practical implications." .
+demo:p_da_bg  a aa:BackgroundParagraph ; aa:paragraphOrder 2 ;
+  aa:paragraphText "Prior literature on the Demo Area is largely consolidated in the consulted source. The literature suggests that conceptual treatments often proceed by enumerating dimensions and contrasts that the present discussion will largely follow." .
+demo:p_da_dis a aa:DiscussionParagraph ; aa:paragraphOrder 3 ;
+  aa:paragraphText "Comparatively, the Demo Area may be analysed along multiple dimensions. The reconstructed account suggests the dimensions are largely orthogonal, although the consulted source tends to emphasise their interaction in practice." .
+demo:p_da_imp a aa:ImplicationsParagraph ; aa:paragraphOrder 4 ;
+  aa:paragraphText "Practically, planners may often benefit from treating the Demo Area dimensions jointly. The implication is generally that recommendations should typically be issued in pairs rather than singly." .
+
+# claims (one per paragraph, each linked to a citation)
+demo:cl_da_1 a aa:Claim ; aa:appearsIn demo:p_da_abs ; aa:claimType aa:ConceptualClaim ;
+  aa:claimText "The Demo Area plays a central organising role." ; aa:supportedBy demo:cite_demo_consulted .
+demo:cl_da_2 a aa:Claim ; aa:appearsIn demo:p_da_bg ; aa:claimType aa:HistoricalClaim ;
+  aa:claimText "Prior literature consolidated in the consulted source." ; aa:supportedBy demo:cite_demo_consulted .
+demo:cl_da_3 a aa:Claim ; aa:appearsIn demo:p_da_dis ; aa:claimType aa:ComparativeClaim ;
+  aa:claimText "Dimensions are largely orthogonal." ; aa:supportedBy demo:cite_demo_reconstructed .
+demo:cl_da_4 a aa:Claim ; aa:appearsIn demo:p_da_imp ; aa:claimType aa:NormativeClaim ;
+  aa:claimText "Recommendations should be issued in pairs." ; aa:supportedBy demo:cite_demo_consulted .
+
+# treatment of DemoConcept: concept-level needs Background + Discussion
+demo:treat_DemoConcept a aa:ExtendedTreatment, owl:NamedIndividual ;
+  aa:treats demo:DemoConcept ;
+  aa:hasParagraph demo:p_dc_bg , demo:p_dc_dis .
+
+demo:p_dc_bg  a aa:BackgroundParagraph ; aa:paragraphOrder 1 ;
+  aa:paragraphText "The Demo Concept appears in the literature as a refinement of the Demo Area. Its conceptual antecedents are typically traced to earlier work that the consulted source largely codifies." .
+demo:p_dc_dis a aa:DiscussionParagraph ; aa:paragraphOrder 2 ;
+  aa:paragraphText "In discussion, the Demo Concept generally interacts with adjacent concepts; the reconstructed account often presents this interaction as additive, although the consulted source tends to argue for a multiplicative effect." .
+
+demo:cl_dc_1 a aa:Claim ; aa:appearsIn demo:p_dc_bg ; aa:claimType aa:HistoricalClaim ;
+  aa:claimText "Conceptual antecedents traced to earlier work." ; aa:supportedBy demo:cite_demo_consulted .
+demo:cl_dc_2 a aa:Claim ; aa:appearsIn demo:p_dc_dis ; aa:claimType aa:ComparativeClaim ;
+  aa:claimText "Interaction with adjacent concepts is multiplicative." ; aa:supportedBy demo:cite_demo_consulted2 .

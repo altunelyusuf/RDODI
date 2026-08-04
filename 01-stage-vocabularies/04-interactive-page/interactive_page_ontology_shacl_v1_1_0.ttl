@@ -1,0 +1,1221 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdodi-page: <http://example.org/rdodi/interactive-page-ontology#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+rdodi-page:APIFirstCMS_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for APIFirstCMS"@en ;
+    rdfs:comment "Authored as part of v2.0.0 trio-conformance placeholder pass."@en ;
+    sh:property [ sh:message "Instance of APIFirstCMS SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:APIFirstCMS .
+
+rdodi-page:ApplicationState_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for ApplicationState"@en ;
+    sh:property [ sh:message "Instance of ApplicationState SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:ApplicationState .
+
+rdodi-page:ApplicationView_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for ApplicationView"@en ;
+    sh:property [ sh:message "Instance of ApplicationView SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:ApplicationView .
+
+rdodi-page:ApprovalWorkflow_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for ApprovalWorkflow"@en ;
+    sh:property [ sh:message "Instance of ApprovalWorkflow SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:ApprovalWorkflow .
+
+rdodi-page:ArchitecturePattern_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for ArchitecturePattern"@en ;
+    rdfs:comment "Authored as part of v2.0.0 trio-conformance placeholder pass."@en ;
+    sh:property [ sh:message "Instance of ArchitecturePattern SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:ArchitecturePattern .
+
+rdodi-page:AuditTrailEntry_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for AuditTrailEntry"@en ;
+    sh:property [ sh:message "Instance of AuditTrailEntry SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:AuditTrailEntry .
+
+rdodi-page:AuthorizationScope_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for AuthorizationScope"@en ;
+    sh:property [ sh:message "Instance of AuthorizationScope SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:AuthorizationScope .
+
+rdodi-page:BookChapterShape a sh:NodeShape ;
+    sh:property [ sh:minCount 1 ;
+            sh:path rdodi-page:hasChapterSection ;
+            sh:severity sh:Violation ],
+        [ sh:message "BookChapter SHOULD declare its Learning Objectives (most educational textbooks do)."@en ;
+            sh:minCount 1 ;
+            sh:path rdodi-page:hasLearningObjective ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:BookChapter .
+
+rdodi-page:CDN_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for CDN"@en ;
+    rdfs:comment "Authored as part of v2.0.0 trio-conformance placeholder pass."@en ;
+    sh:property [ sh:message "Instance of CDN SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:CDN .
+
+rdodi-page:CallToAction_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for CallToAction"@en ;
+    sh:property [ sh:message "Instance of CallToAction SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:CallToAction .
+
+rdodi-page:Cap_Animation_AccessibilityCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Animation → AccessibilityCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Animation quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_Animation but lacks QualityAssessment along AccessibilityCompliance (Required). prefers-reduced-motion media query honored"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Animation_PerformanceOptimization_Recommended_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Animation → PerformanceOptimization (Recommended)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Animation quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:message "Page declares Cap_Animation but lacks QualityAssessment along PerformanceOptimization (Recommended). CPU/GPU impact of complex animations"@en ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_AudioEmbed_AccessibilityCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_AudioEmbed → AccessibilityCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_AudioEmbed quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_AudioEmbed but lacks QualityAssessment along AccessibilityCompliance (Required). Transcript REQUIRED — audio without text is inaccessible"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_AudioEmbed_SizeOptimization_Recommended_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_AudioEmbed → SizeOptimization (Recommended)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_AudioEmbed quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:message "Page declares Cap_AudioEmbed but lacks QualityAssessment along SizeOptimization (Recommended). Audio files contribute to page weight"@en ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_CodeExecution_PerformanceOptimization_Recommended_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_CodeExecution → PerformanceOptimization (Recommended)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_CodeExecution quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:message "Page declares Cap_CodeExecution but lacks QualityAssessment along PerformanceOptimization (Recommended). Runtime payload size affects page load time"@en ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_CodeExecution_SecurityCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_CodeExecution → SecurityCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_CodeExecution quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_CodeExecution but lacks QualityAssessment along SecurityCompliance (Required). Sandbox isolation required to prevent malicious code"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_DataTable_AccessibilityCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_DataTable → AccessibilityCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_DataTable quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_DataTable but lacks QualityAssessment along AccessibilityCompliance (Required). Table headers, ARIA roles, keyboard navigation"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_DataTable_PerformanceOptimization_Recommended_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_DataTable → PerformanceOptimization (Recommended)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_DataTable quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:message "Page declares Cap_DataTable but lacks QualityAssessment along PerformanceOptimization (Recommended). Virtualization for large tables"@en ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Discussion_AccessibilityCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Discussion → AccessibilityCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Discussion quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_Discussion but lacks QualityAssessment along AccessibilityCompliance (Required). Accessible threading and reply UI"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Discussion_PrivacyCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Discussion → PrivacyCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Discussion quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_Discussion but lacks QualityAssessment along PrivacyCompliance (Required). User-generated content + participant data are personal"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Discussion_SecurityCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Discussion → SecurityCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Discussion quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_Discussion but lacks QualityAssessment along SecurityCompliance (Required). Input sanitization to prevent XSS/injection"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_DocumentEmbed_AccessibilityCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_DocumentEmbed → AccessibilityCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_DocumentEmbed quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_DocumentEmbed but lacks QualityAssessment along AccessibilityCompliance (Required). Text extraction + page-level navigation"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_DocumentEmbed_SizeOptimization_Recommended_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_DocumentEmbed → SizeOptimization (Recommended)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_DocumentEmbed quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:message "Page declares Cap_DocumentEmbed but lacks QualityAssessment along SizeOptimization (Recommended). Documents are often large — affects page weight"@en ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_GeneralInteraction_AccessibilityCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_GeneralInteraction → AccessibilityCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_GeneralInteraction quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_GeneralInteraction but lacks QualityAssessment along AccessibilityCompliance (Required). Label association + accessible error messages"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_GeneralInteraction_PrivacyCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_GeneralInteraction → PrivacyCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_GeneralInteraction quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_GeneralInteraction but lacks QualityAssessment along PrivacyCompliance (Required). Form data handling per privacy regulations"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_LiveCollaboration_PerformanceOptimization_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_LiveCollaboration → PerformanceOptimization (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_LiveCollaboration quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_LiveCollaboration but lacks QualityAssessment along PerformanceOptimization (Required). Latency-sensitive — real-time user experience"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_LiveCollaboration_PrivacyCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_LiveCollaboration → PrivacyCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_LiveCollaboration quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_LiveCollaboration but lacks QualityAssessment along PrivacyCompliance (Required). Presence visibility is personal data"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Map_PerformanceOptimization_Recommended_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Map → PerformanceOptimization (Recommended)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Map quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:message "Page declares Cap_Map but lacks QualityAssessment along PerformanceOptimization (Recommended). Map tile loading affects perceived performance"@en ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Map_PrivacyCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Map → PrivacyCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Map quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_Map but lacks QualityAssessment along PrivacyCompliance (Required). Geolocation requests require user consent"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Multilingual_AccessibilityCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Multilingual → AccessibilityCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Multilingual quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_Multilingual but lacks QualityAssessment along AccessibilityCompliance (Required). <html lang> attribute per LanguageVariant"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Multilingual_DiscoverabilityOptimization_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Multilingual → DiscoverabilityOptimization (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Multilingual quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_Multilingual but lacks QualityAssessment along DiscoverabilityOptimization (Required). hreflang attributes for multi-language SEO"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Notification_AccessibilityCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Notification → AccessibilityCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Notification quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_Notification but lacks QualityAssessment along AccessibilityCompliance (Required). ARIA live regions, dismissibility for screen-reader users"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Notification_UsabilityOptimization_Recommended_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Notification → UsabilityOptimization (Recommended)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Notification quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:message "Page declares Cap_Notification but lacks QualityAssessment along UsabilityOptimization (Recommended). Clear severity indication and timing"@en ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Quiz_AccessibilityCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Quiz → AccessibilityCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Quiz quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_Quiz but lacks QualityAssessment along AccessibilityCompliance (Required). Keyboard navigation for all Question interactions"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Quiz_PrivacyCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Quiz → PrivacyCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Quiz quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_Quiz but lacks QualityAssessment along PrivacyCompliance (Required). Attempt data is personal — must be handled per privacy regulations"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Search_AccessibilityCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Search → AccessibilityCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Search quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_Search but lacks QualityAssessment along AccessibilityCompliance (Required). ARIA live regions for results updates"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Search_PerformanceOptimization_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Search → PerformanceOptimization (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Search quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_Search but lacks QualityAssessment along PerformanceOptimization (Required). Search response time affects user perception of quality"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Simulation_AccessibilityCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Simulation → AccessibilityCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Simulation quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_Simulation but lacks QualityAssessment along AccessibilityCompliance (Required). Keyboard control of all ModelParameters"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Simulation_PerformanceOptimization_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Simulation → PerformanceOptimization (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Simulation quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_Simulation but lacks QualityAssessment along PerformanceOptimization (Required). Simulation tick rate affects perceived smoothness"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_ThreeDScene_AccessibilityCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_ThreeDScene → AccessibilityCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_ThreeDScene quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_ThreeDScene but lacks QualityAssessment along AccessibilityCompliance (Required). Keyboard navigation + alternative text description"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_ThreeDScene_PerformanceOptimization_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_ThreeDScene → PerformanceOptimization (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_ThreeDScene quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_ThreeDScene but lacks QualityAssessment along PerformanceOptimization (Required). 3D rendering is GPU-intensive — significant impact"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Timeline_AccessibilityCompliance_Recommended_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Timeline → AccessibilityCompliance (Recommended)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Timeline quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:message "Page declares Cap_Timeline but lacks QualityAssessment along AccessibilityCompliance (Recommended). Keyboard navigation through Timeline entries"@en ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Timeline_UsabilityOptimization_Recommended_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Timeline → UsabilityOptimization (Recommended)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Timeline quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:message "Page declares Cap_Timeline but lacks QualityAssessment along UsabilityOptimization (Recommended). Clear chronological signposts"@en ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_UsabilityMetering_PerformanceOptimization_Recommended_Shape a sh:NodeShape ;
+    rdfs:label "Cap_UsabilityMetering recommends PerformanceOptimization assessment"@en ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_UsabilityMetering_UsabilityOptimization_Required_Shape a sh:NodeShape ;
+    rdfs:label "Cap_UsabilityMetering implies UsabilityOptimization REQUIRED"@en ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_VideoEmbed_AccessibilityCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_VideoEmbed → AccessibilityCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_VideoEmbed quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_VideoEmbed but lacks QualityAssessment along AccessibilityCompliance (Required). Captions + audio description + transcript REQUIRED"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_VideoEmbed_PerformanceOptimization_Recommended_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_VideoEmbed → PerformanceOptimization (Recommended)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_VideoEmbed quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:message "Page declares Cap_VideoEmbed but lacks QualityAssessment along PerformanceOptimization (Recommended). Buffering and playback performance"@en ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_VideoEmbed_SizeOptimization_Recommended_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_VideoEmbed → SizeOptimization (Recommended)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_VideoEmbed quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:message "Page declares Cap_VideoEmbed but lacks QualityAssessment along SizeOptimization (Recommended). Video files are large — affects page weight"@en ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Visualization_AccessibilityCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Visualization → AccessibilityCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Visualization quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_Visualization but lacks QualityAssessment along AccessibilityCompliance (Required). Alternative text + data table fallback for screen readers"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Visualization_PerformanceOptimization_Recommended_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Visualization → PerformanceOptimization (Recommended)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Visualization quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:message "Page declares Cap_Visualization but lacks QualityAssessment along PerformanceOptimization (Recommended). Rendering performance for large datasets"@en ;
+    sh:severity sh:Warning ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Workflow_AccessibilityCompliance_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Workflow → AccessibilityCompliance (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Workflow quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_Workflow but lacks QualityAssessment along AccessibilityCompliance (Required). Keyboard navigation through steps"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:Cap_Workflow_UsabilityOptimization_Required_Shape a sh:NodeShape ;
+    rdfs:label "Capability quality implication: Cap_Workflow → UsabilityOptimization (Required)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5 (Cap_Workflow quality implications)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Severity=Required → SHACL sh:Violation."@en ;
+    sh:message "Page declares Cap_Workflow but lacks QualityAssessment along UsabilityOptimization (Required). Clear progress, undo/back, validation messaging"@en ;
+    sh:severity sh:Violation ;
+    sh:targetSubjectsOf rdodi-page:declaresCapability .
+
+rdodi-page:CategorisationGameShape a sh:NodeShape ;
+    rdfs:label "CategorisationGame skeleton + semantic"@en ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ sh:message "CategorisationGame SHOULD demonstrate at least 2 categories (otherwise there is nothing to sort between)."@en ;
+            sh:minCount 2 ;
+            sh:path rdodi-page:demonstratesSubject ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:CategorisationGame .
+
+rdodi-page:ChapterOrganization_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for ChapterOrganization"@en ;
+    sh:property [ sh:message "Instance of ChapterOrganization SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:ChapterOrganization .
+
+rdodi-page:CitableArtifact_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for CitableArtifact"@en ;
+    sh:property [ sh:message "Instance of CitableArtifact SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:CitableArtifact .
+
+rdodi-page:ClientRendering_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for ClientRendering"@en ;
+    rdfs:comment "Authored as part of v2.0.0 trio-conformance placeholder pass."@en ;
+    sh:property [ sh:message "Instance of ClientRendering SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:ClientRendering .
+
+rdodi-page:ClientSideRendering_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for ClientSideRendering"@en ;
+    rdfs:comment "Authored as part of v2.0.0 trio-conformance placeholder pass."@en ;
+    sh:property [ sh:message "Instance of ClientSideRendering SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:ClientSideRendering .
+
+rdodi-page:CollapsibleHierarchyViewerShape a sh:NodeShape ;
+    rdfs:label "CollapsibleHierarchyViewer skeleton"@en ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass rdodi-page:CollapsibleHierarchyViewer .
+
+rdodi-page:ContentManagementSystem_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for ContentManagementSystem"@en ;
+    rdfs:comment "Authored as part of v2.0.0 trio-conformance placeholder pass."@en ;
+    sh:property [ sh:message "Instance of ContentManagementSystem SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:ContentManagementSystem .
+
+rdodi-page:CoreWebVitalAssessmentShape a sh:NodeShape ;
+    rdfs:label "Core Web Vital Assessment Shape"@en ;
+    rdfs:comment "Enforces measurement structure on QualityAssessment individuals that target PerformanceOptimization."@en ;
+    sh:property [ sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:path rdodi-page:hasMeasuredValue ;
+            sh:severity sh:Violation ] ;
+    sh:targetSubjectsOf rdodi-page:hasMeasuredValue .
+
+rdodi-page:CoupledVariableDemonstratorShape a sh:NodeShape ;
+    rdfs:label "CoupledVariableDemonstrator semantic"@en ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ sh:minCount 1 ;
+            sh:path rdodi-page:enforcesDomainConstraint ;
+            sh:severity sh:Violation ] ;
+    sh:targetClass rdodi-page:CoupledVariableDemonstrator .
+
+rdodi-page:DecoupledCMS_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for DecoupledCMS"@en ;
+    rdfs:comment "Authored as part of v2.0.0 trio-conformance placeholder pass."@en ;
+    sh:property [ sh:message "Instance of DecoupledCMS SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:DecoupledCMS .
+
+rdodi-page:DeploymentModel_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for DeploymentModel"@en ;
+    rdfs:comment "Authored as part of v2.0.0 trio-conformance placeholder pass."@en ;
+    sh:property [ sh:message "Instance of DeploymentModel SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:DeploymentModel .
+
+rdodi-page:DiagramAnnotationShape a sh:NodeShape ;
+    rdfs:label "DiagramAnnotation skeleton"@en ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass rdodi-page:DiagramAnnotation .
+
+rdodi-page:DialoguePrincipleSourceShape a sh:NodeShape ;
+    rdfs:label "Dialogue Principle must cite ISO 9241-110"@en ;
+    sh:property [ sh:message "DialoguePrinciple MUST cite its source (e.g., ISO 9241-110)." ;
+            sh:minCount 1 ;
+            sh:path dcterms:source ;
+            sh:severity sh:Violation ] ;
+    sh:targetClass rdodi-page:DialoguePrinciple .
+
+rdodi-page:InstructionalWidgetShape a sh:NodeShape ;
+    rdfs:label "InstructionalWidget skeleton + semantic"@en ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ sh:minCount 1 ;
+            sh:path rdodi-page:demonstratesSubject ;
+            sh:severity sh:Violation ],
+        [ sh:minCount 0 ;
+            sh:path rdodi-page:enforcesDomainConstraint ;
+            sh:severity sh:Info ] ;
+    sh:targetClass rdodi-page:InstructionalWidget .
+
+rdodi-page:InteractiveLearningSurfaceShape a sh:NodeShape ;
+    rdfs:label "InteractiveLearningSurface skeleton + semantic"@en ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ sh:minCount 1 ;
+            sh:path rdodi-page:hasSourceDocument ;
+            sh:severity sh:Warning ],
+        [ sh:minCount 1 ;
+            sh:path rdodi-page:hasSemanticRegion ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:InteractiveLearningSurface .
+
+rdodi-page:MeasuredValueStructureShape a sh:NodeShape ;
+    rdfs:label "Measured Value Structure Shape"@en ;
+    rdfs:comment "A MeasuredValue MUST carry a numeric value and a unit."@en ;
+    sh:property [ sh:datatype xsd:double ;
+            sh:maxCount 1 ;
+            sh:message "MeasuredValue MUST have exactly one xsd:double numericMeasuredValue." ;
+            sh:minCount 1 ;
+            sh:path rdodi-page:numericMeasuredValue ;
+            sh:severity sh:Violation ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:message "MeasuredValue MUST have exactly one unitOfMeasure (e.g., 'ms', 'score-0-100', 'ratio')." ;
+            sh:minCount 1 ;
+            sh:path rdodi-page:unitOfMeasure ;
+            sh:severity sh:Violation ] ;
+    sh:targetClass rdodi-page:MeasuredValue .
+
+rdodi-page:PageIndustrialUXShape a sh:NodeShape ;
+    rdfs:label "Page Industrial UX Shape"@en ;
+    sh:property [ sh:minCount 1 ;
+            sh:path rdodi-page:includesNavigationPattern ;
+            sh:severity sh:Warning ],
+        [ sh:minCount 5 ;
+            sh:path rdodi-page:satisfiesHeuristic ;
+            sh:severity sh:Violation ],
+        [ sh:minCount 1 ;
+            sh:path rdodi-page:hasLifecycleState ;
+            sh:severity sh:Warning ],
+        [ sh:message "Industrial-UX baseline." ;
+            sh:minCount 1 ;
+            sh:path rdodi-page:hasLayoutPattern ;
+            sh:severity sh:Violation ],
+        [ sh:minCount 1 ;
+            sh:path rdodi-page:hasSemanticRegion ;
+            sh:severity sh:Violation ] .
+
+rdodi-page:PageWithSourceShape a sh:NodeShape ;
+    sh:property [ sh:minCount 1 ;
+            sh:path rdodi-page:coversChapterSection ;
+            sh:severity sh:Warning ],
+        [ sh:minCount 1 ;
+            sh:path rdodi-page:coversLearningObjective ;
+            sh:severity sh:Warning ],
+        [ sh:minCount 1 ;
+            sh:path rdodi-page:coversCaseStudy ;
+            sh:severity sh:Warning ],
+        [ sh:message "Page with a SourceDocument SHOULD render at least one equivalent of a source Figure (own SVG, animation, or interactive)."@en ;
+            sh:minCount 1 ;
+            sh:path rdodi-page:depictsSourceFigure ;
+            sh:severity sh:Warning ] ;
+    sh:targetSubjectsOf rdodi-page:hasSourceDocument .
+
+rdodi-page:Page_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for Page"@en ;
+    sh:property [ sh:message "Representative Page instance SHOULD carry an rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:Page .
+
+rdodi-page:ParametricCalculatorShape a sh:NodeShape ;
+    rdfs:label "ParametricCalculator skeleton"@en ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass rdodi-page:ParametricCalculator .
+
+rdodi-page:PrimarySourceCoverageShape a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:decimal ;
+            sh:message "Surfaces gap between intrinsic pipeline metrics (interactivity, JS LOC, SHACL conformance) and content-fidelity to the named primary source."@en ;
+            sh:minInclusive 0.8 ;
+            sh:path rdodi-page:primarySourceConceptCoverage ;
+            sh:severity sh:Warning ],
+        [ sh:datatype xsd:nonNegativeInteger ;
+            sh:path rdodi-page:primarySourceConceptInventorySize ;
+            sh:severity sh:Info ] ;
+    sh:targetClass rdodi-page:InteractiveLearningSurface .
+
+rdodi-page:PrimarySourceProvenanceShape a sh:NodeShape ;
+    rdfs:label "PrimarySourceProvenance skeleton"@en ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass rdodi-page:PrimarySourceProvenance .
+
+rdodi-page:Profile_Application_AccessibilityCompliance_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: AccessibilityCompliance is Required for WPC_Application"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Application, AccessibilityCompliance assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Application .
+
+rdodi-page:Profile_Application_PerformanceOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: PerformanceOptimization is Required for WPC_Application"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Application, PerformanceOptimization assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Application .
+
+rdodi-page:Profile_Application_PrivacyCompliance_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: PrivacyCompliance is Required for WPC_Application"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Application, PrivacyCompliance assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Application .
+
+rdodi-page:Profile_Application_SEOOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: SEOOptimization is Recommended for WPC_Application"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Application, SEOOptimization assessment is Recommended. Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:severity sh:Warning ;
+    sh:targetClass rdodi-page:WPC_Application .
+
+rdodi-page:Profile_Application_SecurityCompliance_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: SecurityCompliance is Required for WPC_Application"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Application, SecurityCompliance assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Application .
+
+rdodi-page:Profile_Application_SizeOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: SizeOptimization is Recommended for WPC_Application"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Application, SizeOptimization assessment is Recommended. Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:severity sh:Warning ;
+    sh:targetClass rdodi-page:WPC_Application .
+
+rdodi-page:Profile_Application_UsabilityOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: UsabilityOptimization is Required for WPC_Application"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Application, UsabilityOptimization assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Application .
+
+rdodi-page:Profile_Corporate_AccessibilityCompliance_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: AccessibilityCompliance is Required for WPC_Corporate"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Corporate, AccessibilityCompliance assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Corporate .
+
+rdodi-page:Profile_Corporate_DiscoverabilityOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: DiscoverabilityOptimization is Required for WPC_Corporate"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Corporate, DiscoverabilityOptimization assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Corporate .
+
+rdodi-page:Profile_Corporate_PerformanceOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: PerformanceOptimization is Required for WPC_Corporate"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Corporate, PerformanceOptimization assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Corporate .
+
+rdodi-page:Profile_Corporate_PrivacyCompliance_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: PrivacyCompliance is Required for WPC_Corporate"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Corporate, PrivacyCompliance assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Corporate .
+
+rdodi-page:Profile_Corporate_SEOOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: SEOOptimization is Required for WPC_Corporate"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Corporate, SEOOptimization assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Corporate .
+
+rdodi-page:Profile_Corporate_SecurityCompliance_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: SecurityCompliance is Recommended for WPC_Corporate"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Corporate, SecurityCompliance assessment is Recommended. Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:severity sh:Warning ;
+    sh:targetClass rdodi-page:WPC_Corporate .
+
+rdodi-page:Profile_Corporate_SizeOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: SizeOptimization is Recommended for WPC_Corporate"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Corporate, SizeOptimization assessment is Recommended. Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:severity sh:Warning ;
+    sh:targetClass rdodi-page:WPC_Corporate .
+
+rdodi-page:Profile_Corporate_UsabilityOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: UsabilityOptimization is Required for WPC_Corporate"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Corporate, UsabilityOptimization assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Corporate .
+
+rdodi-page:Profile_Demo_AccessibilityCompliance_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: AccessibilityCompliance is Recommended for WPC_Demo"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Demo, AccessibilityCompliance assessment is Recommended. Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:severity sh:Warning ;
+    sh:targetClass rdodi-page:WPC_Demo .
+
+rdodi-page:Profile_Demo_DiscoverabilityOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: DiscoverabilityOptimization is Required for WPC_Demo"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Demo, DiscoverabilityOptimization assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Demo .
+
+rdodi-page:Profile_Demo_PerformanceOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: PerformanceOptimization is Required for WPC_Demo"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Demo, PerformanceOptimization assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Demo .
+
+rdodi-page:Profile_Demo_PrivacyCompliance_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: PrivacyCompliance is Recommended for WPC_Demo"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Demo, PrivacyCompliance assessment is Recommended. Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:severity sh:Warning ;
+    sh:targetClass rdodi-page:WPC_Demo .
+
+rdodi-page:Profile_Demo_SEOOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: SEOOptimization is Recommended for WPC_Demo"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Demo, SEOOptimization assessment is Recommended. Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:severity sh:Warning ;
+    sh:targetClass rdodi-page:WPC_Demo .
+
+rdodi-page:Profile_Demo_SizeOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: SizeOptimization is Required for WPC_Demo"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Demo, SizeOptimization assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Demo .
+
+rdodi-page:Profile_Demo_UsabilityOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: UsabilityOptimization is Recommended for WPC_Demo"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Demo, UsabilityOptimization assessment is Recommended. Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:severity sh:Warning ;
+    sh:targetClass rdodi-page:WPC_Demo .
+
+rdodi-page:Profile_Educational_AccessibilityCompliance_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: AccessibilityCompliance is Required for WPC_Educational"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Educational, AccessibilityCompliance assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Educational .
+
+rdodi-page:Profile_Educational_DiscoverabilityOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: DiscoverabilityOptimization is Required for WPC_Educational"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Educational, DiscoverabilityOptimization assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Educational .
+
+rdodi-page:Profile_Educational_PerformanceOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: PerformanceOptimization is Recommended for WPC_Educational"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Educational, PerformanceOptimization assessment is Recommended. Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:severity sh:Warning ;
+    sh:targetClass rdodi-page:WPC_Educational .
+
+rdodi-page:Profile_Educational_PrivacyCompliance_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: PrivacyCompliance is Required for WPC_Educational"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Educational, PrivacyCompliance assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Educational .
+
+rdodi-page:Profile_Educational_SEOOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: SEOOptimization is Recommended for WPC_Educational"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Educational, SEOOptimization assessment is Recommended. Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:severity sh:Warning ;
+    sh:targetClass rdodi-page:WPC_Educational .
+
+rdodi-page:Profile_Educational_SecurityCompliance_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: SecurityCompliance is Recommended for WPC_Educational"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Educational, SecurityCompliance assessment is Recommended. Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:severity sh:Warning ;
+    sh:targetClass rdodi-page:WPC_Educational .
+
+rdodi-page:Profile_Educational_SizeOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: SizeOptimization is Recommended for WPC_Educational"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Educational, SizeOptimization assessment is Recommended. Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:severity sh:Warning ;
+    sh:targetClass rdodi-page:WPC_Educational .
+
+rdodi-page:Profile_Educational_UsabilityOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: UsabilityOptimization is Required for WPC_Educational"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Educational, UsabilityOptimization assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Educational .
+
+rdodi-page:Profile_Internal_AccessibilityCompliance_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: AccessibilityCompliance is Required for WPC_Internal"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Internal, AccessibilityCompliance assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Internal .
+
+rdodi-page:Profile_Internal_PerformanceOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: PerformanceOptimization is Recommended for WPC_Internal"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Internal, PerformanceOptimization assessment is Recommended. Severity=Recommended → SHACL sh:Warning."@en ;
+    sh:severity sh:Warning ;
+    sh:targetClass rdodi-page:WPC_Internal .
+
+rdodi-page:Profile_Internal_PrivacyCompliance_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: PrivacyCompliance is Required for WPC_Internal"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Internal, PrivacyCompliance assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Internal .
+
+rdodi-page:Profile_Internal_SecurityCompliance_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: SecurityCompliance is Required for WPC_Internal"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Internal, SecurityCompliance assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Internal .
+
+rdodi-page:Profile_Internal_UsabilityOptimization_Shape a sh:NodeShape ;
+    rdfs:label "WPC Quality Profile: UsabilityOptimization is Required for WPC_Internal"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 quality matrix"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For instances of WPC_Internal, UsabilityOptimization assessment is Required. Severity=Required → SHACL sh:Violation."@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass rdodi-page:WPC_Internal .
+
+rdodi-page:QualityAssessment_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for QualityAssessment"@en ;
+    sh:property [ sh:message "Representative QualityAssessment instance SHOULD carry an rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-page:QualityAssessment .
+
+rdodi-page:SecondarySourceProvenanceShape a sh:NodeShape ;
+    rdfs:label "SecondarySourceProvenance skeleton"@en ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass rdodi-page:SecondarySourceProvenance .
+
+rdodi-page:SourceProvenanceShape a sh:NodeShape ;
+    rdfs:label "SourceProvenance skeleton"@en ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass rdodi-page:SourceProvenance .
+
+rdodi-page:TechnicalPageCodeShape a sh:NodeShape ;
+    sh:property [ sh:message "Inline <code> references do not count."@en ;
+            sh:minCount 1 ;
+            sh:path rdodi-page:containsCodeExample ;
+            sh:severity sh:Warning ] ;
+    sh:targetSubjectsOf rdodi-page:hasSourceDocument .
+
+rdodi-page:UsabilityHeuristicLabelShape a sh:NodeShape ;
+    rdfs:label "Usability Heuristic must have label and source"@en ;
+    sh:property [ sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Violation ],
+        [ sh:message "UsabilityHeuristic MUST cite its source (e.g., Nielsen Norman Group)." ;
+            sh:minCount 1 ;
+            sh:path dcterms:source ;
+            sh:severity sh:Violation ] ;
+    sh:targetClass rdodi-page:UsabilityHeuristic .
+
+rdodi-page:demonstratesSubjectPropertyShape a sh:NodeShape ;
+    rdfs:label "demonstratesSubject property shape"@en ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ sh:nodeKind sh:IRI ;
+            sh:path rdodi-page:demonstratesSubject ;
+            sh:severity sh:Violation ] ;
+    sh:targetSubjectsOf rdodi-page:demonstratesSubject .
+
+rdodi-page:enforcesDomainConstraintPropertyShape a sh:NodeShape ;
+    rdfs:label "enforcesDomainConstraint property shape"@en ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ sh:nodeKind sh:IRI ;
+            sh:path rdodi-page:enforcesDomainConstraint ;
+            sh:severity sh:Violation ] ;
+    sh:targetSubjectsOf rdodi-page:enforcesDomainConstraint .
+
+rdodi-page:hasSourceProvenancePropertyShape a sh:NodeShape ;
+    rdfs:label "hasSourceProvenance property shape"@en ;
+    sh:property [ sh:class rdodi-page:SourceProvenance ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rdodi-page:hasSourceProvenance ;
+            sh:severity sh:Violation ] ;
+    sh:targetSubjectsOf rdodi-page:hasSourceProvenance .
+
+rdodi-page:primarySourceConceptCoveragePropertyShape a sh:NodeShape ;
+    rdfs:label "primarySourceConceptCoverage property shape"@en ;
+    sh:property [ sh:datatype xsd:decimal ;
+            sh:maxInclusive 1.0 ;
+            sh:minInclusive 0.0 ;
+            sh:path rdodi-page:primarySourceConceptCoverage ;
+            sh:severity sh:Violation ] ;
+    sh:targetSubjectsOf rdodi-page:primarySourceConceptCoverage .
+
+<http://example.org/rdodi/interactive-page-ontology/shacl> a owl:Ontology ;
+    rdfs:label "RDODI Interactive Page Ontology shacl v1.1.0"@en ;
+    dcterms:created "2026-05-20"^^xsd:date ;
+    dcterms:creator <http://example.org/rdodi/agent/YusufAltunel> ;
+    dcterms:description "RDODI Interactive Page Ontology shacl. Part of the four-subject RDODI ecosystem: Research, Domain, Document, Interactive Page."@en ;
+    dcterms:identifier "interactive_page_ontology_shacl_v1_1_0" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-07-07"^^xsd:date ;
+    dcterms:publisher <http://example.org/rdodi/agent/IstanbulKulturUniversity> ;
+    dcterms:rights "Copyright (c) 2026 Yusuf Altunel. Licensed CC BY 4.0."@en ;
+    dcterms:rightsHolder <http://example.org/rdodi/agent/YusufAltunel> ;
+    rdfs:comment "RDODI shacl for the Interactive Page Ontology. Derived from 04-web-page-construction/web_page_construction_shacl_v7_0_0.ttl (SHA-256 f64761d64245165fa646343a17699ee856bec69384fedef43ae47a7897311a75)."@en ;
+    owl:versionIRI <http://example.org/rdodi/interactive-page-ontology/shacl/1.1.0> ;
+    owl:versionInfo "1.1.0" ;
+    owl:priorVersion <http://example.org/rdodi/interactive-page-ontology/shacl/1.0.1> ;
+    prov:wasAttributedTo <http://example.org/rdodi/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://example.org/rdodi/activity/RDODIOrigination_v1_0_1> .
+
+# ---- v1.1.0 addition: Path A (full) — DownloadableResource wiring shapes ----
+rdodi-page:DownloadableResource_LocationShape a sh:NodeShape ;
+    rdfs:label "DownloadableResource must have a resourceLocation"@en ;
+    sh:targetClass rdodi-page:DownloadableResource ;
+    sh:property [ sh:message "DownloadableResource SHOULD have exactly one resourceLocation."@en ;
+            sh:minCount 1 ;
+            sh:maxCount 1 ;
+            sh:path rdodi-page:resourceLocation ;
+            sh:severity sh:Warning ] .
+
+rdodi-page:Page_DownloadableResourceShape a sh:NodeShape ;
+    rdfs:label "hasDownloadableResource must point to a real DownloadableResource"@en ;
+    sh:targetSubjectsOf rdodi-page:hasDownloadableResource ;
+    sh:property [ sh:message "hasDownloadableResource SHOULD point to an individual typed DownloadableResource."@en ;
+            sh:class rdodi-page:DownloadableResource ;
+            sh:path rdodi-page:hasDownloadableResource ;
+            sh:severity sh:Warning ] .
+
+[] sh:maxCount 1 ;
+    sh:message "Finding MUST have exactly one severity (Pass/Warning/Violation)." ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:severity sh:Violation .
+
+[] sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:severity sh:Violation .
+
+[] sh:datatype xsd:string ;
+    sh:message "Finding MUST cite evidence supporting its verdict." ;
+    sh:minCount 1 ;
+    sh:severity sh:Violation .
+
+[] sh:maxCount 1 ;
+    sh:message "AssessmentReport MUST identify exactly one Page assessed." ;
+    sh:minCount 1 ;
+    sh:severity sh:Violation .
+
+[] sh:message "AssessmentReport MUST have at least one Finding." ;
+    sh:minCount 1 ;
+    sh:severity sh:Violation .
+
+[] sh:datatype xsd:nonNegativeInteger ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:severity sh:Violation .
+
+[] sh:datatype xsd:nonNegativeInteger ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:severity sh:Violation .
+
+[] sh:datatype xsd:double ;
+    sh:maxCount 1 ;
+    sh:maxInclusive 100.0 ;
+    sh:minCount 1 ;
+    sh:minInclusive 0.0 ;
+    sh:severity sh:Violation .
+
+[] sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:path rdodi-page:abbreviationToken .
+
+[] sh:datatype xsd:string ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:path rdodi-page:abbreviationExpansion .
+
+[] sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:path rdodi-page:firstUseSentence .
+
+[] sh:message "Instance of AnchorLinks SHOULD have at least one rdfs:label."@en ;
+    sh:minCount 1 ;
+    sh:path rdfs:label ;
+    sh:severity sh:Warning .
+
+[] sh:message "Instance of ArticleLayout SHOULD have at least one rdfs:label."@en ;
+    sh:minCount 1 ;
+    sh:path rdfs:label ;
+    sh:severity sh:Warning .
+
+[] sh:message "Instance of Aside SHOULD have at least one rdfs:label."@en ;
+    sh:minCount 1 ;
+    sh:path rdfs:label ;
+    sh:severity sh:Warning .
+
+[] sh:message "Instance of Breadcrumbs SHOULD have at least one rdfs:label."@en ;
+    sh:minCount 1 ;
+    sh:path rdfs:label ;
+    sh:severity sh:Warning .
+
+[] sh:message "Instance of CardLayout SHOULD have at least one rdfs:label."@en ;
+    sh:minCount 1 ;
+    sh:path rdfs:label ;
+    sh:severity sh:Warning .
+
+[] sh:message "Instance of ContentRegion SHOULD have at least one rdfs:label."@en ;
+    sh:minCount 1 ;
+    sh:path rdfs:label ;
+    sh:severity sh:Warning .
+
+[] sh:message "Instance of ContextualPopup SHOULD have at least one rdfs:label."@en ;
+    sh:minCount 1 ;
+    sh:path rdfs:label ;
+    sh:severity sh:Warning .
+
+[] sh:message "Instance of CrossReference SHOULD have at least one rdfs:label."@en ;
+    sh:minCount 1 ;
+    sh:path rdfs:label ;
+    sh:severity sh:Warning .
+
+[] rdf:first [ sh:minCount 1 ;
+            sh:path rdodi-page:findingEvidence ] ;
+    rdf:rest ( [ sh:minCount 1 ;
+                sh:path rdodi-page:findingCitedBy ] ) .
+
+[] sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:path rdodi-page:hypothesisFalsifiabilityCriterion ;
+    sh:severity sh:Violation .
+
+[] sh:in ( "supported" "partially-supported" "not-supported" "inconclusive" ) ;
+    sh:minCount 1 ;
+    sh:path rdodi-page:hypothesisTestVerdict ;
+    sh:severity sh:Violation .
+
+[] sh:class rdodi-page:Finding ;
+    sh:minCount 1 ;
+    sh:path rdodi-page:hypothesisEvidence ;
+    sh:severity sh:Violation .
+
+[] sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:path rdodi-page:reportSectionOrder ;
+    sh:pattern "Abstract.*Introduction.*Methods.*Findings.*Discussion.*Limitations.*References" ;
+    sh:severity sh:Violation .
+
+[] sh:datatype xsd:positiveInteger ;
+    sh:minCount 1 ;
+    sh:path rdodi-page:abstractWordLimit ;
+    sh:severity sh:Violation .
+
+[] sh:datatype xsd:nonNegativeInteger ;
+    sh:minCount 1 ;
+    sh:path rdodi-page:abstractWordCount ;
+    sh:severity sh:Violation .
+
+[] sh:or ( [ sh:pattern "^\\([A-Z][A-Za-z0-9\\-\\s\\.&]+( et al\\.)?,\\s+\\d{4}[a-z]?\\)$" ] [ sh:pattern "^\\[\\d+\\]$" ] [ sh:pattern "^\\(\\d+\\)$" ] ) ;
+    sh:path rdodi-page:inlineCitationKey ;
+    sh:severity sh:Violation .
+
+[] sh:class rdodi-page:CitationStyle ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:path rdodi-page:usesCitationStyle ;
+    sh:severity sh:Violation .
+
+[] sh:class rdodi-page:ReferenceList ;
+    sh:minCount 1 ;
+    sh:path rdodi-page:hasReferenceList ;
+    sh:severity sh:Violation .
+
+[] sh:in ( "chronological" "alphabetical" "citation-order" ) ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:path rdodi-page:referenceOrdering ;
+    sh:severity sh:Violation .
+
+[] sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:path dcterms:license ;
+    sh:severity sh:Violation .
+
+[] rdf:first [ sh:minCount 1 ;
+            sh:path prov:wasGeneratedBy ] ;
+    rdf:rest ( [ sh:minCount 1 ;
+                sh:path prov:wasDerivedFrom ] [ sh:minCount 1 ;
+                sh:path prov:wasRevisionOf ] ) .
+

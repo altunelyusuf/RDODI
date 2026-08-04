@@ -1,0 +1,43 @@
+@prefix rva:  <http://example.org/rdodi/widget-rules#> .
+@prefix ipo:  <http://example.org/rdodi/interactive-page-ontology#> .
+@prefix rdodi-document: <http://example.org/rdodi/document-ontology#> .
+@prefix rule: <http://example.org/rdodi/widget-admissibility#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/rdodi/surface-composition/s4> a owl:Ontology ;
+    owl:versionIRI <http://example.org/rdodi/surface-composition/s4/1.0.0> ;
+    owl:versionInfo "1.0.0" ;
+    dcterms:modified "2026-07-02"^^xsd:date ;
+    rdfs:comment "InteractiveHTMLSurface Package S4: citation & scholarly apparatus."@en .
+
+# Mandatory: CitationLink, wired to the Harvard (Surname,Year) default per the user's literal spec.
+# Named default individual carrying the explicit citation-form linkage.
+ipo:defaultCitationLink a ipo:CitationLink, owl:NamedIndividual ;
+    ipo:usesCitationForm rdodi-document:cf_Harvard ;
+    rdfs:label "Default citation link (Harvard / Surname,Year)"@en ;
+    skos:definition "The default CitationLink instance for InteractiveHTMLSurface, using Package 1's cf_Harvard ('Harvard in-text + alphabetical references') -- exactly the user's specified '(Surname, Year) as a default style.'"@en .
+
+rule:mand_CitationLink a rva:MandatoryWidgetRule, owl:NamedIndividual ;
+    rule:mandatesWidget ipo:CitationLink ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "In-page citation links to external references are a user-specified default for InteractiveHTMLSurface."@en .
+
+# DELIBERATE DEVIATION, explicitly recorded (CR-S4.2 requirement) -- NOT silently assumed:
+# the user specified "IEEE formatted list of references chronologically ordered as a default" for the
+# REFERENCE LIST specifically (as an alternate style option, distinct from the Harvard in-text default).
+# Standard IEEE numbering is citation-order (order of first appearance in text), NOT date-order. This
+# combination -- IEEE numbering format + chronological (date) ordering -- is a genuine deviation from the
+# IEEE norm. It is honored as specified, not silently corrected to standard IEEE citation-order, and is
+# recorded here explicitly per CR-S4.2 so it is never mistaken for a modeling error later.
+ipo:alternateCitationLink_IEEEChronological a ipo:CitationLink, owl:NamedIndividual ;
+    ipo:usesCitationForm rdodi-document:cf_IEEE ;
+    rdfs:label "Alternate citation link (IEEE, chronologically ordered)"@en ;
+    skos:definition "An alternate CitationLink configuration using Package 1's cf_IEEE ('IEEE-style square-bracketed numbers'), with the REFERENCE LIST chronologically (date-)ordered rather than IEEE's standard citation-order -- the user's explicit specification, honored as a deliberate deviation from the IEEE norm, not a silent correction."@en ;
+    dcterms:source "User's literal specification: 'IEEE formatted list of references chronologically ordered as a default but other styles are also supported.' Standard IEEE convention is citation-order; this deviation is intentional and recorded, per CR-S4.2 (roadmap frozen f5b7be06...)."@en .
+
+rule:opt_CopyCitationButton a rva:OptionalWidgetRule, owl:NamedIndividual ;
+    rule:offersWidget ipo:CopyCitationButton ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Copy-citation-of-this-artifact button is offered as optional -- a gap-analysis addition, per roadmap G5."@en .

@@ -1,0 +1,115 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix aa: <http://example.org/rdodi/academic-authoring#> .
+
+<http://example.org/rdodi/academic-authoring> a owl:Ontology ;
+    rdfs:label "RDODI Academic-Authoring Vocabulary (Stage AA, ecosystem v1.7.0)"@en ;
+    owl:versionInfo "1.0.0" ;
+    owl:versionIRI <http://example.org/rdodi/academic-authoring/1.0.0> ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:rights "Copyright 2026 Yusuf Altunel. CC BY 4.0."@en ;
+    dcterms:rightsHolder <https://example.org/agent/yusuf-altunel> ;
+    dcterms:publisher <https://example.org/org/iku-ce> ;
+    dcterms:creator <https://example.org/agent/yusuf-altunel> ;
+    dcterms:created "2026-05-28"^^xsd:date ;
+    dcterms:modified "2026-05-28"^^xsd:date ;
+    dcterms:identifier "academic-authoring" ;
+    prov:wasGeneratedBy <http://example.org/rdodi/academic-authoring/activity/release-1.0.0> .
+
+<http://example.org/rdodi/academic-authoring/activity/release-1.0.0> a prov:Activity ;
+    rdfs:label "AA-stage vocab release 1.0.0"@en ;
+    prov:startedAtTime "2026-05-28T00:00:00Z"^^xsd:dateTime .
+
+# ---- Extended-treatment schema ----
+aa:ExtendedTreatment a owl:Class ; rdfs:label "ExtendedTreatment"@en ;
+    skos:definition "An ExtendedTreatment is an academic-genre treatment of a domain concept comprising multiple typed paragraphs whose claims are graph-linked to citations; AA.structure refuses a domain class that lacks one."@en .
+aa:treats a owl:ObjectProperty ; rdfs:label "treats"@en ;
+    skos:definition "The treats property relates an ExtendedTreatment to the domain class it treats."@en .
+aa:hasParagraph a owl:ObjectProperty ; rdfs:label "hasParagraph"@en ;
+    skos:definition "The hasParagraph property relates an ExtendedTreatment to one of its constituent Paragraph individuals."@en .
+
+aa:Paragraph a owl:Class ; rdfs:label "Paragraph"@en ;
+    skos:definition "A Paragraph is one unit of a treatment, typed by role (Abstract, Background, Discussion, or Implications)."@en .
+aa:AbstractParagraph a owl:Class ; rdfs:label "AbstractParagraph"@en ;
+    rdfs:subClassOf aa:Paragraph ;
+    skos:definition "An AbstractParagraph summarises the treatment's central claims in compressed form."@en .
+aa:BackgroundParagraph a owl:Class ; rdfs:label "BackgroundParagraph"@en ;
+    rdfs:subClassOf aa:Paragraph ;
+    skos:definition "A BackgroundParagraph establishes prior literature and conceptual context for the treatment."@en .
+aa:DiscussionParagraph a owl:Class ; rdfs:label "DiscussionParagraph"@en ;
+    rdfs:subClassOf aa:Paragraph ;
+    skos:definition "A DiscussionParagraph develops the conceptual content through comparative or analytical reasoning."@en .
+aa:ImplicationsParagraph a owl:Class ; rdfs:label "ImplicationsParagraph"@en ;
+    rdfs:subClassOf aa:Paragraph ;
+    skos:definition "An ImplicationsParagraph states the practical or theoretical consequences for practice or research."@en .
+aa:paragraphOrder a owl:DatatypeProperty ; rdfs:label "paragraphOrder"@en ;
+    skos:definition "The paragraphOrder property records the integer ordering of a paragraph within a treatment."@en .
+aa:paragraphText a owl:DatatypeProperty ; rdfs:label "paragraphText"@en ;
+    skos:definition "The paragraphText property carries the verbatim text of a paragraph."@en .
+
+# ---- Claim / Evidence ----
+aa:Claim a owl:Class ; rdfs:label "Claim"@en ;
+    skos:definition "A Claim is an asserted proposition appearing in a paragraph that must be supported by a graph-linked Citation; AA.claim_evidence refuses unsupported claims."@en .
+aa:supportedBy a owl:ObjectProperty ; rdfs:label "supportedBy"@en ;
+    skos:definition "The supportedBy property relates a Claim to the Citation that supports it."@en .
+aa:appearsIn a owl:ObjectProperty ; rdfs:label "appearsIn"@en ;
+    skos:definition "The appearsIn property relates a Claim to the Paragraph it appears in."@en .
+aa:claimText a owl:DatatypeProperty ; rdfs:label "claimText"@en ;
+    skos:definition "The claimText property carries the verbatim text of a claim."@en .
+aa:ClaimType a owl:Class ; rdfs:label "ClaimType"@en ;
+    skos:definition "ClaimType partitions claims into epistemic categories so the gate can require evidence proportionate to type."@en .
+aa:EmpiricalClaim a aa:ClaimType ; rdfs:label "EmpiricalClaim"@en ;
+    skos:definition "An EmpiricalClaim asserts something about observed evidence or measurement."@en .
+aa:ConceptualClaim a aa:ClaimType ; rdfs:label "ConceptualClaim"@en ;
+    skos:definition "A ConceptualClaim asserts something about definitions or conceptual structure."@en .
+aa:HistoricalClaim a aa:ClaimType ; rdfs:label "HistoricalClaim"@en ;
+    skos:definition "A HistoricalClaim asserts something about historical sequence or attribution."@en .
+aa:ComparativeClaim a aa:ClaimType ; rdfs:label "ComparativeClaim"@en ;
+    skos:definition "A ComparativeClaim contrasts two or more positions or measures."@en .
+aa:NormativeClaim a aa:ClaimType ; rdfs:label "NormativeClaim"@en ;
+    skos:definition "A NormativeClaim asserts what ought to be done."@en .
+aa:claimType a owl:ObjectProperty ; rdfs:label "claimType"@en ;
+    skos:definition "The claimType property relates a Claim to its ClaimType."@en .
+
+# ---- Source-consultation typing ----
+aa:ConsultedSource a owl:Class ; rdfs:label "ConsultedSource"@en ;
+    skos:definition "A ConsultedSource is a Citation whose original was directly consulted at authoring with verbatim passages attached as evidence."@en .
+aa:ReconstructedSource a owl:Class ; rdfs:label "ReconstructedSource"@en ;
+    skos:definition "A ReconstructedSource is a Citation whose original was not directly consulted at authoring and whose claims are subject to reconstruction error."@en .
+aa:ConsultedPassage a owl:Class ; rdfs:label "ConsultedPassage"@en ;
+    skos:definition "A ConsultedPassage is a verbatim passage extracted from a ConsultedSource, bound to a page anchor."@en .
+aa:hasPassage a owl:ObjectProperty ; rdfs:label "hasPassage"@en ;
+    skos:definition "The hasPassage property relates a ConsultedSource to one of its ConsultedPassages."@en .
+aa:verbatimText a owl:DatatypeProperty ; rdfs:label "verbatimText"@en ;
+    skos:definition "The verbatimText property carries the literal text of a ConsultedPassage."@en .
+aa:pageAnchor a owl:DatatypeProperty ; rdfs:label "pageAnchor"@en ;
+    skos:definition "The pageAnchor property carries the page or section anchor of a passage in the original work."@en .
+aa:sourceHash a owl:DatatypeProperty ; rdfs:label "sourceHash"@en ;
+    skos:definition "The sourceHash property carries the SHA-256 of the ingested source file."@en .
+aa:ingestedAt a owl:DatatypeProperty ; rdfs:label "ingestedAt"@en ;
+    skos:definition "The ingestedAt property records when a source was ingested."@en .
+
+# ---- Readability + register scoring ----
+aa:ReadabilityScore a owl:Class ; rdfs:label "ReadabilityScore"@en ;
+    skos:definition "A ReadabilityScore records a computed Flesch-Kincaid grade against a declared target band."@en .
+aa:fleschKincaidGrade a owl:DatatypeProperty ; rdfs:label "fleschKincaidGrade"@en ;
+    skos:definition "The fleschKincaidGrade property records the computed grade-level for a text."@en .
+aa:targetBandLow a owl:DatatypeProperty ; rdfs:label "targetBandLow"@en ;
+    skos:definition "The targetBandLow property records the lower bound of the declared readability target band."@en .
+aa:targetBandHigh a owl:DatatypeProperty ; rdfs:label "targetBandHigh"@en ;
+    skos:definition "The targetBandHigh property records the upper bound of the declared readability target band."@en .
+
+# ---- Authoring profiles ----
+aa:AcademicProfile a owl:Class ; rdfs:label "AcademicProfile"@en ;
+    skos:definition "An AcademicProfile selects which AA gates are mandatory for an artifact and blocks over-claiming."@en .
+aa:CompanionAuthoring a aa:AcademicProfile ; rdfs:label "CompanionAuthoring"@en ;
+    skos:definition "The CompanionAuthoring profile requires AA.structure, AA.claim_evidence, and AA.readability and permits ReconstructedSource citations."@en .
+aa:CoursewareAuthoring a aa:AcademicProfile ; rdfs:label "CoursewareAuthoring"@en ;
+    skos:definition "The CoursewareAuthoring profile adds AA.citation_density and AA.register to CompanionAuthoring."@en .
+aa:ConsultedOnly a aa:AcademicProfile ; rdfs:label "ConsultedOnly"@en ;
+    skos:definition "The ConsultedOnly profile is research-grade and adds AA.consultation_link which refuses any Claim supportedBy a ReconstructedSource."@en .

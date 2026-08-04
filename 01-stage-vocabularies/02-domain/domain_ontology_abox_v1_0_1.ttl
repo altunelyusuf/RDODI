@@ -1,0 +1,112 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdodi-domain: <http://example.org/rdodi/domain-ontology#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+rdodi-domain:Adaptability a rdodi-domain:QualityDimension,
+        owl:NamedIndividual ;
+    rdfs:label "adaptability"@en ;
+    dcterms:source "ISO/IEC 25010:2023 Systems and software Quality Requirements (preserved from ontology_synthesis_v1_0_1.ttl basis)."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    skos:definition "The ontology accommodates extension to new requirements without breaking changes."@en .
+
+rdodi-domain:Clarity a rdodi-domain:QualityDimension,
+        owl:NamedIndividual ;
+    rdfs:label "clarity"@en ;
+    dcterms:source "ISO/IEC 25010:2023 Systems and software Quality Requirements (preserved from ontology_synthesis_v1_0_1.ttl basis)."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    skos:definition "Each ontology element has a clear, unambiguous definition (skos:definition)."@en .
+
+rdodi-domain:Completeness a rdodi-domain:QualityDimension,
+        owl:NamedIndividual ;
+    rdfs:label "completeness"@en ;
+    dcterms:source "ISO/IEC 25010:2023 Systems and software Quality Requirements (preserved from ontology_synthesis_v1_0_1.ttl basis)."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    skos:definition "The ontology covers all CompetencyQuestionSet inputs."@en .
+
+rdodi-domain:ComputationalEfficiency a rdodi-domain:QualityDimension,
+        owl:NamedIndividual ;
+    rdfs:label "computational efficiency"@en ;
+    dcterms:source "ISO/IEC 25010:2023 Systems and software Quality Requirements (preserved from ontology_synthesis_v1_0_1.ttl basis)."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    skos:definition "Reasoning queries terminate in acceptable time."@en .
+
+rdodi-domain:Conformance a rdodi-domain:QualityDimension,
+        owl:NamedIndividual ;
+    rdfs:label "conformance"@en ;
+    dcterms:source "ISO/IEC 25010:2023 Systems and software Quality Requirements (preserved from ontology_synthesis_v1_0_1.ttl basis)."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    skos:definition "The ontology conforms to SHACL shape constraints when validated with imports merged."@en .
+
+rdodi-domain:Consistency a rdodi-domain:QualityDimension,
+        owl:NamedIndividual ;
+    rdfs:label "consistency"@en ;
+    dcterms:source "ISO/IEC 25010:2023 Systems and software Quality Requirements (preserved from ontology_synthesis_v1_0_1.ttl basis)."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    skos:definition "The ontology is logically coherent under HermiT reasoning."@en .
+
+rdodi-domain:DomainOntologyV1_AuthoringMethod a rdodi-domain:CompetencyQuestionDrivenMethod,
+        owl:NamedIndividual ;
+    rdfs:label "Domain Ontology v1 Authoring Method"@en ;
+    rdodi-domain:hasSourceProvenance rdodi-domain:AuthoredForDomainOntologyV1Instance ;
+    dcterms:source "Authored for Domain Ontology v1.0.0; documents the method applied to author this very subject."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    skos:definition "The CompetencyQuestionDrivenMethod instance applied to author Domain Ontology v1.0.0 itself: competency questions about 'how to build a domain ontology from research material' drove concept selection."@en .
+
+rdodi-domain:ReportSubjectInputInstance a rdodi-domain:ReportSubjectInput,
+        owl:NamedIndividual ;
+    rdfs:label "Report Subject Input (tier marker)"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    skos:definition "Tier-marker individual for content that links to Report Ontology entities."@en .
+
+rdodi-domain:ResearchSubjectInputInstance a rdodi-domain:ResearchSubjectInput,
+        owl:NamedIndividual ;
+    rdfs:label "Research Subject Input (tier marker)"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    skos:definition "Tier-marker individual for content that consumes Research Ontology entities."@en .
+
+rdodi-domain:Reusability a rdodi-domain:QualityDimension,
+        owl:NamedIndividual ;
+    rdfs:label "reusability"@en ;
+    dcterms:source "ISO/IEC 25010:2023 Systems and software Quality Requirements (preserved from ontology_synthesis_v1_0_1.ttl basis)."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    skos:definition "The ontology can be imported and aligned by downstream subjects without modification."@en .
+
+rdodi-domain:Traceability a rdodi-domain:QualityDimension,
+        owl:NamedIndividual ;
+    rdfs:label "traceability"@en ;
+    dcterms:source "ISO/IEC 25010:2023 Systems and software Quality Requirements (preserved from ontology_synthesis_v1_0_1.ttl basis)."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> .
+
+<http://example.org/rdodi/domain-ontology/abox> a owl:Ontology ;
+    rdfs:label "RDODI Domain Ontology abox v1.0.1"@en ;
+    dcterms:created "2026-05-20"^^xsd:date ;
+    dcterms:creator <http://example.org/rdodi/agent/YusufAltunel> ;
+    dcterms:description "RDODI Domain Ontology abox. Part of the four-subject RDODI ecosystem: Research, Domain, Document, Interactive Page."@en ;
+    dcterms:identifier "domain_ontology_abox_v1_0_1" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-05-20"^^xsd:date ;
+    dcterms:publisher <http://example.org/rdodi/agent/IstanbulKulturUniversity> ;
+    dcterms:rights "Copyright (c) 2026 Yusuf Altunel. Licensed CC BY 4.0."@en ;
+    dcterms:rightsHolder <http://example.org/rdodi/agent/YusufAltunel> ;
+    rdfs:comment "RDODI v1.0.1 abox for the Domain Ontology. Derived from 01-domain-ontology/domain_ontology_abox_v1_0_0.ttl (SHA-256 915bc19d38c50069868ac94f3d9f7c980418b9d28f6168cfbbe6c578667d3df5). ORIGINATION lineage: not a continuation of any prior ecosystem."@en ;
+    owl:versionIRI <http://example.org/rdodi/domain-ontology/abox/1.0.1> ;
+    owl:versionInfo "1.0.1" ;
+    prov:wasAttributedTo <http://example.org/rdodi/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://example.org/rdodi/activity/RDODIOrigination_v1_0_1> .
+
+rdodi-domain:AuthoredForDomainOntologyV1Instance a rdodi-domain:AuthoredForDomainOntologyV1,
+        owl:NamedIndividual ;
+    rdfs:label "Authored for Domain Ontology v1 (tier marker)"@en ;
+    dcterms:source "Authored for Domain Ontology v1.0.0."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/domain-ontology> ;
+    skos:definition "Tier-marker individual for content net-new in this v1.0.0 release."@en .
+
+<http://example.org/rdodi/domain-ontology> dcterms:bibliographicCitation "Altunel, Y. (2026). Origination release v1.0.0."@en ;
+    dcterms:source "Quality dimension individuals preserved from ontology_synthesis_v1_0_1.ttl; remaining individuals authored fresh for v1.0.0."@en .
+

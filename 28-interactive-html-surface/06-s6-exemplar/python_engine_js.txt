@@ -1,0 +1,142 @@
+function pyExecute(source) {
+  const output = [];
+  const lines = source.split('\n').filter(l => l.trim().length > 0 || l.length === 0);
+  function indentOf(l) { const m = l.match(/^(\s*)/); return m[1].length; }
+  function tokenize(expr) {
+    const toks = []; let i = 0;
+    while (i < expr.length) {
+      const c = expr[i];
+      if (/\s/.test(c)) { i++; continue; }
+      if (/[0-9]/.test(c)) { let j = i; while (j < expr.length && /[0-9.]/.test(expr[j])) j++; toks.push({t:'num', v: parseFloat(expr.slice(i,j))}); i = j; continue; }
+      if (c === '"' || c === "'") { let j = i+1; while (j < expr.length && expr[j] !== c) j++; toks.push({t:'str', v: expr.slice(i+1,j)}); i = j+1; continue; }
+      if (/[a-zA-Z_]/.test(c)) { let j = i; while (j < expr.length && /[a-zA-Z0-9_]/.test(expr[j])) j++; toks.push({t:'name', v: expr.slice(i,j)}); i = j; continue; }
+      if (c === '/' && expr[i+1] === '/') { toks.push({t:'op', v:'//'}); i += 2; continue; }
+      if (c === '*' && expr[i+1] === '*') { toks.push({t:'op', v:'**'}); i += 2; continue; }
+      if ('=!<>'.includes(c) && expr[i+1] === '=') { toks.push({t:'op', v: c+'='}); i += 2; continue; }
+      if ('+-*/%()[],:<>'.includes(c)) { toks.push({t:'op', v: c}); i++; continue; }
+      throw new Error('unexpected character: ' + c);
+    }
+    return toks;
+  }
+  function parseExpr(toks, env) {
+    let pos = 0;
+    function peek() { return toks[pos]; }
+    function next() { return toks[pos++]; }
+    function parsePrimary() {
+      const t = next();
+      if (!t) throw new Error('unexpected end of expression');
+      if (t.t === 'num') return t.v;
+      if (t.t === 'str') return t.v;
+      if (t.t === 'op' && t.v === '(') { const v = parseOr(); if (next().v !== ')') throw new Error('expected )'); return v; }
+      if (t.t === 'op' && t.v === '[') {
+        const items = [];
+        while (peek() && !(peek().t === 'op' && peek().v === ']')) {
+          items.push(parseOr());
+          if (peek() && peek().t === 'op' && peek().v === ',') next();
+        }
+        next(); return items;
+      }
+      if (t.t === 'name') {
+        if (peek() && peek().t === 'op' && peek().v === '(') {
+          next(); const args = [];
+          while (peek() && !(peek().t === 'op' && peek().v === ')')) {
+            args.push(parseOr());
+            if (peek() && peek().t === 'op' && peek().v === ',') next();
+          }
+          next();
+          const builtins = { len: a=>a[0].length, sum: a=>a[0].reduce((x,y)=>x+y,0), sorted: a=>[...a[0]].sort((x,y)=>x-y),
+                              range: a=> a.length===1 ? Array.from({length:a[0]},(_, i)=>i) : Array.from({length:a[1]-a[0]},(_, i)=>i+a[0]),
+                              min: a=>Math.min(...(Array.isArray(a[0])?a[0]:a)), max: a=>Math.max(...(Array.isArray(a[0])?a[0]:a)), abs: a=>Math.abs(a[0]) };
+          if (!(t.v in builtins)) throw new Error('unknown function: ' + t.v);
+          return builtins[t.v](args);
+        }
+        if (!(t.v in env)) throw new Error('undefined variable: ' + t.v);
+        let val = env[t.v];
+        if (peek() && peek().t === 'op' && peek().v === '[') {
+          next(); const idx = parseOr(); if (next().v !== ']') throw new Error('expected ]');
+          val = val[idx];
+        }
+        return val;
+      }
+      throw new Error('unexpected token: ' + JSON.stringify(t));
+    }
+    function parseTerm() {
+      let v = parsePrimary();
+      while (peek() && peek().t === 'op' && ['*','/','//','%'].includes(peek().v)) {
+        const op = next().v; const r = parsePrimary();
+        if (op === '*') v = v * r; else if (op === '/') v = v / r; else if (op === '//') v = Math.floor(v / r); else if (op === '%') v = v % r;
+      }
+      return v;
+    }
+    function parseAdd() {
+      let v = parseTerm();
+      while (peek() && peek().t === 'op' && ['+','-'].includes(peek().v)) {
+        const op = next().v; const r = parseTerm();
+        v = op === '+' ? v + r : v - r;
+      }
+      return v;
+    }
+    function parseCompare() {
+      let v = parseAdd();
+      while (peek() && peek().t === 'op' && ['<','>','<=','>=','==','!='].includes(peek().v)) {
+        const op = next().v; const r = parseAdd();
+        if (op === '<') v = v < r; else if (op === '>') v = v > r; else if (op === '<=') v = v <= r;
+        else if (op === '>=') v = v >= r; else if (op === '==') v = v === r; else v = v !== r;
+      }
+      return v;
+    }
+    function parseOr() { return parseCompare(); }
+    const result = parseOr();
+    return result;
+  }
+  function evalExpr(expr, env) { return parseExpr(tokenize(expr), env); }
+  function run(lines, startIdx, endIdx, env, baseIndent) {
+    let i = startIdx;
+    while (i < endIdx) {
+      const raw = lines[i]; const line = raw.trim();
+      if (line === '') { i++; continue; }
+      const ind = indentOf(raw);
+      if (ind < baseIndent) break;
+      if (line.startsWith('print(')) {
+        const inner = line.slice(6, line.lastIndexOf(')'));
+        const parts = inner.split(',').map(p => evalExpr(p.trim(), env));
+        output.push(parts.join(' '));
+        i++;
+      } else if (line.startsWith('for ')) {
+        const m = line.match(/^for\s+(\w+)\s+in\s+(.+):$/);
+        if (!m) throw new Error('malformed for loop: ' + line);
+        const [, loopVar, iterExpr] = m;
+        const iterable = evalExpr(iterExpr, env);
+        const blockStart = i + 1;
+        let blockEnd = blockStart;
+        while (blockEnd < endIdx && (lines[blockEnd].trim() === '' || indentOf(lines[blockEnd]) > ind)) blockEnd++;
+        for (const item of iterable) {
+          const loopEnv = Object.assign({}, env, {[loopVar]: item});
+          run(lines, blockStart, blockEnd, loopEnv, indentOf(lines[blockStart]));
+          Object.assign(env, loopEnv);
+        }
+        i = blockEnd;
+      } else if (line.startsWith('if ')) {
+        const m = line.match(/^if\s+(.+):$/);
+        const cond = evalExpr(m[1], env);
+        const blockStart = i + 1;
+        let blockEnd = blockStart;
+        while (blockEnd < endIdx && (lines[blockEnd].trim() === '' || indentOf(lines[blockEnd]) > ind)) blockEnd++;
+        if (cond) run(lines, blockStart, blockEnd, env, indentOf(lines[blockStart]));
+        i = blockEnd;
+      } else if (/^\w+\s*=[^=]/.test(line)) {
+        const eq = line.indexOf('=');
+        const varName = line.slice(0, eq).trim();
+        const val = evalExpr(line.slice(eq+1).trim(), env);
+        env[varName] = val;
+        i++;
+      } else {
+        throw new Error('unsupported statement: ' + line);
+      }
+    }
+    return i;
+  }
+  const env = {};
+  run(lines, 0, lines.length, env, 0);
+  return output.join('\n');
+}

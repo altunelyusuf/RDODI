@@ -1,0 +1,20 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<http://x#shell_0> a <http://example.org/rdodi/interactive-page-ontology#Button>,
+        owl:NamedIndividual .
+
+<http://x#shell_1> a <http://example.org/rdodi/interactive-page-ontology#Tabs>,
+        owl:NamedIndividual .
+
+<http://x#shell_2> a <http://example.org/rdodi/interactive-page-ontology#TableOfContents>,
+        owl:NamedIndividual .
+
+<http://x#shell_3> a <http://example.org/rdodi/interactive-page-ontology#Tooltip>,
+        owl:NamedIndividual .
+
+<http://x#shell_4> a <http://example.org/rdodi/interactive-page-ontology#Breadcrumbs>,
+        owl:NamedIndividual .
+
+<http://x#shell_5> a <http://example.org/rdodi/interactive-page-ontology#ChapterSection>,
+        owl:NamedIndividual .
+

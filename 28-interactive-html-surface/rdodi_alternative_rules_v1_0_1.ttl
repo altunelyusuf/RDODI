@@ -1,0 +1,51 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ipo: <http://example.org/rdodi/interactive-page-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rule: <http://example.org/rdodi/widget-admissibility#> .
+@prefix rva: <http://example.org/rdodi/widget-rules#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/rdodi/surface-composition/alternatives> a owl:Ontology ;
+    dcterms:modified "2026-07-03"^^xsd:date ;
+    rdfs:comment "InteractiveHTMLSurface: taxonomy-of-alternatives mechanism (va:OrOperator-aligned), applied first to RunnableCodeTool (language/package-independent runnable tool)."@en ;
+    owl:versionIRI <http://example.org/rdodi/surface-composition/alternatives/1.0.0> ;
+    owl:versionInfo "1.0.0" .
+
+rule:alt_RunnableCodeTool_JS a rva:AlternativeWidgetRule,
+        owl:NamedIndividual ;
+    rule:forSurface ipo:InteractiveHTMLSurface ;
+    rule:fromTaxonomy ipo:RunnableCodeTool ;
+    rule:offersAlternative ipo:JavaScriptEngine ;
+    skos:definition "JavaScript is offered as one alternative execution engine for RunnableCodeTool."@en .
+
+rule:alt_RunnableCodeTool_Python a rva:AlternativeWidgetRule,
+        owl:NamedIndividual ;
+    rule:forSurface ipo:InteractiveHTMLSurface ;
+    rule:fromTaxonomy ipo:RunnableCodeTool ;
+    rule:offersAlternative ipo:PythonEngine ;
+    skos:definition "Python is offered as one alternative execution engine for RunnableCodeTool, per the user's explicit requirement."@en .
+
+rule:alt_RunnableCodeTool_SHACL a rva:AlternativeWidgetRule,
+        owl:NamedIndividual ;
+    rule:forSurface ipo:InteractiveHTMLSurface ;
+    rule:fromTaxonomy ipo:RunnableCodeTool ;
+    rule:offersAlternative ipo:SHACLValidationEngine ;
+    skos:definition "SHACL validation is offered as one alternative execution engine for RunnableCodeTool, per the user's explicit requirement."@en .
+
+rule:alt_RunnableCodeTool_SPARQL a rva:AlternativeWidgetRule,
+        owl:NamedIndividual ;
+    rule:forSurface ipo:InteractiveHTMLSurface ;
+    rule:fromTaxonomy ipo:RunnableCodeTool ;
+    rule:offersAlternative ipo:SPARQLEngine ;
+    skos:definition "SPARQL is offered as one alternative execution engine for RunnableCodeTool."@en .
+
+rule:fromTaxonomy a owl:ObjectProperty ;
+    rdfs:comment "the umbrella class this alternative belongs to (e.g. ipo:RunnableCodeTool)"@en ;
+    rdfs:domain rva:AlternativeWidgetRule .
+
+rule:offersAlternative a owl:ObjectProperty ;
+    rdfs:comment "one member of the alternative taxonomy this rule offers (one-or-more may be realized)"@en ;
+    rdfs:domain rva:AlternativeWidgetRule .
+

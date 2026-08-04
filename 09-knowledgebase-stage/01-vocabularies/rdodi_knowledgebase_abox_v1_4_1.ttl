@@ -1,0 +1,512 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix kb: <http://example.org/rdodi/knowledgebase#> .
+@prefix kbi: <http://example.org/rdodi/knowledgebase/instance#> .
+@prefix oe: <http://example.org/oe-discipline#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+oe:BP-D2 a skos:Concept ;
+    rdfs:label "BP-D2 (raw transcript read)"@en ;
+    rdfs:isDefinedBy <http://example.org/oe-discipline/kb_abox_v1_35_0> .
+
+oe:BP-D24 a skos:Concept ;
+    rdfs:label "BP-D24 (ontology metadata predicates)"@en ;
+    rdfs:isDefinedBy <http://example.org/oe-discipline/kb_abox_v1_35_0> .
+
+oe:BP-D34 a skos:Concept ;
+    rdfs:label "BP-D34 (permanent inline pill-bar)"@en ;
+    rdfs:isDefinedBy <http://example.org/oe-discipline/kb_abox_v1_35_0> .
+
+<http://example.org/rdodi/knowledgebase/instance> a owl:Ontology ;
+    rdfs:label "RDODI Knowledgebase ABox v1.1.0 — adds R11 (tier-maximizing reference resolution) and R12 (page stage = gated co-evolution); patterns from RDODI_Session_Lessons_Proposal_v1_0_0.md"@en ;
+    dcterms:created "2026-05-28"^^xsd:date ;
+    dcterms:creator <https://example.org/agent/yusuf-altunel> ;
+    dcterms:identifier "knowledgebase/instance" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-05-29"^^xsd:date ;
+    dcterms:publisher <https://example.org/org/iku-ce> ;
+    dcterms:rights "Copyright 2026 Yusuf Altunel. CC BY 4.0."@en ;
+    dcterms:rightsHolder <https://example.org/agent/yusuf-altunel> ;
+    dcterms:source "RDODI_Session_Lessons_Proposal_v1_0_0.md (preserved at 05-source/)"@en ;
+    owl:priorVersion <http://example.org/rdodi/knowledgebase/instance/1.0.0>,
+        <http://example.org/rdodi/knowledgebase/instance/1.1.0> ;
+    owl:versionIRI <http://example.org/rdodi/knowledgebase/instance/public/1.4.1> ;
+    owl:versionInfo "1.4.1" .
+
+kbi:R1 a kb:RDODISpecificPattern,
+        owl:NamedIndividual ;
+    rdfs:label "R1 — Each stage has its own quality vocabulary; no umbrella QualityDimension across stages"@en ;
+    kb:adoptionLocation "RDODI procedure v1.2.0 stage-specific gates (Stage1–Stage4 each have their own acceptance gates); underlying vocabulary discipline is currently implicit." ;
+    kb:coversExisting kbi:R1_cov1 ;
+    kb:patternCode "R1" ;
+    kb:patternEvidence kbi:R1_ev1 ;
+    kb:patternStatus kb:AlreadyAdoptedAtGateLevel ;
+    kb:recommendsIntegration kbi:R1_int1 ;
+    kb:relatedOEDiscipline oe:L-72 ;
+    skos:definition "Pattern R1 records that each RDODI stage has stage-specific quality vocabulary because a research-stage artifact's quality has nothing to do with keyboard-accessibility and an interactive-page-stage artifact's quality has nothing to do with Harvard citation form; a single umbrella QualityDimension class hides this fact."@en .
+
+kbi:R10 a kb:CrossCuttingPattern,
+        owl:NamedIndividual ;
+    rdfs:label "R10 — Disposition wording must be scoped to exactly what is being retired"@en ;
+    kb:adoptionLocation "A4_reference_template_disposition_v1_0_0.md correction section in predecessor v1.5.x." ;
+    kb:coversExisting kbi:R10_cov1 ;
+    kb:patternCode "R10" ;
+    kb:patternEvidence kbi:R10_ev1 ;
+    kb:patternStatus kb:AlreadyAdoptedAtGateLevel ;
+    kb:recommendsIntegration kbi:R10_int1 ;
+    kb:relatedOEDiscipline oe:L-40 ;
+    skos:definition "Pattern R10 records that every RDODI disposition statement must name exactly what is being retired, what remains intact, and what becomes of the residual; the A4 disposition's first wording over-reached and was corrected."@en .
+
+kbi:R11 a kb:RDODISpecificPattern,
+        owl:NamedIndividual ;
+    rdfs:label "R11 — Tier-maximizing reference resolution: upgrade each citation to the highest reachable authority tier before accepting any lower rank; decrease-and-conquer for economy"@en ;
+    kb:adoptionLocation "Test-driven in current session (2026-05-29) on Ch.9's 21-reference bibliography against catalogue v1.1.0 authority tiers. Single-pass authoritative-tier confirmations: PMBOK 2013 -> Definitive (LoC CIP, LCCN 2012046112); Deming 1982 -> High (WorldCat OCLC 13126265, correcting a prior wrong LCCN); Boehm 1981 -> High (ACM DL + WorldCat OCLC 7734154); Besterfield 1999 -> High (Taylor & Francis review record, ISBN 0-13-639403-5); plus earlier ACM/SEI confirmations Humphrey (DOI 10.1109/52.2014, issue-number corrected 3->2), Paulk (IEEE Software 10(6), issue corrected 4->6), Florac (SEI Definitive, CMU/SEI-97-HB-003). Each confirmed reference left the work set after one pass."@en ;
+    kb:coversExisting kbi:R11_cov1 ;
+    kb:patternCode "R11" ;
+    kb:patternEvidence kbi:R11_ev1 ;
+    kb:patternStatus kb:AlreadyAdoptedAtGateLevel ;
+    kb:recommendsIntegration kbi:R11_int1 ;
+    kb:relatedOEDiscipline oe:L-65 ;
+    skos:definition "Pattern R11 governs how RDODI resolves bibliographic references against the tiered BibliographicCatalogue (kbx authority tiers: Definitive>High>Moderate>Low). For each reference, the resolver MUST attempt the HIGHEST authority tier first and accept a lower tier ONLY after higher tiers are shown unreachable. Procedure per reference: (1) issue a LOOSE high-recall query to the delivering channel (web_search), deliberately broad rather than exact — the probabilistic pre-filter, analogous to a Bloom-filter membership pre-test; (2) PARSE the returned candidate set for membership of an authoritative-tier catalogue record (Definitive: LoC/SEI/ISO/etc.; High: Crossref-DOI/WorldCat-OCLC/ACM/IEEE/DBLP/T&F) matching the reference on author+title+year(+identifier); (3) the parse-match against the record's OWN stated metadata is the authoritative confirmation step — a candidate merely appearing in the set is the pre-filter signal, never the verdict (a Low-tier sales listing in the set does NOT promote the tier); (4) the MOMENT an authoritative-tier match is confirmed, STOP and remove the reference from the work set — do not search it again (decrease-and-conquer); (5) only if no authoritative member appears after loose passes does the resolver descend to the next tier, recording the honest highest tier actually reached; (6) where no catalogue of any tier contains the work (e.g. ephemeral trade-press web articles), record Unresolvable with reason — the Bloom 'definitely not present' verdict — rather than borrowing a higher label. ECONOMY: because confirmed references leave the work set permanently, total queries are bounded by the count of as-yet-unconfirmed references, not by tier-count x reference-count; high-value references typically resolve in ONE pass. CORRECTNESS: tier-first prevents settling for a commercial-listing 'CatalogueVerified' when an authoritative record was reachable, and the breadth of the loose pull surfaces edition/identifier disambiguations that exact single-shot queries miss."@en .
+
+kbi:R12 a kb:RDODISpecificPattern,
+        owl:NamedIndividual ;
+    rdfs:label "R12 — The interactive-page (Stage-4) stage is gated GENERATION, not deterministic rendering: an LLM shapes the page from the grounded graph (creativity is the asset), and fidelity gates defend grounding; the two co-evolve by iteration until BOTH a mechanical stop (the gate stops catching real infidelity) and a human stop (the result satisfies the bar) are met"@en ;
+    kb:adoptionLocation "DECIDED direction (this session, user-confirmed). Status Proposed — NOT AlreadyAdopted — because the page-stage application has not yet been demonstrated producing a bar-grade page; per L-65 the next action is the first loop iteration as the test drive that confirms or corrects R12. The gated-co-evolution METHOD itself is session-demonstrated (the recurring build->test->catch->fix loop across F53/F57/F58/F71 and the two-broken-then-fixed renderer this session); the F50 fidelity harness it depends on is DESIGNED but NOT BUILT."@en ;
+    kb:coversExisting kbi:R12_cov1 ;
+    kb:patternCode "R12" ;
+    kb:patternEvidence kbi:R12_ev1 ;
+    kb:patternStatus kb:Proposed ;
+    kb:recommendsIntegration kbi:R12_int1 ;
+    kb:relatedOEDiscipline oe:L-65 ;
+    skos:definition "Pattern R12 records the decided architecture for the Stage-4 interactive page. A test drive (this session) proved a PURE deterministic renderer can emit grounded HTML from the page-ABox with full traceability (1981 blocks, 0 untraced) BUT the output is mechanical documentation — unshaped, ~2x the deployed bar in size yet below it in curation (1 table vs 7-12; 1116 flat citation chips vs 70-154 woven). The shaping a deployed-bar page needs — which of N claims to weave inline, prose vs table vs quiz, sequencing, framing — is an irreducibly GENERATIVE/editorial act a pure function cannot perform. Therefore the page stage is correctly an LLM-shapes-under-gates step: the LLM gets latitude over FORM (ordering, emphasis, surfacing, pedagogical framing) but NEVER over FACTS (no invented claim, no altered identifier, no changed metric, no relation absent from the graph). Every shaped element must trace to a source triple, checked AFTER generation by a fidelity harness (the F50/F46 design: FaithfulnessError, GroundingScore, ReferenceIntegrity, CountDrift) — the gates become fidelity checks against the source graph, not element counters. The chicken-and-egg (cannot fully specify the gate before seeing what the generator drifts on; cannot tune the generator before the gate locates the drift) is resolved by ITERATION, not by sequencing: harness and generator co-evolve, each iteration sharpening both. SAFETY RAIL (reframed from F50's 'no prose ships until harness built'): the harness must exist and RUN each iteration before that iteration's output is TRUSTED or shipped — generating prose to FEED the gate is the engine of the loop; believing prose WITHOUT the gate is the failure mode. The difference is candidate (fine) vs result (not until gated). STOP CONDITIONS (both required): mechanical (harness goes quiet on genuine infidelity) AND human (the read satisfies the bar) — a clean harness on a lifeless page is not done; a beautiful ungated page is not done. RESIDUE (honest, per F53): predicate-faithfulness among co-occurring concepts is the part a mechanical check can only ROUTE to human/LLM-judge review, never auto-confirm — that residue is the permanent human-verifier role (the §1 constraint), not a defect to engineer away."@en .
+
+kbi:R13 a kb:RDODISpecificPattern,
+        owl:NamedIndividual ;
+    rdfs:label "R13 — Record lessons as they emerge: a release is not complete until new lessons surfaced this session are written to the governed store"@en ;
+    kb:adoptionLocation "Practiced this session (findings F71–F107 each recorded as they emerged); formalized as a gate 2026-06-04 on assessment of OE proposal item R."@en ;
+    kb:coversExisting kbi:R13_cov1 ;
+    kb:patternCode "R13" ;
+    kb:patternEvidence kbi:R13_ev1 ;
+    kb:patternStatus kb:AlreadyAdoptedAtGateLevel ;
+    kb:recommendsIntegration kbi:R13_int1 ;
+    kb:relatedOEDiscipline oe:L-64 ;
+    skos:definition "Pattern R13 governs lesson capture across an RDODI session. Lessons learned MUST be recorded into the governed knowledge store AS THEY EMERGE within a session, not merely cited or deferred to session end. A session that applies and cites discipline but adds NO new lessons despite clear new ones having surfaced is itself a governance gap. Enforcement is a release-completeness gate: before any release is considered complete, the session must answer 'were new lessons that emerged this session recorded?' — a negative answer blocks the release-complete claim (not the artifact's correctness, which other gates check). The gate targets the capture process, not within-artifact validity. Originated as a cross-session OE proposal (a parallel session, 2026-06-03, proposal item R); assessed and adopted into RDODI under its own discipline because the lesson is about the governance PROCESS that RDODI runs each session. Distinct from L-65 (verify before publishing) which governs claim truth, and from the stage-conformance gate which governs artifact typing — R13 governs whether emergent knowledge was captured at all."@en .
+
+kbi:R14 a kb:RDODISpecificPattern,
+        owl:NamedIndividual ;
+    rdfs:label "R14 — Conformance is necessary but not sufficient for quality: a stage gate guarantees a correct artifact, not a good one; gate the floor, keep the human on the ceiling"@en ;
+    kb:adoptionLocation "Discovered this session (2026-06-04): interactive page v2.0.0 PASSED the stage-conformance gate yet was judged inadequate; quality arrived only via human-driven redesign rounds v3.0.0/v4.0.0 (findings F100, F102, F105)."@en ;
+    kb:coversExisting kbi:R14_cov1 ;
+    kb:patternCode "R14" ;
+    kb:patternEvidence kbi:R14_ev1 ;
+    kb:patternStatus kb:Proposed ;
+    kb:recommendsIntegration kbi:R14_int1 ;
+    kb:relatedOEDiscipline oe:L-65 ;
+    skos:definition "Pattern R14 records that passing a stage-conformance gate (artifact typed against its ontology, SHACL-valid, faithful to source) does NOT guarantee design/pedagogical quality. The two are different axes: conformance governs correctness; design quality governs richness, density balance, usability and aptness. A future RDODI page can be CONFORMANT yet thin or poorly designed. Therefore the standard is reproducible at the FLOOR (faithful + typed + SHACL-valid, fully gated) but not at the CEILING (taste, apt visualization, genuine pedagogical value, which remain human judgment). Operational consequence: do not treat a green conformance verdict as a quality verdict; raise a separate design-quality FLOOR (e.g. >=1 non-text encoding per major section, declared usability heuristics, real-browser zero-console-error) so no artifact ships thin or unchecked, while routing the un-gatable ceiling to human review. Mirrors the F39/F53 warrant residue one level up: mechanism routes judgment, it cannot manufacture it."@en .
+
+kbi:R15 a kb:RDODISpecificPattern,
+        owl:NamedIndividual ;
+    rdfs:label "R15 — A cross-session claim is a hypothesis to verify on local disk, never a fact to import; a lead false in one session can be true in another"@en ;
+    kb:adoptionLocation "Practiced twice this session (2026-06-04): the R11 web_search pre-filter proposal (F107) and the OE/RDODI lesson proposals (F108) were each re-verified on local disk before action."@en ;
+    kb:coversExisting kbi:R15_cov1 ;
+    kb:patternCode "R15" ;
+    kb:patternEvidence kbi:R15_ev1 ;
+    kb:patternStatus kb:AlreadyAdoptedAtGateLevel ;
+    kb:recommendsIntegration kbi:R15_int1 ;
+    kb:relatedOEDiscipline oe:L-64 ;
+    skos:definition "Pattern R15 governs how RDODI treats claims, proposals, or artifacts originating in a PARALLEL session. Every such claim — even one tagged 'verified' by its author — was verified against THAT session's disk, not this one, and MUST be independently re-verified against the receiving session's own files before any action. Membership of a claim in a proposal is only a pre-filter signal, never a verdict (compare R11's Bloom-filter discipline for references). Critically, a lead can be FALSE in its origin session and TRUE in the receiving one (or vice versa): a named artifact reported 'not found' elsewhere may exist here, and a path/version cited from another session may be stale locally. Therefore: re-run the check on local disk; correct cross-session leads in either direction; import no foreign code or state; label any adopted item by its LOCAL grounding (the receiving session's ABox/spec), not by the foreign claim. Composes with OE L-64 but is a DISTINCT axis: L-64 governs SCOPE (cross-session content is assessed, not edited); R15 governs VERIFICATION (cross-session claims are re-verified locally, not trusted)."@en .
+
+kbi:R2 a kb:RDODISpecificPattern,
+        owl:NamedIndividual ;
+    rdfs:label "R2 — Quality does not propagate across pipeline stages"@en ;
+    kb:adoptionLocation "Stage4.H/I/J widget gates and Stage4.K intention-coverage in procedure v1.2.0 implement this lesson; the underlying principle is not yet named in any procedure note or blueprint finding." ;
+    kb:coversExisting kbi:R2_cov1 ;
+    kb:patternCode "R2" ;
+    kb:patternEvidence kbi:R2_ev1 ;
+    kb:patternStatus kb:AlreadyAdoptedAtGateLevel ;
+    kb:recommendsIntegration kbi:R2_int1 ;
+    kb:relatedOEDiscipline oe:L-65 ;
+    skos:definition "Pattern R2 records that an upstream PASS never licenses a downstream PASS in the RDODI pipeline; a polished research report does not yield a polished interactive page automatically, which is why every stage has its own gates and the widget-stage adoption (Stage4.H–K) was necessary."@en .
+
+kbi:R3 a kb:RDODISpecificPattern,
+        owl:NamedIndividual ;
+    rdfs:label "R3 — Intention-coverage is ONE-HOP; schema settled by test-drive on a separating case"@en ;
+    kb:adoptionLocation "intention_coverage_gate_v1_0_0.py (Stage4.K) with adversarial test 7/7; rationale currently held as F65 in predecessor methodology blueprint." ;
+    kb:coversExisting kbi:R3_cov1 ;
+    kb:patternCode "R3" ;
+    kb:patternEvidence kbi:R3_ev1 ;
+    kb:patternStatus kb:AlreadyAdoptedAtGateLevel ;
+    kb:recommendsIntegration kbi:R3_int1 ;
+    kb:relatedOEDiscipline oe:L-66 ;
+    skos:definition "Pattern R3 records that the coverage-unit in intention_coverage_gate is the intention (LearningObjective), not the subject the intention is about; the two-hop schema was rejected by building a separating case in which two intentions share one subject and the manifests differ on coverage status."@en .
+
+kbi:R4 a kb:RDODISpecificPattern,
+        owl:NamedIndividual ;
+    rdfs:label "R4 — Asymmetric coverage gate: widget-without-intention FAILS; intention-without-widget DISCLOSES"@en ;
+    kb:adoptionLocation "Procedure v1.1.0 Stage4.K and intention_coverage_gate; pattern is already operational." ;
+    kb:coversExisting kbi:R4_cov1 ;
+    kb:patternCode "R4" ;
+    kb:patternEvidence kbi:R4_ev1 ;
+    kb:patternStatus kb:AlreadyAdoptedAtGateLevel ;
+    kb:recommendsIntegration kbi:R4_int1 ;
+    kb:relatedOEDiscipline oe:L-40 ;
+    skos:definition "Pattern R4 records that coverage gates should not be symmetric by default: a page can never demonstrate everything in the ontology so uncovered intentions are honest scope-disclosure (reported, not failed) but interactivity that demonstrates nothing is decoration and fails."@en .
+
+kbi:R5 a kb:RDODISpecificPattern,
+        owl:NamedIndividual ;
+    rdfs:label "R5 — The negative-exemplar pattern: ship at least one worked example designed to FAIL the gates"@en ;
+    kb:adoptionLocation "Ch.9 worked example in predecessor session: 0/27 widget markers, fails Stage4.H/I/J/K by design. This current session's Ch.9 v1.5.0 bundle is positive-grade and does NOT yet ship a paired negative exemplar." ;
+    kb:coversExisting kbi:R5_cov1 ;
+    kb:patternCode "R5" ;
+    kb:patternEvidence kbi:R5_ev1 ;
+    kb:patternStatus kb:Proposed ;
+    kb:recommendsIntegration kbi:R5_int1 ;
+    kb:relatedOEDiscipline oe:L-65 ;
+    skos:definition "Pattern R5 records that every gated RDODI pipeline must ship at least one negative worked example whose gates fail by design, with the failure mode stated; without a negative exemplar the gates have no demonstrable load-bearing evidence."@en .
+
+kbi:R6 a kb:CrossCuttingPattern,
+        owl:NamedIndividual ;
+    rdfs:label "R6 — '0 violations' / conformance claims must name shape version AND method"@en ;
+    kb:adoptionLocation "RDODI_OE_ASSESSMENT_BASELINE_v1_0_0.md correction section in v1.5.1; wording rule applies forward." ;
+    kb:coversExisting kbi:R6_cov1 ;
+    kb:patternCode "R6" ;
+    kb:patternEvidence kbi:R6_ev1 ;
+    kb:patternStatus kb:AlreadyAdoptedAtGateLevel ;
+    kb:recommendsIntegration kbi:R6_int1 ;
+    kb:relatedOEDiscipline oe:L-65 ;
+    skos:definition "Pattern R6 records that any conformance claim in RDODI documentation must name shape version, imports policy, corpus scope, and exclusions in the same sentence; under-specified zero-violation claims were caught by parallel-OE review and corrected in v1.5.1."@en .
+
+kbi:R7 a kb:CrossCuttingPattern,
+        owl:NamedIndividual ;
+    rdfs:label "R7 — Two-rounds-of-guessing antipattern: stop on the second identical user challenge"@en ;
+    kb:coversExisting kbi:R7_cov1 ;
+    kb:patternCode "R7" ;
+    kb:patternEvidence kbi:R7_ev1 ;
+    kb:patternStatus kb:Proposed ;
+    kb:recommendsIntegration kbi:R7_int1 ;
+    kb:relatedOEDiscipline oe:L-40 ;
+    skos:definition "Pattern R7 records that when a user repeats the same challenge against an RDODI build or decision, the next action is a direct ask rather than another iteration; the line-1259 incident in the predecessor session is the canonical case."@en .
+
+kbi:R8 a kb:CrossCuttingPattern,
+        owl:NamedIndividual ;
+    rdfs:label "R8 — Cross-LLM bibliography labels: CORROBORATED, not VERIFIED"@en ;
+    kb:coversExisting kbi:R8_cov1 ;
+    kb:patternCode "R8" ;
+    kb:patternEvidence kbi:R8_ev1 ;
+    kb:patternStatus kb:Proposed ;
+    kb:recommendsIntegration kbi:R8_int1 ;
+    kb:relatedOEDiscipline oe:BP-D41 ;
+    skos:definition "Pattern R8 records that any reference list reaching RDODI's reference rule via a parallel LLM session must be labeled CORROBORATED until resolved against an authoritative non-LLM source; BP-D41 verification cannot be satisfied by another LLM's claim."@en .
+
+kbi:R9 a kb:CrossCuttingPattern,
+        owl:NamedIndividual ;
+    rdfs:label "R9 — Adversarial harness tests must be hermetic from the package"@en ;
+    kb:adoptionLocation "02-gates/rdodi_gate_adversarial_test_v1_2_0.py + 02-gates/fixtures/ in predecessor v1.5.1; pattern applies forward." ;
+    kb:coversExisting kbi:R9_cov1 ;
+    kb:patternCode "R9" ;
+    kb:patternEvidence kbi:R9_ev1 ;
+    kb:patternStatus kb:AlreadyAdoptedAtGateLevel ;
+    kb:recommendsIntegration kbi:R9_int1 ;
+    kb:relatedOEDiscipline oe:L-65 ;
+    skos:definition "Pattern R9 records that all RDODI adversarial tests must resolve paths via __file__ and bundle every fixture; the remediation from rdodi_gate_adversarial_test v1.1.0 (5 absolute paths, 3 unbundled fixtures) to v1.2.0 (hermetic, 13/13 reproducible from files) is the canonical implementation."@en .
+
+oe:BP-D32 a skos:Concept ;
+    rdfs:label "BP-D32 (InteractivityCouplingMustEncodeDomainSemantics)"@en ;
+    rdfs:isDefinedBy <http://example.org/oe-discipline/kb_abox_v1_35_0> .
+
+oe:L-66 a skos:Concept ;
+    rdfs:label "L-66 (no synthetic taxonomy / measure against convention as written)"@en ;
+    rdfs:isDefinedBy <http://example.org/oe-discipline/kb_abox_v1_35_0> .
+
+oe:L-72 a skos:Concept ;
+    rdfs:label "L-72 (reuse existing vocabulary; dedup against existing discipline)"@en ;
+    rdfs:isDefinedBy <http://example.org/oe-discipline/kb_abox_v1_35_0> .
+
+kbi:R10_cov1 a kb:CoverageCheck,
+        owl:NamedIndividual ;
+    rdfs:label "R10 coverage: OE companion L-X6"@en ;
+    kb:externalReference "OE companion principle L-X6" ;
+    kb:relatedOEDiscipline oe:L-40 ;
+    skos:definition "OE-general counterpart is L-X6 in the OE companion file; L-40 supplies the underlying observations-vs-decisions discipline."@en .
+
+kbi:R10_ev1 a kb:ArtifactReference,
+        owl:NamedIndividual ;
+    rdfs:label "R10 evidence: A4 disposition correction"@en ;
+    kb:externalReference "A4_reference_template_disposition_v1_0_0.md (predecessor v1.5.x)" ;
+    skos:definition "Evidence is the A4 reference-template disposition's correction section."@en .
+
+kbi:R10_int1 a kb:MethodologyNoteRecommendation,
+        owl:NamedIndividual ;
+    rdfs:label "R10 integration: disposition wording rule"@en ;
+    kb:proposedAddendumText "Every RDODI disposition statement names exactly what is being retired, what remains intact, and what becomes of the residual; over-reaching wording must be corrected with a visible correction section, not silently rewritten." .
+
+kbi:R11_cov1 a kb:CoverageCheck,
+        owl:NamedIndividual ;
+    rdfs:label "R11 coverage: relation to existing OE discipline and the catalogue authority-tier layer"@en ;
+    kb:coversExisting "OE L-65 (verify before publishing); kbx CatalogueAuthorityTier layer (KB-EXT v1.1.0); session confirmability principle"@en ;
+    skos:definition "R11 does not duplicate existing discipline; it composes two existing pieces into a procedure. It depends on the kbx CatalogueAuthorityTier layer (KB-EXT v1.1.0) for the tier ranking it maximizes against, and it operationalizes OE L-65 (verify before publishing) and the session's confirmability principle (non-model oracle disposes). It is distinct from OE BP-D codes, which govern artifact naming/versioning/manifests, not citation-resolution tiering. No existing RDODI pattern R1-R10 covers reference-resolution tier strategy."@en .
+
+kbi:R11_ev1 a kb:ArtifactReference,
+        owl:NamedIndividual ;
+    rdfs:label "R11 evidence: runtime resolution results recorded this session"@en ;
+    kb:provenanceSession "2026-05-29 Ch.9 confirmability resolution session" ;
+    skos:definition "Evidence is the runtime web_search/parse output captured in /home/claude/ch9_resolution/RESOLUTION_METHOD_NOTE_v1_0_0.md and the tiered worklist table, showing per-reference highest-tier-reached verdicts and the catalogue records that produced them. Status AlreadyAdoptedAtGateLevel (not merely Proposed) is justified per L-65 because the pattern was demonstrated working BEFORE being recorded: five references reached authoritative tier in single passes and two source errors were caught by the method."@en .
+
+kbi:R11_int1 a kb:ProcedureAddendumRecommendation,
+        owl:NamedIndividual ;
+    rdfs:label "R11 integration: procedure addendum + blueprint methodology note mandating tier-maximizing resolution"@en ;
+    kb:proposedAddendumText "RDODI reference resolution MUST be tier-maximizing: for each reference, attempt the highest authority tier first (per the kbx CatalogueAuthorityTier ranking), using a loose high-recall query as a probabilistic pre-filter and an authoritative-record parse-match as the confirmation step; stop and retire the reference from the work set on first authoritative confirmation (decrease-and-conquer); descend to a lower tier only after higher tiers are shown unreachable; and record Unresolvable-with-reason rather than label a reference above the tier of the source that actually confirmed it."@en ;
+    skos:definition "Recommended integration into the RDODI four-stage procedure (Stage 1 Research / reference handling) and the methodology blueprint: when resolving any external reference, apply R11 — highest tier first, loose-query-then-parse-for-authoritative-member, stop-on-confirm, descend only on demonstrated unreachability, record Unresolvable rather than borrow a higher label. The addendum makes tier-maximization the default resolution discipline, not an optional pass."@en .
+
+kbi:R12_cov1 a kb:CoverageCheck,
+        owl:NamedIndividual ;
+    rdfs:label "R12 coverage: relation to F50/F46 harness design, F53 residue, the §1 constraint, and the discourse-selection stage"@en ;
+    kb:coversExisting "F50/F46 fidelity-harness design (to be built); F53 escalation-tier; §1 generator-cannot-self-certify constraint; discourse-selection stage; F39 silent-rewording risk"@en ;
+    skos:definition "R12 does not invent new machinery; it commits the page stage to the architecture the blueprint's own findings were converging on. It depends on the F50/F46 fidelity-harness DESIGN (FaithfulnessError/GroundingScore/ReferenceIntegrityGate/CountDrift) — which R12 requires be BUILT and adversarially proven (F39 showed a frontier LLM silently reworded 7/13 entities uncaught by naive checks). It inherits F53's escalation-tier for the predicate-faithfulness residue, and it is the page-stage instance of the §1 constraint (generator cannot self-certify; human is permanent verifier). It uses, not duplicates, RDODI's existing discourse-selection stage (which already CHOOSES per-section widgets). No existing pattern R1-R11 covers the render-vs-generation architecture decision for Stage-4."@en .
+
+kbi:R12_ev1 a kb:ArtifactReference,
+        owl:NamedIndividual ;
+    rdfs:label "R12 evidence: the deterministic-render test drive that motivated the gated-generation decision"@en ;
+    kb:provenanceSession "2026-05-29 Ch.9 page-stage architecture session" ;
+    skos:definition "Evidence is the test-drive renderer render_page_testdrive_v0_1_0.py + its traceability ledger (1981 blocks, 0 untraced, valid HTML) and the bar-measurement showing the render is faithful-but-unshaped (264KB, 1 table, 1116 flat cites vs the deployed bar of 117-140KB, 7-12 tables, 70-154 woven cites). The render CONFIRMED the page can be graph-derived AND established that shaping is the missing, irreducibly generative capability — the empirical basis for choosing gated generation over deterministic rendering for this stage."@en .
+
+kbi:R12_int1 a kb:ProcedureAddendumRecommendation,
+        owl:NamedIndividual ;
+    rdfs:label "R12 integration: Stage-4 procedure becomes gated co-evolution; harness-runs-each-iteration safety rail"@en ;
+    kb:proposedAddendumText "RDODI Stage-4 page generation is gated co-evolution: an LLM shapes the page from the grounded graph (latitude over form, never over facts), a fidelity harness checks every shaped element traces to a source triple (grounding, citation-identifier integrity, numeric fidelity, entity membership) each iteration, the predicate-faithfulness residue is escalated to human/LLM-judge review rather than auto-confirmed, and the loop iterates until both the harness goes quiet on genuine infidelity AND the result satisfies the deployed bar. No iteration output is shipped until it has passed the current harness."@en ;
+    skos:definition "Recommended integration into the RDODI four-stage procedure §5 (interactive page): replace 'deterministic render' / 'count >=N elements' with the gated-co-evolution loop — LLM shapes from the graph; the fidelity harness runs each iteration; caught infidelities become generator constraints or new harness checks; the predicate residue escalates to review; iterate to the two-condition stop. The element-COUNT gates (Stage4.D) are superseded by fidelity gates per the count-not-substance lesson. PREREQUISITE (fail-stop, reframed): no iteration's output is trusted/shipped until that iteration has passed the current harness; the harness is built up THROUGH the loop, not fully before it."@en .
+
+kbi:R13_cov1 a kb:PatternCoverage,
+        owl:NamedIndividual ;
+    rdfs:label "R13 coverage / non-duplication"@en ;
+    skos:definition "R13 does not duplicate existing RDODI items: no session-close / release-completeness lessons-recorded gate exists in the RDODI knowledge base prior to this addition (verified by scanning all skos:definition text for record-as-emerge / session-close / lessons-recorded concepts — zero hits). It composes with L-65 (verify before publish) and the OE B1/L-64 cross-session boundary, and is enforced via a new pre-ship checklist item in the enforcement stage. The OE-targeted sibling proposals O/P/Q (per-project isolation, standard-interface, present-only-asked) are operational to their originating workstream and OE-targeted; they are NOT adopted into RDODI (cross-study hygiene) and are forwarded to the OE session unchanged."@en .
+
+kbi:R13_ev1 a kb:PatternEvidence,
+        owl:NamedIndividual ;
+    rdfs:label "R13 evidence"@en ;
+    skos:definition "The originating OE proposal's own evidence: an earlier parallel session applied and cited lessons for many turns but recorded none until an examiner challenge prompted it — the governance gap R13 names. Counter-evidence that the gate is followable: in the present RDODI session, findings F71 through F107 were each recorded into the methodology blueprint as they emerged, demonstrating the behavior the gate makes non-skippable."@en .
+
+kbi:R13_int1 a kb:PatternIntegration,
+        owl:NamedIndividual ;
+    rdfs:label "R13 recommended integration"@en ;
+    skos:definition "Integrate R13 as a release-completeness gate in the RDODI operating checklist (section D, before ship): 'D4 — new lessons recorded? If lessons emerged this session, they are written to the governed store before the release is called complete.' Blocking for the release-complete CLAIM, not for artifact correctness. Wired into rdodi_alert_manifest as a blocking pre-ship check."@en .
+
+kbi:R14_cov1 a kb:PatternCoverage,
+        owl:NamedIndividual ;
+    rdfs:label "R14 cov1"@en ;
+    skos:definition "R14 does not duplicate existing RDODI patterns: R1 (stage-specific quality vocabulary) and R12 (page architecture) concern WHICH gate/structure applies, not the conformance-vs-design-quality distinction; R2 (upstream pass != downstream pass) is about cross-stage licensing, a different axis. No prior pattern states conformance != design quality."@en .
+
+kbi:R14_ev1 a kb:PatternEvidence,
+        owl:NamedIndividual ;
+    rdfs:label "R14 ev1"@en ;
+    skos:definition "Evidence: v2.0.0 was CONFORMANT (typed ABox, SHACL-valid, faithful) and still 'behind the standards' per the user; the design-quality finding F105 documented that the interactive-page ontology already carries unused QualityDimension/QualityAssessment/UsabilityHeuristic vocabulary, and that no design-quality floor gate existed."@en .
+
+kbi:R14_int1 a kb:PatternIntegration,
+        owl:NamedIndividual ;
+    rdfs:label "R14 int1"@en ;
+    skos:definition "Integrate R14 as a standing caution wherever a conformance gate is run, and as the rationale for a Stage-4 design-quality FLOOR gate (proposed, not yet built) reusing the ontology's QualityDimension/UsabilityHeuristic vocabulary. The gate enforces a richness floor; human review owns the ceiling."@en .
+
+kbi:R15_cov1 a kb:PatternCoverage,
+        owl:NamedIndividual ;
+    rdfs:label "R15 cov1"@en ;
+    skos:definition "R15 does not duplicate OE L-64 (scope: assessed-not-edited) — it adds the VERIFICATION axis (re-verify-locally). It also does not duplicate R13 (whose cross-session mention is mere provenance of its origin, not a rule about treating cross-session claims)."@en .
+
+kbi:R15_ev1 a kb:PatternEvidence,
+        owl:NamedIndividual ;
+    rdfs:label "R15 ev1"@en ;
+    skos:definition "Evidence: in F107 the proposal's [VERIFIED-HERE] tags were re-checked here and a cross-session lead was CORRECTED in our favor (RESOLUTION_METHOD_NOTE_v1_0_0.md was reported 'not found' on the proposing session's disk but EXISTS here at ch9_resolution/); in F108 the proposal's lesson-count and anchor BPs were re-verified against this session's OE ABox (SHA eeb61ab19...) and a self-corrected count error (LessonsLearned type localname) was caught rather than asserted."@en .
+
+kbi:R15_int1 a kb:PatternIntegration,
+        owl:NamedIndividual ;
+    rdfs:label "R15 int1"@en ;
+    skos:definition "Integrate R15 as the standing rule whenever a parallel-session proposal/artifact is received: re-verify every claim on local disk first; correct leads in either direction; import no foreign code/state; ground adopted items locally. Wire as a checklist precondition for any cross-session-originated task."@en .
+
+kbi:R1_cov1 a kb:CoverageCheck,
+        owl:NamedIndividual ;
+    rdfs:label "R1 coverage: BP-D32 adjacent but not equivalent"@en ;
+    kb:relatedOEDiscipline oe:BP-D32 ;
+    skos:definition "BP-D32 (InteractivityCouplingMustEncodeDomainSemantics) addresses interactivity-domain coupling, not quality-vocabulary-by-stage; the gates implement R1 implicitly but no BP/L explicitly states the vocabulary-by-stage principle."@en .
+
+kbi:R1_ev1 a kb:TranscriptCitation,
+        owl:NamedIndividual ;
+    rdfs:label "R1 evidence: transcript line 6534"@en ;
+    kb:provenanceSession "predecessor-session (not locally re-verifiable in this current RDODI session)" ;
+    kb:quotedSourceText "Each stage's quality is shaped by what that stage produces. A research artefact's quality has nothing to do with whether buttons are keyboard-accessible; an interactive page's quality has nothing to do with Harvard citation form. Collapsing them into one QualityDimension class with 8 named instances (the way the legacy bundle did) hides this fact." ;
+    kb:transcriptLineRef 6534 ;
+    skos:definition "Transcript citation at line 6534 of the predecessor RDODI session establishing the stage-specific quality vocabulary pattern."@en .
+
+kbi:R1_int1 a kb:MethodologyNoteRecommendation,
+        owl:NamedIndividual ;
+    rdfs:label "R1 integration: methodology note on stage-specific quality vocabulary"@en ;
+    kb:proposedAddendumText "The RDODI quality vocabulary uses stage-specific subclasses (already followed in stage-specific gates). SHACL shapes attach to the stage-specific classes, narrower not broader. When future quality vocabulary is added, do not introduce an umbrella class spanning stages." ;
+    skos:definition "The recommended integration is a methodology note recording that the RDODI quality vocabulary uses stage-specific subclasses; SHACL shapes attach to the stage-specific classes, narrower not broader; future quality vocabulary additions must not introduce an umbrella class spanning stages."@en .
+
+kbi:R2_cov1 a kb:CoverageCheck,
+        owl:NamedIndividual ;
+    rdfs:label "R2 coverage: existing F69 names symptom; R2 names reason"@en ;
+    kb:externalReference "F69 in methodology_blueprint of predecessor session (NOT in this ecosystem's kb_abox_v1_35_0 — preserved for audit)" ;
+    skos:definition "F69 in the predecessor methodology blueprint names the symptom (no positive end-to-end exemplar); pattern R2 names the underlying reason (quality is not transitive across stages)."@en .
+
+kbi:R2_ev1 a kb:TranscriptCitation,
+        owl:NamedIndividual ;
+    rdfs:label "R2 evidence: transcript line 1599"@en ;
+    kb:provenanceSession "predecessor-session" ;
+    kb:quotedSourceText "Report is almost perfect, yet HTML file is disappointing. It seems the RRWPC pipeline is not properly applied for the HTML generation." ;
+    kb:transcriptLineRef 1599 ;
+    skos:definition "Transcript citation at line 1599 of the predecessor RDODI session followed by six specific page-level defects under an upstream-polished report; motivated the entire widget-stage adoption."@en .
+
+kbi:R2_int1 a kb:BlueprintFindingRecommendation,
+        owl:NamedIndividual ;
+    rdfs:label "R2 integration: blueprint finding F71 (proposed)"@en ;
+    kb:externalReference "Proposed finding number F71 is illustrative; actual integration number is the ratifier's call." ;
+    kb:proposedAddendumText "Quality does not propagate across RDODI stages — each stage gates its own output. An upstream PASS never licenses a downstream PASS. The widget-stage adoption (Stage4.H–K) is this principle's structural response." ;
+    skos:definition "Recommended integration: a blueprint finding (proposed F71) stating that quality does not propagate across RDODI stages and the widget-stage adoption is its structural response."@en .
+
+kbi:R3_cov1 a kb:CoverageCheck,
+        owl:NamedIndividual ;
+    rdfs:label "R3 coverage: rationale at F65 but not as general method-pattern"@en ;
+    skos:definition "F65 records the specific schema choice; the meta-lesson that schema forks with separating cases must be settled by test-drive is not generalised in any existing OE BP/L."@en .
+
+kbi:R3_ev1 a kb:SessionDecisionRecord,
+        owl:NamedIndividual ;
+    rdfs:label "R3 evidence: F65 + adversarial test 7/7 + CLEAN_SESSION_BOOTSTRAP_v1_2_0"@en ;
+    kb:externalReference "F65 (blueprint), intention_coverage_gate_v1_0_0.py (gate file in current ecosystem), CLEAN_SESSION_BOOTSTRAP_v1_2_0 (v1.5.2 ships v1_2_1)" ;
+    kb:provenanceSession "predecessor-session" ;
+    skos:definition "Evidence is the predecessor methodology-blueprint finding F65, the seven-of-seven passing adversarial test for intention_coverage_gate_v1_0_0.py, and the test-drive recorded in the predecessor session's CLEAN_SESSION_BOOTSTRAP_v1_2_0."@en .
+
+kbi:R3_int1 a kb:BlueprintFindingRecommendation,
+        owl:NamedIndividual ;
+    rdfs:label "R3 integration: method-pattern finding F72 (proposed)"@en ;
+    kb:proposedAddendumText "When a schema choice has a separating case (an input on which the readings yield different output), the test-drive — not preference — is what decides. The richer-looking option may lose on evidence (two-hop did)." ;
+    skos:definition "Recommended integration: a methodology-blueprint method-pattern finding (proposed F72) stating that schema forks with separating cases are decided by test-drive rather than preference."@en .
+
+kbi:R4_cov1 a kb:CoverageCheck,
+        owl:NamedIndividual ;
+    rdfs:label "R4 coverage: L-40 addresses disclosure language not asymmetric design"@en ;
+    kb:relatedOEDiscipline oe:L-40 ;
+    skos:definition "L-40 addresses disclosure language for observations vs decisions but does not address the asymmetric pass/fail design principle itself; R4 adds the design-pattern dimension."@en .
+
+kbi:R4_ev1 a kb:ArtifactReference,
+        owl:NamedIndividual ;
+    rdfs:label "R4 evidence: F66 in methodology_blueprint, intention_coverage_gate source"@en ;
+    kb:externalReference "F66 in methodology_blueprint_v1_29_0; gate file present in current ecosystem at 06-widget-stage/02-gates/intention_coverage_gate_v1_0_0.py" ;
+    kb:provenanceSession "predecessor-session" ;
+    kb:quotedSourceText "a widget covering no declared intention = FAIL (decoration). An intention with no widget = DISCLOSED SCOPE (reported, NOT a fail)." ;
+    skos:definition "Evidence is the predecessor blueprint finding F66 and the verbatim comment in the gate source code stating the asymmetric pass/fail design."@en .
+
+kbi:R4_int1 a kb:BlueprintFindingRecommendation,
+        owl:NamedIndividual ;
+    rdfs:label "R4 integration: design-pattern finding F73 (proposed)"@en ;
+    kb:proposedAddendumText "When designing any coverage gate in the RDODI procedure (or extending it), explicitly answer two questions: (a) which direction is a real defect (the thing the gate must fail on), (b) which direction is honest scope-disclosure (the thing the gate must report-but-not-fail). Default-symmetric coverage gates either over-strict or over-permissive; the asymmetry must be intentional." ;
+    skos:definition "Recommended integration: blueprint design-pattern finding (proposed F73) requiring every coverage gate to answer two questions — which direction is a real defect and which direction is honest scope-disclosure — and to make the asymmetry intentional rather than default-symmetric."@en .
+
+kbi:R5_cov1 a kb:CoverageCheck,
+        owl:NamedIndividual ;
+    rdfs:label "R5 coverage: L-65 verifies gates fail on bad input but does not require shipping the bad input"@en ;
+    kb:relatedOEDiscipline oe:L-65 ;
+    skos:definition "L-65 requires that gates fail on bad input as part of verify-before-publishing; R5 adds the design counterpart — ship a permanent worked example that triggers the failure, so the gate's load-bearing nature is permanently demonstrable."@en .
+
+kbi:R5_ev1 a kb:SessionDecisionRecord,
+        owl:NamedIndividual ;
+    rdfs:label "R5 evidence: CLEAN_SESSION_BOOTSTRAP_v1_2_0 closure record"@en ;
+    kb:provenanceSession "predecessor-session (current ecosystem ships CLEAN_SESSION_BOOTSTRAP_v1_2_1 in 05-documentation/)" ;
+    kb:quotedSourceText "The worked example is a NEGATIVE exemplar by design — has 0 of everything the gates check." ;
+    skos:definition "Evidence is the closure record in the predecessor session's CLEAN_SESSION_BOOTSTRAP_v1_2_0 documenting Ch.9 as the negative exemplar."@en .
+
+kbi:R5_int1 a kb:ProcedureAddendumRecommendation,
+        owl:NamedIndividual ;
+    rdfs:label "R5 integration: procedure addendum mandating a negative exemplar"@en ;
+    kb:proposedAddendumText "The RDODI procedure requires that every gated pipeline ship at least one negative worked example — an artifact the gates fail on by design, with the failure mode stated. A pipeline that only ships positive examples cannot be trusted to gate anything. The EX gap (no positive exemplar yet) is the other side of this discipline; both are required, neither substitutes for the other." ;
+    skos:definition "Recommended integration: a procedure addendum requiring every gated RDODI pipeline to ship at least one negative worked example with its failure mode stated."@en .
+
+kbi:R6_cov1 a kb:CoverageCheck,
+        owl:NamedIndividual ;
+    rdfs:label "R6 coverage: cross-cutting; OE companion pattern BP-X1"@en ;
+    kb:externalReference "OE companion principle BP-X1 (held in OE_Session_Lessons_Proposal_v1_0_0.md — not bundled here)" ;
+    skos:definition "The OE-general counterpart is BP-X1 in the OE Session Lessons Proposal companion file; the RDODI-specific framing binds it to RDODI documentation wording."@en .
+
+kbi:R6_ev1 a kb:ArtifactReference,
+        owl:NamedIndividual ;
+    rdfs:label "R6 evidence: RDODI_OE_ASSESSMENT_BASELINE correction"@en ;
+    kb:externalReference "RDODI_OE_ASSESSMENT_BASELINE_v1_0_0.md (predecessor session v1.5.1 release)" ;
+    skos:definition "Evidence is the assessment-baseline correction section recording the under-specified zero-violation claim and its remediation."@en .
+
+kbi:R6_int1 a kb:MethodologyNoteRecommendation,
+        owl:NamedIndividual ;
+    rdfs:label "R6 integration: documentation wording rule"@en ;
+    kb:proposedAddendumText "Any 'N violations' or 'conforms' claim in any RDODI README, blueprint, baseline, or procedure note must name, in the same sentence: shape version, imports policy, corpus scope, exclusions." .
+
+kbi:R7_cov1 a kb:CoverageCheck,
+        owl:NamedIndividual ;
+    rdfs:label "R7 coverage: OE companion L-X2"@en ;
+    kb:externalReference "OE companion principle L-X2" ;
+    skos:definition "The OE-general counterpart is L-X2 in the OE Session Lessons Proposal companion file."@en .
+
+kbi:R7_ev1 a kb:TranscriptCitation,
+        owl:NamedIndividual ;
+    rdfs:label "R7 evidence: transcript line 1259"@en ;
+    kb:provenanceSession "predecessor-session" ;
+    kb:transcriptLineRef 1259 ;
+    skos:definition "Transcript citation at line 1259 of the predecessor RDODI session marking the two-rounds-of-guessing incident."@en .
+
+kbi:R7_int1 a kb:ProcedureAddendumRecommendation,
+        owl:NamedIndividual ;
+    rdfs:label "R7 integration: discipline addendum"@en ;
+    kb:proposedAddendumText "When a user repeats the same challenge against an RDODI build or decision, the next action is a direct ask (e.g. ask_user_input_v0), not another iteration." .
+
+kbi:R8_cov1 a kb:CoverageCheck,
+        owl:NamedIndividual ;
+    rdfs:label "R8 coverage: OE companion L-X3; BP-D41 anchor"@en ;
+    kb:externalReference "OE companion principle L-X3" ;
+    kb:relatedOEDiscipline oe:BP-D41 ;
+    skos:definition "OE-general counterpart is L-X3 in the OE companion file; BP-D41 supplies the verification discipline this pattern refines."@en .
+
+kbi:R8_ev1 a kb:ArtifactReference,
+        owl:NamedIndividual ;
+    rdfs:label "R8 evidence: reference_rule_gate status tiers"@en ;
+    kb:externalReference "reference_rule_gate_v1_0_0.py in predecessor session ecosystem; current ecosystem may not contain this file at this exact path." ;
+    skos:definition "Evidence is the existing reference_rule_gate_v1_0_0.py which already implements verified/unavailable_flagged/unverified tiers; R8 proposes adding a corroborated tier."@en .
+
+kbi:R8_int1 a kb:GateRefinementRecommendation,
+        owl:NamedIndividual ;
+    rdfs:label "R8 integration: add corroborated tier to reference_rule_gate"@en ;
+    kb:proposedAddendumText "Add an intermediate 'corroborated' tier to the reference rule gate's status enumeration so cross-LLM-sourced references are tracked distinctly from 'verified' (against an authoritative non-LLM source) and 'unverified' (no corroboration)." .
+
+kbi:R9_cov1 a kb:CoverageCheck,
+        owl:NamedIndividual ;
+    rdfs:label "R9 coverage: OE companion L-X5"@en ;
+    kb:externalReference "OE companion principle L-X5" ;
+    skos:definition "OE-general counterpart is L-X5 in the OE companion file."@en .
+
+kbi:R9_ev1 a kb:ArtifactReference,
+        owl:NamedIndividual ;
+    rdfs:label "R9 evidence: rdodi_gate_adversarial_test v1.1.0 → v1.2.0 remediation"@en ;
+    kb:externalReference "rdodi_gate_adversarial_test_v1_1_0 (non-hermetic) and rdodi_gate_adversarial_test_v1_2_0 (hermetic) in predecessor session v1.5.1; not confirmed at this path in current ecosystem." ;
+    skos:definition "Evidence is the documented remediation from non-hermetic to hermetic adversarial test."@en .
+
+kbi:R9_int1 a kb:MethodologyNoteRecommendation,
+        owl:NamedIndividual ;
+    rdfs:label "R9 integration: hermetic-tests rule"@en ;
+    kb:proposedAddendumText "All RDODI adversarial tests must resolve paths via __file__ and bundle every fixture; absolute paths and unbundled fixtures invalidate any reproducibility claim about the test's pass count." .
+
+oe:BP-D41 a skos:Concept ;
+    rdfs:label "BP-D41 (verify references or flag)"@en ;
+    rdfs:isDefinedBy <http://example.org/oe-discipline/kb_abox_v1_35_0> .
+
+oe:L-64 a skos:Concept ;
+    rdfs:label "L-64 (cross-session scope; propose not edit)"@en ;
+    rdfs:isDefinedBy <http://example.org/oe-discipline/kb_abox_v1_35_0> .
+
+oe:L-40 a skos:Concept ;
+    rdfs:label "L-40 (honest disclosure / observations vs decisions)"@en ;
+    rdfs:isDefinedBy <http://example.org/oe-discipline/kb_abox_v1_35_0> .
+
+oe:L-65 a skos:Concept ;
+    rdfs:label "L-65 (verify before publishing / re-run not assert)"@en ;
+    rdfs:isDefinedBy <http://example.org/oe-discipline/kb_abox_v1_35_0> .
+
+
+<http://example.org/rdodi/knowledgebase/instance> owl:priorVersion <http://example.org/rdodi/knowledgebase/instance/1.4.0> .

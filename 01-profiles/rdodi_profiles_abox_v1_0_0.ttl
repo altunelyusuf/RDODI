@@ -1,0 +1,64 @@
+@prefix prof: <http://rdodi.org/profiles#> .
+@prefix doc:  <http://example.org/rdodi/document-ontology#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<http://rdodi.org/profiles> a owl:Ontology ;
+    owl:versionInfo "1.0.0" ;
+    owl:versionIRI <http://rdodi.org/profiles/1.0.0> ;
+    owl:imports <http://example.org/rdodi/document-ontology> ;
+    rdfs:comment "RDODI output-profile registry (A2). Profiles are doc:ArtifactKindSpec individuals over the existing genre/template abstraction. Course-companion is profile #1; technical-report and whitepaper are contrasting genres proving type-agnosticism."@en .
+
+# ---- Genres (doc:ArtifactGenre instances) ----
+prof:genre_CourseDocument a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "course-document"@en .
+prof:genre_TechnicalReport a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "technical-report"@en .
+prof:genre_Whitepaper a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "whitepaper"@en .
+
+# ---- Shared form vocabulary (instances) ----
+prof:voice_Instructional a doc:VoiceConstraint, owl:NamedIndividual ; rdfs:label "instructional, second-person, scaffolded"@en .
+prof:voice_FormalTechnical a doc:VoiceConstraint, owl:NamedIndividual ; rdfs:label "formal, third-person, precise"@en .
+prof:voice_Persuasive a doc:VoiceConstraint, owl:NamedIndividual ; rdfs:label "persuasive, benefit-led, concise"@en .
+prof:cite_Academic a doc:CitationForm, owl:NamedIndividual ; rdfs:label "academic numbered/author-date"@en .
+prof:cite_IEEE a doc:CitationForm, owl:NamedIndividual ; rdfs:label "IEEE bracketed numeric"@en .
+prof:cite_InlineLinked a doc:CitationForm, owl:NamedIndividual ; rdfs:label "inline linked sources"@en .
+
+# ================= PROFILE #1 — Course Companion =================
+prof:CourseCompanionKind a doc:ArtifactKindSpec, owl:NamedIndividual ;
+    rdfs:label "Course-Companion profile (RDODI profile #1)"@en ;
+    skos:definition "A student-facing companion to a primary source: scaffolded concept sections, worked examples, and self-check review questions. The proving-ground profile."@en ;
+    doc:hasGenre prof:genre_CourseDocument ;
+    doc:hasStructuralTemplate prof:tmpl_CourseCompanion ;
+    doc:hasVoiceConstraint prof:voice_Instructional ;
+    doc:hasCitationForm prof:cite_Academic .
+prof:tmpl_CourseCompanion a doc:StructuralTemplate, owl:NamedIndividual ;
+    rdfs:label "Course-companion structural template"@en ;
+    doc:requiredSectionName "Abstract", "Introduction", "Concept Sections", "Worked Examples", "Review Questions", "Abbreviations", "References" ;
+    doc:sectionOrder 7 .
+
+# ================= Contrasting genre — Technical Report =================
+prof:TechnicalReportKind a doc:ArtifactKindSpec, owl:NamedIndividual ;
+    rdfs:label "Technical-Report profile"@en ;
+    skos:definition "A formal technical report: structured methods/results/discussion for an expert reader. Structurally distinct from the course companion (no review questions, no scaffolding)."@en ;
+    doc:hasGenre prof:genre_TechnicalReport ;
+    doc:hasStructuralTemplate prof:tmpl_TechReport ;
+    doc:hasVoiceConstraint prof:voice_FormalTechnical ;
+    doc:hasCitationForm prof:cite_IEEE .
+prof:tmpl_TechReport a doc:StructuralTemplate, owl:NamedIndividual ;
+    rdfs:label "Technical-report structural template"@en ;
+    doc:requiredSectionName "Abstract", "Introduction", "Background", "Method", "Results", "Discussion", "Conclusion", "References" ;
+    doc:sectionOrder 8 .
+
+# ================= Contrasting genre — Whitepaper =================
+prof:WhitepaperKind a doc:ArtifactKindSpec, owl:NamedIndividual ;
+    rdfs:label "Whitepaper profile"@en ;
+    skos:definition "A persuasive whitepaper: problem framing, approach, evidence, and a call to action for a decision-maker. Structurally distinct again (executive summary, CTA)."@en ;
+    doc:hasGenre prof:genre_Whitepaper ;
+    doc:hasStructuralTemplate prof:tmpl_Whitepaper ;
+    doc:hasVoiceConstraint prof:voice_Persuasive ;
+    doc:hasCitationForm prof:cite_InlineLinked .
+prof:tmpl_Whitepaper a doc:StructuralTemplate, owl:NamedIndividual ;
+    rdfs:label "Whitepaper structural template"@en ;
+    doc:requiredSectionName "Executive Summary", "The Problem", "Our Approach", "Evidence", "Benefits", "Call to Action", "References" ;
+    doc:sectionOrder 7 .

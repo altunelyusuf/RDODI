@@ -1,0 +1,18 @@
+@prefix demo: <http://example.org/demo-pqm#> .
+@prefix aa: <http://example.org/rdodi/academic-authoring#> .
+@prefix rres: <http://example.org/rdodi/research-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+demo:cite_boehm1981 a aa:ConsultedSource, rres:Citation, owl:NamedIndividual ;
+  rdfs:label "Consulted source: boehm1981"@en ;
+  aa:sourceHash "8f42075aecbe4e2d6ff25f0c71f65d9a4dd60e55bf00616053a9397f39b3f41c" ;
+  aa:ingestedAt "2026-05-28T21:16:19Z"^^xsd:dateTime ;
+  rres:hasContext "primary; verified=True; reconstruction=False; not_consulted_at_authoring=False; ingested_from=boehm_1981_excerpt.txt" ;
+  aa:hasPassage demo:cite_boehm1981_pas0 .
+
+demo:cite_boehm1981_pas0 a aa:ConsultedPassage, owl:NamedIndividual ;
+  rdfs:label "Passage 1 of boehm1981"@en ;
+  aa:pageAnchor "l.1-11" ;
+  aa:verbatimText "Software defects discovered after deployment cost dramatically more to correct than defects caught early in the lifecycle. Across empirical studies the cost ratio between a requirements-phase defect and a production-phase defect has been observed to range from approximately ten to one hundred, with the upper bound being most consistent in large systems where downstream rework involves re-running integration and acceptance tests across multiple subsystems. The economic implication for management is that prevention investment, measured as a fraction of total project cost, is recovered many times" .

@@ -1,0 +1,28 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix wp: <http://example.org/widget-primitives#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+wp:fitnessEvidence a owl:DatatypeProperty ;
+    rdfs:label "fitness evidence"@en ;
+    dcterms:source "SKILL.md honest disclosure #7" ;
+    rdfs:domain wp:WidgetPrimitive ;
+    rdfs:range xsd:string ;
+    skos:definition "The evidence posture for whether this primitive fits real pedagogical content: 'proven-fit' (chapter-driven, observed in a real build) or 'unknown-fit' (literature-driven, recurrence attested but fit to specific content not yet demonstrated)."@en .
+
+wp:provenancePosture a owl:DatatypeProperty ;
+    rdfs:label "provenance posture"@en ;
+    dcterms:source "SKILL.md honest disclosures #2 and #7" ;
+    rdfs:domain wp:WidgetPrimitive ;
+    rdfs:range xsd:string ;
+    skos:definition "Whether the primitive was extracted from observed pedagogical content ('chapter-driven') or from peer-reviewed visualization literature ('literature-driven'). Per SKILL.md honest disclosure #7: the two postures coexist and neither is strictly better."@en .
+
+<http://example.org/widget-primitives/tbox-ext> a owl:Ontology ;
+    rdfs:label "Widget Primitives TBox extension v1.0.0 — provenance-posture properties"@en ;
+    dcterms:created "2026-05-28"^^xsd:date ;
+    dcterms:source "Phase 1: declares the chapter-driven vs literature-driven posture the SKILL.md documents in prose (honest disclosures #2, #7)" ;
+    owl:versionIRI <http://example.org/widget-primitives/tbox-ext/1.0.0> ;
+    owl:versionInfo "1.0.0" .
+

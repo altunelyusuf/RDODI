@@ -1,0 +1,115 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ds: <http://example.org/rdodi/discourse-selection#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix wp: <http://example.org/widget-primitives#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/rdodi/discourse-selection/abox> a owl:Ontology ;
+    rdfs:label "Discourse-Selection ABox v1.0.0 — the 9 widget selection rules"@en ;
+    dcterms:created "2026-05-28"^^xsd:date ;
+    owl:versionIRI <http://example.org/rdodi/discourse-selection/abox/1.0.0> ;
+    owl:versionInfo "1.0.0" ;
+    skos:scopeNote "Maps each WidgetPrimitive to the discourse feature that auto-selects it. The mapping IS the self-adapting selection rule."@en .
+
+wp:Primitive_CaseGridLinkRotDisclosure ds:autoSelectsWhen ds:Feature_MultiSourceCaseSet .
+
+wp:Primitive_CoupledVariableExplorer ds:autoSelectsWhen ds:Feature_CrossAttributeRelation .
+
+wp:Primitive_DynamicQueryContinuous ds:autoSelectsWhen ds:Feature_FilterableItemSet .
+
+wp:Primitive_GanttMonotoneSunkCost ds:autoSelectsWhen ds:Feature_MonotoneTemporalCost .
+
+wp:Primitive_GuidedNarrativeWalkthrough ds:autoSelectsWhen ds:Feature_OrderedArgument .
+
+wp:Primitive_MultiClassSelectorDistinct ds:autoSelectsWhen ds:Feature_KCategoryEnumeration .
+
+wp:Primitive_OverviewDetailBrushing ds:autoSelectsWhen ds:Feature_LargeCollectionOverview .
+
+wp:Primitive_ThreeTierProvenanceBadge ds:autoSelectsWhen ds:Feature_MixedSourceTiers .
+
+wp:Primitive_TwoStateAsymmetricPressure ds:autoSelectsWhen ds:Feature_AsymmetricContrast .
+
+ds:Feature_AsymmetricContrast a ds:RhetoricalStructureFeature,
+        owl:NamedIndividual ;
+    rdfs:label "contrast: two structures respond differently to a pressure"@en ;
+    ds:detectionRule "RST Contrast between two named configurations + a stressor whose effect differs. Interpretive: the asymmetry claim. Anchored: RST Contrast relation."@en ;
+    ds:hasDetectionTier ds:Tier_Interpretive ;
+    dcterms:source "RST Contrast (Mann & Thompson 1987)" ;
+    skos:definition "Passage sets up two configurations and asserts they respond differently to the same force (RST Contrast relation over a conditional)."@en .
+
+ds:Feature_CrossAttributeRelation a ds:DataPatternFeature,
+        owl:NamedIndividual ;
+    rdfs:label "relationships between attributes revealed by selection"@en ;
+    ds:detectionRule "Relationships across >=2 attributes are the focus. Anchored: Shneiderman Relate task; Heer & Shneiderman 2012 Coordinate Views."@en ;
+    ds:hasDetectionTier ds:Tier_Interpretive ;
+    dcterms:source "Shneiderman 1996 Relate; Heer & Shneiderman 2012" ;
+    skos:definition "Passage's point is the relationship BETWEEN attributes (which X relates to which Y), not any single attribute."@en .
+
+ds:Feature_FilterableItemSet a ds:DataPatternFeature,
+        owl:NamedIndividual ;
+    rdfs:label "items with multiple filterable attributes"@en ;
+    ds:detectionRule "MECHANICAL: item set + >=2 attributes with ranges/categories. Anchored: Shneiderman Filter task / dynamic queries."@en ;
+    ds:hasDetectionTier ds:Tier_Mechanical ;
+    dcterms:source "Shneiderman 1996 Filter task (dynamic queries)" ;
+    skos:definition "Passage describes a set of items each with several attributes a reader would want to filter on."@en .
+
+ds:Feature_KCategoryEnumeration a ds:DataPatternFeature,
+        owl:NamedIndividual ;
+    rdfs:label "enumeration of K distinct named categories"@en ;
+    ds:detectionRule "MECHANICAL: passage contains an enumerated/itemized list of >=3 named categories each followed by a distinct definition. Anchored: Shneiderman categorical data + 'buttons for small sets of categories (cardinality < 10)'."@en ;
+    ds:hasDetectionTier ds:Tier_Mechanical ;
+    dcterms:source "Shneiderman 1996: buttons for categories when cardinality < 10" ;
+    skos:definition "Passage enumerates a small set (K) of named classes/types each with its own definition and response."@en .
+
+ds:Feature_LargeCollectionOverview a ds:DataPatternFeature,
+        owl:NamedIndividual ;
+    rdfs:label "collection too large for single-view, needs overview+detail"@en ;
+    ds:detectionRule "Collection size implies overview+detail. Anchored: Shneiderman 'overview first, zoom and filter, details on demand'."@en ;
+    ds:hasDetectionTier ds:Tier_Interpretive ;
+    dcterms:source "Shneiderman 1996 Visual Information-Seeking Mantra" ;
+    skos:definition "Passage references a data collection whose size exceeds what fits in one view, requiring overview navigation."@en .
+
+ds:Feature_MixedSourceTiers a ds:DataPatternFeature,
+        owl:NamedIndividual ;
+    rdfs:label "content drawn from sources of differing epistemic tier"@en ;
+    ds:detectionRule "MECHANICAL: citations of >=2 distinct source tiers present. This primitive is near-universal (the others depend on it)."@en ;
+    ds:hasDetectionTier ds:Tier_Mechanical ;
+    dcterms:source "SKILL.md Primitive 5 (provenance pattern used by all)" ;
+    skos:definition "The page cites sources of >1 tier (textbook vs external-primary vs secondary). Always present when any external sourcing exists."@en .
+
+ds:Feature_MonotoneTemporalCost a ds:DataPatternFeature,
+        owl:NamedIndividual ;
+    rdfs:label "monotone cost over a timeline"@en ;
+    ds:detectionRule "Passage asserts a value that is non-decreasing across a temporal/phase sequence AND names a decision/cancellation point. Mechanical hint: presence of dated phases + a cost figure; interpretive confirmation: the monotonicity claim. Anchored: Shneiderman temporal data type."@en ;
+    ds:hasDetectionTier ds:Tier_Interpretive ;
+    dcterms:source "Shneiderman 1996 temporal data type" ;
+    skos:definition "Passage describes a quantity that only increases (or only decreases) as time/phase advances, with a decision point along the timeline."@en .
+
+ds:Feature_MultiSourceCaseSet a ds:DataPatternFeature,
+        owl:NamedIndividual ;
+    rdfs:label "set of cases each citing an external source"@en ;
+    ds:detectionRule "MECHANICAL: >=2 distinct case examples each carrying an external citation/URL. Anchored: BP-D2 source-verification discipline."@en ;
+    ds:hasDetectionTier ds:Tier_Mechanical ;
+    dcterms:source "Project BP-D2 source-verification" ;
+    skos:definition "Passage presents multiple real-world cases/examples each attributed to an external citation."@en .
+
+ds:Feature_OrderedArgument a ds:RhetoricalStructureFeature,
+        owl:NamedIndividual ;
+    rdfs:label "a fixed argument best conveyed in sequence"@en ;
+    ds:detectionRule "RST Sequence of dependent steps + authored single-path intent. Anchored: RST Sequence; Segel & Heer 2010 narrative visualization."@en ;
+    ds:hasDetectionTier ds:Tier_Interpretive ;
+    dcterms:source "RST Sequence; Segel & Heer 2010 (FLAGGED: anchor weaker, see Phase 5)" ;
+    skos:definition "Passage presents a specific argument whose steps build on each other in a fixed order (RST Sequence + the author's intent to convey one path)."@en .
+
+ds:Tier_Mechanical a ds:DetectionTier,
+        owl:NamedIndividual ;
+    rdfs:label "TIER-A mechanical"@en ;
+    skos:definition "Feature presence is detectable by a deterministic check on the passage (explicit list, dated numeric series, etc.)."@en .
+
+ds:Tier_Interpretive a ds:DetectionTier,
+        owl:NamedIndividual ;
+    rdfs:label "TIER-C interpretive"@en ;
+    skos:definition "Feature presence requires reading/judgment; routed to LLM/human. Acceptable for selection because it cannot affect content correctness."@en .
+

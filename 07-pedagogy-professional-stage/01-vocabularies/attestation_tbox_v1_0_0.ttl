@@ -1,0 +1,29 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix at: <http://example.org/rdodi/attestation#> .
+<http://example.org/rdodi/attestation> a owl:Ontology ; rdfs:label "RDODI Attestation Vocabulary"@en ;
+  owl:versionInfo "1.0.0" ; owl:versionIRI <http://example.org/rdodi/attestation/1.0.0> ;
+  dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+  dcterms:rights "Copyright 2026 Yusuf Altunel. CC BY 4.0."@en ;
+  dcterms:rightsHolder <https://example.org/agent/yusuf-altunel> ;
+  dcterms:publisher <https://example.org/org/iku-ce> ;
+  dcterms:creator <https://example.org/agent/yusuf-altunel> ;
+  dcterms:created "2026-05-28"^^xsd:date ; dcterms:modified "2026-05-28"^^xsd:date ;
+  dcterms:identifier "attestation" ;
+  prov:wasGeneratedBy <http://example.org/rdodi/attestation/activity/release-1.0.0> .
+<http://example.org/rdodi/attestation/activity/release-1.0.0> a prov:Activity ; rdfs:label "PP-stage vocab release 1.0.0"@en ;
+  prov:startedAtTime "2026-05-28T00:00:00Z"^^xsd:dateTime .
+at:ReviewAttestation a owl:Class ; rdfs:label "ReviewAttestation"@en ; skos:definition "A hash-bound human sign-off: who, what role, against which standard, verdict, when, and the artifact hash signed."@en .
+at:reviewer a owl:DatatypeProperty ; rdfs:label "reviewer"@en ; skos:definition "Identity of the attesting human."@en .
+at:reviewerRole a owl:DatatypeProperty ; rdfs:label "reviewerRole"@en ; skos:definition "Role qualifying the attestation (educator, domain-expert, practitioner, accessibility-auditor)."@en .
+at:standardReviewedAgainst a owl:ObjectProperty ; rdfs:label "standardReviewedAgainst"@en ; skos:definition "The Standard or dimension the attestation covers."@en .
+at:verdict a owl:DatatypeProperty ; rdfs:label "verdict"@en ; skos:definition "The reviewer verdict (pass/fail/conditional)."@en .
+at:attestedAtTime a owl:DatatypeProperty ; rdfs:label "attestedAtTime"@en ; skos:definition "Timestamp of the attestation."@en .
+at:artifactHash a owl:DatatypeProperty ; rdfs:label "artifactHash"@en ; skos:definition "SHA-256 of the exact artifact bytes the attestation signed; the gate fails if it does not match the current artifact."@en .
+at:attestationScope a owl:DatatypeProperty ; rdfs:label "attestationScope"@en ; skos:definition "The dimension attested (pedagogical-soundness, model-validity, professional-adequacy, content-correctness)."@en .

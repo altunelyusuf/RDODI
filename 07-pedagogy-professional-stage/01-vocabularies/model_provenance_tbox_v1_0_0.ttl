@@ -1,0 +1,29 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix mp: <http://example.org/rdodi/model-provenance#> .
+<http://example.org/rdodi/model-provenance> a owl:Ontology ; rdfs:label "RDODI Model-Provenance Vocabulary"@en ;
+  owl:versionInfo "1.0.0" ; owl:versionIRI <http://example.org/rdodi/model-provenance/1.0.0> ;
+  dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+  dcterms:rights "Copyright 2026 Yusuf Altunel. CC BY 4.0."@en ;
+  dcterms:rightsHolder <https://example.org/agent/yusuf-altunel> ;
+  dcterms:publisher <https://example.org/org/iku-ce> ;
+  dcterms:creator <https://example.org/agent/yusuf-altunel> ;
+  dcterms:created "2026-05-28"^^xsd:date ; dcterms:modified "2026-05-28"^^xsd:date ;
+  dcterms:identifier "model-provenance" ;
+  prov:wasGeneratedBy <http://example.org/rdodi/model-provenance/activity/release-1.0.0> .
+<http://example.org/rdodi/model-provenance/activity/release-1.0.0> a prov:Activity ; rdfs:label "PP-stage vocab release 1.0.0"@en ;
+  prov:startedAtTime "2026-05-28T00:00:00Z"^^xsd:dateTime .
+mp:NumericModelStatus a owl:Class ; rdfs:label "NumericModelStatus"@en ; skos:definition "The epistemic status of the numbers a widget emits."@en .
+mp:Validated a mp:NumericModelStatus ; rdfs:label "Validated"@en ; skos:definition "Numbers follow a cited, derivable model and are checked by a numeric-conformance test."@en .
+mp:Illustrative a mp:NumericModelStatus ; rdfs:label "Illustrative"@en ; skos:definition "Numbers convey the qualitative shape only; not a calibrated model. Must be visibly labelled as such."@en .
+mp:RealData a mp:NumericModelStatus ; rdfs:label "RealData"@en ; skos:definition "Numbers come from a real dataset supplied at runtime."@en .
+mp:numericModelStatus a owl:ObjectProperty ; rdfs:label "numericModelStatus"@en ; skos:definition "Declares the NumericModelStatus of a numeric widget."@en .
+mp:visibleLabelText a owl:DatatypeProperty ; rdfs:label "visibleLabelText"@en ; skos:definition "The exact text that must appear in the rendered DOM for an Illustrative widget."@en .
+mp:hasValidationDerivation a owl:ObjectProperty ; rdfs:label "hasValidationDerivation"@en ; skos:definition "Links a Validated widget to the cited source/derivation of its model."@en .
+mp:hasConformanceTest a owl:DatatypeProperty ; rdfs:label "hasConformanceTest"@en ; skos:definition "Names the numeric-conformance design-test proving a Validated widget matches its model."@en .

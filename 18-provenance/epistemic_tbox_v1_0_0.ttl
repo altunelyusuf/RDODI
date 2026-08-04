@@ -1,0 +1,11 @@
+@prefix epist: <http://example.org/rdodi/epistemic#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+epist: a owl:Ontology ; owl:versionInfo "1.0.0" ;
+  rdfs:comment "Epistemic source typing — asserted ONLY where the domain declares it; precision never invented (L-66)."@en .
+epist:sourceType a owl:ObjectProperty ; rdfs:comment "epistemic nature of a section's source"@en .
+epist:EpistemicType a owl:Class .
+epist:Verbatim     a epist:EpistemicType, owl:NamedIndividual ; rdfs:label "verbatim slice (declared)"@en .
+epist:Paraphrase   a epist:EpistemicType, owl:NamedIndividual ; rdfs:label "paraphrase (declared)"@en .
+epist:DeclaredMixed a epist:EpistemicType, owl:NamedIndividual ; rdfs:label "verbatim-OR-paraphrase (domain imprecise)"@en .
+epist:Unspecified  a epist:EpistemicType, owl:NamedIndividual ; rdfs:label "source present, epistemic type not declared"@en .

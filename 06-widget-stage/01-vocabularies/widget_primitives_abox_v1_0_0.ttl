@@ -1,0 +1,257 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix wp: <http://example.org/widget-primitives#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+wp:Primitive_CaseGridLinkRotDisclosure a wp:WidgetPrimitive,
+        owl:NamedIndividual ;
+    rdfs:label "Source-verified case grid with link-rot disclosure"@en ;
+    wp:demonstratesSubject wp:DS_CaseGridLinkRotDisclosure ;
+    wp:fitnessEvidence "proven-fit" ;
+    wp:hasDomainConstraint wp:DC_CaseGridLinkRotDisclosure ;
+    wp:hasTestProcedure wp:TP_CaseGridLinkRotDisclosure ;
+    wp:provenancePosture "chapter-driven" ;
+    dcterms:source "SKILL.md Primitive 4" ;
+    skos:definition "Link rot is disclosed, not hidden. Older citations to web-only trade-press content frequently die; honest scholarship discloses this rather than fabricating plausible-looking URLs."@en .
+
+wp:Primitive_CoupledVariableExplorer a wp:WidgetPrimitive,
+        owl:NamedIndividual ;
+    rdfs:label "Coupled-variable explorer"@en ;
+    wp:demonstratesSubject wp:DS_CoupledVariableExplorer ;
+    wp:fitnessEvidence "unknown-fit" ;
+    wp:hasDomainConstraint wp:DC_CoupledVariableExplorer ;
+    wp:hasTestProcedure wp:TP_CoupledVariableExplorer ;
+    wp:provenancePosture "literature-driven" ;
+    dcterms:source "SKILL.md Primitive 8" ;
+    skos:definition "Relationships between attributes are revealed by coordinated selection, not by static layout. When a dataset has multiple attributes, the relationships between them — \"which films did this director make?\" — are not readable from any single view; the reader has to act and see the response."@en .
+
+wp:Primitive_DynamicQueryContinuous a wp:WidgetPrimitive,
+        owl:NamedIndividual ;
+    rdfs:label "Dynamic query filter with continuous bounds"@en ;
+    wp:demonstratesSubject wp:DS_DynamicQueryContinuous ;
+    wp:fitnessEvidence "unknown-fit" ;
+    wp:hasDomainConstraint wp:DC_DynamicQueryContinuous ;
+    wp:hasTestProcedure wp:TP_DynamicQueryContinuous ;
+    wp:provenancePosture "literature-driven" ;
+    dcterms:source "SKILL.md Primitive 7" ;
+    skos:definition "Filtering must be continuous, not transactional. A filter UI where the user adjusts controls and presses \"Apply\" loses the rapid hypothesis-testing affordance that makes data exploration effective."@en .
+
+wp:Primitive_GanttMonotoneSunkCost a wp:WidgetPrimitive,
+        owl:NamedIndividual ;
+    rdfs:label "Time-anchored Gantt with monotone sunk-cost constraint"@en ;
+    wp:demonstratesSubject wp:DS_GanttMonotoneSunkCost ;
+    wp:fitnessEvidence "proven-fit" ;
+    wp:hasDomainConstraint wp:DC_GanttMonotoneSunkCost ;
+    wp:hasTestProcedure wp:TP_GanttMonotoneSunkCost ;
+    wp:provenancePosture "chapter-driven" ;
+    dcterms:source "SKILL.md Primitive 1" ;
+    skos:definition "Late risk detection wastes sunk cost. When a project carries a risk that eventually proves fatal, cancellation at any point >0 incurs sunk cost; the same decision made earlier saves the unspent remainder."@en .
+
+wp:Primitive_GuidedNarrativeWalkthrough a wp:WidgetPrimitive,
+        owl:NamedIndividual ;
+    rdfs:label "Guided narrative walkthrough"@en ;
+    wp:demonstratesSubject wp:DS_GuidedNarrativeWalkthrough ;
+    wp:fitnessEvidence "unknown-fit" ;
+    wp:hasDomainConstraint wp:DC_GuidedNarrativeWalkthrough ;
+    wp:hasTestProcedure wp:TP_GuidedNarrativeWalkthrough ;
+    wp:provenancePosture "literature-driven" ;
+    dcterms:source "SKILL.md Primitive 9" ;
+    skos:definition "For some content, authored narrative outperforms unconstrained exploration. When the goal is to convey a specific argument, the reader benefits from an authored path more than from free-form filter/zoom/relate affordances."@en .
+
+wp:Primitive_MultiClassSelectorDistinct a wp:WidgetPrimitive,
+        owl:NamedIndividual ;
+    rdfs:label "Multi-class tab selector with per-class distinct response"@en ;
+    wp:demonstratesSubject wp:DS_MultiClassSelectorDistinct ;
+    wp:fitnessEvidence "proven-fit" ;
+    wp:hasDomainConstraint wp:DC_MultiClassSelectorDistinct ;
+    wp:hasTestProcedure wp:TP_MultiClassSelectorDistinct ;
+    wp:provenancePosture "chapter-driven" ;
+    dcterms:source "SKILL.md Primitive 3" ;
+    skos:definition "Classification determines response, not magnitude. When a system enumerates K classes of phenomenon, applying a one-size-fits-all response over-reacts in some classes and under-reacts in others."@en .
+
+wp:Primitive_OverviewDetailBrushing a wp:WidgetPrimitive,
+        owl:NamedIndividual ;
+    rdfs:label "Overview-detail with linked brushing"@en ;
+    wp:demonstratesSubject wp:DS_OverviewDetailBrushing ;
+    wp:fitnessEvidence "unknown-fit" ;
+    wp:hasDomainConstraint wp:DC_OverviewDetailBrushing ;
+    wp:hasTestProcedure wp:TP_OverviewDetailBrushing ;
+    wp:provenancePosture "literature-driven" ;
+    dcterms:source "SKILL.md Primitive 6" ;
+    skos:definition "Overview and detail must be coupled, not independent. A data collection too large to fit on screen needs a small overview at low fidelity plus a large detail at high fidelity, mechanically coupled so the reader always knows \"where in the whole am I looking?\""@en .
+
+wp:Primitive_ThreeTierProvenanceBadge a wp:WidgetPrimitive,
+        owl:NamedIndividual ;
+    rdfs:label "Three-tier provenance badge system"@en ;
+    wp:demonstratesSubject wp:DS_ThreeTierProvenanceBadge ;
+    wp:fitnessEvidence "proven-fit" ;
+    wp:hasDomainConstraint wp:DC_ThreeTierProvenanceBadge ;
+    wp:hasTestProcedure wp:TP_ThreeTierProvenanceBadge ;
+    wp:provenancePosture "chapter-driven" ;
+    dcterms:source "SKILL.md Primitive 5" ;
+    skos:definition "Source tier affects how content should be read. A sentence from a course textbook, a sentence from a regulator's announcement, and a sentence from industry press carry different epistemic weight."@en .
+
+wp:Primitive_TwoStateAsymmetricPressure a wp:WidgetPrimitive,
+        owl:NamedIndividual ;
+    rdfs:label "Two-state simulator with asymmetric pressure constraint"@en ;
+    wp:demonstratesSubject wp:DS_TwoStateAsymmetricPressure ;
+    wp:fitnessEvidence "proven-fit" ;
+    wp:hasDomainConstraint wp:DC_TwoStateAsymmetricPressure ;
+    wp:hasTestProcedure wp:TP_TwoStateAsymmetricPressure ;
+    wp:provenancePosture "chapter-driven" ;
+    dcterms:source "SKILL.md Primitive 2" ;
+    skos:definition "Structure determines what can be cut casually. The same logical content encoded as a separate line item versus embedded in working tasks responds asymmetrically to organisational pressure."@en .
+
+<http://example.org/widget-primitives/abox> a owl:Ontology ;
+    rdfs:label "Widget Primitives ABox v1.0.0 — instantiation of the 9 SKILL.md primitives"@en ;
+    dcterms:created "2026-05-28"^^xsd:date ;
+    dcterms:source "widget_primitives_SKILL_v1_1_0.md (Phase 1 instantiation, verbatim demonstrates/constraint claims)" ;
+    owl:versionIRI <http://example.org/widget-primitives/abox/1.0.0> ;
+    owl:versionInfo "1.0.0" .
+
+wp:DC_CaseGridLinkRotDisclosure a wp:DomainConstraint,
+        owl:NamedIndividual ;
+    rdfs:label "Constraint for Source-verified case grid with link-rot disclosure"@en ;
+    wp:constraintExpression "Every source is in exactly one of three states:"@en .
+
+wp:DC_CoupledVariableExplorer a wp:DomainConstraint,
+        owl:NamedIndividual ;
+    rdfs:label "Constraint for Coupled-variable explorer"@en ;
+    wp:constraintExpression "Selection in any panel propagates to all linked panels, bidirectionally:"@en .
+
+wp:DC_DynamicQueryContinuous a wp:DomainConstraint,
+        owl:NamedIndividual ;
+    rdfs:label "Constraint for Dynamic query filter with continuous bounds"@en ;
+    wp:constraintExpression "Result set updates within a sub-second latency budget of any control adjustment, with no Apply button mediating:"@en .
+
+wp:DC_GanttMonotoneSunkCost a wp:DomainConstraint,
+        owl:NamedIndividual ;
+    rdfs:label "Constraint for Time-anchored Gantt with monotone sunk-cost constraint"@en ;
+    wp:constraintExpression "Sunk cost is a monotone non-decreasing function of cancellation date:"@en .
+
+wp:DC_GuidedNarrativeWalkthrough a wp:DomainConstraint,
+        owl:NamedIndividual ;
+    rdfs:label "Constraint for Guided narrative walkthrough"@en ;
+    wp:constraintExpression "Steps are ordered and forward-progression is gated; backward review is permitted:"@en .
+
+wp:DC_MultiClassSelectorDistinct a wp:DomainConstraint,
+        owl:NamedIndividual ;
+    rdfs:label "Constraint for Multi-class tab selector with per-class distinct response"@en ;
+    wp:constraintExpression "Each of K classes produces a distinct definition, response, and visualisation:"@en .
+
+wp:DC_OverviewDetailBrushing a wp:DomainConstraint,
+        owl:NamedIndividual ;
+    rdfs:label "Constraint for Overview-detail with linked brushing"@en ;
+    wp:constraintExpression "Selection in the overview filters the detail; detail items are always a subset of the brushed overview region:"@en .
+
+wp:DC_ThreeTierProvenanceBadge a wp:DomainConstraint,
+        owl:NamedIndividual ;
+    rdfs:label "Constraint for Three-tier provenance badge system"@en ;
+    wp:constraintExpression "Tier must be distinguishable by both colour AND label (BP-D33 belt-and-braces):"@en .
+
+wp:DC_TwoStateAsymmetricPressure a wp:DomainConstraint,
+        owl:NamedIndividual ;
+    rdfs:label "Constraint for Two-state simulator with asymmetric pressure constraint"@en ;
+    wp:constraintExpression "Applying a stressor `S` must produce different outcomes in the two states:"@en .
+
+wp:DS_CaseGridLinkRotDisclosure a wp:DemonstratesSubject,
+        owl:NamedIndividual ;
+    rdfs:label "Demonstrates: Source-verified case grid with link-rot disclosure"@en ;
+    skos:definition "Link rot is disclosed, not hidden. Older citations to web-only trade-press content frequently die; honest scholarship discloses this rather than fabricating plausible-looking URLs."@en .
+
+wp:DS_CoupledVariableExplorer a wp:DemonstratesSubject,
+        owl:NamedIndividual ;
+    rdfs:label "Demonstrates: Coupled-variable explorer"@en ;
+    skos:definition "Relationships between attributes are revealed by coordinated selection, not by static layout. When a dataset has multiple attributes, the relationships between them — \"which films did this director make?\" — are not readable from any single view; the reader has to act and see the response."@en .
+
+wp:DS_DynamicQueryContinuous a wp:DemonstratesSubject,
+        owl:NamedIndividual ;
+    rdfs:label "Demonstrates: Dynamic query filter with continuous bounds"@en ;
+    skos:definition "Filtering must be continuous, not transactional. A filter UI where the user adjusts controls and presses \"Apply\" loses the rapid hypothesis-testing affordance that makes data exploration effective."@en .
+
+wp:DS_GanttMonotoneSunkCost a wp:DemonstratesSubject,
+        owl:NamedIndividual ;
+    rdfs:label "Demonstrates: Time-anchored Gantt with monotone sunk-cost constraint"@en ;
+    skos:definition "Late risk detection wastes sunk cost. When a project carries a risk that eventually proves fatal, cancellation at any point >0 incurs sunk cost; the same decision made earlier saves the unspent remainder."@en .
+
+wp:DS_GuidedNarrativeWalkthrough a wp:DemonstratesSubject,
+        owl:NamedIndividual ;
+    rdfs:label "Demonstrates: Guided narrative walkthrough"@en ;
+    skos:definition "For some content, authored narrative outperforms unconstrained exploration. When the goal is to convey a specific argument, the reader benefits from an authored path more than from free-form filter/zoom/relate affordances."@en .
+
+wp:DS_MultiClassSelectorDistinct a wp:DemonstratesSubject,
+        owl:NamedIndividual ;
+    rdfs:label "Demonstrates: Multi-class tab selector with per-class distinct response"@en ;
+    skos:definition "Classification determines response, not magnitude. When a system enumerates K classes of phenomenon, applying a one-size-fits-all response over-reacts in some classes and under-reacts in others."@en .
+
+wp:DS_OverviewDetailBrushing a wp:DemonstratesSubject,
+        owl:NamedIndividual ;
+    rdfs:label "Demonstrates: Overview-detail with linked brushing"@en ;
+    skos:definition "Overview and detail must be coupled, not independent. A data collection too large to fit on screen needs a small overview at low fidelity plus a large detail at high fidelity, mechanically coupled so the reader always knows \"where in the whole am I looking?\""@en .
+
+wp:DS_ThreeTierProvenanceBadge a wp:DemonstratesSubject,
+        owl:NamedIndividual ;
+    rdfs:label "Demonstrates: Three-tier provenance badge system"@en ;
+    skos:definition "Source tier affects how content should be read. A sentence from a course textbook, a sentence from a regulator's announcement, and a sentence from industry press carry different epistemic weight."@en .
+
+wp:DS_TwoStateAsymmetricPressure a wp:DemonstratesSubject,
+        owl:NamedIndividual ;
+    rdfs:label "Demonstrates: Two-state simulator with asymmetric pressure constraint"@en ;
+    skos:definition "Structure determines what can be cut casually. The same logical content encoded as a separate line item versus embedded in working tasks responds asymmetrically to organisational pressure."@en .
+
+wp:TP_CaseGridLinkRotDisclosure a wp:TestProcedure,
+        owl:NamedIndividual ;
+    rdfs:label "Design-test for Source-verified case grid with link-rot disclosure"@en ;
+    dcterms:source "SKILL.md Primitive 4 — Test procedure" ;
+    skos:definition "Playwright design-test proving the domain constraint holds against rendered HTML; full code in SKILL.md Primitive 4."@en .
+
+wp:TP_CoupledVariableExplorer a wp:TestProcedure,
+        owl:NamedIndividual ;
+    rdfs:label "Design-test for Coupled-variable explorer"@en ;
+    dcterms:source "SKILL.md Primitive 8 — Test procedure" ;
+    skos:definition "Playwright design-test proving the domain constraint holds against rendered HTML; full code in SKILL.md Primitive 8."@en .
+
+wp:TP_DynamicQueryContinuous a wp:TestProcedure,
+        owl:NamedIndividual ;
+    rdfs:label "Design-test for Dynamic query filter with continuous bounds"@en ;
+    dcterms:source "SKILL.md Primitive 7 — Test procedure" ;
+    skos:definition "Playwright design-test proving the domain constraint holds against rendered HTML; full code in SKILL.md Primitive 7."@en .
+
+wp:TP_GanttMonotoneSunkCost a wp:TestProcedure,
+        owl:NamedIndividual ;
+    rdfs:label "Design-test for Time-anchored Gantt with monotone sunk-cost constraint"@en ;
+    dcterms:source "SKILL.md Primitive 1 — Test procedure" ;
+    skos:definition "Playwright design-test proving the domain constraint holds against rendered HTML; full code in SKILL.md Primitive 1."@en .
+
+wp:TP_GuidedNarrativeWalkthrough a wp:TestProcedure,
+        owl:NamedIndividual ;
+    rdfs:label "Design-test for Guided narrative walkthrough"@en ;
+    dcterms:source "SKILL.md Primitive 9 — Test procedure" ;
+    skos:definition "Playwright design-test proving the domain constraint holds against rendered HTML; full code in SKILL.md Primitive 9."@en .
+
+wp:TP_MultiClassSelectorDistinct a wp:TestProcedure,
+        owl:NamedIndividual ;
+    rdfs:label "Design-test for Multi-class tab selector with per-class distinct response"@en ;
+    dcterms:source "SKILL.md Primitive 3 — Test procedure" ;
+    skos:definition "Playwright design-test proving the domain constraint holds against rendered HTML; full code in SKILL.md Primitive 3."@en .
+
+wp:TP_OverviewDetailBrushing a wp:TestProcedure,
+        owl:NamedIndividual ;
+    rdfs:label "Design-test for Overview-detail with linked brushing"@en ;
+    dcterms:source "SKILL.md Primitive 6 — Test procedure" ;
+    skos:definition "Playwright design-test proving the domain constraint holds against rendered HTML; full code in SKILL.md Primitive 6."@en .
+
+wp:TP_ThreeTierProvenanceBadge a wp:TestProcedure,
+        owl:NamedIndividual ;
+    rdfs:label "Design-test for Three-tier provenance badge system"@en ;
+    dcterms:source "SKILL.md Primitive 5 — Test procedure" ;
+    skos:definition "Playwright design-test proving the domain constraint holds against rendered HTML; full code in SKILL.md Primitive 5."@en .
+
+wp:TP_TwoStateAsymmetricPressure a wp:TestProcedure,
+        owl:NamedIndividual ;
+    rdfs:label "Design-test for Two-state simulator with asymmetric pressure constraint"@en ;
+    dcterms:source "SKILL.md Primitive 2 — Test procedure" ;
+    skos:definition "Playwright design-test proving the domain constraint holds against rendered HTML; full code in SKILL.md Primitive 2."@en .
+

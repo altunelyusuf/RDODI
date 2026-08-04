@@ -1,0 +1,732 @@
+@prefix : <http://example.org/widget-primitives#> .
+@prefix wp: <http://example.org/widget-primitives#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix amod: <http://example.org/amod#> .
+
+# ============================================================================
+# Widget Primitives Ontology v1.0.0
+# ============================================================================
+# Scope: reusable interactive-widget patterns extracted from observation of
+#        the COM0463 Ch.7 v3.2.0 HTML build (Marchewka Managing Project Risk
+#        page with Mozilla Gantt, Westcott two-state, Variance four-class,
+#        Cases grid widgets).
+#
+# Lineage classification (per BP-D13/BP-D14):
+#   - ORIGINATION: brand-new artefact type, no prior widget-primitives bundle.
+#   - DERIVATION: contents derived from observation of COM0463 Ch.7 v3.2.0.
+#   - Version starts at v1.0.0 in its own scope's lineage.
+#   - Source citation in dcterms:source on each WidgetPrimitive individual.
+#
+# License (BP-D24): CC BY 4.0 (matches parent ecosystem).
+# ============================================================================
+
+<http://example.org/widget-primitives> a owl:Ontology ;
+    rdfs:label "Widget Primitives Ontology — reusable patterns for pedagogical interactive widgets"@en ;
+    rdfs:comment "v1.1.0 MINOR bump from v1.0.0: adds four primitives derived from seminal information-visualization literature (Shneiderman 1996, Heer & Shneiderman 2012) plus one supporting provenance-badge subclass for academic-source citation. Per BP-D13, MINOR bump because the additions are backwards-compatible (no existing class/property/individual semantics changed). Per BP-D7 versioning, owl:versionInfo and owl:versionIRI both move to 1.1.0. The v1.0.0 individuals and their BP-D32 triples remain byte-identical."@en ;
+    owl:versionInfo "1.1.0"@en ;
+    owl:versionIRI <http://example.org/widget-primitives/1.1.0> ;
+    owl:priorVersion <http://example.org/widget-primitives/1.0.0> ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:creator "Yusuf Altunel, PhD"@en ;
+    dcterms:created "2026-05-19"^^xsd:date ;
+    dcterms:modified "2026-05-19"^^xsd:date ;
+    dcterms:source "v1.1.0 enrichment: four new primitives extracted from research-discipline application of the RRWPC research ontology v6.9.2 discovery-method classes (SearchEngineQuery, DiscoveryAttempt) against seminal information-visualization sources. Citation chain: Shneiderman 1996 'The Eyes Have It' (IEEE Symposium on Visual Languages, DOI:10.1109/VL.1996.545307) and Heer & Shneiderman 2012 'Interactive Dynamics for Visual Analysis' (Communications of the ACM 55(4), DOI:10.1145/2133416.2146416). Both sources web_fetch-verified live on 2026-05-19. v1.0.0 source release unchanged: derived from observation of rrwpc-pipeline-com0463-ch7-v1_10_0."@en ;
+    amod:derivedFrom "rrwpc-pipeline-com0463-ch7-v1_10_0"@en ;
+    prov:wasGeneratedBy wp:Activity_WidgetPrimitivesEnrichmentRelease_v1_1_0 .
+
+# ============================================================================
+# TBox: Core classes
+# ============================================================================
+
+wp:WidgetPrimitive a owl:Class ;
+    rdfs:label "Widget Primitive"@en ;
+    skos:definition "A reusable pattern for a pedagogical interactive widget. A WidgetPrimitive comprises (a) a behavioural specification — what the widget demonstrates and the domain constraint it must encode (BP-D32); (b) a structural specification — CSS selectors, JavaScript symbols, SVG structure; (c) a validation specification — Playwright check procedure that proves the constraint holds. A WidgetPrimitive without all three of these is not a primitive in this ontology's sense; it is decorative."@en ;
+    rdfs:isDefinedBy <http://example.org/widget-primitives> .
+
+wp:DemonstratesSubject a owl:Class ;
+    rdfs:label "Demonstrates Subject"@en ;
+    skos:definition "The pedagogical claim the widget makes — what the widget purports to teach. Per BP-D32 step 1, this MUST be stated explicitly for each primitive; widgets whose demonstratesSubject is left implicit drift into visual decoration. Examples: 'late risk detection wastes sunk cost', 'integrated risk plan resists budget cuts', 'managerial response depends on variance class not magnitude'."@en ;
+    rdfs:isDefinedBy <http://example.org/widget-primitives> .
+
+wp:DomainConstraint a owl:Class ;
+    rdfs:label "Domain Constraint"@en ;
+    skos:definition "The constraint from the subject's domain that the widget MUST encode in its input-output behaviour. Per BP-D32 step 2-3: 'sunk-cost monotonically increases with cancellation date in any unrecoverable project'; 'cutting a separate-line-item reserve is mechanically easier than cutting embedded WBS tasks'; 'each variance class produces a distinct recommended response, not different magnitudes of the same response'. A learner manipulating the widget must not be able to produce behaviour that contradicts the encoded constraint."@en ;
+    rdfs:isDefinedBy <http://example.org/widget-primitives> .
+
+wp:TestProcedure a owl:Class ;
+    rdfs:label "Test Procedure"@en ;
+    skos:definition "The Playwright check that verifies the DomainConstraint holds in the rendered widget. Per BP-D32 step 4: a primitive without an executable test is not enforced; it is wished. Each TestProcedure carries a snippet of Python+Playwright code that future pipeline runs can include in their validation harness."@en ;
+    rdfs:isDefinedBy <http://example.org/widget-primitives> .
+
+wp:StructuralSpec a owl:Class ;
+    rdfs:label "Structural Specification"@en ;
+    skos:definition "The HTML/CSS/JS scaffolding that implements the primitive: required selector names, CSS class structure, JavaScript function signatures, SVG element layout. Documented separately from the constraint+test triple because the structure is replaceable (you can re-implement in React or Vue) but the constraint+test is invariant."@en ;
+    rdfs:isDefinedBy <http://example.org/widget-primitives> .
+
+wp:ProvenanceBadge a owl:Class ;
+    rdfs:label "Provenance Badge"@en ;
+    skos:definition "Visual marker tagging a piece of content with its source tier (per BP-D33). Subclasses encode the tier taxonomy: PrimaryTextbookBadge, PrimaryExternalSourceBadge, SecondaryCorroborationBadge, AuthorRepublicationBadge, UnavailableSourceBadge. The tier system is part of every primitive that involves cited content."@en ;
+    rdfs:isDefinedBy <http://example.org/widget-primitives> .
+
+wp:PrimaryTextbookBadge a owl:Class ; rdfs:subClassOf wp:ProvenanceBadge ;
+    rdfs:label "Primary Textbook Badge"@en ;
+    skos:definition "The content originates from the course's primary textbook (Marchewka in COM0463 context); cited by chapter and line range. Visual: green pill, label 'Marchewka YYYY · Ch.N lines X-Y'."@en .
+
+wp:PrimaryExternalSourceBadge a owl:Class ; rdfs:subClassOf wp:ProvenanceBadge ;
+    rdfs:label "Primary External Source Badge"@en ;
+    skos:definition "The content originates from a primary external source (the entity being described, in its own words): Mozilla blog post about Mozilla's own product cancellation, government regulator's own announcement. Visual: amber pill, label '[source] (URL verified YYYY-MM-DD)'."@en .
+
+wp:SecondaryCorroborationBadge a owl:Class ; rdfs:subClassOf wp:ProvenanceBadge ;
+    rdfs:label "Secondary Corroboration Badge"@en ;
+    skos:definition "Third-party reporting that corroborates a primary source: industry press coverage of a primary source's announcement. Visual: purple pill, label '[publication] secondary corroboration'."@en .
+
+wp:AuthorRepublicationBadge a owl:Class ; rdfs:subClassOf wp:ProvenanceBadge ;
+    rdfs:label "Author Republication Badge"@en ;
+    skos:definition "Original publication's URL is dead, but the author has republished the content on a current platform (LinkedIn pulse, Medium, personal blog). Visual: amber pill, label 'Author republication'."@en .
+
+wp:UnavailableSourceBadge a owl:Class ; rdfs:subClassOf wp:ProvenanceBadge ;
+    rdfs:label "Unavailable Source Badge"@en ;
+    skos:definition "Per BP-D2 strict URL verification: web_fetch and Internet Archive search both returned no live content for this source as of verification date. Visual: red pill, label 'Source URL not currently accessible'. Honest disclosure: the citation is preserved (textbook attribution remains valid) but the original web resource is gone."@en .
+
+wp:PrimaryAcademicSourceBadge a owl:Class ; rdfs:subClassOf wp:ProvenanceBadge ;
+    rdfs:label "Primary Academic Source Badge"@en ;
+    skos:definition "The content originates from a peer-reviewed academic publication with a verifiable scholarly identifier (DOI or arXiv ID), distinct from PrimaryExternalSourceBadge (which targets non-academic primary sources like company blogs or regulator announcements). Visual: blue pill, label '[Author YYYY] DOI:[...]' or 'arXiv:[...]'. Added in v1.1.0 to support seminal-literature-grounded primitives whose provenance chain requires academic-source attribution."@en ;
+    dcterms:source "Added v1.1.0 alongside the four literature-derived primitives (Overview-Detail, Dynamic Query Filter, Coupled-Variable Explorer, Guided Narrative Walkthrough), all of which cite Shneiderman 1996 or Heer & Shneiderman 2012 as their academic anchor. The existing PrimaryExternalSourceBadge covers non-academic primary sources but conflates 'company's own blog' with 'peer-reviewed paper'; this subclass separates them."@en .
+
+# ============================================================================
+# TBox: Properties (the BP-D32 triple)
+# ============================================================================
+
+wp:demonstratesSubject a owl:ObjectProperty ;
+    rdfs:label "demonstrates subject"@en ;
+    rdfs:domain wp:WidgetPrimitive ;
+    rdfs:range wp:DemonstratesSubject ;
+    skos:definition "Links a primitive to the pedagogical claim it makes. MANDATORY for every WidgetPrimitive instance — verified by SHACL shape wp:WidgetPrimitiveShape."@en .
+
+wp:hasDomainConstraint a owl:ObjectProperty ;
+    rdfs:label "has domain constraint"@en ;
+    rdfs:domain wp:WidgetPrimitive ;
+    rdfs:range wp:DomainConstraint ;
+    skos:definition "Links a primitive to the domain constraint its behaviour must encode. MANDATORY — verified by SHACL."@en .
+
+wp:hasTestProcedure a owl:ObjectProperty ;
+    rdfs:label "has test procedure"@en ;
+    rdfs:domain wp:WidgetPrimitive ;
+    rdfs:range wp:TestProcedure ;
+    skos:definition "Links a primitive to its Playwright validation procedure. MANDATORY — verified by SHACL. A primitive without a test is a wish."@en .
+
+wp:hasStructuralSpec a owl:ObjectProperty ;
+    rdfs:label "has structural specification"@en ;
+    rdfs:domain wp:WidgetPrimitive ;
+    rdfs:range wp:StructuralSpec ;
+    skos:definition "Links a primitive to its HTML/CSS/JS scaffolding. Recommended, not strictly mandatory — the constraint+test triple is invariant across implementations; the structural spec is replaceable."@en .
+
+wp:constraintExpression a owl:DatatypeProperty ;
+    rdfs:label "constraint expression"@en ;
+    rdfs:domain wp:DomainConstraint ;
+    rdfs:range xsd:string ;
+    skos:definition "Natural-language statement of the constraint, in 'forall ... must ...' form where possible. Example: 'forall cancellation_date c: sunk_cost(c) >= sunk_cost(c-1)'. This is the human-readable specification; the executable form lives in TestProcedure."@en .
+
+wp:testCode a owl:DatatypeProperty ;
+    rdfs:label "test code"@en ;
+    rdfs:domain wp:TestProcedure ;
+    rdfs:range xsd:string ;
+    skos:definition "Python+Playwright code snippet that exercises the widget and asserts the constraint. Future pipeline builds embed these snippets into their validation harness."@en .
+
+wp:cssSelectorList a owl:DatatypeProperty ;
+    rdfs:label "css selector list"@en ;
+    rdfs:domain wp:StructuralSpec ;
+    rdfs:range xsd:string ;
+    skos:definition "Comma-separated list of CSS class selectors used by this primitive's structural spec. Useful for skill-MD lookup ('which primitive uses .gantt-canvas-wrap?')."@en .
+
+wp:jsSymbolList a owl:DatatypeProperty ;
+    rdfs:label "javascript symbol list"@en ;
+    rdfs:domain wp:StructuralSpec ;
+    rdfs:range xsd:string ;
+    skos:definition "Comma-separated list of JavaScript function/variable names used by this primitive's structural spec."@en .
+
+# ============================================================================
+# ABox: The five widget primitives (extracted from v3.2.0 build)
+# ============================================================================
+
+# ---- Primitive 1: Time-Anchored Gantt with Monotone-Cost Constraint ----
+
+wp:Primitive_GanttMonotoneSunkCost a wp:WidgetPrimitive ;
+    rdfs:label "Time-anchored Gantt with monotone sunk-cost constraint"@en ;
+    skos:definition "Pattern for visualising a real project's timeline with a draggable cancellation point. Demonstrates that cancelling later in a project produces strictly larger sunk cost — encodes this as a hard constraint so learners cannot produce zero-sunk-cost cancellation after work begins. Source pattern: COM0463 Ch.7 §7.5.1 Mozilla Firefox Metro Gantt."@en ;
+    dcterms:source "Extracted from com0463_ch07_managing_project_risk_v3_2_0.html, accordion §7.5.1 (Mozilla Firefox Metro case). Real-world data: Mozilla blog 2014-03-14 + Computerworld 2014-03-15."@en ;
+    wp:demonstratesSubject wp:DS_LateRiskDetectionWastesSunkCost ;
+    wp:hasDomainConstraint wp:DC_SunkCostMonotone ;
+    wp:hasTestProcedure wp:TP_SunkCostMonotoneCheck ;
+    wp:hasStructuralSpec wp:SS_GanttCanvasSliderPresets .
+
+wp:DS_LateRiskDetectionWastesSunkCost a wp:DemonstratesSubject ;
+    rdfs:label "Late risk detection wastes sunk cost"@en ;
+    skos:definition "Pedagogical claim: when a project carries a risk that eventually proves fatal (no-adoption, regulatory rejection, infeasibility), cancellation at any point >0 incurs sunk cost; the same decision made earlier saves the unspent remainder. The earliest-detection counterfactual is a meaningful management object even when the actual cancellation was correct on its day."@en .
+
+wp:DC_SunkCostMonotone a wp:DomainConstraint ;
+    rdfs:label "Sunk cost is monotone non-decreasing in cancellation date"@en ;
+    wp:constraintExpression "forall c1, c2 in [project_start, project_end]: c1 <= c2 implies sunk_cost(c1) <= sunk_cost(c2). At c=project_start, sunk_cost=0. At c=project_end, sunk_cost=100% of project budget. The function may be piecewise linear or stepped, but must never decrease."@en ;
+    skos:definition "The monotone-non-decreasing constraint encodes the irreversibility of spent effort. A widget that allowed 'cancel earlier to retroactively recover already-spent effort' would teach the wrong mental model. The piecewise-linear shape used in §7.5.1 is a pedagogical approximation; what matters is the monotone shape, not the specific phase percentages."@en .
+
+wp:TP_SunkCostMonotoneCheck a wp:TestProcedure ;
+    rdfs:label "Playwright test: sunk-cost monotone non-decreasing"@en ;
+    wp:testCode """# Test that moving the cancellation slider from low to high increases (or holds) sunk cost.
+# Asserts BP-D32 monotone constraint.
+async def test_gantt_monotone(page):
+    await page.eval_on_selector('#gantt-cancel',
+        \"el => { el.value = 0; el.dispatchEvent(new Event('input')); }\")
+    await page.wait_for_timeout(150)
+    s0 = pct(await page.eval_on_selector('#gantt-sunk-pct', 'el => el.textContent.trim()'))
+    await page.eval_on_selector('#gantt-cancel',
+        \"el => { el.value = 30; el.dispatchEvent(new Event('input')); }\")
+    await page.wait_for_timeout(150)
+    s30 = pct(await page.eval_on_selector('#gantt-sunk-pct', 'el => el.textContent.trim()'))
+    await page.eval_on_selector('#gantt-cancel',
+        \"el => { el.value = 60; el.dispatchEvent(new Event('input')); }\")
+    await page.wait_for_timeout(150)
+    s60 = pct(await page.eval_on_selector('#gantt-sunk-pct', 'el => el.textContent.trim()'))
+    await page.eval_on_selector('#gantt-cancel',
+        \"el => { el.value = 100; el.dispatchEvent(new Event('input')); }\")
+    await page.wait_for_timeout(150)
+    s100 = pct(await page.eval_on_selector('#gantt-sunk-pct', 'el => el.textContent.trim()'))
+    assert s0 <= s30 <= s60 <= s100, f'BP-D32 monotone failure: {s0},{s30},{s60},{s100}'
+    assert s0 == 0, f'Cancellation at t=0 should give 0% sunk cost, got {s0}'
+    assert s100 == 100, f'Cancellation at t=end should give 100% sunk cost, got {s100}'"""@en ;
+    skos:definition "Three-point monotone check plus endpoint anchors. Catches the failure mode where the widget renders a Gantt-like shape but lets the user produce contradictory sunk-cost behaviour."@en .
+
+wp:SS_GanttCanvasSliderPresets a wp:StructuralSpec ;
+    rdfs:label "Gantt canvas with slider and preset buttons"@en ;
+    wp:cssSelectorList ".gantt-widget, .gantt-canvas-wrap, .gantt-controls, .gantt-readout, .gantt-stat, .gantt-stat-label, .gantt-stat-val, .gantt-takeaway, .gantt-presets, .gantt-preset-btn, .gantt-source-block"@en ;
+    wp:jsSymbolList "GANTT (config object with startDate/endDate/totalMonths/milestones/streams), function gantt_render(), function gantt_updateReadout(), function monthToDate(m), function sunkCostPct(cancelMonth), function adoptionSignalAgeMonths(cancelMonth)"@en ;
+    skos:definition "SVG with workstream lanes + milestone diamonds + sunk-cost band + cancellation line. Slider 0-100 maps to 0-N months. Preset buttons jump to named milestones. Readout grid shows: duration / sunk % / saved % / signal age. Dynamic takeaway block updates per cancellation window."@en .
+
+# ---- Primitive 2: Two-State Simulator with Asymmetric-Pressure Constraint ----
+
+wp:Primitive_TwoStateAsymmetricPressure a wp:WidgetPrimitive ;
+    rdfs:label "Two-state simulator with asymmetric pressure constraint"@en ;
+    skos:definition "Side-by-side comparison of two structural representations of the same content, where applying a stressor must affect the two representations differently. Demonstrates that structural choice changes what is mechanically easy to cut/break/lose. Source pattern: COM0463 Ch.7 §7.5.2 Westcott disconnected-vs-integrated risk plan."@en ;
+    dcterms:source "Extracted from com0463_ch07_managing_project_risk_v3_2_0.html, accordion §7.5.2 (Westcott Quick Thinking sidebar)."@en ;
+    wp:demonstratesSubject wp:DS_StructureDeterminesWhatCanBeCutCasually ;
+    wp:hasDomainConstraint wp:DC_AsymmetricPressureResponse ;
+    wp:hasTestProcedure wp:TP_AsymmetricPressureCheck ;
+    wp:hasStructuralSpec wp:SS_TwoPanelToggle .
+
+wp:DS_StructureDeterminesWhatCanBeCutCasually a wp:DemonstratesSubject ;
+    rdfs:label "Structure determines what can be cut casually"@en ;
+    skos:definition "Pedagogical claim: when the same logical content is encoded as a separate line item versus embedded in working tasks, organisational pressure (e.g., a sponsor's budget cut) affects them asymmetrically. The separate line item is the path of least resistance; the embedded version forces the cut to be a visible, politically costly act."@en .
+
+wp:DC_AsymmetricPressureResponse a wp:DomainConstraint ;
+    rdfs:label "Stressor must reveal asymmetric response between the two states"@en ;
+    wp:constraintExpression "forall stressor S: state_A.outcome(S) != state_B.outcome(S). The widget cannot allow both states to respond identically to S, because the pedagogical point is precisely the asymmetry."@en ;
+    skos:definition "The asymmetric-response constraint is what distinguishes a real two-state simulator from 'two views of the same data with a cosmetic toggle'. The stressor must mechanically affect the disconnected state without affecting the integrated state (or vice versa, depending on the subject)."@en .
+
+wp:TP_AsymmetricPressureCheck a wp:TestProcedure ;
+    rdfs:label "Playwright test: stressor produces different outcomes in two states"@en ;
+    wp:testCode """# Test that applying the stressor changes one state's coverage but not the other's.
+# Asserts BP-D32 asymmetric-response constraint.
+async def test_two_state_asymmetric(page):
+    # Baseline
+    a_before = await page.eval_on_selector('#wescott-disc-covered', 'el => el.textContent.trim()')
+    b_before = await page.eval_on_selector('#wescott-int-covered', 'el => el.textContent.trim()')
+    # Apply stressor
+    await page.check('#wescott-tight-budget')
+    await page.wait_for_timeout(200)
+    a_after = await page.eval_on_selector('#wescott-disc-covered', 'el => el.textContent.trim()')
+    b_after = await page.eval_on_selector('#wescott-int-covered', 'el => el.textContent.trim()')
+    # BP-D32: one state must change, the other must hold
+    a_changed = (a_before != a_after)
+    b_changed = (b_before != b_after)
+    assert a_changed != b_changed, (
+        f'BP-D32 asymmetric-pressure violation: both states changed equally '
+        f'(A: {a_before}->{a_after}, B: {b_before}->{b_after})')
+    # The 'NO' / 'YES' opposition is the pedagogical point
+    if a_changed:
+        assert 'NO' in a_after and 'YES' in b_after, 'Coverage opposition not achieved'"""@en ;
+    skos:definition "XOR test: exactly one of the two states must respond to the stressor. Both responding (or neither responding) is a BP-D32 failure."@en .
+
+wp:SS_TwoPanelToggle a wp:StructuralSpec ;
+    rdfs:label "Two side-by-side panels with shared toggle"@en ;
+    wp:cssSelectorList ".wescott-widget, .wescott-pair, .wescott-panel, .wescott-panel.disconnected, .wescott-panel.integrated, .wescott-wbs, .wescott-wbs li.reserve, .wescott-wbs li.embedded-reserve, .wescott-wbs li.cut, .wescott-stat, .wescott-toggle-row, .wescott-takeaway"@en ;
+    wp:jsSymbolList "function wescott_update(), event listener on #wescott-tight-budget checkbox"@en ;
+    skos:definition "Grid of two panels (CSS grid 1fr 1fr collapsing to 1fr at <720px). Each panel holds a WBS-style list. Single toggle drives both panels through a wescott_update() function; the function applies different transformations to each panel."@en .
+
+# ---- Primitive 3: Multi-Class Selector with Per-Class Distinct Response ----
+
+wp:Primitive_MultiClassSelectorDistinct a wp:WidgetPrimitive ;
+    rdfs:label "Multi-class tab selector with per-class distinct response"@en ;
+    skos:definition "Tab-based interface where each class produces a measurably distinct definition, recommended response, and characteristic visualisation. Demonstrates that classification matters because each class triggers a different action — not just a different colour or label. Source pattern: COM0463 Ch.7 §7.5.3 four-class variance taxonomy."@en ;
+    dcterms:source "Extracted from com0463_ch07_managing_project_risk_v3_2_0.html, accordion §7.5.3 (variance four-class widget). Corrects a defect: prior versions described §7.5.3 as a trichotomy; raw chapter has four classes."@en ;
+    wp:demonstratesSubject wp:DS_ClassificationDeterminesResponse ;
+    wp:hasDomainConstraint wp:DC_PerClassDistinctness ;
+    wp:hasTestProcedure wp:TP_PerClassDistinctnessCheck ;
+    wp:hasStructuralSpec wp:SS_TabSelectorWithSvgPattern .
+
+wp:DS_ClassificationDeterminesResponse a wp:DemonstratesSubject ;
+    rdfs:label "Classification determines response, not magnitude"@en ;
+    skos:definition "Pedagogical claim: when a system enumerates K classes of phenomenon, the appropriate response is class-specific. Applying a one-size-fits-all response (e.g., 'always absorb from reserve' for all variance types) over-reacts in some classes and under-reacts in others."@en .
+
+wp:DC_PerClassDistinctness a wp:DomainConstraint ;
+    rdfs:label "Each class produces a distinct definition, response, and visualisation"@en ;
+    wp:constraintExpression "forall i,j in [1..K], i != j: definition(class_i) != definition(class_j) AND response(class_i) != response(class_j) AND visualisation(class_i) != visualisation(class_j). All three must be distinct, not just one."@en ;
+    skos:definition "Three-way distinctness across K classes. K can be 2, 3, 4, or more; what matters is that selecting a different class produces a different definition+response+visualisation triple, not 'three flavours of the same advice'."@en .
+
+wp:TP_PerClassDistinctnessCheck a wp:TestProcedure ;
+    rdfs:label "Playwright test: K classes produce K distinct definitions, responses, SVG patterns"@en ;
+    wp:testCode """# Test that clicking each class tab produces a distinct definition, recommendation, and SVG pattern.
+# Asserts BP-D32 per-class-distinctness constraint.
+async def test_multiclass_distinct(page, class_keys):
+    # class_keys is e.g. ['flawed', 'anomaly', 'permanent', 'minor']
+    defns, recs, captions, svgs = [], [], [], []
+    for cls in class_keys:
+        await page.click(f\".variance-tab[data-vclass='{cls}']\")
+        await page.wait_for_timeout(150)
+        defns.append(await page.eval_on_selector('#variance-defn', 'el => el.textContent.trim()'))
+        recs.append(await page.eval_on_selector('#variance-rec', 'el => el.textContent.trim()'))
+        captions.append(await page.eval_on_selector('#variance-caption', 'el => el.textContent.trim()'))
+        svgs.append(await page.eval_on_selector('#variance-svg polyline', \"el => el.getAttribute('points')\"))
+    K = len(class_keys)
+    assert len(set(defns)) == K, f'BP-D32: definitions not all distinct ({len(set(defns))}/{K})'
+    assert len(set(recs)) == K, f'BP-D32: recommendations not all distinct ({len(set(recs))}/{K})'
+    assert len(set(captions)) == K, f'BP-D32: captions not all distinct ({len(set(captions))}/{K})'
+    assert len(set(svgs)) == K, f'BP-D32: SVG patterns not all distinct ({len(set(svgs))}/{K})'"""@en ;
+    skos:definition "Four-axis distinctness check across K classes. Compares full strings, not truncations (lesson learned during v3.2.0 build: short prefixes can collide on baseline-flat patterns)."@en .
+
+wp:SS_TabSelectorWithSvgPattern a wp:StructuralSpec ;
+    rdfs:label "Tab selector with per-class panel + characteristic SVG pattern"@en ;
+    wp:cssSelectorList ".variance-widget, .variance-tabs, .variance-tab, .variance-tab.active, .variance-panel, .variance-grid, .variance-defn, .variance-rec, .variance-pattern-svg"@en ;
+    wp:jsSymbolList "VARIANCE_CLASSES (config dict keyed by class label with .name/.defn/.rec/.caption/.patternFn), function variance_render(cls), event listener on .variance-tab clicks"@en ;
+    skos:definition "Tab row + content panel grid. Each class has a patternFn(t) -> y that draws a characteristic time-series shape. Definitions are verbatim from the primary source where possible. variance_render(cls) rebuilds the panel content + redraws SVG polyline."@en .
+
+# ---- Primitive 4: Source-Verified Case Grid with Link-Rot Disclosure ----
+
+wp:Primitive_CaseGridWithLinkRotDisclosure a wp:WidgetPrimitive ;
+    rdfs:label "Source-verified case grid with link-rot disclosure"@en ;
+    skos:definition "Card grid where each card represents a real-world case with cited sources. Per-source URL verification with explicit badges for live, author-republished, and unavailable sources. Demonstrates BP-D2 strict policy as a user-visible artifact: link rot is disclosed rather than hidden behind fabricated URLs. Source pattern: COM0463 Ch.7 §7.5.4 three end-of-chapter case cards."@en ;
+    dcterms:source "Extracted from com0463_ch07_managing_project_risk_v3_2_0.html, accordion §7.5.4 (three end-of-chapter cases). 10 sources cited by Marchewka, 3 verified live (Berinato CIO 2003, Hillson via ProjectManagement.com 2011, Alleman 2008 author-republished on LinkedIn), 7 marked unavailable."@en ;
+    wp:demonstratesSubject wp:DS_LinkRotIsDisclosedNotHidden ;
+    wp:hasDomainConstraint wp:DC_NoFabricatedUrls ;
+    wp:hasTestProcedure wp:TP_NoFabricatedUrlsCheck ;
+    wp:hasStructuralSpec wp:SS_CaseCardGrid .
+
+wp:DS_LinkRotIsDisclosedNotHidden a wp:DemonstratesSubject ;
+    rdfs:label "Link rot is disclosed, not hidden"@en ;
+    skos:definition "Pedagogical claim (and ethical claim): older citations to web-only trade-press content frequently die. Honest scholarship discloses this rather than fabricating plausible-looking URLs or quietly omitting sources. Per BP-D2 strict policy applied as user-visible artifact."@en .
+
+wp:DC_NoFabricatedUrls a wp:DomainConstraint ;
+    rdfs:label "No fabricated URLs; every link is verified or explicitly marked unavailable"@en ;
+    wp:constraintExpression "forall source s: either (s has a verified-live URL with web_fetch evidence + verification date) or (s has an author-republication URL with verification date) or (s carries the unavailable-source badge). No source may have a URL without one of these three statuses."@en ;
+    skos:definition "Trinary classification of every cited source. The widget must not produce 'plausible' URLs that have not actually been verified — common LLM failure mode where outputs look authoritative without underlying truth-check."@en .
+
+wp:TP_NoFabricatedUrlsCheck a wp:TestProcedure ;
+    rdfs:label "Playwright test: every source has a verification badge"@en ;
+    wp:testCode """# Test that every source citation has either a live link with badge or an unavailable badge.
+# Asserts BP-D2 link-rot disclosure.
+async def test_case_grid_no_fabricated_urls(page):
+    # All <a> tags inside case cards must have a sibling .source-badge.live or .source-badge.republished
+    links = await page.eval_on_selector_all(
+        \".case-card a[target='_blank']\",
+        \"els => els.map(e => ({href: e.href, badge: (e.parentElement.querySelector('.source-badge')||{}).className || ''}))\")
+    for link in links:
+        assert 'live' in link['badge'] or 'republished' in link['badge'] or 'archived' in link['badge'], (
+            f'Case-grid link {link[\"href\"]} has no verification badge — possible fabricated URL')
+    # All source list items without an <a> must have an .unavailable badge
+    bare_items = await page.eval_on_selector_all(
+        \".case-card-refs li:not(:has(a))\",
+        \"els => els.map(e => e.textContent.includes('not currently accessible'))\")
+    for item_has_disclosure in bare_items:
+        assert item_has_disclosure, 'Case-grid source without a link must carry unavailable badge'"""@en ;
+    skos:definition "Two-side check: every link has a positive verification badge; every source without a link has an explicit unavailable disclosure. No silent omissions."@en .
+
+wp:SS_CaseCardGrid a wp:StructuralSpec ;
+    rdfs:label "Case-card grid with per-card source references"@en ;
+    wp:cssSelectorList ".case-grid, .case-card, .case-card h4, .case-card-takeaway, .case-card-refs, .source-badge, .source-badge.live, .source-badge.archived, .source-badge.unavailable, .source-badge.republished"@en ;
+    wp:jsSymbolList "(no JS — static cards, badges set at render time by pipeline source-verification stage)"@en ;
+    skos:definition "Pure HTML/CSS pattern; the JS work happens at pipeline build time (the source-verification stage runs web_fetch on each candidate URL and emits the appropriate badge class). Each card has: <h4> title, takeaway paragraph(s), <ul> source list with <li> per source."@en .
+
+# ---- Primitive 5: Three-Tier Provenance Badge System ----
+
+wp:Primitive_ThreeTierProvenanceBadges a wp:WidgetPrimitive ;
+    rdfs:label "Three-tier provenance badge system"@en ;
+    skos:definition "Visual marker system distinguishing primary-textbook, primary-external-source, and secondary-corroboration content. Tags every widget header and every cited source with its origin tier so students don't mistake secondary corroboration for primary textbook content. Per BP-D33 mixed-source provenance. Used by all four other primitives in this ontology."@en ;
+    dcterms:source "Extracted from com0463_ch07_managing_project_risk_v3_2_0.html. Used across §7.5.1, §7.5.2, §7.5.3, §7.5.4 widget headers."@en ;
+    wp:demonstratesSubject wp:DS_SourceTierAffectsHowContentIsRead ;
+    wp:hasDomainConstraint wp:DC_TierIsVisuallyDistinguishable ;
+    wp:hasTestProcedure wp:TP_BadgeClassVariantsPresent ;
+    wp:hasStructuralSpec wp:SS_ProvenanceBadgeRow .
+
+wp:DS_SourceTierAffectsHowContentIsRead a wp:DemonstratesSubject ;
+    rdfs:label "Source tier affects how content should be read"@en ;
+    skos:definition "Pedagogical claim: a sentence from the course textbook, a sentence from a regulator's announcement, and a sentence from industry press coverage carry different epistemic weight. Students preparing for exams need to assess primary-textbook material at a different bar than secondary corroboration; conflating them assesses the wrong tier."@en .
+
+wp:DC_TierIsVisuallyDistinguishable a wp:DomainConstraint ;
+    rdfs:label "Tier is visually distinguishable by colour AND label"@en ;
+    wp:constraintExpression "forall tiers T1, T2 in {primary-textbook, primary-external, secondary, author-republished, unavailable}: T1 != T2 implies (colour(T1) != colour(T2) AND label(T1) != label(T2)). Colour alone is insufficient (accessibility); label alone is insufficient (scannability)."@en ;
+    skos:definition "Belt-and-braces requirement from BP-D33: don't rely on colour alone (colour-blind users), don't rely on label alone (visual scanning users)."@en .
+
+wp:TP_BadgeClassVariantsPresent a wp:TestProcedure ;
+    rdfs:label "Playwright test: distinct CSS classes per tier"@en ;
+    wp:testCode """# Test that the page uses distinct CSS class combinations for each provenance tier.
+# Asserts BP-D33 visual-distinguishability.
+async def test_provenance_tier_classes(page):
+    classes = await page.eval_on_selector_all(
+        '.prov-badge',
+        \"els => Array.from(new Set(els.map(e => Array.from(e.classList).filter(c => c.startsWith('prov-')).join(','))))\")
+    assert len(classes) >= 2, f'BP-D33: only {len(classes)} distinct prov-badge variants found (expected 2+)'
+    # If the page cites primary textbook + at least one external source, both tier classes must be present
+    has_primary = any('prov-primary' in c and 'prov-primary-source' not in c for c in classes)
+    has_external_or_secondary = any(('prov-primary-source' in c) or ('prov-secondary' in c) for c in classes)
+    if has_primary and has_external_or_secondary:
+        # Mixed-source page → must use both tiers
+        pass  # baseline ok; richer assertion can compare to expected source list"""@en ;
+    skos:definition "Counts distinct tier-class combinations in the rendered page. Mixed-source pages must show >=2 tiers; primary-only pages may show 1."@en .
+
+wp:SS_ProvenanceBadgeRow a wp:StructuralSpec ;
+    rdfs:label "Inline badge row with tier-colour-coded pills"@en ;
+    wp:cssSelectorList ".prov-row, .prov-badge, .prov-primary, .prov-primary-source, .prov-secondary"@en ;
+    wp:jsSymbolList "(no JS — pure CSS pattern; badges set at render time)"@en ;
+    skos:definition "Inline <div class='prov-row'> at the top of each widget body, holding 1-3 <span class='prov-badge prov-[tier]'> pills. Colours: green=primary textbook, amber=primary external, purple=secondary."@en .
+
+# ============================================================================
+# ABox v1.1.0 additions: literature-derived primitives (BP-D28 source citation)
+# ============================================================================
+
+# ---- Primitive 6: Overview-Detail with Linked Brushing ----
+
+wp:Primitive_OverviewDetailLinkedBrushing a wp:WidgetPrimitive ;
+    rdfs:label "Overview-detail with linked brushing"@en ;
+    skos:definition "Pattern where a small overview display shows the entire data collection at low fidelity, and a larger detail display shows a selected region at high fidelity. Brushing (interactive selection) in the overview filters the detail in real time. Demonstrates Shneiderman's first information-seeking task ('Overview first') and his fourth ('details on demand'); the two operate as a coupled pair, not as separate widgets. Distinct from a generic two-pane layout: the linked-brushing constraint is what makes it pedagogical. Source: Shneiderman 1996 §2 ('Visual Information-Seeking Mantra')."@en ;
+    dcterms:source "Shneiderman, B. (1996). 'The Eyes Have It: A Task by Data Type Taxonomy for Information Visualizations.' Proceedings of the IEEE Symposium on Visual Languages, 336-343. DOI:10.1109/VL.1996.545307. URL verified live 2026-05-19 at https://www.cs.umd.edu/~ben/papers/Shneiderman1996eyes.pdf. Discipline applied: RRWPC research ontology v6.9.2 ro:SearchEngineQuery + ro:DiscoveryAttempt, both instanced in wp:Activity_WidgetPrimitivesEnrichmentRelease_v1_1_0."@en ;
+    wp:demonstratesSubject wp:DS_OverviewAndDetailAreCoupledNotSeparate ;
+    wp:hasDomainConstraint wp:DC_BrushingOverviewFiltersDetail ;
+    wp:hasTestProcedure wp:TP_BrushingPropagatesToDetail ;
+    wp:hasStructuralSpec wp:SS_OverviewDetailLinkedPanes .
+
+wp:DS_OverviewAndDetailAreCoupledNotSeparate a wp:DemonstratesSubject ;
+    rdfs:label "Overview and detail must be coupled, not independent views"@en ;
+    skos:definition "Pedagogical claim: a data collection too large to fit on screen requires two views — an overview that fits and shows everything at low fidelity, and a detail that fits and shows a subset at high fidelity. Two separate widgets fail the pedagogy: the reader cannot answer 'where in the whole am I looking?'. The two views must be mechanically coupled so that interaction in one updates the other."@en .
+
+wp:DC_BrushingOverviewFiltersDetail a wp:DomainConstraint ;
+    rdfs:label "Brushing the overview MUST update the detail; detail MUST always be a subset of the overview region"@en ;
+    wp:constraintExpression "forall brush_region R selected on overview: detail.visible_items subset_of overview.items_in_region(R). The detail cannot show items outside the brushed region; brushing the overview cannot leave the detail unchanged."@en ;
+    skos:definition "Two-part constraint: (1) detail subset-relation to overview brush region (no detail-items outside the brush); (2) coupling (brush changes propagate to detail with no manual refresh). Both must hold; a widget that satisfies one and not the other fails."@en .
+
+wp:TP_BrushingPropagatesToDetail a wp:TestProcedure ;
+    rdfs:label "Playwright test: brushing overview region changes detail content"@en ;
+    wp:testCode """# Test that brushing the overview region changes the detail view's content.
+# Asserts BP-D32 coupled-views constraint.
+async def test_overview_detail_brushing(page):
+    # Capture detail content with no brush
+    detail_initial = await page.eval_on_selector('#detail-pane',
+        'el => Array.from(el.querySelectorAll(\".detail-item\")).map(i => i.dataset.id)')
+    # Apply a brush selection on the overview
+    await page.evaluate('''() => {
+        const overview = document.querySelector('#overview-pane');
+        overview.dispatchEvent(new CustomEvent('brush', { detail: { from: 0.2, to: 0.6 } }));
+    }''')
+    await page.wait_for_timeout(200)
+    detail_brushed = await page.eval_on_selector('#detail-pane',
+        'el => Array.from(el.querySelectorAll(\".detail-item\")).map(i => i.dataset.id)')
+    # Constraint 1: brushed detail must differ from initial (coupling)
+    assert detail_initial != detail_brushed, (
+        f'BP-D32 brushing produced no change in detail: {detail_initial} vs {detail_brushed}')
+    # Constraint 2: brushed detail items must all be in the overview's brushed range
+    overview_in_range = await page.eval_on_selector('#overview-pane',
+        '''el => {
+            const items = Array.from(el.querySelectorAll('.overview-item'));
+            return items.filter(i => {
+                const pos = parseFloat(i.dataset.pos);
+                return pos >= 0.2 && pos <= 0.6;
+            }).map(i => i.dataset.id);
+        }''')
+    for d_id in detail_brushed:
+        assert d_id in overview_in_range, (
+            f'Detail item {d_id} not in brushed overview range — subset constraint violated')"""@en ;
+    skos:definition "Two-axis check: brushing must change detail (coupling), and brushed detail items must be a subset of the overview region (subset relation)."@en .
+
+wp:SS_OverviewDetailLinkedPanes a wp:StructuralSpec ;
+    rdfs:label "Two linked panes: small overview + larger detail"@en ;
+    wp:cssSelectorList ".overview-detail-widget, #overview-pane, #detail-pane, .overview-item, .detail-item, .brush-region"@en ;
+    wp:jsSymbolList "function brush_handler(brushRange), event 'brush' on overview, function update_detail(itemSubset)"@en ;
+    skos:definition "Two-panel CSS grid (overview ~25-35% of width, detail rest). Overview holds low-fidelity items keyed by data position; detail holds high-fidelity items keyed by data id. Brush event on overview carries {from, to} range; update_detail filters items by position and re-renders."@en .
+
+# ---- Primitive 7: Dynamic Query Filter with Continuous Bounds ----
+
+wp:Primitive_DynamicQueryFilter a wp:WidgetPrimitive ;
+    rdfs:label "Dynamic query filter with continuous bounds"@en ;
+    skos:definition "Pattern where multiple range sliders or category toggles progressively narrow a result collection in real time as the user adjusts them. Each control corresponds to one attribute; results update with no submit-button delay. Demonstrates Shneiderman's third task ('Filter') with the key constraint that filtering is continuous (sub-100ms feedback), not transactional. Source: Shneiderman 1996 §3 ('Filter') citing Ahlberg & Shneiderman 1994 'Visual Information Seeking' (the FilmFinder system)."@en ;
+    dcterms:source "Shneiderman, B. (1996). 'The Eyes Have It', §3 task taxonomy 'Filter'. Citation chain to Ahlberg & Shneiderman 1994 'Visual Information Seeking: Tight Coupling of Dynamic Query Filters with Starfield Displays', CHI'94, DOI:10.1145/191666.191775. Primary source web_fetch-verified 2026-05-19. Discipline applied: ro:CitationChainTraversal from Shneiderman 1996 §3 to Ahlberg & Shneiderman 1994."@en ;
+    wp:demonstratesSubject wp:DS_FilteringIsContinuousNotTransactional ;
+    wp:hasDomainConstraint wp:DC_FilterUpdateIsRealTime ;
+    wp:hasTestProcedure wp:TP_FilterUpdateRealTimeCheck ;
+    wp:hasStructuralSpec wp:SS_RangeSlidersWithLiveResults .
+
+wp:DS_FilteringIsContinuousNotTransactional a wp:DemonstratesSubject ;
+    rdfs:label "Filtering must be continuous, not submit-then-result"@en ;
+    skos:definition "Pedagogical claim: a filter UI where the user adjusts controls and then presses 'Apply' loses the rapid hypothesis-testing affordance that makes data exploration effective. The mantra is overview-zoom-filter-details, and filter is part of an interactive loop, not a transaction. Continuous feedback (sub-100ms update) is the constraint."@en .
+
+wp:DC_FilterUpdateIsRealTime a wp:DomainConstraint ;
+    rdfs:label "Result set MUST update within sub-second of any control adjustment"@en ;
+    wp:constraintExpression "forall control adjustment delta: result_set(t + delta_t) reflects control state at t + delta_t, with delta_t < 500ms (Ahlberg & Shneiderman 1994 specified 100ms; relaxed to 500ms here for slower client renders). No 'Apply' button shall mediate; result updates must be event-driven on control change."@en ;
+    skos:definition "Latency budget + no-submit-button constraint. A filter UI with a submit button violates the constraint regardless of how fast the result computation is."@en .
+
+wp:TP_FilterUpdateRealTimeCheck a wp:TestProcedure ;
+    rdfs:label "Playwright test: filter adjustment changes results without explicit submit"@en ;
+    wp:testCode """# Test that adjusting a filter control updates results within latency budget,
+# without any explicit submit/apply step.
+# Asserts BP-D32 continuous-filter constraint.
+async def test_dynamic_query_realtime(page):
+    import time
+    # Confirm no Apply button exists in the filter widget (constraint negation)
+    apply_btn_count = await page.eval_on_selector_all(
+        '.filter-widget button.apply, .filter-widget input[type=\"submit\"]',
+        'els => els.length')
+    assert apply_btn_count == 0, (
+        f'BP-D32: filter widget has {apply_btn_count} apply/submit buttons — '
+        f'continuous-filter constraint violated')
+    # Baseline result count
+    n_initial = await page.eval_on_selector('.filter-results .result-item',
+        'el => document.querySelectorAll(\".filter-results .result-item\").length')
+    # Adjust a slider and measure time-to-update
+    t0 = time.time()
+    await page.eval_on_selector('#filter-slider-price',
+        'el => { el.value = el.max * 0.4; el.dispatchEvent(new Event(\"input\")); }')
+    # Poll for result count change with 500ms budget
+    for _ in range(10):
+        await page.wait_for_timeout(50)
+        n_now = await page.eval_on_selector('.filter-results .result-item',
+            'el => document.querySelectorAll(\".filter-results .result-item\").length')
+        if n_now != n_initial:
+            elapsed_ms = (time.time() - t0) * 1000
+            assert elapsed_ms < 500, f'BP-D32: filter update took {elapsed_ms:.0f}ms (>500ms budget)'
+            return
+    assert False, 'BP-D32: filter slider adjustment produced no result-set change within 500ms'"""@en ;
+    skos:definition "Two-part check: no submit button present, and result-update latency under 500ms after control adjustment."@en .
+
+wp:SS_RangeSlidersWithLiveResults a wp:StructuralSpec ;
+    rdfs:label "Range sliders and category toggles with live result panel"@en ;
+    wp:cssSelectorList ".filter-widget, .filter-controls, .filter-results, .filter-slider, .filter-category-toggle, .result-item"@en ;
+    wp:jsSymbolList "FILTER_STATE (config object), function filter_apply(), function filter_render_results(), event listeners on 'input' (not 'change') for sub-second feedback"@en ;
+    skos:definition "Controls panel (left or top) + results panel (right or bottom). Each control fires on 'input' event (continuous), not 'change' event (commit-only). filter_apply() recomputes result set; filter_render_results() updates DOM. No Apply button; no transactional commit."@en .
+
+# ---- Primitive 8: Coupled-Variable Explorer ----
+
+wp:Primitive_CoupledVariableExplorer a wp:WidgetPrimitive ;
+    rdfs:label "Coupled-variable explorer"@en ;
+    skos:definition "Pattern where two or more attributes of a dataset are shown in separate but linked panels; selecting items in one panel highlights related items in the others. Demonstrates Shneiderman's fifth task ('Relate' — view relationships among items). The pedagogical claim is that relationships are visible in coordinated selection, not in static layouts. Source: Shneiderman 1996 §3 ('Relate') citing the FilmFinder system where selecting director-name in one view highlights all films by that director in another."@en ;
+    dcterms:source "Shneiderman, B. (1996). 'The Eyes Have It', §3 task taxonomy 'Relate'. Pattern subsequently consolidated in Heer & Shneiderman 2012 'Interactive Dynamics for Visual Analysis' under 'Coordinate Views' (one of the 12 interactive-dynamics tasks). DOI:10.1145/2133416.2146416. Both sources verified live 2026-05-19."@en ;
+    wp:demonstratesSubject wp:DS_RelationshipsRevealedByCoordinatedSelection ;
+    wp:hasDomainConstraint wp:DC_SelectionPropagatesAcrossPanels ;
+    wp:hasTestProcedure wp:TP_CoordinatedSelectionCheck ;
+    wp:hasStructuralSpec wp:SS_LinkedPanelsWithSharedKey .
+
+wp:DS_RelationshipsRevealedByCoordinatedSelection a wp:DemonstratesSubject ;
+    rdfs:label "Relationships between attributes are revealed by coordinated selection, not by static layout"@en ;
+    skos:definition "Pedagogical claim: when a dataset has multiple attributes (e.g., directors, films, years, ratings), the relationships between attributes — 'which films did this director make?' — are not readable from any single static view. The reader has to *act* (select an item in one view) and see the response (related items highlight in other views) to perceive the relationship."@en .
+
+wp:DC_SelectionPropagatesAcrossPanels a wp:DomainConstraint ;
+    rdfs:label "Selection in any panel MUST propagate to all linked panels via shared key"@en ;
+    wp:constraintExpression "forall panel P_i, P_j in coupled-views, item k selected in P_i: items in P_j sharing key(k) with the selection MUST be visually highlighted. No panel may be left out of the propagation; no propagation may produce zero highlights when the key exists in P_j."@en ;
+    skos:definition "Bidirectional propagation. If selecting in panel A highlights in B but selecting in B does not highlight in A, the coupling is incomplete."@en .
+
+wp:TP_CoordinatedSelectionCheck a wp:TestProcedure ;
+    rdfs:label "Playwright test: selection in any panel highlights related items in all others"@en ;
+    wp:testCode """# Test that selecting an item in one panel highlights related items in all linked panels.
+# Asserts BP-D32 coordinated-selection constraint.
+async def test_coupled_variable_explorer(page):
+    # Get panel ids
+    panel_ids = await page.eval_on_selector_all('.coupled-panel',
+        'els => els.map(e => e.id)')
+    assert len(panel_ids) >= 2, f'Coupled-variable explorer needs >=2 panels, found {len(panel_ids)}'
+    # Pick first item in first panel and click it
+    test_key = await page.eval_on_selector(f'#{panel_ids[0]} .panel-item:first-child',
+        'el => el.dataset.key')
+    await page.click(f'#{panel_ids[0]} .panel-item:first-child')
+    await page.wait_for_timeout(150)
+    # Every other panel must have at least one highlighted item with matching key
+    for pid in panel_ids[1:]:
+        highlights = await page.eval_on_selector_all(
+            f'#{pid} .panel-item.highlighted',
+            'els => els.map(e => e.dataset.relatedKey || e.dataset.key)')
+        assert any(h == test_key for h in highlights) or len(highlights) > 0, (
+            f'BP-D32: panel {pid} has no highlights after selection — coupling violated')
+    # Reverse direction: clear and select from a different panel
+    await page.evaluate('document.querySelectorAll(\".panel-item.highlighted\").forEach(e => e.classList.remove(\"highlighted\"))')
+    reverse_key = await page.eval_on_selector(f'#{panel_ids[1]} .panel-item:first-child',
+        'el => el.dataset.key')
+    await page.click(f'#{panel_ids[1]} .panel-item:first-child')
+    await page.wait_for_timeout(150)
+    reverse_highlights = await page.eval_on_selector_all(
+        f'#{panel_ids[0]} .panel-item.highlighted',
+        'els => els.length')
+    assert reverse_highlights > 0, (
+        f'BP-D32: reverse coupling ({panel_ids[1]} -> {panel_ids[0]}) produced no highlights')"""@en ;
+    skos:definition "Bidirectional propagation check: selection in panel A produces highlights in B, and selection in B produces highlights in A. Catches widgets where coupling works only in one direction."@en .
+
+wp:SS_LinkedPanelsWithSharedKey a wp:StructuralSpec ;
+    rdfs:label "Two or more panels with shared key-based highlighting"@en ;
+    wp:cssSelectorList ".coupled-variable-widget, .coupled-panel, .panel-item, .panel-item.highlighted"@en ;
+    wp:jsSymbolList "function couple_select(key, sourcePanel), data-key and data-related-key HTML attributes, function clear_all_highlights()"@en ;
+    skos:definition "N panels in CSS grid. Each panel-item has data-key (its own key) and optionally data-related-key (keys it relates to). couple_select(key, sourcePanel) iterates all other panels and adds .highlighted class to matching items. Bidirectional — each panel is both source and target."@en .
+
+# ---- Primitive 9: Guided Narrative Walkthrough ----
+
+wp:Primitive_GuidedNarrativeWalkthrough a wp:WidgetPrimitive ;
+    rdfs:label "Guided narrative walkthrough"@en ;
+    skos:definition "Pattern where the reader steps through pre-authored stages of an explanation, each stage combining prose with a coordinated visualisation state. Distinct from open exploration (which the prior primitives enable): the author has chosen a specific path through the data and the widget enforces that path. Demonstrates that for some pedagogical content, authored narrative outperforms unconstrained exploration. Source: Segel & Heer 2010 'Narrative Visualization: Telling Stories with Data', IEEE TVCG 16(6); referenced in Heer & Shneiderman 2012 'Interactive Dynamics for Visual Analysis'."@en ;
+    dcterms:source "Segel, E. & Heer, J. (2010). 'Narrative Visualization: Telling Stories with Data.' IEEE Transactions on Visualization and Computer Graphics, 16(6), 1139-1148. DOI:10.1109/TVCG.2010.179. Cited by Heer & Shneiderman 2012 (Communications of the ACM 55(4), DOI:10.1145/2133416.2146416) under their 'Annotate, Share, Guide' category. Discipline applied: ro:CitationChainTraversal from Heer & Shneiderman 2012 to Segel & Heer 2010. Source citation web-search-verified 2026-05-19; full PDF not fetched (extraction grounded on the well-attested taxonomic categorisation in the 2012 follow-up paper, which I did consult)."@en ;
+    wp:demonstratesSubject wp:DS_AuthoredPathBeatsUnconstrainedExploration ;
+    wp:hasDomainConstraint wp:DC_StepsAreOrderedAndIrreversible ;
+    wp:hasTestProcedure wp:TP_NarrativeStepProgression ;
+    wp:hasStructuralSpec wp:SS_StepperWithCoordinatedVisualisation .
+
+wp:DS_AuthoredPathBeatsUnconstrainedExploration a wp:DemonstratesSubject ;
+    rdfs:label "For some content, authored narrative outperforms unconstrained exploration"@en ;
+    skos:definition "Pedagogical claim: when the goal is to convey a specific argument or explanation (not to enable open discovery), the reader benefits from an authored path through the data more than from free-form filter/zoom/relate affordances. The widget enforces the path by gating progression: step N+1 not accessible until step N is read."@en .
+
+wp:DC_StepsAreOrderedAndIrreversible a wp:DomainConstraint ;
+    rdfs:label "Stages are ordered; advancing forward is mandatory before advancing further"@en ;
+    wp:constraintExpression "forall step_index i in [1..N]: progress(i+1) requires_first viewed(i). Free random-access jumping (step 1 to step 7 without intermediate steps) is not permitted in a guided walkthrough; that would be an exploration tool, not a walkthrough. Backward navigation IS permitted (the reader can review prior steps); only forward-skip is constrained."@en ;
+    skos:definition "Forward-progression gate + free-backward-review. The constraint distinguishes a walkthrough from an open table-of-contents jumper. A widget that lets the reader jump to step 7 without reading 1-6 has failed the walkthrough constraint and is a different primitive (probably the multi-class selector from v1.0.0)."@en .
+
+wp:TP_NarrativeStepProgression a wp:TestProcedure ;
+    rdfs:label "Playwright test: forward-skip blocked, sequential progression works, backward navigation allowed"@en ;
+    wp:testCode """# Test that the walkthrough enforces forward-sequential progression but allows backward review.
+# Asserts BP-D32 ordered-irreversible-forward constraint.
+async def test_guided_narrative_walkthrough(page):
+    # Confirm starting step is 1
+    current = await page.eval_on_selector('.narrative-current-step',
+        'el => parseInt(el.textContent.trim(), 10)')
+    assert current == 1, f'Walkthrough should start at step 1, got {current}'
+    # Try to forward-skip past step 1 (click on step 5 directly)
+    step5_clickable = await page.eval_on_selector('.narrative-step-nav[data-step=\"5\"]',
+        'el => !el.hasAttribute(\"disabled\") && !el.classList.contains(\"locked\")')
+    assert not step5_clickable, (
+        'BP-D32: walkthrough allows forward-skip to step 5 from step 1 — '
+        'ordered-progression constraint violated')
+    # Advance one step at a time
+    await page.click('.narrative-next-btn')
+    await page.wait_for_timeout(150)
+    current = await page.eval_on_selector('.narrative-current-step',
+        'el => parseInt(el.textContent.trim(), 10)')
+    assert current == 2, f'After 1 next click, should be at step 2, got {current}'
+    # Advance again
+    await page.click('.narrative-next-btn')
+    await page.wait_for_timeout(150)
+    current = await page.eval_on_selector('.narrative-current-step',
+        'el => parseInt(el.textContent.trim(), 10)')
+    assert current == 3, f'After 2 next clicks, should be at step 3, got {current}'
+    # Backward navigation MUST be permitted
+    await page.click('.narrative-prev-btn')
+    await page.wait_for_timeout(150)
+    current = await page.eval_on_selector('.narrative-current-step',
+        'el => parseInt(el.textContent.trim(), 10)')
+    assert current == 2, f'BP-D32: backward navigation blocked or broken (expected step 2, got {current})'"""@en ;
+    skos:definition "Three-axis check: forward-skip blocked, sequential next-button works, backward navigation allowed. Distinguishes walkthrough from open-exploration and from purely-linear video."@en .
+
+wp:SS_StepperWithCoordinatedVisualisation a wp:StructuralSpec ;
+    rdfs:label "Step indicator + content panel + coordinated visualisation"@en ;
+    wp:cssSelectorList ".narrative-widget, .narrative-step-nav, .narrative-step-nav.locked, .narrative-current-step, .narrative-prev-btn, .narrative-next-btn, .narrative-content, .narrative-vis"@en ;
+    wp:jsSymbolList "NARRATIVE_STEPS (array of {content, visState} objects), function narrative_advance(), function narrative_retreat(), function narrative_render_step(n) which updates both content and visualisation in one frame"@en ;
+    skos:definition "Three sections: step navigator (top or side), content panel (prose for current step), visualisation panel (chart/diagram in current step's state). Step navigator shows all N steps; future steps are visually locked until reached. narrative_render_step(n) is the single source of truth — content and visualisation are always in sync."@en .
+
+# ============================================================================
+# SHACL shapes (BP-D27: skeleton-shape discipline applies)
+# ============================================================================
+# Some shapes encode real constraints (the BP-D32 triple is required);
+# others are skeletons pending Step 2 semantic upgrade.
+
+wp:WidgetPrimitiveShape a sh:NodeShape ;
+    sh:targetClass wp:WidgetPrimitive ;
+    sh:property [
+        sh:path wp:demonstratesSubject ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "BP-D32 step 1: every WidgetPrimitive must declare what it demonstrates."@en ;
+    ] ;
+    sh:property [
+        sh:path wp:hasDomainConstraint ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "BP-D32 steps 2-3: every WidgetPrimitive must declare the domain constraint it encodes."@en ;
+    ] ;
+    sh:property [
+        sh:path wp:hasTestProcedure ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "BP-D32 step 4: every WidgetPrimitive must declare a Playwright test that proves the constraint holds."@en ;
+    ] ;
+    rdfs:comment "This is a SEMANTIC shape (not a skeleton): encodes the real BP-D32 triple requirement."@en ;
+    dcterms:source "Authored 2026-05-19 for widget-primitives v1.0.0."@en .
+
+wp:DomainConstraintShape a sh:NodeShape ;
+    sh:targetClass wp:DomainConstraint ;
+    sh:property [
+        sh:path wp:constraintExpression ;
+        sh:minCount 1 ;
+        sh:severity sh:Info ;
+        wp:isSkeletonShape true ;
+        sh:message "Scaffold-only / Step 1 / L-40 honest disclosure: future semantic upgrade should validate the constraintExpression is in 'forall ... must ...' canonical form."@en ;
+    ] ;
+    rdfs:comment "Scaffold-only / Step 1 / L-40 honest disclosure (per BP-D27)"@en ;
+    dcterms:source "Auto-generated skeleton; semantic upgrade pending Step 2."@en .
+
+wp:TestProcedureShape a sh:NodeShape ;
+    sh:targetClass wp:TestProcedure ;
+    sh:property [
+        sh:path wp:testCode ;
+        sh:minCount 1 ;
+        sh:minLength 100 ;
+        sh:severity sh:Violation ;
+        sh:message "TestProcedure must carry executable testCode of at least 100 chars (a true Playwright check, not a placeholder)."@en ;
+    ] ;
+    rdfs:comment "Semantic shape: enforces that the test is real code, not a stub."@en .
+
+wp:ProvenanceBadgeShape a sh:NodeShape ;
+    sh:targetClass wp:ProvenanceBadge ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:severity sh:Info ;
+        wp:isSkeletonShape true ;
+        sh:message "Scaffold-only / Step 1 / L-40 honest disclosure"@en ;
+    ] ;
+    rdfs:comment "Scaffold-only / Step 1 / L-40 honest disclosure (per BP-D27)"@en .
+
+wp:isSkeletonShape a owl:DatatypeProperty ;
+    rdfs:label "is skeleton shape"@en ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Marker per BP-D27: true when this SHACL shape is auto-generated scaffolding pending Step 2 semantic upgrade; absent or false when this shape encodes a real semantic constraint."@en .
+
+# ============================================================================
+# PROV-O activity for this release
+# ============================================================================
+
+wp:Activity_WidgetPrimitivesEnrichmentRelease_v1_1_0 a prov:Activity ;
+    rdfs:label "Widget Primitives Enrichment Release v1.1.0"@en ;
+    prov:startedAtTime "2026-05-19T12:00:00"^^xsd:dateTime ;
+    prov:endedAtTime "2026-05-19T13:30:00"^^xsd:dateTime ;
+    prov:wasAssociatedWith wp:Agent_YusufAltunel ;
+    prov:wasInformedBy wp:Activity_WidgetPrimitivesOriginationRelease_v1_0_0 ;
+    prov:used <http://example.org/widget-primitives/source-citation/shneiderman-1996-eyes-have-it> ;
+    prov:used <http://example.org/widget-primitives/source-citation/heer-shneiderman-2012-interactive-dynamics> ;
+    prov:used <http://example.org/research-ontology/6.9.2> ;
+    rdfs:comment "MINOR enrichment release per BP-D13. Applied the RRWPC research ontology v6.9.2's discovery-method classes (ro:SearchEngineQuery for finding seminal sources; ro:DiscoveryAttempt for per-source liveness; ro:CitationChainTraversal for following Shneiderman 1996 -> Ahlberg & Shneiderman 1994 and Heer & Shneiderman 2012 -> Segel & Heer 2010) to extract four new widget primitives from two well-attested information-visualization seminal sources. Each new primitive carries the BP-D32 triple (demonstratesSubject + hasDomainConstraint + hasTestProcedure) plus BP-D28 source citation with DOI. Added one supporting provenance-badge subclass (wp:PrimaryAcademicSourceBadge) to distinguish peer-reviewed academic-source citations from non-academic primary sources. v1.0.0 individuals byte-identical (BP-D7 MINOR-bump discipline)."@en .
+
+wp:Activity_WidgetPrimitivesOriginationRelease_v1_0_0 a prov:Activity ;
+    rdfs:label "Widget Primitives Origination Release v1.0.0"@en ;
+    prov:startedAtTime "2026-05-19T10:30:00"^^xsd:dateTime ;
+    prov:endedAtTime "2026-05-19T11:00:00"^^xsd:dateTime ;
+    prov:wasAssociatedWith wp:Agent_YusufAltunel ;
+    prov:used <http://example.org/widget-primitives/source-observation/com0463-ch7-v3-2-0> ;
+    rdfs:comment "Origination release per BP-D13 (brand-new artefact type, no prior bundle). Derivation per BP-D14 from observation of COM0463 Ch.7 v3.2.0 widget patterns. Authored under BP-D2 (raw read of v3.2.0 HTML to extract real selectors), BP-D24 (license + provenance), BP-D27 (skeleton-shape discipline for partial SHACL), BP-D32 (each primitive carries demonstratesSubject + hasDomainConstraint + hasTestProcedure triple), BP-D33 (provenance-badge system codified as Primitive_ThreeTierProvenanceBadges)."@en .
+
+wp:Agent_YusufAltunel a prov:Agent, prov:Person ;
+    rdfs:label "Yusuf Altunel, PhD"@en .

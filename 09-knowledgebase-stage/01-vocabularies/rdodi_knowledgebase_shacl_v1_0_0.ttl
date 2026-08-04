@@ -1,0 +1,50 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix kb: <http://example.org/rdodi/knowledgebase#> .
+@prefix kbsh: <http://example.org/rdodi/knowledgebase/shapes#> .
+
+kbsh:PatternShape a sh:NodeShape ;
+    sh:targetClass kb:LessonsLearnedPattern ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every LessonsLearnedPattern must carry an rdfs:label." ] ;
+    sh:property [ sh:path skos:definition ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every LessonsLearnedPattern must carry a skos:definition (one complete sentence)." ] ;
+    sh:property [ sh:path kb:patternCode ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every LessonsLearnedPattern must declare its kb:patternCode (R1, R2, ...) from the source proposal." ] ;
+    sh:property [ sh:path kb:patternEvidence ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every LessonsLearnedPattern must link to at least one kb:patternEvidence individual." ] ;
+    sh:property [ sh:path kb:coversExisting ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every LessonsLearnedPattern must link to at least one kb:CoverageCheck recording its relationship to existing discipline (L-72 dedup)." ] ;
+    sh:property [ sh:path kb:recommendsIntegration ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every LessonsLearnedPattern must link to at least one kb:IntegrationRecommendation." ] ;
+    sh:property [ sh:path kb:patternStatus ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every LessonsLearnedPattern must declare its kb:patternStatus (Proposed, AlreadyAdoptedAtGateLevel, or Ratified)." ] .
+
+kbsh:EvidenceShape a sh:NodeShape ;
+    sh:targetClass kb:PatternEvidence ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every PatternEvidence must carry an rdfs:label." ] ;
+    sh:property [ sh:path skos:definition ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every PatternEvidence must carry a skos:definition." ] .
+
+kbsh:TranscriptCitationShape a sh:NodeShape ;
+    sh:targetClass kb:TranscriptCitation ;
+    sh:property [ sh:path kb:transcriptLineRef ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every TranscriptCitation must carry an integer kb:transcriptLineRef." ] ;
+    sh:property [ sh:path kb:provenanceSession ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every TranscriptCitation must carry kb:provenanceSession so non-local references are explicitly flagged (BP-D41)." ] .
+
+kbsh:CoverageCheckShape a sh:NodeShape ;
+    sh:targetClass kb:CoverageCheck ;
+    sh:property [ sh:path skos:definition ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every CoverageCheck must carry a skos:definition naming the existing discipline and where the pattern adds something new." ] .
+
+kbsh:IntegrationRecommendationShape a sh:NodeShape ;
+    sh:targetClass kb:IntegrationRecommendation ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every IntegrationRecommendation must carry an rdfs:label." ] ;
+    sh:property [ sh:path kb:proposedAddendumText ; sh:minCount 1 ; sh:severity sh:Violation ;
+                  sh:message "Every IntegrationRecommendation must carry kb:proposedAddendumText (the verbatim text proposed for procedure/blueprint integration)." ] .

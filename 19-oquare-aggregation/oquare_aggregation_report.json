@@ -1,0 +1,105 @@
+{
+  "status": "INDICATIVE \u2014 computed per the DECLARED OQuaRE-attributed scaling; NOT a certification. Verify the bands/matrix in the config against Duque-Ramos et al. before any external use.",
+  "base_metrics_source": "assessor (unchanged base-metric layer)",
+  "characteristics": [
+    {
+      "characteristic": "Structural",
+      "indicative_score_1to5": 3.8,
+      "label": "INDICATIVE, not certified",
+      "constituents": [
+        {
+          "metric": "RROnto",
+          "raw": 0.286,
+          "scaled_1to5": 3,
+          "derivation": "v=0.286 vs bands [0.1, 0.2, 0.3, 0.4] (higher_better) -> 3/5"
+        },
+        {
+          "metric": "INROnto",
+          "raw": 0.814,
+          "scaled_1to5": 4,
+          "derivation": "v=0.814 vs bands [0.3, 0.5, 0.7, 0.9] (higher_better) -> 4/5"
+        },
+        {
+          "metric": "TMOnto",
+          "raw": 0.209,
+          "scaled_1to5": 3,
+          "derivation": "v=0.209 vs bands [0.1, 0.2, 0.3, 0.4] (lower_better) -> 3/5"
+        },
+        {
+          "metric": "CBOOnto",
+          "raw": 0.86,
+          "scaled_1to5": 5,
+          "derivation": "v=0.860 vs bands [1.0, 2.0, 3.0, 4.0] (lower_better) -> 5/5"
+        },
+        {
+          "metric": "LCOMOnto",
+          "raw": 2.07,
+          "scaled_1to5": 4,
+          "derivation": "v=2.070 vs bands [1.5, 3.0, 5.0, 8.0] (lower_better) -> 4/5"
+        }
+      ]
+    },
+    {
+      "characteristic": "Maintainability",
+      "indicative_score_1to5": 4.2,
+      "label": "INDICATIVE, not certified",
+      "constituents": [
+        {
+          "metric": "WMCOnto",
+          "raw": 0.326,
+          "scaled_1to5": 5,
+          "derivation": "v=0.326 vs bands [1.0, 2.0, 4.0, 6.0] (lower_better) -> 5/5"
+        },
+        {
+          "metric": "NOMOnto",
+          "raw": 0.326,
+          "scaled_1to5": 5,
+          "derivation": "v=0.326 vs bands [1.0, 2.0, 4.0, 6.0] (lower_better) -> 5/5"
+        },
+        {
+          "metric": "DITOnto",
+          "raw": 6,
+          "scaled_1to5": 3,
+          "derivation": "v=6.000 vs bands [2.0, 4.0, 6.0, 8.0] (lower_better) -> 3/5"
+        },
+        {
+          "metric": "NOCOnto",
+          "raw": 3.684,
+          "scaled_1to5": 3,
+          "derivation": "v=3.684 vs bands [1.0, 2.0, 4.0, 6.0] (lower_better) -> 3/5"
+        },
+        {
+          "metric": "CBOOnto",
+          "raw": 0.86,
+          "scaled_1to5": 5,
+          "derivation": "v=0.860 vs bands [1.0, 2.0, 3.0, 4.0] (lower_better) -> 5/5"
+        }
+      ]
+    },
+    {
+      "characteristic": "FunctionalAdequacy",
+      "indicative_score_1to5": 3.0,
+      "label": "INDICATIVE, not certified",
+      "constituents": [
+        {
+          "metric": "ANOnto",
+          "raw": 0.919,
+          "scaled_1to5": 4,
+          "derivation": "v=0.919 vs bands [0.4, 0.6, 0.8, 1.0] (higher_better) -> 4/5"
+        },
+        {
+          "metric": "AROnto",
+          "raw": 0.0,
+          "scaled_1to5": 1,
+          "derivation": "v=0.000 vs bands [0.1, 0.3, 0.5, 0.7] (higher_better) -> 1/5"
+        },
+        {
+          "metric": "INROnto",
+          "raw": 0.814,
+          "scaled_1to5": 4,
+          "derivation": "v=0.814 vs bands [0.3, 0.5, 0.7, 0.9] (higher_better) -> 4/5"
+        }
+      ]
+    }
+  ]
+}

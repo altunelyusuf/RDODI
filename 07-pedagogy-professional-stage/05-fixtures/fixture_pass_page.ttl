@@ -1,0 +1,19 @@
+@prefix fix: <http://example.org/fixture#> .
+@prefix rpg: <http://example.org/rdodi/interactive-page-ontology#> .
+@prefix ld: <http://example.org/rdodi/learning-design#> .
+@prefix mp: <http://example.org/rdodi/model-provenance#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+fix:surface rpg:hasLearningObjective fix:lo1 .
+fix:lo1 a rpg:LearningObjective, owl:NamedIndividual ; rdfs:label "Apply cost-of-quality reasoning" ; ld:bloomLevel ld:Apply .
+fix:widget1 a rpg:InstructionalWidget, rpg:ParametricCalculator, owl:NamedIndividual ; rdfs:label "Cost of quality widget" ;
+  mp:numericModelStatus mp:Illustrative ; mp:visibleLabelText "Illustrative — not a calibrated model" ;
+  rpg:coversLearningObjective fix:lo1 ; ld:cognitiveLevel ld:Apply .
+fix:item1 a ld:AssessmentItem, owl:NamedIndividual ; rdfs:label "Q1" ;
+  ld:hasOption fix:o1 , fix:o2 , fix:o3 ; ld:hasCorrectOption fix:o1 ;
+  ld:distractorRationale "External failure is the most expensive, not the least." ;
+  ld:distractorRationale "Internal failure still costs more than prevention." ;
+  ld:cognitiveLevel ld:Apply ; ld:assessesObjective fix:lo1 .
+fix:o1 a ld:AnswerOption ; rdfs:label "Prevention" .
+fix:o2 a ld:AnswerOption ; rdfs:label "External failure" .
+fix:o3 a ld:AnswerOption ; rdfs:label "Internal failure" .

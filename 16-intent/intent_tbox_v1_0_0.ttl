@@ -1,0 +1,11 @@
+@prefix intent: <http://example.org/rdodi/intent#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+intent: a owl:Ontology ; owl:versionInfo "1.0.0" ; rdfs:comment "Document-intent (step 0) vocabulary — domain-neutral."@en .
+intent:Intent a owl:Class .
+intent:intendedGenre   a owl:DatatypeProperty ; rdfs:domain intent:Intent .
+intent:mustCoverConcept a owl:ObjectProperty ; rdfs:domain intent:Intent ; rdfs:comment "domain concept IRI that MUST be covered"@en .
+intent:mustCoverArea    a owl:ObjectProperty ; rdfs:domain intent:Intent .
+intent:excludedConcept  a owl:ObjectProperty ; rdfs:domain intent:Intent ; rdfs:comment "domain concept IRI that must NOT appear"@en .
+intent:declaredAudience a owl:DatatypeProperty ; rdfs:domain intent:Intent .
+intent:scopeNote        a owl:DatatypeProperty ; rdfs:domain intent:Intent .

@@ -1,0 +1,49 @@
+function shaclValidate(shapesJson, triples) {
+  let shapes;
+  try { shapes = JSON.parse(shapesJson); }
+  catch (e) { throw new Error('shapes must be valid JSON: ' + e.message); }
+  if (!Array.isArray(shapes)) throw new Error('shapes must be a JSON array');
+  const results = [];
+  // group triples by subject for per-focus-node evaluation (real SHACL semantics: shapes target focus nodes)
+  const bySubject = {};
+  for (const t of triples) { (bySubject[t.s] = bySubject[t.s] || []).push(t); }
+  for (const shape of shapes) {
+    if (!shape.targetClass && !shape.targetSubjectsWithPredicate) throw new Error('shape needs targetClass or targetSubjectsWithPredicate');
+    let focusNodes;
+    if (shape.targetClass) {
+      focusNodes = Object.keys(bySubject).filter(s => bySubject[s].some(t => t.p === 'a' && t.o === shape.targetClass));
+    } else {
+      focusNodes = Object.keys(bySubject).filter(s => bySubject[s].some(t => t.p === shape.targetSubjectsWithPredicate));
+    }
+    for (const focus of focusNodes) {
+      const focusTriples = bySubject[focus] || [];
+      for (const prop of (shape.properties || [])) {
+        const matching = focusTriples.filter(t => t.p === prop.path);
+        if (prop.minCount !== undefined && matching.length < prop.minCount) {
+          results.push({ focus, path: prop.path, severity: 'Violation', message: `minCount ${prop.minCount} not met (found ${matching.length})` });
+        }
+        if (prop.maxCount !== undefined && matching.length > prop.maxCount) {
+          results.push({ focus, path: prop.path, severity: 'Violation', message: `maxCount ${prop.maxCount} exceeded (found ${matching.length})` });
+        }
+        if (prop.pattern) {
+          const re = new RegExp(prop.pattern);
+          for (const m of matching) {
+            if (!re.test(m.o)) results.push({ focus, path: prop.path, severity: 'Violation', message: `value "${m.o}" does not match pattern ${prop.pattern}` });
+          }
+        }
+        if (prop.datatype === 'numeric') {
+          for (const m of matching) {
+            if (isNaN(Number(m.o))) results.push({ focus, path: prop.path, severity: 'Violation', message: `value "${m.o}" is not numeric` });
+          }
+        }
+        if (prop.classConstraint) {
+          for (const m of matching) {
+            const targetHasType = (bySubject[m.o] || []).some(t => t.p === 'a' && t.o === prop.classConstraint);
+            if (!targetHasType) results.push({ focus, path: prop.path, severity: 'Violation', message: `value "${m.o}" is not of class ${prop.classConstraint}` });
+          }
+        }
+      }
+    }
+  }
+  return { conforms: results.length === 0, violations: results };
+}

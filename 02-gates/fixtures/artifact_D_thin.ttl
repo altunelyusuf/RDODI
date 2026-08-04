@@ -1,0 +1,41 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<http://x#thin_0> a <http://example.org/rdodi/interactive-page-ontology#Button>,
+        owl:NamedIndividual ;
+    rdfs:label "x"@en ;
+    dcterms:source "src" ;
+    skos:definition "n/a"@en .
+
+<http://x#thin_1> a <http://example.org/rdodi/interactive-page-ontology#Tabs>,
+        owl:NamedIndividual ;
+    rdfs:label "x"@en ;
+    dcterms:source "src" ;
+    skos:definition "n/a"@en .
+
+<http://x#thin_2> a <http://example.org/rdodi/interactive-page-ontology#TableOfContents>,
+        owl:NamedIndividual ;
+    rdfs:label "x"@en ;
+    dcterms:source "src" ;
+    skos:definition "n/a"@en .
+
+<http://x#thin_3> a <http://example.org/rdodi/interactive-page-ontology#Tooltip>,
+        owl:NamedIndividual ;
+    rdfs:label "x"@en ;
+    dcterms:source "src" ;
+    skos:definition "n/a"@en .
+
+<http://x#thin_4> a <http://example.org/rdodi/interactive-page-ontology#Breadcrumbs>,
+        owl:NamedIndividual ;
+    rdfs:label "x"@en ;
+    dcterms:source "src" ;
+    skos:definition "n/a"@en .
+
+<http://x#thin_5> a <http://example.org/rdodi/interactive-page-ontology#ChapterSection>,
+        owl:NamedIndividual ;
+    rdfs:label "x"@en ;
+    dcterms:source "src" ;
+    skos:definition "n/a"@en .
+

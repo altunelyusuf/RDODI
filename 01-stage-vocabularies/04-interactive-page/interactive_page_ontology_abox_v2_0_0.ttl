@@ -1,0 +1,1161 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdodi-page: <http://example.org/rdodi/interactive-page-ontology#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+rdodi-page:AestheticAndMinimalistDesign a rdodi-page:UsabilityHeuristic,
+        owl:NamedIndividual ;
+    rdfs:label "aesthetic and minimalist design"@en ;
+    dcterms:source "Nielsen Norman Group 10 Usability Heuristics (modernized 2024)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Interfaces should not contain information that is irrelevant or rarely needed."@en .
+
+rdodi-page:ConceptDemo_QA_AccessibilityCompliance a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: AccessibilityCompliance (Recommended) for ConceptDemoArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:AccessibilityCompliance ;
+    rdodi-page:assesses rdodi-page:ConceptDemoArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "recommended" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along AccessibilityCompliance for the artifact, severity Recommended."@en .
+
+rdodi-page:ConceptDemo_QA_DiscoverabilityOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: DiscoverabilityOptimization (Required) for ConceptDemoArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:DiscoverabilityOptimization ;
+    rdodi-page:assesses rdodi-page:ConceptDemoArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along DiscoverabilityOptimization for the artifact, severity Required."@en .
+
+rdodi-page:ConceptDemo_QA_PerformanceOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: PerformanceOptimization (Required) for ConceptDemoArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:PerformanceOptimization ;
+    rdodi-page:assesses rdodi-page:ConceptDemoArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along PerformanceOptimization for the artifact, severity Required."@en .
+
+rdodi-page:ConceptDemo_QA_PrivacyCompliance a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: PrivacyCompliance (Recommended) for ConceptDemoArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:PrivacyCompliance ;
+    rdodi-page:assesses rdodi-page:ConceptDemoArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "recommended" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along PrivacyCompliance for the artifact, severity Recommended."@en .
+
+rdodi-page:ConceptDemo_QA_SEOOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: SEOOptimization (Recommended) for ConceptDemoArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:SEOOptimization ;
+    rdodi-page:assesses rdodi-page:ConceptDemoArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "recommended" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along SEOOptimization for the artifact, severity Recommended."@en .
+
+rdodi-page:ConceptDemo_QA_SecurityCompliance a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: SecurityCompliance (Required by Cap_CodeExecution) for ConceptDemoArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:SecurityCompliance ;
+    rdodi-page:assesses rdodi-page:ConceptDemoArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC capability quality implication shape Cap_CodeExecution_SecurityCompliance_Required_Shape"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment for SecurityCompliance — required by Cap_CodeExecution capability (sandbox isolation prevents malicious code). Not in Demo specialization's default profile (Security=Optional for Demo) but cap-Required overrides spec-Optional."@en .
+
+rdodi-page:ConceptDemo_QA_SizeOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: SizeOptimization (Required) for ConceptDemoArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:SizeOptimization ;
+    rdodi-page:assesses rdodi-page:ConceptDemoArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along SizeOptimization for the artifact, severity Required."@en .
+
+rdodi-page:ConceptDemo_QA_UsabilityOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: UsabilityOptimization (Recommended) for ConceptDemoArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:UsabilityOptimization ;
+    rdodi-page:assesses rdodi-page:ConceptDemoArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "recommended" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along UsabilityOptimization for the artifact, severity Recommended."@en .
+
+rdodi-page:AnalysisVsDesignBalance a rdodi-page:QualitySubAspect,
+        owl:NamedIndividual ;
+    rdfs:label "Analysis vs Design Balance"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Ratio of analysis-level content (NFR elicitation, quality-attribute scenarios, stakeholder concerns, tradeoff analysis, ADRs) to design-level content (chosen architectures, specific technologies). For technical chapters target ratio >= 1:5; below 1:10 is a Warning."@en .
+
+rdodi-page:AnimationAndSimulationDepth a rdodi-page:QualitySubAspect,
+        owl:NamedIndividual ;
+    rdfs:label "Animation and Simulation Depth"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Depth of dynamic visual elements: CSS @keyframes animations, <canvas> renderings, requestAnimationFrame loops, setInterval simulations. Navigation widgets (tabs, toggles, filters, radio quizzes) are NOT simulations and do NOT count here."@en .
+
+rdodi-page:Approved a rdodi-page:PageLifecycleState,
+        owl:NamedIndividual ;
+    rdfs:label "approved"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §3.4"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Review complete; ready for publication but not yet published."@en .
+
+rdodi-page:Archived a rdodi-page:PageLifecycleState,
+        owl:NamedIndividual ;
+    rdfs:label "archived"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §3.4"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Page is no longer publicly accessible but retained for reference."@en .
+
+rdodi-page:BestPractice_WPC1_IndustrialUXGate a owl:NamedIndividual ;
+    rdfs:label "BP-WPC-1: Industrial-UX gate — Page must declare ≥ 5 heuristic claims + layout pattern + semantic regions + measurement bindings"@en ;
+    dcterms:source "OE_Ecosystem_Corrections_v1_0_0.md (2026-05-13) findings F1-F7; ISO 9241-110:2020; Nielsen Norman heuristic catalogue."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Enforced operationally by wpc_core_shacl v4.0.0 PageIndustrialUXShape. Closes the 7 industrial-UX gaps documented in OE_Ecosystem_Corrections."@en .
+
+rdodi-page:BestPractice_WPC2_LightThemeOnly a owl:NamedIndividual ;
+    rdfs:label "BP-WPC-2: Light theme only for all HTML artifacts"@en ;
+    dcterms:source "User preference (Yusuf Altunel), persistent across sessions. Recorded in memory_user_edits."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Light theme means white/light backgrounds (#ffffff to #f8fafc) with dark text (#0f172a to #475569). Achieves consistency across course materials and avoids the maintenance cost of dual themes."@en .
+
+rdodi-page:BestPractice_WPC3_NoCdnDependencies a owl:NamedIndividual ;
+    rdfs:label "BP-WPC-3: No external CDN dependencies in HTML artifacts"@en ;
+    dcterms:source "Industrial-UX uplift v3.2.0 closure (2026-05-13). Reasoned from Core Web Vital performance impact: 3 CDN calls (Google Fonts + FontAwesome + Chart.js) typically add 200-800ms to LCP."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "HTML artifacts MUST be fully self-contained — no external script, stylesheet, font, or image references. Use system font stacks (-apple-system, BlinkMacSystemFont, Segoe UI, Roboto), inline SVG (not Chart.js), and CSS-only styling. Benefits: works offline, eliminates LCP regression from CDN latency, eliminates privacy concerns (no third-party tracking), passes air-gapped enterprise environments."@en .
+
+rdodi-page:BestPractice_WPC4_PageAboxCompanionRequired a owl:NamedIndividual ;
+    rdfs:label "BP-WPC4: Page ABox companion required"@en ;
+    dcterms:source "Industrial-UX assessment 2026-05-13 finding: alternative HTML pipeline (com4061_chapter6_v1_0_17.html) shipped HTML-only without a WPC ABox; this prevented WPC contract validation entirely."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "The ABox is the machine-readable contract; the HTML is the rendering. Filename pattern: {page-name}_page_abox_v{M}_{m}_{p}.ttl. Without the companion, BP-WPC-1 (Industrial-UX gate) cannot be enforced — assessments must run against the ABox, not against HTML attributes alone."@en .
+
+rdodi-page:CES a rdodi-page:SatisfactionInstrument,
+        owl:NamedIndividual ;
+    rdfs:label "Customer Effort Score (CES)"@en ;
+    rdodi-page:appliesTo rdodi-page:UsabilityOptimization ;
+    dcterms:source "Dixon, M., Freeman, K., Toman, N. (2010) Stop Trying to Delight Your Customers. HBR."@en ;
+    skos:definition "7-point Likert: 'The system made it easy for me to handle my task.' Lower effort = better."@en .
+
+rdodi-page:CLS a rdodi-page:CoreWebVital,
+        owl:NamedIndividual ;
+    rdfs:label "Cumulative Layout Shift"@en ;
+    rdodi-page:appliesTo rdodi-page:PerformanceOptimization ;
+    dcterms:source "Google Core Web Vitals 2024"@en ;
+    skos:definition "Sum of unexpected layout-shift scores during page lifetime. Good ≤ 0.1; Needs improvement 0.1-0.25; Poor > 0.25."@en .
+
+rdodi-page:CQ1_PageHierarchy a owl:NamedIndividual ;
+    rdfs:label "What is the breadcrumb path for a Page?"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Resolved by walking :hasParent recursively from a Page until reaching a root."@en .
+
+rdodi-page:CQ1_QualityCoverage a owl:NamedIndividual ;
+    rdfs:label "Which quality dimensions does my specialization require?"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Resolved by querying SHACL shapes targeting the specialization class — each shape's sh:targetClass + sh:property + sh:severity reveals the per-dimension requirement."@en .
+
+rdodi-page:CQ1_QualityImplicationCoverage a owl:NamedIndividual ;
+    rdfs:label "What quality assessments are implied by Page's capabilities?"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> .
+
+rdodi-page:CQ1_SSGChoice a owl:NamedIndividual ;
+    rdfs:label "What static site generators are available?"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Given a stack preference, which SSGs (ReactBased, VueBased, GoBased, etc.) are candidates? Answered by browsing wt:StaticSiteGenerator subclass hierarchy."@en .
+
+rdodi-page:CQ1_SpecializationCoverage a owl:NamedIndividual ;
+    rdfs:label "What WPC specialization does each artifact represent?"@en ;
+    dcterms:source "Sprint 8 representative ABox CQ"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Resolved by querying rdf:type on each ABox artifact — one of the 5 spec:WPC_* classes."@en .
+
+rdodi-page:CQ1_SpecializationType a owl:NamedIndividual ;
+    rdfs:label "What specialization does an artifact use?"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §4 derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Resolved by querying rdf:type on the WPCArtifact instance — one of the 5 SPEC.WPC_* subclasses."@en .
+
+rdodi-page:CQ2_CMSChoice a owl:NamedIndividual ;
+    rdfs:label "What CMS architectures exist?"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Given a content authoring requirement, which CMS architecture (Traditional, Headless, Decoupled, GitBased, APIFirst) fits? Answered by wt:ContentManagementSystem subtypes."@en .
+
+rdodi-page:CQ2_NavigationContext a owl:NamedIndividual ;
+    rdfs:label "What CrossReferences and related content does a Page have?"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Resolved by querying :hasCrossReference and following to typed targets."@en .
+
+rdodi-page:CQ2_PageCapabilities a owl:NamedIndividual ;
+    rdfs:label "What capabilities does each representative Page declare?"@en ;
+    dcterms:source "Sprint 8 representative ABox CQ"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> .
+
+rdodi-page:CQ2_ProfileSeverity a owl:NamedIndividual ;
+    rdfs:label "What's the severity of dimension D for specialization S?"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7 derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Resolved by finding the shape whose targetClass = S and whose property path = :hasQualityAssessment + sh:qualifiedValueShape pointing to dimension D — read sh:severity."@en .
+
+rdodi-page:CQ2_QualityProfile a owl:NamedIndividual ;
+    rdfs:label "What quality profile applies for this specialization?"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §4 derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Resolved via the wpc_quality_profiles companion ontology — each specialization maps to a specific profile of severity-per-dimension."@en .
+
+rdodi-page:CQ2_VideoCaptionsRequired a owl:NamedIndividual ;
+    rdfs:label "Does VideoEmbed-using page have caption assessment?"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §5"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Resolved by SHACL shape Cap_VideoEmbed_AccessibilityCompliance_Required_Shape."@en .
+
+rdodi-page:CQ3_LifecycleState a owl:NamedIndividual ;
+    rdfs:label "What is the current lifecycle state of a Page?"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Resolved by querying :hasLifecycleState (when :hasLifecycleAffordance true on the artifact)."@en .
+
+rdodi-page:CQ3_QualityAssessmentCoverage a owl:NamedIndividual ;
+    rdfs:label "What quality assessments accompany each artifact?"@en ;
+    dcterms:source "Sprint 8 representative ABox CQ"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> .
+
+rdodi-page:CQ3_RenderingStrategy a owl:NamedIndividual ;
+    rdfs:label "What rendering strategies exist?"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Given performance and SEO constraints, which rendering strategy (StaticGeneration, ServerSideRendering, ClientSideRendering, ISR, Hydration variants) is appropriate? Answered by wt:RenderingStrategy subclass hierarchy."@en .
+
+rdodi-page:CQ3_TypicalCapabilities a owl:NamedIndividual ;
+    rdfs:label "Which capabilities are typical for this specialization?"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §4 derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Resolved via documentation in skos:definition of each specialization (capability membership wired in Sprint 6's wpc_capabilities ontology)."@en .
+
+rdodi-page:CQ4_LifecycleHistory a owl:NamedIndividual ;
+    rdfs:label "What is the transition history of a Page?"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Resolved by following :hasTransitionHistory chain (each transition prov:wasInformedBy the previous)."@en .
+
+rdodi-page:CQ4_SpecializationFeatures a owl:NamedIndividual ;
+    rdfs:label "What specialization-specific features does the artifact have?"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §4 derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Resolved by querying the specialization-specific classes (e.g., :ConversionGoal for Corporate, :AuthorizationScope for Internal)."@en .
+
+rdodi-page:CQ5_QualityAssessment a owl:NamedIndividual ;
+    rdfs:label "What is the quality severity for a (specialization, dimension) pair?"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Resolved by joining :assesses + :alongDimension + :assessmentSeverity for the artifact's specialization."@en .
+
+rdodi-page:CQ6_Composition a owl:NamedIndividual ;
+    rdfs:label "What capabilities does a page require/typically-pair?"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Resolved by querying :requiresCapability + :typicallyPairedWith on the page's declared capabilities."@en .
+
+rdodi-page:CQ7_HostsContent a owl:NamedIndividual ;
+    rdfs:label "What does a Page host from a Report?"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Resolved by querying the 6 :hosts* inverse-of-offers properties."@en .
+
+rdodi-page:CQ8_NavigationPatterns a owl:NamedIndividual ;
+    rdfs:label "Which MacroNavigationPatterns does a Page include?"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md derived competency question"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Resolved by querying :includesNavigationPattern and :includesWayfindingAffordance."@en .
+
+rdodi-page:CSAT a rdodi-page:SatisfactionInstrument,
+        owl:NamedIndividual ;
+    rdfs:label "Customer Satisfaction (CSAT)"@en ;
+    rdodi-page:appliesTo rdodi-page:UsabilityOptimization ;
+    dcterms:source "Industry-standard since 2000s; ISO 9241-11:2018 satisfaction framing"@en ;
+    skos:definition "Single-question satisfaction rating, typically 1-5 or 1-7 scale. Reported as % satisfied."@en .
+
+rdodi-page:CaseStudyCoverage a rdodi-page:QualitySubAspect,
+        owl:NamedIndividual ;
+    rdfs:label "Case Study Coverage"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Fraction of source CaseStudies the page references or works through. Major running cases (e.g., RMO across Satzinger 7e chapters) carry more weight than peripheral cases."@en .
+
+rdodi-page:CodeSnippetPresence a rdodi-page:QualitySubAspect,
+        owl:NamedIndividual ;
+    rdfs:label "Code Snippet Presence"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Presence of substantive code examples in <pre><code> blocks. Inline <code> references (single tokens like <code>kubectl</code>) do NOT count."@en .
+
+rdodi-page:ColorContrastCompliance a rdodi-page:QualitySubAspect,
+        owl:NamedIndividual ;
+    rdfs:label "colour contrast compliance"@en ;
+    rdodi-page:partOfDimension rdodi-page:AccessibilityCompliance ;
+    dcterms:source "WCAG 2.2 Success Criterion 1.4.3 (AA: 4.5:1 normal, 3:1 large)"@en ;
+    skos:definition "Visual presentation of text has a contrast ratio of at least 4.5:1 (normal text) or 3:1 (large text)."@en .
+
+rdodi-page:ConformityWithUserExpectations a rdodi-page:DialoguePrinciple,
+        owl:NamedIndividual ;
+    rdfs:label "conformity with user expectations"@en ;
+    dcterms:source "ISO 9241-110:2020"@en ;
+    skos:definition "Consistent with predictable behaviour from user characteristics and commonly accepted conventions."@en .
+
+rdodi-page:ConsistencyAndStandards a rdodi-page:UsabilityHeuristic,
+        owl:NamedIndividual ;
+    rdfs:label "consistency and standards"@en ;
+    dcterms:source "Nielsen Norman Group 10 Usability Heuristics (modernized 2024)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Follow platform and industry conventions. Words and actions should mean the same thing across contexts."@en .
+
+rdodi-page:ContentFidelity a rdodi-page:QualityDimension,
+        owl:NamedIndividual ;
+    rdfs:label "Content Fidelity"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Composite quality dimension: how faithfully the page represents its declared source document. Aggregates 7 sub-aspects."@en .
+
+rdodi-page:Controllability a rdodi-page:DialoguePrinciple,
+        owl:NamedIndividual ;
+    rdfs:label "controllability"@en ;
+    dcterms:source "ISO 9241-110:2020"@en ;
+    skos:definition "Allows the user to initiate and control the direction and pace of the interaction until the point at which the goal has been met."@en .
+
+rdodi-page:Deprecated a rdodi-page:PageLifecycleState,
+        owl:NamedIndividual ;
+    rdfs:label "deprecated"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §3.4"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Page is still accessible but marked as superseded by newer content."@en .
+
+rdodi-page:DeviceAgnostic a rdodi-page:ResponsiveIntent,
+        owl:NamedIndividual ;
+    rdfs:label "device agnostic"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §3.5"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Single layout that works across all devices without breakpoints."@en .
+
+rdodi-page:DiagramFidelity a rdodi-page:QualitySubAspect,
+        owl:NamedIndividual ;
+    rdfs:label "Diagram Fidelity"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Fraction of source Figures the page renders (as SVG, animation, or interactive equivalent). Pedagogical equivalence, not pixel-equivalence."@en .
+
+rdodi-page:Discoverability a rdodi-page:UsabilityHeuristic,
+        owl:NamedIndividual ;
+    rdfs:label "Discoverability — users can find functions without training"@en ;
+    dcterms:source "Norman, D. (2013) The Design of Everyday Things, Revised Edition; WCAG 2.2 success criteria 2.4.* and 3.2.*"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "A user, without prior training, can find the functions, controls, and content they need. Distinct from learnability (how quickly someone gets fluent after they have found the thing). Industry-recognised independent of Nielsen 10 and ISO 9241-110 7."@en .
+
+rdodi-page:Draft a rdodi-page:PageLifecycleState,
+        owl:NamedIndividual ;
+    rdfs:label "draft"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §3.4"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Initial state; content is being authored; not visible to end users."@en .
+
+rdodi-page:ErrorTolerance a rdodi-page:DialoguePrinciple,
+        owl:NamedIndividual ;
+    rdfs:label "error tolerance"@en ;
+    dcterms:source "ISO 9241-110:2020"@en ;
+    skos:definition "Allows the intended result to be achieved despite obvious errors in input either with no or minimal action by the user."@en .
+
+rdodi-page:FCP a rdodi-page:CoreWebVital,
+        owl:NamedIndividual ;
+    rdfs:label "First Contentful Paint"@en ;
+    rdodi-page:appliesTo rdodi-page:PerformanceOptimization ;
+    dcterms:source "Google Web Vitals"@en ;
+    skos:definition "Time when first content is rendered. Good ≤ 1,800ms; Needs improvement 1,800-3,000ms; Poor > 3,000ms."@en .
+
+rdodi-page:BusinessSite_QA_AccessibilityCompliance a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: AccessibilityCompliance (Required) for BusinessSiteArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:AccessibilityCompliance ;
+    rdodi-page:assesses rdodi-page:BusinessSiteArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along AccessibilityCompliance for the artifact, severity Required."@en .
+
+rdodi-page:BusinessSite_QA_DiscoverabilityOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: DiscoverabilityOptimization (Required) for BusinessSiteArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:DiscoverabilityOptimization ;
+    rdodi-page:assesses rdodi-page:BusinessSiteArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along DiscoverabilityOptimization for the artifact, severity Required."@en .
+
+rdodi-page:BusinessSite_QA_PerformanceOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: PerformanceOptimization (Required) for BusinessSiteArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:PerformanceOptimization ;
+    rdodi-page:assesses rdodi-page:BusinessSiteArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along PerformanceOptimization for the artifact, severity Required."@en .
+
+rdodi-page:BusinessSite_QA_PrivacyCompliance a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: PrivacyCompliance (Required) for BusinessSiteArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:PrivacyCompliance ;
+    rdodi-page:assesses rdodi-page:BusinessSiteArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along PrivacyCompliance for the artifact, severity Required."@en .
+
+rdodi-page:BusinessSite_QA_SEOOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: SEOOptimization (Required) for BusinessSiteArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:SEOOptimization ;
+    rdodi-page:assesses rdodi-page:BusinessSiteArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along SEOOptimization for the artifact, severity Required."@en .
+
+rdodi-page:BusinessSite_QA_SecurityCompliance a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: SecurityCompliance (Recommended) for BusinessSiteArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:SecurityCompliance ;
+    rdodi-page:assesses rdodi-page:BusinessSiteArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "recommended" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along SecurityCompliance for the artifact, severity Recommended."@en .
+
+rdodi-page:BusinessSite_QA_SizeOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: SizeOptimization (Recommended) for BusinessSiteArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:SizeOptimization ;
+    rdodi-page:assesses rdodi-page:BusinessSiteArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "recommended" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along SizeOptimization for the artifact, severity Recommended."@en .
+
+rdodi-page:BusinessSite_QA_UsabilityOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: UsabilityOptimization (Required) for BusinessSiteArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:UsabilityOptimization ;
+    rdodi-page:assesses rdodi-page:BusinessSiteArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along UsabilityOptimization for the artifact, severity Required."@en .
+
+rdodi-page:FlexibilityAndEfficiencyOfUse a rdodi-page:UsabilityHeuristic,
+        owl:NamedIndividual ;
+    rdfs:label "flexibility and efficiency of use"@en ;
+    dcterms:source "Nielsen Norman Group 10 Usability Heuristics (modernized 2024)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Accelerators (unseen by novice users) may speed up the interaction for the expert user."@en .
+
+rdodi-page:FocusManagement a rdodi-page:QualitySubAspect,
+        owl:NamedIndividual ;
+    rdfs:label "focus management"@en ;
+    rdodi-page:partOfDimension rdodi-page:AccessibilityCompliance ;
+    dcterms:source "WCAG 2.2 Success Criteria 2.4.7, 2.4.11 (new in 2.2), 3.2.1"@en ;
+    skos:definition "Keyboard focus is always visible, not obscured, and does not trigger unexpected context changes."@en .
+
+rdodi-page:HelpAndDocumentation a rdodi-page:UsabilityHeuristic,
+        owl:NamedIndividual ;
+    rdfs:label "help and documentation"@en ;
+    dcterms:source "Nielsen Norman Group 10 Usability Heuristics (modernized 2024)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Provide help and documentation focused on the user's task."@en .
+
+rdodi-page:HelpRecognizeDiagnoseRecover a rdodi-page:UsabilityHeuristic,
+        owl:NamedIndividual ;
+    rdfs:label "help users recognize, diagnose, and recover from errors"@en ;
+    dcterms:source "Nielsen Norman Group 10 Usability Heuristics (modernized 2024)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Error messages should be expressed in plain language, indicate the problem precisely, and constructively suggest a solution."@en .
+
+rdodi-page:INP a rdodi-page:CoreWebVital,
+        owl:NamedIndividual ;
+    rdfs:label "Interaction to Next Paint"@en ;
+    rdodi-page:appliesTo rdodi-page:PerformanceOptimization ;
+    dcterms:source "Google Core Web Vitals 2024 (replaced FID March 2024)"@en ;
+    skos:definition "Worst-case interaction latency. Good ≤ 200ms; Needs improvement 200-500ms; Poor > 500ms."@en .
+
+rdodi-page:HandbookChapter_QA_AccessibilityCompliance a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: AccessibilityCompliance (Required) for HandbookChapterArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:AccessibilityCompliance ;
+    rdodi-page:assesses rdodi-page:HandbookChapterArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along AccessibilityCompliance for the artifact, severity Required."@en .
+
+rdodi-page:HandbookChapter_QA_DiscoverabilityOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: DiscoverabilityOptimization (Required) for HandbookChapterArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:DiscoverabilityOptimization ;
+    rdodi-page:assesses rdodi-page:HandbookChapterArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along DiscoverabilityOptimization for the artifact, severity Required."@en .
+
+rdodi-page:HandbookChapter_QA_PerformanceOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: PerformanceOptimization (Recommended) for HandbookChapterArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:PerformanceOptimization ;
+    rdodi-page:assesses rdodi-page:HandbookChapterArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "recommended" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along PerformanceOptimization for the artifact, severity Recommended."@en .
+
+rdodi-page:HandbookChapter_QA_PrivacyCompliance a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: PrivacyCompliance (Required) for HandbookChapterArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:PrivacyCompliance ;
+    rdodi-page:assesses rdodi-page:HandbookChapterArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along PrivacyCompliance for the artifact, severity Required."@en .
+
+rdodi-page:HandbookChapter_QA_SEOOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: SEOOptimization (Recommended) for HandbookChapterArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:SEOOptimization ;
+    rdodi-page:assesses rdodi-page:HandbookChapterArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "recommended" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along SEOOptimization for the artifact, severity Recommended."@en .
+
+rdodi-page:HandbookChapter_QA_SecurityCompliance a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: SecurityCompliance (Recommended) for HandbookChapterArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:SecurityCompliance ;
+    rdodi-page:assesses rdodi-page:HandbookChapterArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "recommended" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along SecurityCompliance for the artifact, severity Recommended."@en .
+
+rdodi-page:HandbookChapter_QA_SizeOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: SizeOptimization (Recommended) for HandbookChapterArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:SizeOptimization ;
+    rdodi-page:assesses rdodi-page:HandbookChapterArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "recommended" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along SizeOptimization for the artifact, severity Recommended."@en .
+
+rdodi-page:HandbookChapter_QA_UsabilityOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: UsabilityOptimization (Required) for HandbookChapterArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:UsabilityOptimization ;
+    rdodi-page:assesses rdodi-page:HandbookChapterArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along UsabilityOptimization for the artifact, severity Required."@en .
+
+rdodi-page:KeyboardOperability a rdodi-page:QualitySubAspect,
+        owl:NamedIndividual ;
+    rdfs:label "keyboard operability"@en ;
+    rdodi-page:partOfDimension rdodi-page:AccessibilityCompliance ;
+    dcterms:source "WCAG 2.2 Success Criteria 2.1.1, 2.1.2, 2.1.4"@en ;
+    skos:definition "All functionality is operable through a keyboard interface, without specific timings for individual keystrokes."@en .
+
+rdodi-page:LCP a rdodi-page:CoreWebVital,
+        owl:NamedIndividual ;
+    rdfs:label "Largest Contentful Paint"@en ;
+    rdodi-page:appliesTo rdodi-page:PerformanceOptimization ;
+    dcterms:source "Google Core Web Vitals 2024 thresholds"@en ;
+    skos:definition "Time from page load start to render of the largest content element. Good ≤ 2,500ms; Needs improvement 2,500-4,000ms; Poor > 4,000ms."@en .
+
+rdodi-page:Learnability a rdodi-page:DialoguePrinciple,
+        owl:NamedIndividual ;
+    rdfs:label "learnability"@en ;
+    dcterms:source "ISO 9241-110:2020"@en ;
+    skos:definition "Provides means for guiding and supporting the user in becoming familiar with and learning to use the system."@en .
+
+rdodi-page:MatchBetweenSystemAndRealWorld a rdodi-page:UsabilityHeuristic,
+        owl:NamedIndividual ;
+    rdfs:label "match between system and the real world"@en ;
+    dcterms:source "Nielsen Norman Group 10 Usability Heuristics (modernized 2024)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Speak the users' language with words, phrases, and concepts familiar to them."@en .
+
+rdodi-page:NFRCoverage a rdodi-page:QualitySubAspect,
+        owl:NamedIndividual ;
+    rdfs:label "Non-Functional Requirements Coverage"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Presence of explicit NFR discussion: performance budgets, scalability scenarios, security postures, availability targets, regulatory constraints. At least one named NFR section recommended for system-architecture pages."@en .
+
+rdodi-page:NPS a rdodi-page:SatisfactionInstrument,
+        owl:NamedIndividual ;
+    rdfs:label "Net Promoter Score (NPS)"@en ;
+    rdodi-page:appliesTo rdodi-page:UsabilityOptimization ;
+    dcterms:source "Reichheld, F. (2003) The One Number You Need to Grow. Harvard Business Review."@en ;
+    skos:definition "Single-question 0-10 scale. Score = % promoters (9-10) − % detractors (0-6). Range: -100 to +100."@en .
+
+rdodi-page:NotApplicable_Internal_DiscoverabilityOptimization a rdf:Statement,
+        owl:NamedIndividual ;
+    rdfs:label "DiscoverabilityOptimization not applicable for WPC_Internal"@en ;
+    rdodi-page:notApplicable true ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7"@en ;
+    rdf:object rdodi-page:DiscoverabilityOptimization ;
+    rdf:predicate rdodi-page:alongDimension ;
+    rdf:subject rdodi-page:WPC_Internal ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "WPC §3.7 quality matrix declares DiscoverabilityOptimization as Inapplicable for WPC_Internal."@en .
+
+rdodi-page:NotApplicable_Internal_SEOOptimization a rdf:Statement,
+        owl:NamedIndividual ;
+    rdfs:label "SEOOptimization not applicable for WPC_Internal"@en ;
+    rdodi-page:notApplicable true ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2.md §3.7"@en ;
+    rdf:object rdodi-page:SEOOptimization ;
+    rdf:predicate rdodi-page:alongDimension ;
+    rdf:subject rdodi-page:WPC_Internal ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "WPC §3.7 quality matrix declares SEOOptimization as Inapplicable for WPC_Internal."@en .
+
+rdodi-page:OntologyWorkbench_QA_AccessibilityCompliance a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: AccessibilityCompliance (Required) for OntologyWorkbenchArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:AccessibilityCompliance ;
+    rdodi-page:assesses rdodi-page:OntologyWorkbenchArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along AccessibilityCompliance for the artifact, severity Required."@en .
+
+rdodi-page:OntologyWorkbench_QA_PerformanceOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: PerformanceOptimization (Required) for OntologyWorkbenchArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:PerformanceOptimization ;
+    rdodi-page:assesses rdodi-page:OntologyWorkbenchArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along PerformanceOptimization for the artifact, severity Required."@en .
+
+rdodi-page:OntologyWorkbench_QA_PrivacyCompliance a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: PrivacyCompliance (Required) for OntologyWorkbenchArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:PrivacyCompliance ;
+    rdodi-page:assesses rdodi-page:OntologyWorkbenchArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along PrivacyCompliance for the artifact, severity Required."@en .
+
+rdodi-page:OntologyWorkbench_QA_SEOOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: SEOOptimization (Recommended) for OntologyWorkbenchArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:SEOOptimization ;
+    rdodi-page:assesses rdodi-page:OntologyWorkbenchArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "recommended" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along SEOOptimization for the artifact, severity Recommended."@en .
+
+rdodi-page:OntologyWorkbench_QA_SecurityCompliance a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: SecurityCompliance (Required) for OntologyWorkbenchArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:SecurityCompliance ;
+    rdodi-page:assesses rdodi-page:OntologyWorkbenchArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along SecurityCompliance for the artifact, severity Required."@en .
+
+rdodi-page:OntologyWorkbench_QA_SizeOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: SizeOptimization (Recommended) for OntologyWorkbenchArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:SizeOptimization ;
+    rdodi-page:assesses rdodi-page:OntologyWorkbenchArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "recommended" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along SizeOptimization for the artifact, severity Recommended."@en .
+
+rdodi-page:OntologyWorkbench_QA_UsabilityOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: UsabilityOptimization (Required) for OntologyWorkbenchArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:UsabilityOptimization ;
+    rdodi-page:assesses rdodi-page:OntologyWorkbenchArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along UsabilityOptimization for the artifact, severity Required."@en .
+
+rdodi-page:Published a rdodi-page:PageLifecycleState,
+        owl:NamedIndividual ;
+    rdfs:label "published"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §3.4"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Live and visible to end users."@en .
+
+rdodi-page:RecognitionRatherThanRecall a rdodi-page:UsabilityHeuristic,
+        owl:NamedIndividual ;
+    rdfs:label "recognition rather than recall"@en ;
+    dcterms:source "Nielsen Norman Group 10 Usability Heuristics (modernized 2024)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Make objects, actions, and options visible. Minimize the user's memory load."@en .
+
+rdodi-page:ReducedMotionSupport a rdodi-page:QualitySubAspect,
+        owl:NamedIndividual ;
+    rdfs:label "reduced motion support"@en ;
+    rdodi-page:partOfDimension rdodi-page:AccessibilityCompliance ;
+    dcterms:source "WCAG 2.2 SC 2.3.3; CSS Media Queries Level 5 prefers-reduced-motion"@en ;
+    skos:definition "Animations triggered by interaction can be disabled; respects prefers-reduced-motion media query."@en .
+
+rdodi-page:SUS a rdodi-page:SatisfactionInstrument,
+        owl:NamedIndividual ;
+    rdfs:label "System Usability Scale (SUS)"@en ;
+    rdodi-page:appliesTo rdodi-page:UsabilityOptimization ;
+    dcterms:source "Brooke, J. (1996) SUS: A quick and dirty usability scale. In Usability Evaluation in Industry."@en ;
+    skos:definition "10-item 5-point Likert questionnaire returning a 0-100 normalised score. Industry benchmark: ≥ 68 above-average, ≥ 80 excellent."@en .
+
+rdodi-page:ScreenReaderCompatibility a rdodi-page:QualitySubAspect,
+        owl:NamedIndividual ;
+    rdfs:label "screen reader compatibility"@en ;
+    rdodi-page:partOfDimension rdodi-page:AccessibilityCompliance ;
+    dcterms:source "WCAG 2.2 Success Criteria 1.3.1, 4.1.2, 4.1.3"@en ;
+    skos:definition "Information and structure conveyed through presentation can be programmatically determined and announced by assistive technology."@en .
+
+rdodi-page:SelfDescriptiveness a rdodi-page:DialoguePrinciple,
+        owl:NamedIndividual ;
+    rdfs:label "self-descriptiveness"@en ;
+    dcterms:source "ISO 9241-110:2020"@en ;
+    skos:definition "Each dialogue step is immediately comprehensible through feedback from the system or is explained on user request."@en .
+
+rdodi-page:ShneidermanRule_DesignDialogsToYieldClosure a rdodi-page:UsabilityHeuristic,
+        owl:NamedIndividual ;
+    rdfs:label "Shneiderman #4: Design dialogs to yield closure"@en ;
+    dcterms:source "Shneiderman et al. (2017) Designing the User Interface, 6e"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Sequences of actions should be organised into groups with a beginning, middle, and end. Informative feedback at the completion of a group of actions gives operators the satisfaction of accomplishment and a sense of relief."@en .
+
+rdodi-page:ShneidermanRule_KeepUsersInControl a rdodi-page:UsabilityHeuristic,
+        owl:NamedIndividual ;
+    rdfs:label "Shneiderman #7: Keep users in control (internal locus of control)"@en ;
+    dcterms:source "Shneiderman et al. (2017) Designing the User Interface, 6e"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Experienced operators strongly desire the sense that they are in charge of the system and that the system responds to their actions. Surprising system behaviour, tedious data entry, and inability to obtain or difficulty obtaining desired information all build anxiety and dissatisfaction."@en .
+
+rdodi-page:ShneidermanRule_OfferInformativeFeedback a rdodi-page:UsabilityHeuristic,
+        owl:NamedIndividual ;
+    rdfs:label "Shneiderman #3: Offer informative feedback"@en ;
+    dcterms:source "Shneiderman et al. (2017) Designing the User Interface, 6e"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "For every user action there should be system feedback. For frequent and minor actions the response should be modest; for infrequent and major actions the response should be more substantial."@en .
+
+rdodi-page:ShneidermanRule_PermitEasyReversalOfActions a rdodi-page:UsabilityHeuristic,
+        owl:NamedIndividual ;
+    rdfs:label "Shneiderman #6: Permit easy reversal of actions"@en ;
+    dcterms:source "Shneiderman et al. (2017) Designing the User Interface, 6e"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Actions should be reversible. This feature relieves anxiety, since the user knows that errors can be undone, and encourages exploration of unfamiliar options."@en .
+
+rdodi-page:ShneidermanRule_PreventErrors a rdodi-page:UsabilityHeuristic,
+        owl:NamedIndividual ;
+    rdfs:label "Shneiderman #5: Prevent errors"@en ;
+    dcterms:source "Shneiderman et al. (2017) Designing the User Interface, 6e"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Design the system such that users cannot make serious errors; if a user makes an error the interface should detect the error and offer simple, constructive, and specific instructions for recovery. Companion to Nielsen #5 (ErrorPrevention)."@en ;
+    skos:related rdodi-page:ErrorPrevention .
+
+rdodi-page:ShneidermanRule_ReduceShortTermMemoryLoad a rdodi-page:UsabilityHeuristic,
+        owl:NamedIndividual ;
+    rdfs:label "Shneiderman #8: Reduce short-term memory load"@en ;
+    dcterms:source "Shneiderman et al. (2017) Designing the User Interface, 6e"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Humans' limited capacity for information processing in short-term memory (roughly seven plus-or-minus two chunks) requires that displays be kept simple, multiple-page displays be consolidated, window-motion frequency be reduced, and sufficient training time be allotted for codes and sequences of actions."@en .
+
+rdodi-page:ShneidermanRule_SeekUniversalUsability a rdodi-page:UsabilityHeuristic,
+        owl:NamedIndividual ;
+    rdfs:label "Shneiderman #2: Seek universal usability"@en ;
+    dcterms:source "Shneiderman et al. (2017) Designing the User Interface, 6e"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Recognise diverse users' needs and facilitate transformation of content. Novices and experts, age range differences, disabilities, technology diversity all enrich design requirements."@en .
+
+rdodi-page:ShneidermanRule_StriveForConsistency a rdodi-page:UsabilityHeuristic,
+        owl:NamedIndividual ;
+    rdfs:label "Shneiderman #1: Strive for consistency"@en ;
+    dcterms:source "Shneiderman et al. (2017) Designing the User Interface, 6e"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Consistent sequences of actions should be required in similar situations; identical terminology should be used in prompts, menus, and help screens; consistent color, layout, capitalization, fonts should be employed throughout."@en .
+
+rdodi-page:SourceCoverage a rdodi-page:QualitySubAspect,
+        owl:NamedIndividual ;
+    rdfs:label "Source Coverage"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Fraction of source ChapterSections + LearningObjectives + KeyTerms that the page covers."@en .
+
+rdodi-page:StudioManagement_QA_AccessibilityCompliance a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: AccessibilityCompliance (Required) for StudioManagementArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:AccessibilityCompliance ;
+    rdodi-page:assesses rdodi-page:StudioManagementArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along AccessibilityCompliance for the artifact, severity Required."@en .
+
+rdodi-page:StudioManagement_QA_PerformanceOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: PerformanceOptimization (Recommended) for StudioManagementArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:PerformanceOptimization ;
+    rdodi-page:assesses rdodi-page:StudioManagementArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "recommended" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along PerformanceOptimization for the artifact, severity Recommended."@en .
+
+rdodi-page:StudioManagement_QA_PrivacyCompliance a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: PrivacyCompliance (Required) for StudioManagementArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:PrivacyCompliance ;
+    rdodi-page:assesses rdodi-page:StudioManagementArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along PrivacyCompliance for the artifact, severity Required."@en .
+
+rdodi-page:StudioManagement_QA_SecurityCompliance a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: SecurityCompliance (Required) for StudioManagementArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:SecurityCompliance ;
+    rdodi-page:assesses rdodi-page:StudioManagementArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along SecurityCompliance for the artifact, severity Required."@en .
+
+rdodi-page:StudioManagement_QA_UsabilityOptimization a rdodi-page:QualityAssessment,
+        owl:NamedIndividual ;
+    rdfs:label "QA: UsabilityOptimization (Required) for StudioManagementArtifact"@en ;
+    rdodi-page:alongDimension rdodi-page:UsabilityOptimization ;
+    rdodi-page:assesses rdodi-page:StudioManagementArtifact ;
+    rdodi-page:assessmentDate "2026-05-08T12:00:00"^^xsd:dateTime ;
+    rdodi-page:assessmentSeverity "required" ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Quality assessment along UsabilityOptimization for the artifact, severity Required."@en .
+
+rdodi-page:SuitabilityForTheTask a rdodi-page:DialoguePrinciple,
+        owl:NamedIndividual ;
+    rdfs:label "suitability for the task"@en ;
+    dcterms:source "ISO 9241-110:2020"@en ;
+    skos:definition "The interactive system supports the user in completing the task; the displayed information is task-appropriate."@en .
+
+rdodi-page:TTFB a rdodi-page:CoreWebVital,
+        owl:NamedIndividual ;
+    rdfs:label "Time to First Byte"@en ;
+    rdodi-page:appliesTo rdodi-page:PerformanceOptimization ;
+    dcterms:source "Google Web Vitals"@en ;
+    skos:definition "Time from request to first byte received. Good ≤ 800ms; Needs improvement 800-1,800ms; Poor > 1,800ms."@en .
+
+rdodi-page:TextAlternativeAvailability a rdodi-page:QualitySubAspect,
+        owl:NamedIndividual ;
+    rdfs:label "text alternative availability"@en ;
+    rdodi-page:partOfDimension rdodi-page:AccessibilityCompliance ;
+    dcterms:source "WCAG 2.2 Success Criterion 1.1.1"@en ;
+    skos:definition "All non-text content has a text alternative that serves the equivalent purpose."@en .
+
+rdodi-page:UnderReview a rdodi-page:PageLifecycleState,
+        owl:NamedIndividual ;
+    rdfs:label "under review"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §3.4"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Content is finalized but pending editorial/legal/technical review."@en .
+
+rdodi-page:Updated a rdodi-page:PageLifecycleState,
+        owl:NamedIndividual ;
+    rdfs:label "updated"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §3.4"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "A live page has been modified since publication."@en .
+
+rdodi-page:UserControlAndFreedom a rdodi-page:UsabilityHeuristic,
+        owl:NamedIndividual ;
+    rdfs:label "user control and freedom"@en ;
+    dcterms:source "Nielsen Norman Group 10 Usability Heuristics (modernized 2024)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Users often choose system functions by mistake."@en .
+
+rdodi-page:UserEngagement a rdodi-page:DialoguePrinciple,
+        owl:NamedIndividual ;
+    rdfs:label "user engagement"@en ;
+    dcterms:source "ISO 9241-110:2020"@en ;
+    skos:definition "The features of the interactive system encourage the use of the system and confidence in interacting with it."@en .
+
+rdodi-page:VisibilityOfSystemStatus a rdodi-page:UsabilityHeuristic,
+        owl:NamedIndividual ;
+    rdfs:label "visibility of system status"@en ;
+    dcterms:source "Nielsen Norman Group 10 Usability Heuristics (modernized 2024)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "The system should always keep users informed about what is going on, through appropriate feedback within reasonable time."@en .
+
+rdodi-page:complementaryView a rdodi-page:CrossReferenceType,
+        owl:NamedIndividual ;
+    rdfs:label "complementary view"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §3.1"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "The two pages address the same topic from complementary angles."@en .
+
+rdodi-page:detailedExpansion a rdodi-page:CrossReferenceType,
+        owl:NamedIndividual ;
+    rdfs:label "detailed expansion"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §3.1"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "The target page provides more detail on a topic introduced by the source."@en .
+
+rdodi-page:relatedContent a rdodi-page:CrossReferenceType,
+        owl:NamedIndividual ;
+    rdfs:label "related content"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §3.1"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Generic relatedness — the two pages address related but distinct topics."@en .
+
+rdodi-page:summaryOf a rdodi-page:CrossReferenceType,
+        owl:NamedIndividual ;
+    rdfs:label "summary of"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §3.1"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "The source page summarizes the target page (target is more detailed)."@en .
+
+<http://example.org/rdodi/interactive-page-ontology/abox> a owl:Ontology ;
+    rdfs:label "RDODI Interactive Page Ontology abox v2.0.0 (public edition)"@en ;
+    dcterms:created "2026-05-20"^^xsd:date ;
+    dcterms:creator <http://example.org/rdodi/agent/YusufAltunel> ;
+    dcterms:description "RDODI Interactive Page Ontology abox. Part of the four-subject RDODI ecosystem: Research, Domain, Document, Interactive Page."@en ;
+    dcterms:identifier "interactive_page_ontology_abox_v2_0_0" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-08-03"^^xsd:date ;
+    dcterms:publisher <http://example.org/rdodi/agent/IstanbulKulturUniversity> ;
+    dcterms:rights "Copyright (c) 2026 Yusuf Altunel. Licensed CC BY 4.0."@en ;
+    dcterms:rightsHolder <http://example.org/rdodi/agent/YusufAltunel> ;
+    rdfs:comment "RDODI abox for the Interactive Page Ontology. Derived from 04-web-page-construction/web_page_construction_abox_v7_0_0.ttl (SHA-256 130f9661f0fe6d589233bc402da6cfe005ae0cfaac1f6de7fc9aff44d57c1a5e)."@en ;
+    owl:versionIRI <http://example.org/rdodi/interactive-page-ontology/abox/public/2.0.0> ;
+    owl:versionInfo "2.0.0" ;
+    owl:priorVersion <http://example.org/rdodi/interactive-page-ontology/abox/1.1.0> ;
+    prov:wasAttributedTo <http://example.org/rdodi/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://example.org/rdodi/activity/RDODIOrigination_v1_0_1> .
+
+<http://example.org/rdodi/interactive-page-ontology/abox/Agent_YusufAltunel> a owl:NamedIndividual,
+        prov:Agent ;
+    rdfs:label "Yusuf Altunel"@en ;
+    skos:definition "WPC primary author."@en .
+
+rdodi-page:Adaptive a rdodi-page:ResponsiveIntent,
+        owl:NamedIndividual ;
+    rdfs:label "adaptive"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §3.5"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Distinct layouts for distinct breakpoints (vs. fluid scaling)."@en .
+
+rdodi-page:ErrorPrevention a rdodi-page:UsabilityHeuristic,
+        owl:NamedIndividual ;
+    rdfs:label "error prevention"@en ;
+    dcterms:source "Nielsen Norman Group 10 Usability Heuristics (modernized 2024)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Eliminate error-prone conditions or check for them and present users with a confirmation."@en .
+
+rdodi-page:DesktopFirst a rdodi-page:ResponsiveIntent,
+        owl:NamedIndividual ;
+    rdfs:label "desktop first"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §3.5"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Designed for desktop and adapted down to mobile."@en .
+
+rdodi-page:MobileFirst a rdodi-page:ResponsiveIntent,
+        owl:NamedIndividual ;
+    rdfs:label "mobile first"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §3.5"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Designed for mobile and progressively enhanced for larger screens."@en .
+
+rdodi-page:OntologyWorkbench_MainView a rdodi-page:Page,
+        owl:NamedIndividual ;
+    rdfs:label "Ontology Workbench Main Editor"@en ;
+    rdodi-page:declaresCapability rdodi-page:Cap_DataTable,
+        rdodi-page:Cap_GeneralInteraction,
+        rdodi-page:Cap_LiveCollaboration,
+        rdodi-page:Cap_Notification,
+        rdodi-page:Cap_Visualization ;
+    rdodi-page:hasLayoutPattern rdodi-page:DashboardLayout ;
+    rdodi-page:hasResponsiveIntent rdodi-page:DesktopFirst ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Primary editing view with class hierarchy, property editor, validation panel."@en .
+
+rdodi-page:StudioManagement_EmployeeRecord a rdodi-page:Page,
+        owl:NamedIndividual ;
+    rdfs:label "Studio Management Employee Record View"@en ;
+    rdodi-page:declaresCapability rdodi-page:Cap_DataTable,
+        rdodi-page:Cap_GeneralInteraction,
+        rdodi-page:Cap_Notification,
+        rdodi-page:Cap_Search,
+        rdodi-page:Cap_Workflow ;
+    rdodi-page:hasLayoutPattern rdodi-page:SplitLayout ;
+    rdodi-page:hasResponsiveIntent rdodi-page:DesktopFirst ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Employee record view with role-gated edit, audit trail, approval workflow."@en .
+
+rdodi-page:DiscoverabilityOptimization a rdodi-page:QualityDimension,
+        owl:NamedIndividual ;
+    rdfs:label "discoverability optimization"@en ;
+    dcterms:source "Google Search Quality Guidelines; sitemaps.org spec"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Sitemap presence, hreflang, internal linking, structured data for rich results."@en .
+
+rdodi-page:SizeOptimization a rdodi-page:QualityDimension,
+        owl:NamedIndividual ;
+    rdfs:label "size optimization"@en ;
+    dcterms:source "Web Almanac (HTTP Archive); Web Vitals (Google)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Total page weight, image optimization, lazy loading, critical CSS, code splitting."@en .
+
+rdodi-page:PrivacyCompliance a rdodi-page:QualityDimension,
+        owl:NamedIndividual ;
+    rdfs:label "privacy compliance"@en ;
+    dcterms:source "GDPR (EU 2016/679); KVKK (TR 6698); ePrivacy Directive"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "GDPR/KVKK cookie consent, tracking disclosure, data minimization."@en .
+
+rdodi-page:SEOOptimization a rdodi-page:QualityDimension,
+        owl:NamedIndividual ;
+    rdfs:label "SEO optimization"@en ;
+    dcterms:source "Google Search Quality Guidelines; schema.org spec; Google Webmaster Central blog"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Search Engine Optimization signals: meta description, structured data (schema.org JSON-LD), OpenGraph, Twitter cards, canonical URLs, sitemap presence, robots directives."@en .
+
+rdodi-page:SecurityCompliance a rdodi-page:QualityDimension,
+        owl:NamedIndividual ;
+    rdfs:label "security compliance"@en ;
+    dcterms:source "OWASP Top 10 (2021); CSP Level 3"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "CSP headers, HTTPS, XSS protection, CSRF protection, dependency vulnerability scanning."@en .
+
+rdodi-page:StudioManagementArtifact a rdodi-page:WPC_Internal,
+        owl:NamedIndividual ;
+    rdfs:label "Studio Management System"@en ;
+    rdodi-page:containsPage rdodi-page:StudioManagement_EmployeeRecord ;
+    rdodi-page:hasRootPage rdodi-page:StudioManagement_EmployeeRecord ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Reference Internal artifact: HR/operations module with strict role-based access, audit trails, approval workflows. Per WPC §4.3."@en .
+
+rdodi-page:OntologyWorkbenchArtifact a rdodi-page:WPC_Application,
+        owl:NamedIndividual ;
+    rdfs:label "Ontology Workbench"@en ;
+    rdodi-page:containsPage rdodi-page:OntologyWorkbench_MainView ;
+    rdodi-page:hasRootPage rdodi-page:OntologyWorkbench_MainView ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Reference Application artifact: authenticated SPA for ontology editing with multiple views, data tables, real-time collaboration. Per WPC §4.2."@en .
+
+rdodi-page:ConceptDemoArtifact a rdodi-page:WPC_Demo,
+        owl:NamedIndividual ;
+    rdfs:label "ConceptDemo"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Reference Demo artifact (illustrative): an interactive algorithm visualizer with step-by-step animation, code execution, parameter controls. Per WPC §4.5."@en .
+
+rdodi-page:BusinessSiteArtifact a rdodi-page:WPC_Corporate,
+        owl:NamedIndividual ;
+    rdfs:label "example-business.site"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Reference Corporate artifact (illustrative): a small-business landing site + content hub. Demonstrates Corporate specialization with conversion-focused landing page and blog-style content hub. Per WPC §4.1."@en .
+
+rdodi-page:HandbookChapterArtifact a rdodi-page:WPC_Educational,
+        owl:NamedIndividual ;
+    rdfs:label "Textbook Chapters (illustrative)"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §4 reference examples; Sprint 8 integration"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Reference Educational artifact: instructional book with chapters, quizzes, code examples, embedded video lectures. Per WPC §4.4."@en .
+
+rdodi-page:UsabilityOptimization a rdodi-page:QualityDimension,
+        owl:NamedIndividual ;
+    rdfs:label "usability optimization"@en ;
+    dcterms:source "Nielsen Norman Group 10 Heuristics; Flesch readability"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Nielsen's 10 heuristics + readability + cognitive load + mobile responsiveness."@en .
+
+rdodi-page:PerformanceOptimization a rdodi-page:QualityDimension,
+        owl:NamedIndividual ;
+    rdfs:label "performance optimization"@en ;
+    dcterms:source "Google Core Web Vitals (2024); Web Almanac (HTTP Archive)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "Core Web Vitals: LCP ≤2.5s, INP ≤200ms, CLS ≤0.1. Bundle size, caching, image optimization."@en .
+
+rdodi-page:AccessibilityCompliance a rdodi-page:QualityDimension,
+        owl:NamedIndividual ;
+    rdfs:label "accessibility compliance"@en ;
+    dcterms:source "WCAG 2.2 (W3C 2023); ARIA Authoring Practices Guide"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/interactive-page-ontology> ;
+    skos:definition "WCAG 2.2 conformance (A, AA, AAA), semantic HTML, ARIA, keyboard navigation, screen reader compatibility."@en .
+
+<http://example.org/rdodi/interactive-page-ontology> dcterms:bibliographicCitation "Altunel, Y. (2026). MAJOR consolidation release v7.0.0."@en ;
+    rdfs:comment "Imports its companion TBox via owl:imports."@en ;
+    prov:wasRevisionOf <http://example.org/rdodi/interactive-page-ontology/abox/6.2.1> .
+

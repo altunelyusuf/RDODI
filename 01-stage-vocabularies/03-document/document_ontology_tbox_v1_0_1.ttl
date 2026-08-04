@@ -1,0 +1,1078 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdodi-document: <http://example.org/rdodi/document-ontology#> .
+@prefix rdodi-page: <http://example.org/rdodi/interactive-page-ontology#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+rdodi-document:AdvanceOrganizer a owl:Class ;
+    rdfs:label "advance organizer"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §3.3; Mayer (2009)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:PedagogicalSignal ;
+    skos:definition "A high-level conceptual framework presented before detail. Helps readers integrate new content with existing knowledge."@en .
+
+rdodi-document:AmbiguousConceptContribution a owl:Class ;
+    rdfs:label "ambiguous concept contribution"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:RefinementContribution ;
+    skos:definition "Refinement contribution noting that an ontology concept needs disambiguation (multiple uses in the report mapped to the same IRI but with subtly different meanings)."@en .
+
+rdodi-document:AnalogyBlock a owl:Class ;
+    rdfs:label "analogy block"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §3.3; Mayer (2009)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:PedagogicalSignal ;
+    skos:definition "Content presenting an analogy or metaphor connecting unfamiliar concepts to familiar ones."@en .
+
+rdodi-document:BreadcrumbNavigation a owl:Class ;
+    rdfs:label "Breadcrumb Navigation" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Hierarchical navigation showing current location" ;
+    skos:scopeNote "Orient user in report structure" .
+
+rdodi-document:CommonMisconception a owl:Class ;
+    rdfs:label "common misconception"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §3.3; Mayer (2009)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:PedagogicalSignal ;
+    skos:definition "Content explicitly addressing a misconception readers are likely to hold."@en .
+
+rdodi-document:ConceptCharacteristics a owl:Class ;
+    rdfs:label "Concept Characteristics" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Key properties and attributes of domain concept" ;
+    skos:scopeNote "Distinguishing features, typical properties" .
+
+rdodi-document:ConceptDefinition a owl:Class ;
+    rdfs:label "Concept Definition" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/deo/Background> ;
+    skos:definition "Formal definition of domain concept from research" ;
+    skos:scopeNote "Authoritative explanation of what the concept means in the domain" .
+
+rdodi-document:ConceptExamples a owl:Class ;
+    rdfs:label "Concept Examples" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Real-world instances or cases of domain concept" ;
+    skos:scopeNote "Concrete examples for illustration" .
+
+rdodi-document:ConceptHierarchy a owl:Class ;
+    rdfs:label "Concept Hierarchy" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:ExtractedStructure ;
+    skos:definition "Multi-level hierarchy of domain concepts" ;
+    skos:scopeNote "Determines report section nesting and organization" .
+
+rdodi-document:ConceptIdentification a owl:Class ;
+    rdfs:label "Concept Identification" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Process of identifying key domain concepts represented in ontology" ;
+    skos:scopeNote "Maps ontology classes to domain topics requiring research" .
+
+rdodi-document:ConceptRelations a owl:Class ;
+    rdfs:label "Concept Relations" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Relationships between domain concept and other concepts" ;
+    skos:scopeNote "How concepts interact, influence, or depend on each other" .
+
+rdodi-document:ConceptStatistics a owl:Class ;
+    rdfs:label "Concept Statistics" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Quantitative data about domain concept" ;
+    skos:scopeNote "Market data, prevalence, trends, metrics" .
+
+rdodi-document:ContentExpansion a owl:Class ;
+    rdfs:label "Content Expansion" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:FeedbackType ;
+    owl:disjointWith rdodi-document:ContentReduction ;
+    skos:definition "Request to add more detail or coverage" ;
+    skos:example "Add more examples to wine types section, expand on disease symptoms" ;
+    skos:scopeNote "Expand section, add examples, more research" .
+
+rdodi-document:ContentPrompt a owl:Class ;
+    rdfs:label "Content Prompt" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:ContentTemplate ;
+    skos:definition "Prompt template for LLM content generation" ;
+    skos:scopeNote "Structured instructions for generating specific content" .
+
+rdodi-document:ExampleContent a owl:Class ;
+    rdfs:label "Example Content" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/doco/BlockQuotation> ;
+    rdfs:subClassOf rdodi-document:ReportContent ;
+    skos:definition "Concrete instances illustrating domain concepts" ;
+    skos:scopeNote "Real-world examples from domain research" .
+
+rdodi-document:FactualAccuracy a owl:Class ;
+    rdfs:label "Factual Accuracy" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:ContentQualityCheck ;
+    skos:definition "Verification that content is factually correct" ;
+    skos:scopeNote "Cross-reference with sources" .
+
+rdodi-document:FocusShift a owl:Class ;
+    rdfs:label "Focus Shift" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:FeedbackType ;
+    skos:definition "Request to emphasize different aspects" ;
+    skos:scopeNote "Change priorities, highlight different concepts" .
+
+rdodi-document:IntentRecognition a owl:Class ;
+    rdfs:label "Intent Recognition" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:FeedbackProcessor ;
+    skos:definition "Process of identifying what user wants to change" ;
+    skos:scopeNote "Parse natural language to determine action" .
+
+rdodi-document:LLMSynthesis a owl:Class ;
+    rdfs:label "LLM Synthesis" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Using large language models to synthesize and elaborate domain knowledge" ;
+    skos:scopeNote "Combines multiple sources into coherent explanations" .
+
+rdodi-document:MissingConceptContribution a owl:Class ;
+    rdfs:label "missing concept contribution"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:RefinementContribution ;
+    skos:definition "Refinement contribution noting that the ontology lacks a concept needed to express something in the report."@en .
+
+rdodi-document:MissingConstraintContribution a owl:Class ;
+    rdfs:label "missing constraint contribution"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:RefinementContribution ;
+    skos:definition "Refinement contribution noting that a constraint (cardinality, disjointness) is needed."@en .
+
+rdodi-document:MissingRelationContribution a owl:Class ;
+    rdfs:label "missing relation contribution"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:RefinementContribution ;
+    skos:definition "Refinement contribution noting that the ontology lacks a relation needed to express a report claim."@en .
+
+rdodi-document:NarrativeGeneration a owl:Class ;
+    rdfs:label "Narrative Generation" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:ContentGenerationStrategy ;
+    skos:definition "Generating prose explanations using LLM" ;
+    skos:example "Generate wine description from characteristics, generate disease explanation from medical facts" ;
+    skos:scopeNote "Creates flowing natural language from structured research" .
+
+rdodi-document:OverviewSection a owl:Class ;
+    rdfs:label "Overview Section" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/doco/Section> ;
+    rdfs:subClassOf rdodi-document:ReportSection ;
+    owl:disjointWith rdodi-document:AppendixSection,
+        rdodi-document:ConceptSection,
+        rdodi-document:RelationshipSection ;
+    skos:definition "Introductory section providing domain context and report scope" ;
+    skos:scopeNote "Derived from ontology metadata and top-level concepts" .
+
+rdodi-document:PropertyStructure a owl:Class ;
+    rdfs:label "Property Structure" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:ExtractedStructure ;
+    skos:definition "Relational structure defined by ontology properties" ;
+    skos:scopeNote "Network of relationships between concepts" .
+
+rdodi-document:RegenerationStrategy a owl:Class ;
+    rdfs:label "Regeneration Strategy" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:FeedbackProcessor ;
+    skos:definition "Approach to regenerating content based on feedback" ;
+    skos:scopeNote "Determines what to keep, what to regenerate, how to modify" .
+
+rdodi-document:RelationshipMapping a owl:Class ;
+    rdfs:label "Relationship Mapping" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Process of identifying and categorizing relationships between ontology concepts" ;
+    skos:scopeNote "Analyzes object properties and their domain/range constraints" .
+
+rdodi-document:ScopeDelineation a owl:Class ;
+    rdfs:label "Scope Delineation" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/deo/ProblemStatement> ;
+    skos:definition "Process of determining domain boundaries and coverage from ontology" ;
+    skos:scopeNote "Uses ontology metadata and annotations to establish report scope" .
+
+rdodi-document:SectionLocator a owl:Class ;
+    rdfs:label "Section Locator" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:FeedbackProcessor ;
+    skos:definition "Process of identifying which report sections feedback applies to" ;
+    skos:scopeNote "Maps feedback to specific report components" .
+
+rdodi-document:SectionTemplate a owl:Class ;
+    rdfs:label "Section Template" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:ContentTemplate ;
+    skos:definition "Template defining structure and components of report section" ;
+    skos:scopeNote "Specifies what elements should appear in section" .
+
+rdodi-document:SelectiveRegeneration a owl:Class ;
+    rdfs:label "Selective Regeneration" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Regenerating specific sections while preserving others" ;
+    skos:scopeNote "Maintains coherence across report" .
+
+rdodi-document:SelfCheck a owl:Class ;
+    rdfs:label "self-check"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §3.3; Mayer (2009)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:PedagogicalSignal ;
+    skos:definition "An embedded question or task allowing readers to verify understanding."@en .
+
+rdodi-document:SourceCoverageGapContribution a owl:Class ;
+    rdfs:label "source coverage gap contribution"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §5.1"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:RefinementContribution ;
+    skos:definition "Refinement contribution noting that the source coverage (Research selection) was insufficient for a topic the report needed to address. Triggers a new Research scope iteration."@en .
+
+rdodi-document:StructureExtraction a owl:Class ;
+    rdfs:label "Structure Extraction" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Process of extracting taxonomic and relational structure from ontology" ;
+    skos:example "Extract wine taxonomy from wine ontology, extract disease classification from medical ontology" ;
+    skos:scopeNote "Identifies hierarchy, properties, and key concepts" .
+
+rdodi-document:StructuredGeneration a owl:Class ;
+    rdfs:label "Structured Generation" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:ContentGenerationStrategy ;
+    skos:definition "Creating tables, lists, or hierarchical presentations" ;
+    skos:scopeNote "Direct transformation of structured data" .
+
+rdodi-document:StyleModification a owl:Class ;
+    rdfs:label "Style Modification" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:FeedbackType ;
+    owl:disjointWith rdodi-document:StructuralChange ;
+    skos:definition "Request to change writing style or tone" ;
+    skos:scopeNote "More technical, more accessible, formal, casual" .
+
+rdodi-document:SummaryBlock a owl:Class ;
+    rdfs:label "summary block"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §3.3; Mayer (2009)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:PedagogicalSignal ;
+    skos:definition "A condensed restatement of key content. Aids retention."@en .
+
+rdodi-document:TableOfContents a owl:Class ;
+    rdfs:label "Table of Contents" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/doco/TableOfContents> ;
+    skos:definition "Interactive navigation tree of report sections" ;
+    skos:scopeNote "Sticky/floating TOC for easy access" .
+
+rdodi-document:TaxonomicSection a owl:Class ;
+    rdfs:label "Taxonomic Section" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/doco/Section> ;
+    rdfs:subClassOf rdodi-document:ReportSection ;
+    skos:definition "Section presenting hierarchical classification of domain concepts" ;
+    skos:scopeNote "Direct mapping from ontology class hierarchy" .
+
+rdodi-document:TaxonomicStructure a owl:Class ;
+    rdfs:label "Taxonomic Structure" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:comment "Becomes the skeleton of report structure" ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:ExtractedStructure ;
+    skos:definition "Hierarchical classification structure extracted from ontology" ;
+    skos:scopeNote "Tree-based representation of is-a relationships" .
+
+rdodi-document:VisualizationGeneration a owl:Class ;
+    rdfs:label "Visualization Generation" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:ContentGenerationStrategy ;
+    skos:definition "Creating charts, graphs, and diagrams" ;
+    skos:scopeNote "Visual representations of relationships and data" .
+
+rdodi-document:WorkedExample a owl:Class ;
+    rdfs:label "worked example"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §3.3; Mayer (2009)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:PedagogicalSignal ;
+    skos:definition "A complete example showing problem and solution steps. Reduces cognitive load for novice learners."@en .
+
+rdodi-document:accessDate a owl:DatatypeProperty ;
+    rdfs:label "access date" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:dateTime ;
+    skos:definition "When source was accessed" .
+
+rdodi-document:actionVerb a owl:DatatypeProperty ;
+    rdfs:label "action verb"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §3.2; Anderson & Krathwohl (2001) A Taxonomy for Learning, Teaching, and Assessing"@en ;
+    rdfs:domain rdodi-document:LearningObjective ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "The Bloom-consistent action verb for the learning objective (e.g., 'identify' for Remember, 'explain' for Understand, 'design' for Create)."@en .
+
+rdodi-document:appliesTo a owl:ObjectProperty ;
+    rdfs:label "applies to" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:domain rdodi-document:UserFeedback ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range rdodi-document:ReportSection ;
+    skos:definition "Relates feedback to section it targets" .
+
+rdodi-document:basedOnResearch a owl:ObjectProperty ;
+    rdfs:label "based on research" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:domain rdodi-document:ReportContent ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Relates content to research results it incorporates" .
+
+rdodi-document:basedOnStructure a owl:ObjectProperty ;
+    rdfs:label "based on structure" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:domain rdodi-document:ReportSection ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range rdodi-document:ExtractedStructure ;
+    skos:definition "Relates section to extracted ontology structure" .
+
+rdodi-document:citationText a owl:DatatypeProperty ;
+    rdfs:label "citation text" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:string ;
+    skos:definition "Formatted citation for source" .
+
+rdodi-document:completenessScore a owl:DatatypeProperty ;
+    rdfs:label "completeness score" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Score 0-100 measuring content completeness" .
+
+rdodi-document:conformsToArtifactKind a owl:ObjectProperty ;
+    rdfs:label "conforms to artifact kind"@en ;
+    rdfs:domain rdodi-document:ReportGenerationArtifact ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range rdodi-document:ArtifactKindSpec ;
+    skos:definition "A produced artifact MAY conform to multiple kinds (e.g., research report AND tutorial). SHACL shapes specific to each declared kind validate the conformance claim."@en .
+
+rdodi-document:containsContent a owl:ObjectProperty ;
+    rdfs:label "contains content" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:domain rdodi-document:ReportSection ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range rdodi-document:ReportContent ;
+    skos:definition "Relates section to its content" .
+
+rdodi-document:contentText a owl:DatatypeProperty ;
+    rdfs:label "content text" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:domain rdodi-document:NarrativeContent ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:string ;
+    skos:definition "Actual text content" .
+
+rdodi-document:contributesToOntology a owl:ObjectProperty ;
+    rdfs:label "contributes to ontology"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §5.2"@en ;
+    rdfs:domain rdodi-document:RefinementContribution ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Links a RefinementContribution to the ontology it should refine. Range is an OntologyVersion or specific ontology IRI; domain is a refinement contribution."@en .
+
+rdodi-document:contributionDate a owl:DatatypeProperty ;
+    rdfs:label "contribution date"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §5.2"@en ;
+    rdfs:domain rdodi-document:RefinementContribution ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:dateTime ;
+    skos:definition "Date the contribution was identified."@en .
+
+rdodi-document:contributionRationale a owl:DatatypeProperty ;
+    rdfs:label "contribution rationale"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §5.2"@en ;
+    rdfs:domain rdodi-document:RefinementContribution ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Natural-language rationale for why this refinement is needed."@en .
+
+rdodi-document:contributionSeverity a owl:DatatypeProperty ;
+    rdfs:label "contribution severity"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §5.2"@en ;
+    rdfs:domain rdodi-document:RefinementContribution ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Severity classification: 'critical' (report cannot be generated correctly without resolution), 'major' (report is generated but incomplete), 'minor' (report is complete but improvable), 'enhancement' (suggestion for future iteration)."@en .
+
+rdodi-document:derivedFromOntology a owl:ObjectProperty ;
+    rdfs:label "derived from ontology" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:comment "Cardinality: 1..1 (exactly one source ontology per report)" ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range owl:Ontology ;
+    skos:definition "Relates report to source ontology that structures it" .
+
+rdodi-document:evidenceFromReport a owl:DatatypeProperty ;
+    rdfs:label "evidence from report"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §5.2"@en ;
+    rdfs:domain rdodi-document:RefinementContribution ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Citation or quote from the report providing evidence for this contribution."@en .
+
+rdodi-document:fileSizeKB a owl:DatatypeProperty ;
+    rdfs:label "file size KB" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Size of output file in kilobytes" .
+
+rdodi-document:generatedBy a owl:ObjectProperty ;
+    rdfs:label "generated by" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:domain rdodi-document:ReportContent ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range rdodi-document:ContentGenerationStrategy ;
+    skos:definition "Relates content to strategy used to generate it" .
+
+rdodi-document:generationDate a owl:DatatypeProperty ;
+    rdfs:label "generation date" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:dateTime ;
+    skos:definition "Timestamp when report was generated" .
+
+rdodi-document:hasCitationForm a owl:ObjectProperty ;
+    rdfs:label "has citation form"@en ;
+    rdfs:domain rdodi-document:ArtifactKindSpec ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range rdodi-document:CitationForm ;
+    skos:definition "Links an ArtifactKindSpec to its citation form (Harvard / IEEE / numbered-footnote / parenthetical-inline)."@en .
+
+rdodi-document:hasGenre a owl:ObjectProperty ;
+    rdfs:label "has genre"@en ;
+    rdfs:domain rdodi-document:ArtifactKindSpec ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range rdodi-document:ArtifactGenre ;
+    skos:definition "Links an ArtifactKindSpec to its top-level genre classification."@en .
+
+rdodi-document:hasIntent a owl:ObjectProperty ;
+    rdfs:label "has intent" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:domain rdodi-document:UserFeedback ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range rdodi-document:FeedbackType ;
+    skos:definition "Relates feedback to its interpreted intent" .
+
+rdodi-document:hasParentSection a owl:ObjectProperty ;
+    rdfs:label "has parent section" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:domain rdodi-document:ReportSection ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range rdodi-document:ReportSection ;
+    owl:inverseOf rdodi-document:hasSubsection ;
+    skos:definition "Relates section to its containing section" .
+
+rdodi-document:hasQualityScorecardForm a owl:ObjectProperty ;
+    rdfs:label "has quality scorecard form"@en ;
+    rdfs:domain rdodi-document:ArtifactKindSpec ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range rdodi-document:QualityScorecardForm ;
+    skos:definition "Links an ArtifactKindSpec to its quality scorecard form (the in-artifact quality machinery)."@en .
+
+rdodi-document:hasReferenceTemplateArtifact a owl:ObjectProperty ;
+    rdfs:label "has reference template artifact"@en ;
+    rdfs:domain rdodi-document:ArtifactKindSpec ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Links an ArtifactKindSpec to a specific produced artifact that exemplifies the spec. The reference artifact is treated as authoritative; anything in it that conflicts with the abstract spec is taken as evidence of mis-specification rather than as a deviation."@en .
+
+rdodi-document:hasSection a owl:ObjectProperty ;
+    rdfs:label "has section" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:comment "Cardinality: 1..* (report must have at least one section)" ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range rdodi-document:ReportSection ;
+    skos:definition "Relates report to its constituent sections" .
+
+rdodi-document:hasStructuralTemplate a owl:ObjectProperty ;
+    rdfs:label "has structural template"@en ;
+    rdfs:domain rdodi-document:ArtifactKindSpec ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range rdodi-document:StructuralTemplate ;
+    skos:definition "Links an ArtifactKindSpec to its structural template (required + optional sections by role)."@en .
+
+rdodi-document:hasVoiceConstraint a owl:ObjectProperty ;
+    rdfs:label "has voice constraint"@en ;
+    rdfs:domain rdodi-document:ArtifactKindSpec ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range rdodi-document:VoiceConstraint ;
+    skos:definition "Links an ArtifactKindSpec to a VoiceConstraint that artifact prose must satisfy. An ArtifactKindSpec MAY have multiple VoiceConstraints (typical Stage 2 academic-research-report spec has 5)."@en .
+
+rdodi-document:hierarchyLevel a owl:DatatypeProperty ;
+    rdfs:label "hierarchy level" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:domain rdodi-document:ReportSection ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:integer ;
+    skos:definition "Depth level in section hierarchy (0=top)" .
+
+rdodi-document:lastModifiedDate a owl:DatatypeProperty ;
+    rdfs:label "last modified date" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:dateTime ;
+    skos:definition "Timestamp of last modification" .
+
+rdodi-document:loadTime a owl:DatatypeProperty ;
+    rdfs:label "load time" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Page load time in seconds" .
+
+rdodi-document:mappedToProperty a owl:ObjectProperty ;
+    rdfs:label "mapped to property" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:domain rdodi-document:RelationshipSection ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range owl:ObjectProperty ;
+    skos:definition "Relates relationship section to ontology property" .
+
+rdodi-document:maximumOccurrences a owl:DatatypeProperty ;
+    rdfs:label "maximum occurrences"@en ;
+    rdfs:domain rdodi-document:VoiceConstraint ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:integer ;
+    skos:definition "Maximum number of times a prohibited phrase pattern may appear in the artifact prose (typically 0)."@en .
+
+rdodi-document:minimumOccurrences a owl:DatatypeProperty ;
+    rdfs:label "minimum occurrences"@en ;
+    rdfs:domain rdodi-document:VoiceConstraint ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:integer ;
+    skos:definition "Minimum number of times a required phrase pattern must appear in the artifact prose to satisfy the voice constraint."@en .
+
+rdodi-document:objectiveStatement a owl:DatatypeProperty ;
+    rdfs:label "objective statement"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §3.2"@en ;
+    rdfs:domain rdodi-document:LearningObjective ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Natural-language statement of the learning objective. Format: 'After reading, the learner will be able to [action verb consistent with BloomLevel] [object].'"@en .
+
+rdodi-document:offersBloomTaggedContent a owl:ObjectProperty ;
+    rdfs:label "offers Bloom-tagged content"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §WPC.3; WPC_Ontology_Requirements_v1_0_2 §3 (forward-declared by Report v1.5.0)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso rdodi-page:WebPage .
+
+rdodi-document:offersCitations a owl:ObjectProperty ;
+    rdfs:label "offers citations"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §7.2; Sprint 7 contract wiring"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso rdodi-page:WebPage .
+
+rdodi-document:offersConceptDefinitions a owl:ObjectProperty ;
+    rdfs:label "offers concept definitions"@en ;
+    dcterms:source "WPC_Ontology_Requirements_v1_0_2 §7.2; Sprint 7 contract wiring"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso rdodi-page:WebPage ;
+    skos:definition "Drives Educational specialization's :GlossaryEntry which 'consumes Report's offersConceptDefinitions'."@en .
+
+rdodi-document:offersLearningObjectives a owl:ObjectProperty ;
+    rdfs:label "offers learning objectives"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §WPC.3; WPC_Ontology_Requirements_v1_0_2 §3 (forward-declared by Report v1.5.0)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso rdodi-page:WebPage .
+
+rdodi-document:offersPedagogicalSignals a owl:ObjectProperty ;
+    rdfs:label "offers pedagogical signals"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §WPC.3; WPC_Ontology_Requirements_v1_0_2 §3 (forward-declared by Report v1.5.0)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso rdodi-page:WebPage .
+
+rdodi-document:offersRefinementContributions a owl:ObjectProperty ;
+    rdfs:label "offers refinement contributions"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §WPC.3; WPC_Ontology_Requirements_v1_0_2 §3 (forward-declared by Report v1.5.0)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso rdodi-page:WebPage .
+
+rdodi-document:offersStructuredContent a owl:ObjectProperty ;
+    rdfs:label "offers structured content"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §WPC.3; WPC_Ontology_Requirements_v1_0_2 §3 (forward-declared by Report v1.5.0)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso rdodi-page:WebPage .
+
+rdodi-document:offersTaxonomyNavigation a owl:ObjectProperty ;
+    rdfs:label "offers taxonomy navigation"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §WPC.3; WPC_Ontology_Requirements_v1_0_2 §3 (forward-declared by Report v1.5.0)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso rdodi-page:WebPage .
+
+rdodi-document:performedBy a owl:ObjectProperty ;
+    rdfs:label "performed by" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range foaf:Agent ;
+    skos:definition "Relates research activity to agent who performed it" .
+
+rdodi-document:precedesBloomLevel a owl:ObjectProperty ;
+    rdfs:label "precedes Bloom level"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §3.1; Anderson & Krathwohl (2001) A Taxonomy for Learning, Teaching, and Assessing"@en ;
+    rdfs:domain rdodi-document:BloomLevel ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range rdodi-document:BloomLevel ;
+    skos:definition "Total ordering on BloomLevels: lower cognitive demand precedes higher. Remember < Understand < Apply < Analyze < Evaluate < Create."@en .
+
+rdodi-document:producesResult a owl:ObjectProperty ;
+    rdfs:label "produces result" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Relates research activity to results it produces" .
+
+rdodi-document:prohibitedPhrasePattern a owl:DatatypeProperty ;
+    rdfs:label "prohibited phrase pattern"@en ;
+    rdfs:domain rdodi-document:VoiceConstraint ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:string ;
+    skos:definition "A literal substring or regex pattern that MUST NOT appear in artifact prose fields."@en .
+
+rdodi-document:qualityScore a owl:DatatypeProperty ;
+    rdfs:label "quality score" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:decimal ;
+    skos:definition "Overall quality score 0-100" .
+
+rdodi-document:renderedAs a owl:ObjectProperty ;
+    rdfs:label "rendered as" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Relates report to output formats it is rendered in" .
+
+rdodi-document:reportDescription a owl:DatatypeProperty ;
+    rdfs:label "report description" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:string ;
+    skos:definition "Description of report content and purpose" .
+
+rdodi-document:reportTitle a owl:DatatypeProperty ;
+    rdfs:label "report title" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:string ;
+    skos:definition "Title of generated report" .
+
+rdodi-document:requiredPhrasePattern a owl:DatatypeProperty ;
+    rdfs:label "required phrase pattern"@en ;
+    rdfs:domain rdodi-document:VoiceConstraint ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:string ;
+    skos:definition "A pattern that MUST appear with at least minimumOccurrences instances in artifact prose. Example: Harvard-style author-year citation pattern."@en .
+
+rdodi-document:requiredSectionName a owl:DatatypeProperty ;
+    rdfs:label "required section name"@en ;
+    rdfs:domain rdodi-document:StructuralTemplate ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:string ;
+    skos:definition "A section role name that MUST appear in the produced artifact's section list. Multiple values declare multiple required sections."@en .
+
+rdodi-document:researchedConcept a owl:ObjectProperty ;
+    rdfs:label "researched concept" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:comment "Research is about domain concept, not class itself" ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range owl:Class ;
+    skos:definition "Relates research result to ontology concept it investigates" .
+
+rdodi-document:sectionNumber a owl:DatatypeProperty ;
+    rdfs:label "section number" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:domain rdodi-document:ReportSection ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:string ;
+    skos:definition "Hierarchical numbering of section" ;
+    skos:example "1.2.3" .
+
+rdodi-document:sectionOrder a owl:DatatypeProperty ;
+    rdfs:label "section order index"@en ;
+    rdfs:domain rdodi-document:StructuralTemplate ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:integer ;
+    skos:definition "Ordering index for a section in the structural template, used when section ordering is part of the kind specification (e.g., Abstract before Introduction before Background)."@en .
+
+rdodi-document:sectionTitle a owl:DatatypeProperty ;
+    rdfs:label "section title" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:domain rdodi-document:ReportSection ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:string ;
+    skos:definition "Title of report section" .
+
+rdodi-document:sourceURL a owl:DatatypeProperty ;
+    rdfs:label "source URL" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:anyURI ;
+    skos:definition "Web address of knowledge source" .
+
+rdodi-document:supportsFeature a owl:ObjectProperty ;
+    rdfs:label "supports feature" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Relates HTML output to interactive features it supports" .
+
+rdodi-document:targetsBloomLevel a owl:ObjectProperty ;
+    rdfs:label "targets Bloom level"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §3.2"@en ;
+    rdfs:domain rdodi-document:LearningObjective ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range rdodi-document:BloomLevel ;
+    skos:definition "Links a LearningObjective to the BloomLevel it operates at."@en .
+
+rdodi-document:triggersRegeneration a owl:ObjectProperty ;
+    rdfs:label "triggers regeneration" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:domain rdodi-document:UserFeedback ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Relates feedback to refinement process it initiates" .
+
+rdodi-document:usedSource a owl:ObjectProperty ;
+    rdfs:label "used source" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Relates research result to knowledge sources used" .
+
+rdodi-document:userSatisfactionScore a owl:DatatypeProperty ;
+    rdfs:label "user satisfaction score" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:decimal ;
+    skos:definition "User rating of report quality" .
+
+rdodi-document:usesDesignSystem a owl:ObjectProperty ;
+    rdfs:label "uses design system" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Relates output to design system applied" .
+
+rdodi-document:usesTemplate a owl:ObjectProperty ;
+    rdfs:label "uses template" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:domain rdodi-document:ReportSection ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range rdodi-document:ContentTemplate ;
+    skos:definition "Relates section to template used for generation" .
+
+rdodi-document:wordCount a owl:DatatypeProperty ;
+    rdfs:label "word count" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:domain rdodi-document:ReportContent ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range xsd:integer ;
+    skos:definition "Number of words in content" .
+
+<http://example.org/rdodi/document-ontology/tbox> a owl:Ontology ;
+    rdfs:label "RDODI Document Ontology tbox v1.0.1"@en ;
+    dcterms:created "2026-05-20"^^xsd:date ;
+    dcterms:creator <http://example.org/rdodi/agent/YusufAltunel> ;
+    dcterms:description "RDODI Document Ontology tbox. Part of the four-subject RDODI ecosystem: Research, Domain, Document, Interactive Page."@en ;
+    dcterms:identifier "document_ontology_tbox_v1_0_1" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-05-20"^^xsd:date ;
+    dcterms:publisher <http://example.org/rdodi/agent/IstanbulKulturUniversity> ;
+    dcterms:rights "Copyright (c) 2026 Yusuf Altunel. Licensed CC BY 4.0."@en ;
+    dcterms:rightsHolder <http://example.org/rdodi/agent/YusufAltunel> ;
+    rdfs:comment "RDODI v1.0.1 tbox for the Document Ontology. Derived from 03-report-ontology/report_generation_tbox_v1_8_1.ttl (SHA-256 0418c84c9d469d7a1be7ff07d02d682ee0f20f8c4580ce9fefd44396f59a3451). ORIGINATION lineage: not a continuation of any prior ecosystem."@en ;
+    owl:versionIRI <http://example.org/rdodi/document-ontology/tbox/1.0.1> ;
+    owl:versionInfo "1.0.1" ;
+    prov:wasAttributedTo <http://example.org/rdodi/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://example.org/rdodi/activity/RDODIOrigination_v1_0_1> .
+
+rdodi-document:ArtifactGenre a owl:Class ;
+    rdfs:label "Artifact genre"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Top-level genre classification of a report-generation artifact. Examples: research-report, literature-review, technical-report, chapter-commentary, handbook, FAQ, study-guide, course-document, conference-paper, journal-article, white-paper. Each genre carries voice, structure, and citation conventions that distinguish it from other genres."@en .
+
+rdodi-document:CitationForm a owl:Class ;
+    rdfs:label "Citation form"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Specification of how cited sources appear in the artifact. Examples: Harvard in-text + alphabetical References list; numbered footnotes + bibliography; IEEE-style square-bracketed numbers. The citation form is one of the voice properties that distinguishes artifact kinds (academic research reports use Harvard or IEEE; technical reports often use numbered footnotes; handbooks and FAQs typically use parenthetical inline references)."@en .
+
+rdodi-document:ConceptSection a owl:Class ;
+    rdfs:label "Concept Section" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/doco/Section> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:cardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty rdodi-document:mappedToClass ],
+        rdodi-document:ReportSection ;
+    owl:disjointWith rdodi-document:AppendixSection,
+        rdodi-document:RelationshipSection ;
+    skos:definition "Section dedicated to detailed exploration of a single domain concept" ;
+    skos:scopeNote "Maps to individual ontology class with comprehensive domain research" .
+
+rdodi-document:ContentQualityCheck a owl:Class ;
+    rdfs:label "Content Quality Check" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:ContentGeneration ;
+    skos:definition "Validation of generated content quality" ;
+    skos:scopeNote "Ensures accuracy, coherence, and relevance" .
+
+rdodi-document:ContentReduction a owl:Class ;
+    rdfs:label "Content Reduction" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:FeedbackType ;
+    skos:definition "Request to condense or remove content" ;
+    skos:scopeNote "Summarize, remove redundancy, focus" .
+
+rdodi-document:NarrativeContent a owl:Class ;
+    rdfs:label "Narrative Content" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/doco/Paragraph> ;
+    rdfs:subClassOf rdodi-document:ReportContent ;
+    owl:disjointWith rdodi-document:StatisticalContent,
+        rdodi-document:StructuredContent,
+        rdodi-document:VisualContent ;
+    skos:definition "Prose-based explanatory content in natural language" ;
+    skos:scopeNote "Generated by LLM from researched domain knowledge" .
+
+rdodi-document:QualityScorecardForm a owl:Class ;
+    rdfs:label "Quality scorecard form"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Specification of the visible-to-reader quality machinery inside the artifact. The quality scorecard form is the in-artifact quality disclosure consumed by the reader."@en .
+
+rdodi-document:StructuralChange a owl:Class ;
+    rdfs:label "Structural Change" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:FeedbackType ;
+    skos:definition "Request to reorganize report structure" ;
+    skos:scopeNote "Reorder sections, merge, split" .
+
+rdodi-document:StructuredContent a owl:Class ;
+    rdfs:label "Structured Content" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:ReportContent ;
+    owl:disjointWith rdodi-document:StatisticalContent,
+        rdodi-document:VisualContent ;
+    skos:definition "Formally organized content in tables, lists, or hierarchies" ;
+    skos:scopeNote "Direct transformation from ontology structures" .
+
+rdodi-document:hasSubsection a owl:ObjectProperty ;
+    rdfs:label "has subsection" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:comment "Transitive property for hierarchical nesting" ;
+    rdfs:domain rdodi-document:ReportSection ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range rdodi-document:ReportSection ;
+    skos:definition "Relates section to nested subsections" .
+
+rdodi-document:mappedToClass a owl:ObjectProperty ;
+    rdfs:label "mapped to class" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:comment "Section discusses domain concept represented by this class" ;
+    rdfs:domain rdodi-document:ReportSection ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:range owl:Class ;
+    skos:definition "Relates section to ontology class it represents" .
+
+rdodi-document:ContentGeneration a owl:Class ;
+    rdfs:label "Content Generation" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:ReportGenerationArtifact ;
+    skos:definition "Process of creating report content from research results" ;
+    skos:scopeNote "Transforms research into readable, well-structured content" .
+
+rdodi-document:VisualContent a owl:Class ;
+    rdfs:label "Visual Content" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/doco/Figure> ;
+    rdfs:subClassOf rdodi-document:ReportContent ;
+    owl:disjointWith rdodi-document:StatisticalContent ;
+    skos:definition "Graphical representations including charts, diagrams, and images" ;
+    skos:scopeNote "Generated visualizations of ontology structures or domain data" .
+
+rdodi-document:AppendixSection a owl:Class ;
+    rdfs:label "Appendix Section" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/doco/Appendix> ;
+    rdfs:subClassOf rdodi-document:ReportSection ;
+    skos:definition "Supplementary section with references, glossary, or detailed data" ;
+    skos:scopeNote "Supporting materials and metadata" .
+
+rdodi-document:BloomLevel a owl:Class ;
+    rdfs:label "Bloom level"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §3.1; Anderson & Krathwohl (2001) A Taxonomy for Learning, Teaching, and Assessing"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "A cognitive complexity level from Bloom's Revised Taxonomy. Hierarchically ordered from lowest (Remember) to highest (Create). Used to characterize what kind of cognitive demand a piece of report content places on the reader."@en .
+
+rdodi-document:ContentTemplate a owl:Class ;
+    rdfs:label "Content Template" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:ReportGenerationArtifact ;
+    skos:definition "Reusable pattern for generating specific content type" ;
+    skos:scopeNote "Ensures consistency across similar sections" .
+
+rdodi-document:FeedbackProcessor a owl:Class ;
+    rdfs:label "Feedback Processor" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:ReportGenerationArtifact ;
+    skos:definition "System component that interprets and applies user feedback" ;
+    skos:scopeNote "Uses NLP and LLM to understand intent" .
+
+rdodi-document:LearningObjective a owl:Class ;
+    rdfs:label "learning objective"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §3.2; Anderson & Krathwohl (2001) A Taxonomy for Learning, Teaching, and Assessing; LRMI (Learning Resource Metadata Initiative) specification"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "A statement of what a reader is expected to learn from a piece of report content. Anchored to a BloomLevel and an action verb consistent with that level."@en .
+
+rdodi-document:RelationshipSection a owl:Class ;
+    rdfs:label "Relationship Section" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/doco/Section> ;
+    rdfs:subClassOf rdodi-document:ReportSection ;
+    owl:disjointWith rdodi-document:AppendixSection ;
+    skos:definition "Section analyzing connections and interactions between domain concepts" ;
+    skos:scopeNote "Derived from ontology properties and relationships" .
+
+rdodi-document:StatisticalContent a owl:Class ;
+    rdfs:label "Statistical Content" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/doco/Table> ;
+    rdfs:subClassOf rdodi-document:ReportContent ;
+    skos:definition "Quantitative data and metrics about domain" ;
+    skos:scopeNote "Derived from domain research and data analysis" .
+
+rdodi-document:StructuralTemplate a owl:Class ;
+    rdfs:label "Structural template"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/doco/Section> ;
+    skos:definition "Ordered specification of required and optional sections of an artifact, by name or by role, with cardinality constraints."@en .
+
+rdodi-document:ContentGenerationStrategy a owl:Class ;
+    rdfs:label "Content Generation Strategy" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:ContentGeneration ;
+    skos:definition "Approach to generating specific type of content" ;
+    skos:scopeNote "Different strategies for different content types" .
+
+rdodi-document:ExtractedStructure a owl:Class ;
+    rdfs:label "Extracted Structure" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:ReportGenerationArtifact ;
+    skos:definition "Structural information extracted from source ontology" ;
+    skos:scopeNote "Intermediate representation for report generation" .
+
+rdodi-document:UserFeedback a owl:Class ;
+    rdfs:label "User Feedback" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:ReportGenerationArtifact ;
+    skos:definition "User input for refining generated report" ;
+    skos:scopeNote "Natural language or structured feedback" .
+
+rdodi-document:VoiceConstraint a owl:Class ;
+    rdfs:label "Voice constraint"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "A specific phrasing or self-reference constraint on artifact prose, expressible as a positive pattern (required to appear with minimum frequency) or a negative pattern (prohibited from appearing). Examples: 'topic-first third-person declarative voice' (positive); 'no chapter-meta references in running prose' (negative); 'no ontology namespace identifiers leaking into prose-meant fields' (negative); 'Harvard author-year citation pattern appears at least 20 times' (positive with minimum occurrences)."@en .
+
+rdodi-document:FeedbackType a owl:Class ;
+    rdfs:label "Feedback Type" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:UserFeedback ;
+    skos:definition "Category of user feedback" ;
+    skos:scopeNote "Different feedback requires different processing" .
+
+rdodi-document:PedagogicalSignal a owl:Class ;
+    rdfs:label "pedagogical signal"@en ;
+    dcterms:source "Report_Ontology_Requirements_v1_0_2 §3.3; Mayer (2009) Multimedia Learning"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "A signal embedded in report content that supports learning processes (worked example, self-check, summary, advance organizer, etc.)."@en .
+
+rdodi-document:ArtifactKindSpec a owl:Class ;
+    rdfs:label "Artifact kind specification"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "A first-class specification of the KIND of artifact that a production pipeline (or specific Activity) is expected to produce. Distinct from the form contract enforced by SHACL shapes on the produced artifact: an ArtifactKindSpec describes genre, voice, structural template, citation form, and quality-scorecard form - properties that are not detectable from triples alone and that require either (a) raw-inspection by a competent reviewer or (b) NLP-augmented validation with prose pattern detection."@en .
+
+rdodi-document:ReportGenerationArtifact a owl:Class ;
+    rdfs:label "Report Generation Artifact" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    skos:definition "Any artifact produced or consumed in ontology-driven report generation process" ;
+    skos:example "Generated report, report template, content fragment, research result" ;
+    skos:scopeNote "Root class for all report generation concepts including reports, templates, content, and generation processes" .
+
+rdodi-document:ReportContent a owl:Class ;
+    rdfs:label "Report Content" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:subClassOf rdodi-document:ReportGenerationArtifact ;
+    skos:definition "Substantive informational content within a report section" ;
+    skos:example "Description of Cabernet Sauvignon characteristics, explanation of diabetes symptoms" ;
+    skos:scopeNote "Generated through domain research, not extracted from ontology" .
+
+rdodi-document:RefinementContribution a owl:Class ;
+    rdfs:label "refinement contribution"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso prov:Entity ;
+    skos:definition "A finding or recommendation produced during report generation that should feed back into ontology synthesis. Closes the loop: report-readers' confusion or unanswered questions identify ontology gaps; refinement contributions formalize those gaps as input to a new synthesis cycle. Each contribution is version-pinned to the ontology version it derives from."@en .
+
+rdodi-document:ReportSection a owl:Class ;
+    rdfs:label "Report Section" ;
+    dcterms:source "Report Generation Ontology v1.0.1, derived from ontology-driven documentation framework practices and aligned with SPAR DoCO and FaBiO conventions."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/document-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/doco/Section> ;
+    rdfs:subClassOf rdodi-document:ReportGenerationArtifact ;
+    skos:definition "Distinct structural division of a report, typically corresponding to an ontology concept or concept group" ;
+    skos:example "Wine Types section (from WineType class), Disease Categories section (from Disease class)" ;
+    skos:scopeNote "Hierarchical sections mirror ontology class hierarchy" .
+
+<http://example.org/rdodi/document-ontology> dcterms:bibliographicCitation "Altunel, Y. (2026). PATCH bump v1.8.0 -> v1.8.1."@en ;
+    dcterms:source "Report Generation Ontology v1.7.0 -> v1.8.x lineage; SPAR (DEO/DoCO/Pattern), FaBiO, FOAF integration for academic report structuring."@en ;
+    prov:wasRevisionOf <http://example.org/rdodi/document-ontology/1.8.0> .
+

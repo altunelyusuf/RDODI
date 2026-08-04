@@ -1,0 +1,23 @@
+@prefix sd:  <http://example.org/rdodi/stage-discipline#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:<http://www.w3.org/2000/01/rdf-schema#> .
+sd: a owl:Ontology ; owl:versionInfo "1.0.0" ;
+  rdfs:comment "Declarative per-stage discipline for the RDODI pipeline. Faithful encoding of the gates ALREADY enforced by the validator — no aspirational checks (L-66)."@en .
+
+sd:Stage a owl:Class .
+sd:requiresGate a owl:ObjectProperty ; rdfs:domain sd:Stage .
+sd:GateType a owl:Class .
+sd:parse a sd:GateType . sd:shacl a sd:GateType . sd:coverage a sd:GateType .
+sd:substance a sd:GateType . sd:sourceValidity a sd:GateType . sd:provenance a sd:GateType .
+
+# Stage 3 — Document (gates actually run by the validator/bootstrap)
+sd:DocumentStage a sd:Stage, owl:NamedIndividual ; rdfs:label "Stage 3 — Document"@en ;
+  sd:requiresGate sd:parse, sd:shacl, sd:coverage, sd:substance, sd:sourceValidity .
+
+# Stage 4 — Interactive Page
+sd:InteractivePageStage a sd:Stage, owl:NamedIndividual ; rdfs:label "Stage 4 — Interactive Page"@en ;
+  sd:requiresGate sd:parse, sd:shacl, sd:coverage, sd:substance, sd:sourceValidity .
+
+# Cross-stage — provenance (Cross.B hybrid)
+sd:CrossStageProvenance a sd:Stage, owl:NamedIndividual ; rdfs:label "Cross.B — Provenance"@en ;
+  sd:requiresGate sd:provenance .

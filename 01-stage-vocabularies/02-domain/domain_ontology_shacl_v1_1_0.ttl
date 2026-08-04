@@ -1,0 +1,98 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdodi-domain: <http://example.org/rdodi/domain-ontology#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+rdodi-domain:ActivityTimingShape a sh:NodeShape ;
+    rdfs:label "Activity SHOULD have prov:startedAtTime and prov:endedAtTime"@en ;
+    sh:property [ sh:message "Activity SHOULD have prov:startedAtTime for PROV-O traceability."@en ;
+            sh:minCount 0 ;
+            sh:path prov:startedAtTime ;
+            sh:severity sh:Info ] ;
+    sh:targetClass rdodi-domain:Activity .
+
+rdodi-domain:DomainOntologyArtifactCompetencyShape a sh:NodeShape ;
+    rdfs:label "DomainOntologyArtifact SHOULD declare hasCompetencyQuestion"@en ;
+    sh:property [ sh:message "DomainOntologyArtifact SHOULD declare its CompetencyQuestionSet for completeness assessment."@en ;
+            sh:minCount 0 ;
+            sh:path rdodi-domain:hasCompetencyQuestion ;
+            sh:severity sh:Info ] ;
+    sh:targetClass rdodi-domain:DomainOntologyArtifact .
+
+rdodi-domain:DomainOntologyClassDefinedByShape a sh:NodeShape ;
+    rdfs:label "Domain Ontology classes carry rdfs:isDefinedBy"@en ;
+    sh:property [ sh:hasValue <http://example.org/rdodi/domain-ontology> ;
+            sh:path rdfs:isDefinedBy ;
+            sh:severity sh:Info ] ;
+    sh:targetSubjectsOf rdfs:isDefinedBy .
+
+rdodi-domain:NamedIndividualLabelShape a sh:NodeShape ;
+    rdfs:label "Named individual must have rdfs:label"@en ;
+    sh:property [ sh:message "Named individual SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass owl:NamedIndividual .
+
+rdodi-domain:QualityDimensionSourceShape a sh:NodeShape ;
+    rdfs:label "QualityDimension MUST cite standard source"@en ;
+    sh:property [ sh:minCount 1 ;
+            sh:path dcterms:source ;
+            sh:severity sh:Violation ] ;
+    sh:targetClass rdodi-domain:QualityDimension .
+
+rdodi-domain:SourceProvenanceDefinitionShape a sh:NodeShape ;
+    rdfs:label "SourceProvenance instance must have skos:definition"@en ;
+    sh:property [ sh:minCount 1 ;
+            sh:path skos:definition ;
+            sh:severity sh:Violation ] ;
+    sh:targetClass rdodi-domain:SourceProvenance .
+
+rdodi-domain:TaxonomyConstructionMethodSourceShape a sh:NodeShape ;
+    rdfs:label "TaxonomyConstructionMethod MUST cite source"@en ;
+    sh:property [ sh:minCount 1 ;
+            sh:path dcterms:source ;
+            sh:severity sh:Violation ] ;
+    sh:targetClass rdodi-domain:TaxonomyConstructionMethod .
+
+<http://example.org/rdodi/domain-ontology/shacl> a owl:Ontology ;
+    rdfs:label "RDODI Domain Ontology shacl v1.1.0"@en ;
+    dcterms:created "2026-05-20"^^xsd:date ;
+    dcterms:creator <http://example.org/rdodi/agent/YusufAltunel> ;
+    dcterms:description "RDODI Domain Ontology shacl. Part of the four-subject RDODI ecosystem: Research, Domain, Document, Interactive Page."@en ;
+    dcterms:identifier "domain_ontology_shacl_v1_1_0" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-08-03"^^xsd:date ;
+    dcterms:publisher <http://example.org/rdodi/agent/IstanbulKulturUniversity> ;
+    dcterms:rights "Copyright (c) 2026 Yusuf Altunel. Licensed CC BY 4.0."@en ;
+    dcterms:rightsHolder <http://example.org/rdodi/agent/YusufAltunel> ;
+    rdfs:comment "RDODI shacl for the Domain Ontology. Derived from 01-domain-ontology/domain_ontology_shacl_v1_0_0.ttl (SHA-256 309ec596eb70b22d45c8805aa4a6c17ac109cff8bc7bb79a808e6703303b01a6). v1.1.0: two advisory (Warning) shapes for the C2 competency-question vocabulary, consistent with the module's existing SHOULD-severity style."@en ;
+    owl:versionIRI <http://example.org/rdodi/domain-ontology/shacl/1.1.0> ;
+    owl:versionInfo "1.1.0" ;
+    owl:priorVersion <http://example.org/rdodi/domain-ontology/shacl/1.0.1> ;
+    prov:wasAttributedTo <http://example.org/rdodi/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://example.org/rdodi/activity/RDODIOrigination_v1_0_1> .
+
+<http://example.org/rdodi/domain-ontology> dcterms:bibliographicCitation "Altunel, Y. (2026). Origination release v1.0.0."@en .
+
+
+# ---- v1.1.0 additions: advisory shapes for the C2 competency-question vocabulary ----
+rdodi-domain:CompetencyQuestionSet_MembershipShape a sh:NodeShape ;
+    rdfs:label "CompetencyQuestionSet should enumerate its questions"@en ;
+    sh:targetClass rdodi-domain:CompetencyQuestionSet ;
+    sh:property [ sh:message "A CompetencyQuestionSet SHOULD contain at least one CompetencyQuestion; an empty set cannot serve as a coverage target."@en ;
+            sh:minCount 1 ;
+            sh:path rdodi-domain:containsCompetencyQuestion ;
+            sh:severity sh:Warning ] .
+
+rdodi-domain:CompetencyQuestion_AnsweredShape a sh:NodeShape ;
+    rdfs:label "CompetencyQuestion should be answered or visibly open"@en ;
+    sh:targetClass rdodi-domain:CompetencyQuestion ;
+    sh:property [ sh:message "A CompetencyQuestion SHOULD carry answeredBy once the produced ontology answers it; absence marks a visible open coverage gap."@en ;
+            sh:minCount 1 ;
+            sh:path rdodi-domain:answeredBy ;
+            sh:severity sh:Warning ] .

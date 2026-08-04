@@ -1,0 +1,21 @@
+@prefix rva:  <http://example.org/rdodi/widget-rules#> .
+@prefix ipo:  <http://example.org/rdodi/interactive-page-ontology#> .
+@prefix rule: <http://example.org/rdodi/widget-admissibility#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/rdodi/surface-composition/s5> a owl:Ontology ;
+    owl:versionIRI <http://example.org/rdodi/surface-composition/s5/1.0.0> ;
+    owl:versionInfo "1.0.0" ;
+    dcterms:modified "2026-07-02"^^xsd:date ;
+    rdfs:comment "InteractiveHTMLSurface Package S5: RDODI-native trust/feedback. Both Optional per roadmap G5."@en .
+
+rule:opt_ProvenanceBadge a rva:OptionalWidgetRule, owl:NamedIndividual ;
+    rule:offersWidget ipo:ProvenanceBadge ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Provenance badge is offered as optional, per roadmap G5's explicit classification of RDODI-native additions."@en .
+rule:opt_RefinementContributionWidget a rva:OptionalWidgetRule, owl:NamedIndividual ;
+    rule:offersWidget ipo:RefinementContributionWidget ; rule:forSurface ipo:InteractiveHTMLSurface ;
+    skos:definition "Refinement contribution widget is offered as optional, per roadmap G5's explicit classification of RDODI-native additions."@en .

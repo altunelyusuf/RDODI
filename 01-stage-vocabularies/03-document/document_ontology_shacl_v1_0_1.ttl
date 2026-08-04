@@ -1,0 +1,100 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdodi-document: <http://example.org/rdodi/document-ontology#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/rdodi/document-ontology> dcterms:bibliographicCitation "Altunel, Y. (2026). PATCH bump v1.8.0 -> v1.8.1."@en ;
+    prov:wasRevisionOf <http://example.org/rdodi/document-ontology/1.8.0> .
+
+rdodi-document:AdvanceOrganizer_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for AdvanceOrganizer"@en ;
+    rdfs:comment "Authored as part of v2.0.0 trio-conformance placeholder pass."@en ;
+    sh:property [ sh:message "Instance of AdvanceOrganizer SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-document:AdvanceOrganizer .
+
+rdodi-document:AmbiguousConceptContribution_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for AmbiguousConceptContribution"@en ;
+    rdfs:comment "Authored as part of v2.0.0 trio-conformance placeholder pass."@en ;
+    sh:property [ sh:message "Instance of AmbiguousConceptContribution SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-document:AmbiguousConceptContribution .
+
+rdodi-document:AnalogyBlock_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for AnalogyBlock"@en ;
+    rdfs:comment "Authored as part of v2.0.0 trio-conformance placeholder pass."@en ;
+    sh:property [ sh:message "Instance of AnalogyBlock SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-document:AnalogyBlock .
+
+rdodi-document:AppendixSection_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for AppendixSection"@en ;
+    rdfs:comment "Authored as part of v2.0.0 trio-conformance placeholder pass."@en ;
+    sh:property [ sh:message "Instance of AppendixSection SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-document:AppendixSection .
+
+rdodi-document:BloomLevel_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for BloomLevel"@en ;
+    rdfs:comment "Authored as part of v2.0.0 trio-conformance placeholder pass."@en ;
+    sh:property [ sh:message "Instance of BloomLevel SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-document:BloomLevel .
+
+rdodi-document:BreadcrumbNavigation_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for BreadcrumbNavigation"@en ;
+    rdfs:comment "Authored as part of v2.0.0 trio-conformance placeholder pass."@en ;
+    sh:property [ sh:message "Instance of BreadcrumbNavigation SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-document:BreadcrumbNavigation .
+
+rdodi-document:CommonMisconception_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for CommonMisconception"@en ;
+    rdfs:comment "Authored as part of v2.0.0 trio-conformance placeholder pass."@en ;
+    sh:property [ sh:message "Instance of CommonMisconception SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-document:CommonMisconception .
+
+rdodi-document:ConceptCharacteristics_Shape a sh:NodeShape ;
+    rdfs:label "Minimal quality shape for ConceptCharacteristics"@en ;
+    rdfs:comment "Authored as part of v2.0.0 trio-conformance placeholder pass."@en ;
+    sh:property [ sh:message "Instance of ConceptCharacteristics SHOULD have at least one rdfs:label."@en ;
+            sh:minCount 1 ;
+            sh:path rdfs:label ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass rdodi-document:ConceptCharacteristics .
+
+<http://example.org/rdodi/document-ontology/shacl> a owl:Ontology ;
+    rdfs:label "RDODI Document Ontology shacl v1.0.1"@en ;
+    dcterms:created "2026-05-20"^^xsd:date ;
+    dcterms:creator <http://example.org/rdodi/agent/YusufAltunel> ;
+    dcterms:description "RDODI Document Ontology shacl. Part of the four-subject RDODI ecosystem: Research, Domain, Document, Interactive Page."@en ;
+    dcterms:identifier "document_ontology_shacl_v1_0_1" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-05-20"^^xsd:date ;
+    dcterms:publisher <http://example.org/rdodi/agent/IstanbulKulturUniversity> ;
+    dcterms:rights "Copyright (c) 2026 Yusuf Altunel. Licensed CC BY 4.0."@en ;
+    dcterms:rightsHolder <http://example.org/rdodi/agent/YusufAltunel> ;
+    rdfs:comment "RDODI v1.0.1 shacl for the Document Ontology. Derived from 03-report-ontology/report_generation_shacl_v1_8_1.ttl (SHA-256 590283a9b2e7488760679b09a1f82ce5f2d147f2ce90d65ec7dd221792b43160). ORIGINATION lineage: not a continuation of any prior ecosystem."@en ;
+    owl:versionIRI <http://example.org/rdodi/document-ontology/shacl/1.0.1> ;
+    owl:versionInfo "1.0.1" ;
+    prov:wasAttributedTo <http://example.org/rdodi/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://example.org/rdodi/activity/RDODIOrigination_v1_0_1> .
+

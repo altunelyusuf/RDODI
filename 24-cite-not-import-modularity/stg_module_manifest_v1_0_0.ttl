@@ -1,0 +1,10 @@
+@prefix rdodi: <http://example.org/rdodi/modules#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+rdodi:STGAssembly a rdodi:ModuleSet ;
+  dct:description "Cite-not-import module set: base governance + extension taxonomies. Merged by reference-resolution, no owl:imports." ;
+  rdodi:hasModule "base_tbox", "base_abox", "ext_policy", "ext_rule", "ext_steward" .
+rdodi:base_tbox  rdodi:file "base/stg_governance_tbox_v1_0_2.ttl" .
+rdodi:base_abox  rdodi:file "base/stg_governance_abox_v1_0_1.ttl" .
+rdodi:ext_policy rdodi:file "modules/stg_ext_policy_v1_0_0.ttl" .
+rdodi:ext_rule   rdodi:file "modules/stg_ext_rule_v1_0_0.ttl" .
+rdodi:ext_steward rdodi:file "modules/stg_ext_steward_v1_0_0.ttl" .

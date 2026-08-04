@@ -1,0 +1,35 @@
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix scp:     <http://rdodi.org/scp/domain#> .
+@prefix rdodi:   <http://rdodi.org/governance/scp-fair#> .
+
+# ADOPTED from STG proposal RDODI_enrichment_proposal_v1_0_0 (verified: 28 violations, L-64 clean), IMPROVED with
+# R-E1 source-type-awareness: every class needs a definition + SOME provenance, but provenance may be a literature
+# dcterms:source (domain-concept) OR an authority cite dct:conformsTo (structural/normative) — no class is forced to
+# fake a literature source. Re-homed under rdodi.org governance namespace (owner decision per proposal §4).
+
+rdodi:ScpClassDefinitionShape a sh:NodeShape ;
+    sh:target [ a sh:SPARQLTarget ;
+        sh:select """SELECT ?this WHERE { ?this a <http://www.w3.org/2002/07/owl#Class> .
+                     FILTER(STRSTARTS(STR(?this), "http://rdodi.org/scp/domain#")) }""" ] ;
+    sh:property [ sh:path skos:definition ; sh:minCount 1 ; sh:severity sh:Violation ;
+        sh:message "FAIR R1.2 / OntoQA: every SCP class MUST carry a skos:definition."@en ] ;
+    sh:or (
+        [ sh:path dcterms:source ; sh:minCount 1 ]
+        [ sh:path dcterms:conformsTo ; sh:minCount 1 ]
+    ) ;
+    sh:severity sh:Violation ;
+    sh:message "R-E1 FAIR R1.2: every SCP class MUST carry provenance — literature dcterms:source (domain-concept) OR authority dcterms:conformsTo (structural/normative). No class passes with zero provenance."@en .
+
+rdodi:ScpOntologyMetadataShape a sh:NodeShape ; sh:targetClass owl:Ontology ;
+    sh:property [ sh:path dcterms:title ; sh:minCount 1 ; sh:severity sh:Violation ; sh:message "FAIR F2: ontology MUST carry dcterms:title."@en ] ;
+    sh:property [ sh:path dcterms:license ; sh:minCount 1 ; sh:severity sh:Violation ; sh:message "FAIR R1.1: ontology MUST carry dcterms:license."@en ] ;
+    sh:property [ sh:path dcterms:creator ; sh:minCount 1 ; sh:severity sh:Violation ; sh:message "FAIR F2: ontology MUST carry dcterms:creator."@en ] ;
+    sh:property [ sh:path dcterms:description ; sh:minCount 1 ; sh:severity sh:Violation ; sh:message "FAIR F2: ontology MUST carry dcterms:description."@en ] .
+
+rdodi:ScpPublicationResolvableShape a sh:NodeShape ; sh:targetClass scp:Publication ;
+    sh:property [ sh:path [ sh:alternativePath ( scp:pubUrl scp:url ) ] ;
+        sh:minCount 1 ; sh:severity sh:Violation ; sh:pattern "^https?://" ;
+        sh:message "FAIR F1/R1.2: every cited Publication MUST carry a resolvable http(s) identifier."@en ] .

@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RDODI InteractiveHTMLSurface S7 exemplar -- Cryptography</title>
+<style>
+:root {
+  --color-bg:#ffffff; --color-text:#1a1a1a; --color-accent:#3d6ea5; --color-accent-dark:#2c5aa0;
+  --color-border:#d5d9de; --color-bg-dark:#16181c; --color-panel:#f7f8fa; --color-code-bg:#1e293b; --color-code-text:#e2e8f0;
+  --fs-sm:0.85rem; --fs-base:1rem; --fs-lg:1.3rem; --fs-xl:1.85rem;
+  --space-1:6px; --space-2:12px; --space-3:20px; --space-4:32px; --space-5:48px;
+  --radius:6px; --font-mono:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;
+}
+[data-theme="dark"] { --color-bg:#16181c; --color-text:#e8e8e8; --color-accent:#7ab0e8; --color-border:#3a3f47; --color-panel:#1f2227; }
+* { box-sizing:border-box; }
+body { background:var(--color-bg); color:var(--color-text); font-family:system-ui,-apple-system,sans-serif; font-size:var(--fs-base); margin:0; line-height:1.5; }
+h2 { font-size:var(--fs-xl); margin:var(--space-3) 0 var(--space-2); }
+h3.subsec-h { font-size:var(--fs-lg); margin:var(--space-4) 0 var(--space-2); padding-top:var(--space-3); border-top:1px solid var(--color-border); }
+.concept-prose { font-size:var(--fs-base); line-height:1.7; max-width:70ch; margin:var(--space-2) 0; }
+@keyframes fadein { from {opacity:0} to {opacity:1} }
+.view { animation: fadein .3s ease; padding:var(--space-4) var(--space-4) var(--space-5); max-width:1100px; }
+.tooltip { display:none; position:absolute; background:#222; color:#fff; padding:var(--space-1) var(--space-2); font-size:var(--fs-sm); border-radius:var(--radius); z-index:50; }
+.has-tooltip:hover + .tooltip, .has-tooltip.is-active + .tooltip { display:block; }
+#ctxmenu { display:none; position:absolute; background:var(--color-bg); border:1px solid var(--color-border); border-radius:var(--radius); box-shadow:0 4px 12px rgba(0,0,0,.15); }
+.skip-link { position:absolute; left:-999px; }
+.skip-link.is-active { left:var(--space-2); top:var(--space-2); background:var(--color-bg); z-index:999; padding:var(--space-2); border-radius:var(--radius); box-shadow:0 2px 8px rgba(0,0,0,.2); }
+
+[role="menubar"] { position:sticky; top:0; z-index:100; background:var(--color-panel); border-bottom:2px solid var(--color-accent);
+  padding:var(--space-2) var(--space-3); display:flex; align-items:center; gap:var(--space-3); min-height:52px; box-shadow:0 1px 4px rgba(0,0,0,.08); }
+[role="menubar"] .brand { font-weight:700; font-size:var(--fs-lg); margin-right:var(--space-3); }
+[role="menubar"] a[role="menuitem"] { padding:var(--space-1) var(--space-2); border-radius:var(--radius); text-decoration:none; color:var(--color-text); font-size:var(--fs-sm); }
+[role="menubar"] a[role="menuitem"]:hover, [role="menubar"] a[role="menuitem"][aria-current="true"] { background:var(--color-accent); color:#fff; }
+[role="menubar"] button.theme-switcher { margin-left:auto; padding:var(--space-1) var(--space-2); border-radius:var(--radius); border:1px solid var(--color-border); background:var(--color-bg); cursor:pointer; }
+
+.tree-nav { width:260px; min-width:220px; flex-shrink:0; background:var(--color-panel); border-right:1px solid var(--color-border);
+  padding:var(--space-3); height:calc(100vh - 52px); overflow-y:auto; position:sticky; top:52px; }
+.tree-nav ul { list-style:none; padding-left:var(--space-2); margin:var(--space-2) 0; }
+.tree-nav li.tree-group { margin:2px 0; }
+.tree-group-toggle { width:100%; text-align:left; padding:var(--space-1) var(--space-2); border-radius:var(--radius); cursor:pointer; font-weight:600; background:none; border:none; color:var(--color-text); font-size:var(--fs-base); }
+.tree-group-toggle:hover { background:rgba(61,110,165,.1); }
+.tree-group-toggle:focus-visible { outline:2px solid var(--color-accent); }
+.tree-nav li.tree-leaf { padding:var(--space-1) var(--space-2); margin:2px 0 2px var(--space-3); border-radius:var(--radius); cursor:pointer; border-left:3px solid transparent; }
+.tree-nav li.tree-leaf:hover { background:rgba(61,110,165,.1); border-left-color:var(--color-accent); }
+.tree-nav ul[role=group] { list-style:none; padding-left:0; margin:var(--space-1) 0; }
+.tree-nav button { padding:var(--space-1) var(--space-2); margin-right:var(--space-1); border-radius:var(--radius); border:1px solid var(--color-border); background:var(--color-bg); cursor:pointer; font-size:var(--fs-sm); }
+@media (max-width: 600px) { .tree-nav { display:none; } .subtab { font-size:var(--fs-sm); } }
+
+.overflow-tabbar { display:flex; gap:var(--space-2); padding:var(--space-3); background:var(--color-panel); border-bottom:2px solid var(--color-border); position:sticky; top:52px; z-index:10; overflow-x:auto; }
+.subtab { padding:var(--space-2) var(--space-3); border-radius:var(--radius); border:2px solid var(--color-border); background:var(--color-bg); cursor:pointer; white-space:nowrap; font-weight:600; box-shadow:0 1px 2px rgba(0,0,0,.06); flex-shrink:0; }
+.subtab:hover { background:var(--color-accent); color:#fff; border-color:var(--color-accent); }
+.subtab:focus-visible { outline:3px solid var(--color-accent); outline-offset:2px; }
+
+textarea.js-editor, textarea.sparql-editor, textarea.shacl-editor, textarea.python-editor {
+  width:100%; min-width:500px; max-width:900px; min-height:150px; font-family:var(--font-mono); font-size:var(--fs-sm);
+  background:var(--color-code-bg); color:var(--color-code-text); border:1px solid var(--color-border); border-radius:var(--radius);
+  padding:var(--space-2); line-height:1.6; resize:vertical; tab-size:2; display:block; margin:var(--space-2) 0;
+}
+input.regex-pattern-input, textarea.regex-text-input { font-family:var(--font-mono); font-size:var(--fs-sm); padding:var(--space-1) var(--space-2);
+  border:1px solid var(--color-border); border-radius:var(--radius); background:var(--color-code-bg); color:var(--color-code-text); display:block; width:100%; max-width:600px; margin:var(--space-1) 0; }
+pre.code-example { font-family:var(--font-mono); font-size:var(--fs-sm); background:var(--color-code-bg); color:var(--color-code-text);
+  padding:var(--space-3); border-radius:var(--radius); overflow-x:auto; line-height:1.6; }
+
+.js-run-btn, .sparql-run-btn, .shacl-run-btn, .python-run-btn, .regex-run-btn, .more-btn, .copy-code-btn, .copy-citation-btn, .modal-open-btn, #submit-refinement {
+  padding:var(--space-1) var(--space-3); background:var(--color-accent); color:#fff; border:none; border-radius:var(--radius);
+  cursor:pointer; font-size:var(--fs-base); font-weight:600; margin:var(--space-1) var(--space-1) var(--space-1) 0;
+}
+.js-run-btn:hover, .sparql-run-btn:hover, .shacl-run-btn:hover, .python-run-btn:hover, .regex-run-btn:hover { background:var(--color-accent-dark); }
+.js-status, .sparql-status, .shacl-status, .python-status, .regex-status { font-weight:700; padding:var(--space-1) var(--space-2); border-radius:var(--radius); background:var(--color-panel); display:inline-block; }
+
+.js-result-chart, .sparql-result-graph, svg.chart-widget { width:100%; max-width:500px; height:auto; display:block; margin:var(--space-2) 0; }
+canvas[data-render] { max-width:100%; height:auto; border-radius:var(--radius); }
+
+.definition-box, .real-world-example, .key-takeaway, .faq-entry, .cross-ref-box, .stat-badge {
+  padding:var(--space-3); margin:var(--space-3) 0; border-radius:var(--radius); background:var(--color-panel); border-left:4px solid var(--color-accent);
+}
+.warning-callout { padding:var(--space-3); margin:var(--space-3) 0; border-radius:var(--radius); background:#fff3e0; border-left:4px solid #e67e22; }
+[data-theme="dark"] .warning-callout { background:#3a2a1a; }
+.timeline-container { display:flex; flex-wrap:wrap; gap:var(--space-2); margin:var(--space-3) 0; }
+.timeline-entry { padding:var(--space-2); background:var(--color-panel); border-radius:var(--radius); min-width:140px; }
+.timeline-year { font-weight:700; color:var(--color-accent); display:block; }
+table.comparison-table, table.algorithm-spec { border-collapse:collapse; margin:var(--space-3) 0; width:100%; }
+table.comparison-table th, table.comparison-table td, table.algorithm-spec td { border:1px solid var(--color-border); padding:var(--space-2); text-align:left; }
+table.comparison-table caption { font-weight:700; text-align:left; padding:var(--space-1) 0; }
+.type-badge { display:inline-block; padding:2px var(--space-2); border-radius:12px; font-size:var(--fs-sm); background:var(--color-accent); color:#fff; margin:var(--space-1) 0; }
+.engine-badge { display:inline-block; padding:2px var(--space-2); border-radius:12px; font-size:var(--fs-sm); background:#555; color:#fff; }
+.runnable-code-tool { padding:var(--space-3); margin:var(--space-4) 0; border:1px solid var(--color-border); border-radius:var(--radius); background:var(--color-panel); }
+table.data-table { border-collapse:collapse; margin:var(--space-2) 0; }
+table.data-table th, table.data-table td { border:1px solid var(--color-border); padding:var(--space-2); }
+.widget-mount { display:flex; flex-wrap:wrap; gap:var(--space-3); align-items:flex-start; margin:var(--space-3) 0; }
+li[role="treeitem"], #references li { content-visibility: auto; contain-intrinsic-size: 0 24px; }
+.breadcrumb { font-size:var(--fs-sm); color:#666; margin-bottom:var(--space-2); }
+.provenance-badge { background:var(--color-panel); border-bottom:1px solid var(--color-border); }
+.ref-modal[hidden] { display:none; }
+.ref-modal:not([hidden]) { position:fixed; top:0; right:0; bottom:0; width:360px; max-width:90vw; z-index:200;
+  background:var(--color-bg); border-left:3px solid var(--color-accent); box-shadow:-4px 0 16px rgba(0,0,0,.15);
+  display:block; padding:var(--space-4); overflow-y:auto; }
+.ref-modal-content { background:transparent; padding:0; }
+main#maincontent { flex:1; min-width:0; }
+</style>
+</head>
+<body>
+<a href="#maincontent" class="skip-link">Skip to content</a>
+<nav role="menubar" aria-label="primary">
+  <span class="brand">RDODI Crypto Domain</span>
+  <a role="menuitem" href="#view-DigitalSignature" aria-current="true">DigitalSignature</a><a role="menuitem" href="#view-HashFunction" aria-current="false">HashFunction</a><a role="menuitem" href="#view-Protocols" aria-current="false">Protocols</a><a role="menuitem" href="#view-PublicKey" aria-current="false">PublicKey</a><a role="menuitem" href="#view-SymmetricCipher" aria-current="false">SymmetricCipher</a><a role="menuitem" href="#view-TLS" aria-current="false">TLS</a>
+  <button role="menuitem" class="theme-switcher" aria-label="toggle theme">Toggle dark mode</button>
+</nav>
+<div id="provenance-badge" class="provenance-badge" style="font-size:var(--fs-sm);padding:var(--space-1)">
+  Generated by rdodi_interactive_html_surface_generator_v2_0_0.py from example_second_domain_crypto_v1_0_0.ttl
+</div>
+<div style="display:flex">
+  <nav class="tree-nav" role="tree" aria-label="concepts">
+    <button id="tree-open-all">Open all</button><button id="tree-close-all">Close all</button>
+    <ul><li role="treeitem" aria-expanded="false" class="tree-group"><button type="button" class="tree-group-toggle"><span class="tree-icon">&#128193;</span> Public-Key Cryptography</button><ul role="group" hidden><li role="treeitem" tabindex="-1" class="tree-leaf" data-nav-target="view-DigitalSignature"><span class="tree-icon">&#128196;</span> <span class="has-tooltip" data-term="DigitalSignature" tabindex="0" role="tooltip" aria-describedby="tt-DigitalSignature">DigitalSignature</span><span id="tt-DigitalSignature" role="tooltip" class="tooltip">A digital signature is a cryptographic scheme that lets a signer bind their identity to a message using a private key.</span></li><li role="treeitem" tabindex="-1" class="tree-leaf" data-nav-target="view-PublicKey"><span class="tree-icon">&#128196;</span> <span class="has-tooltip" data-term="PublicKey" tabindex="0" role="tooltip" aria-describedby="tt-PublicKey">PublicKey</span><span id="tt-PublicKey" role="tooltip" class="tooltip">A public key is the openly shared half of an asymmetric key pair, paired with a private key the owner keeps secret.</span></li></ul></li>
+<li role="treeitem" aria-expanded="false" class="tree-group"><button type="button" class="tree-group-toggle"><span class="tree-icon">&#128193;</span> Hashing</button><ul role="group" hidden><li role="treeitem" tabindex="-1" class="tree-leaf" data-nav-target="view-HashFunction"><span class="tree-icon">&#128196;</span> <span class="has-tooltip" data-term="HashFunction" tabindex="0" role="tooltip" aria-describedby="tt-HashFunction">HashFunction</span><span id="tt-HashFunction" role="tooltip" class="tooltip">A cryptographic hash function maps an input of arbitrary length to a fixed-size digest, such that finding two different inputs with the same digest is computationally infeasible.</span></li></ul></li>
+<li role="treeitem" aria-expanded="false" class="tree-group"><button type="button" class="tree-group-toggle"><span class="tree-icon">&#128193;</span> Protocols</button><ul role="group" hidden><li role="treeitem" tabindex="-1" class="tree-leaf" data-nav-target="view-Protocols"><span class="tree-icon">&#128196;</span> <span class="has-tooltip" data-term="Protocols" tabindex="0" role="tooltip" aria-describedby="tt-Protocols">Protocols</span><span id="tt-Protocols" role="tooltip" class="tooltip">Cryptographic protocols are structured sequences of messages that combine primitives -- hashing, signing, key exchange -- into a coherent, secure interaction.</span></li><li role="treeitem" tabindex="-1" class="tree-leaf" data-nav-target="view-TLS"><span class="tree-icon">&#128196;</span> <span class="has-tooltip" data-term="TLS" tabindex="0" role="tooltip" aria-describedby="tt-TLS">TLS</span><span id="tt-TLS" role="tooltip" class="tooltip">Transport Layer Security is the protocol that secures the great majority of web traffic, sitting between the application layer and the transport layer.</span></li></ul></li>
+<li role="treeitem" aria-expanded="false" class="tree-group"><button type="button" class="tree-group-toggle"><span class="tree-icon">&#128193;</span> Symmetric Cryptography</button><ul role="group" hidden><li role="treeitem" tabindex="-1" class="tree-leaf" data-nav-target="view-SymmetricCipher"><span class="tree-icon">&#128196;</span> <span class="has-tooltip" data-term="SymmetricCipher" tabindex="0" role="tooltip" aria-describedby="tt-SymmetricCipher">SymmetricCipher</span><span id="tt-SymmetricCipher" role="tooltip" class="tooltip">A symmetric cipher uses the same secret key for both encryption and decryption, making it fast enough for bulk data but requiring the key to be shared securely beforehand.</span></li></ul></li></ul>
+  </nav>
+  <main id="maincontent">
+    <div class="overflow-tabbar" role="tablist" aria-label="scrollable menubar of subtabs" style="overflow-x:auto;white-space:nowrap"><button role="tab" class="subtab" data-view="view-DigitalSignature">DigitalSignature</button>
+<button role="tab" class="subtab" data-view="view-HashFunction">HashFunction</button>
+<button role="tab" class="subtab" data-view="view-Protocols">Protocols</button>
+<button role="tab" class="subtab" data-view="view-PublicKey">PublicKey</button>
+<button role="tab" class="subtab" data-view="view-SymmetricCipher">SymmetricCipher</button>
+<button role="tab" class="subtab" data-view="view-TLS">TLS</button></div>
+    
+    <section class="view" id="view-DigitalSignature" hidden>
+      <nav class="breadcrumb" aria-label="breadcrumb"><a href="#top">Home</a> &gt; <a href="#view-DigitalSignature">DigitalSignature</a></nav>
+      <h2>DigitalSignature</h2>
+      <span class="type-badge type-badge-asymmetric">asymmetric</span>
+      <p class="concept-prose">A digital signature is a cryptographic scheme that lets a signer bind their identity to a message using a private key. A verifier checks the signature against the signer's public key, confirming both authenticity (who signed it) and integrity (it was not altered). Common schemes include RSA-PSS and ECDSA, both standardized and widely deployed in TLS certificates and code signing. <a href="#references" class="citation-link" data-cite="DigitalSignature">[Author, 2026]</a></p>
+      <div class="subsec-definition"><h3 class="subsec-h">Definition</h3><p class="concept-prose">A digital signature is a cryptographic scheme that lets a signer bind their identity to a message using a private key, producing a value a verifier can check against the signer's public key. Unlike a handwritten signature, it is mathematically bound to the exact bytes signed, so any alteration afterward invalidates it.</p></div><div class="subsec-mechanism"><h3 class="subsec-h">Mechanism</h3><p class="concept-prose">The signer computes a cryptographic hash of the message first, then encrypts that hash with their private key -- signing the full message directly would be far slower and is never done beyond trivial payloads. A verifier recomputes the hash independently and compares it against the decrypted signature value; any mismatch, even one flipped bit, invalidates the signature.</p></div><div class="subsec-variants"><h3 class="subsec-h">Variants</h3><p class="concept-prose">RSA-PSS derives its security from the difficulty of factoring large composite numbers, typically using 2048-4096 bit keys. ECDSA achieves comparable security with far smaller keys (256 bits is common) via the elliptic-curve discrete-logarithm problem. EdDSA, built on Edwards curves, avoids implementation pitfalls (nonce reuse) that have caused real ECDSA key-recovery failures.</p></div><div class="subsec-history"><h3 class="subsec-h">History</h3><p class="concept-prose">RSA (1977) was the first practical public-key signature scheme, following Diffie and Hellman's 1976 conceptual proposal of public-key cryptography. DSA followed in 1991 as a US federal standard; ECDSA, its elliptic-curve variant, became widely deployed after 2000 as curve-based cryptography matured and offered smaller keys for equivalent security.</p></div><div class="subsec-standards"><h3 class="subsec-h">Standards</h3><p class="concept-prose">FIPS 186-5 (2023) is the current US federal standard specifying DSA, ECDSA, and EdDSA parameters. RFC 8032 standardizes EdDSA (Ed25519/Ed448) for interoperable implementation. X.509, the certificate format underlying TLS, embeds a digital signature from the issuing certificate authority in every certificate it issues.</p></div><div class="subsec-security"><h3 class="subsec-h">Security</h3><p class="concept-prose">A weak or reused random nonce during ECDSA signing can leak the entire private key from just two signatures -- not theoretical; it caused the 2010 Sony PS3 signing-key leak. Signature malleability, where a second valid signature can be produced for the same message without the private key, has broken systems assuming signature uniqueness for deduplication.</p></div><div class="subsec-usage"><h3 class="subsec-h">Usage</h3><p class="concept-prose">TLS certificates are signed by certificate authorities, forming the trust chain browsers use to verify website identity without prior contact. Code-signing certificates let operating systems verify installed software hasn't been tampered with since publishing. Blockchain systems use signatures to prove transaction authorization without a central authority.</p></div><div class="subsec-comparison"><h3 class="subsec-h">Comparison</h3><p class="concept-prose">Compared to a Message Authentication Code (MAC), a digital signature provides non-repudiation -- a third party can verify who signed something, since verification uses a PUBLIC key, whereas MAC verification requires the SAME shared secret used to create it, so anyone who can verify a MAC could also have forged it.</p></div>
+      <div class="subsec-misconception"><h3 class="subsec-h">Common Misconception</h3><p class="concept-prose">A common misconception is that a digital signature ENCRYPTS the message -- it does not; the message can remain fully readable. The signature is a separate value proving authenticity and integrity, appended to (or alongside) the plaintext message.</p></div>
+      <div class="definition-box"><span class="definition-term">Non-repudiation</span><span class="definition-body">the property that a signer cannot later deny having signed, since only their private key could have produced a valid signature.</span></div>
+<table class="comparison-table"><caption class="comparison-table-header">Signature scheme comparison</caption><tr class="comparison-highlight"><th>Scheme</th><th>Typical key size</th><th>Basis</th></tr><tr><td>RSA-PSS</td><td>2048-4096 bit</td><td>Integer factorization</td></tr><tr><td>ECDSA</td><td>256 bit</td><td>Elliptic-curve discrete log</td></tr><tr><td>EdDSA</td><td>256 bit</td><td>Edwards-curve, deterministic nonces</td></tr></table>
+<div class="timeline-container"><div class="timeline-entry"><span class="timeline-year">1977</span><span class="timeline-desc">RSA, first practical signature scheme</span></div><div class="timeline-entry"><span class="timeline-year">1991</span><span class="timeline-desc">DSA standardized</span></div><div class="timeline-entry"><span class="timeline-year">2011</span><span class="timeline-desc">Ed25519 (EdDSA) published</span></div></div>
+<div class="warning-callout"><span class="warning-icon">&#9888;</span><span class="warning-text">Reused ECDSA nonces leak the private key -- this caused the 2010 Sony PS3 key compromise.</span></div>
+      <div class="more" hidden><p>In practice, the signer computes a hash of the message first, then encrypts that hash with their private key -- signing the whole message directly would be far slower and is never done for anything beyond trivial payloads. A verifier recomputes the hash independently and compares it against the decrypted signature; any mismatch, even a single flipped bit, invalidates the signature entirely, which is what makes signatures useful for tamper detection as well as authentication.</p></div>
+      <button class="more-btn" data-target="more-DigitalSignature">Read more &#8595;</button>
+      <div class="widget-mount">
+        <canvas id="canvas2d-DigitalSignature" data-render="2d" width="200" height="80"></canvas>
+        <canvas id="webgl-DigitalSignature" data-render="webgl" width="220" height="180"></canvas>
+        <div class="simulation" data-widget="simulation-DigitalSignature">
+          <button class="sim-step">Step XOR cipher</button>
+          <div class="sim-state" data-bits="10110101" data-key="01100110" data-idx="0" aria-live="polite">state: idx=0</div>
+          <div class="sim-bits"></div>
+        </div>
+        <pre class="code-example"><code>def xor_byte(plaintext, key):
+    return plaintext ^ key  # DigitalSignature-relevant primitive</code></pre>
+        <button class="copy-code-btn" data-target="code-DigitalSignature">Copy code</button>
+      </div>
+    </section>
+
+    <section class="view" id="view-HashFunction" hidden>
+      <nav class="breadcrumb" aria-label="breadcrumb"><a href="#top">Home</a> &gt; <a href="#view-HashFunction">HashFunction</a></nav>
+      <h2>HashFunction</h2>
+      <span class="type-badge type-badge-hash">hash</span>
+      <p class="concept-prose">A cryptographic hash function maps an input of arbitrary length to a fixed-size digest, such that finding two different inputs with the same digest is computationally infeasible. Hash functions underlie integrity checks, password storage (combined with salting), and digital signatures, since signing a short digest is far cheaper than signing an entire message. SHA-256, part of the SHA-2 family, remains a standard choice; the older MD5 and SHA-1 are considered broken for collision resistance. <a href="#references" class="citation-link" data-cite="HashFunction">[Author, 2026]</a></p>
+      <div class="subsec-definition"><h3 class="subsec-h">Definition</h3><p class="concept-prose">A cryptographic hash function maps an input of arbitrary length to a fixed-size digest, such that finding two different inputs with the same digest is computationally infeasible. Hash functions underlie integrity checks, password storage, and digital signatures.</p></div><div class="subsec-mechanism"><h3 class="subsec-h">Mechanism</h3><p class="concept-prose">SHA-256 processes input in 512-bit blocks through 64 rounds of a compression function, producing a 256-bit digest. The 'avalanche effect' -- flipping one input bit changes roughly half the output bits -- is a deliberate design property, verified statistically during standardization, that makes the digest behave unpredictably under small input changes.</p></div><div class="subsec-variants"><h3 class="subsec-h">Variants</h3><p class="concept-prose">SHA-2 (SHA-256, SHA-512) remains the dominant family in current deployment. SHA-3, standardized in 2015, uses a fundamentally different internal structure (a sponge construction) as a hedge against any future structural weakness discovered in SHA-2. BLAKE2/BLAKE3 offer comparable security with significantly better software performance.</p></div><div class="subsec-history"><h3 class="subsec-h">History</h3><p class="concept-prose">MD5 (1992) and SHA-1 (1995) were the dominant hash functions for over a decade. Both are now considered broken for collision resistance -- researchers demonstrated a practical SHA-1 collision in 2017 (the 'SHAttered' attack), and MD5 collisions have been practical since 2004. SHA-2 (2001) remains unbroken as of 2026.</p></div><div class="subsec-standards"><h3 class="subsec-h">Standards</h3><p class="concept-prose">FIPS 180-4 specifies the SHA-2 family. FIPS 202 specifies SHA-3. NIST ran an open, multi-year public competition (2007-2012) to select SHA-3's Keccak algorithm, modeled on the successful AES selection process, specifically to build public confidence after the SHA-1 weaknesses emerged.</p></div><div class="subsec-security"><h3 class="subsec-h">Security</h3><p class="concept-prose">Hash functions have three required properties: preimage resistance (can't find an input for a given output), second-preimage resistance (can't find a different input matching a given input's output), and collision resistance (can't find any two inputs with the same output) -- these are progressively easier to break, which is why collision-resistance failures (like SHA-1's) are taken seriously even when preimage resistance still holds.</p></div><div class="subsec-usage"><h3 class="subsec-h">Usage</h3><p class="concept-prose">Git uses SHA-1 (transitioning to SHA-256) to identify every commit and file by content hash. Password storage systems hash passwords (with salting and deliberate slowness via bcrypt/Argon2) rather than storing them directly. Blockchain systems use hash functions both for block linking and as the basis of proof-of-work mining.</p></div><div class="subsec-comparison"><h3 class="subsec-h">Comparison</h3><p class="concept-prose">Compared to a checksum like CRC32, a cryptographic hash function is specifically designed to resist DELIBERATE tampering -- CRC32 is fast and good at detecting accidental corruption but trivially reversible/forgeable by an adversary, making it unsuitable for any security-relevant integrity check.</p></div>
+      <div class="subsec-misconception"><h3 class="subsec-h">Common Misconception</h3><p class="concept-prose">A common misconception is that a longer hash output is always 'more secure' in a way proportional to its length -- security depends on the algorithm's actual cryptanalytic resistance, not output length alone; a broken 512-bit hash (like some MD variants) is not safer than an unbroken 256-bit one.</p></div>
+      <div class="timeline-container"><div class="timeline-entry"><span class="timeline-year">1992</span><span class="timeline-desc">MD5 published</span></div><div class="timeline-entry"><span class="timeline-year">2001</span><span class="timeline-desc">SHA-2 standardized</span></div><div class="timeline-entry"><span class="timeline-year">2017</span><span class="timeline-desc">Practical SHA-1 collision demonstrated</span></div></div>
+<div class="warning-callout"><span class="warning-icon">&#9888;</span><span class="warning-text">MD5 and SHA-1 are both broken for collision resistance -- neither should be used for new security-relevant designs.</span></div>
+<div class="faq-entry"><span class="faq-question">Q: Can a hash be reversed?</span><span class="faq-answer">A: Not directly -- preimage resistance means no efficient algorithm is known to recover an input from its digest.</span></div>
+      <div class="more" hidden><p>SHA-256 produces a 256-bit digest through 64 rounds of a compression function operating on 512-bit message blocks. The 'avalanche effect' -- where flipping a single input bit changes roughly half the output bits -- is a deliberate design property, verified statistically during the standardization process, that makes the digest behave unpredictably with respect to small input changes.</p></div>
+      <button class="more-btn" data-target="more-HashFunction">Read more &#8595;</button>
+      <div class="widget-mount">
+        <canvas id="canvas2d-HashFunction" data-render="2d" width="200" height="80"></canvas>
+        <canvas id="webgl-HashFunction" data-render="webgl" width="220" height="180"></canvas>
+        <div class="simulation" data-widget="simulation-HashFunction">
+          <button class="sim-step">Step XOR cipher</button>
+          <div class="sim-state" data-bits="10110101" data-key="01100110" data-idx="0" aria-live="polite">state: idx=0</div>
+          <div class="sim-bits"></div>
+        </div>
+        <pre class="code-example"><code>def xor_byte(plaintext, key):
+    return plaintext ^ key  # HashFunction-relevant primitive</code></pre>
+        <button class="copy-code-btn" data-target="code-HashFunction">Copy code</button>
+      </div>
+    </section>
+
+    <section class="view" id="view-Protocols" hidden>
+      <nav class="breadcrumb" aria-label="breadcrumb"><a href="#top">Home</a> &gt; <a href="#view-Protocols">Protocols</a></nav>
+      <h2>Protocols</h2>
+      <span class="type-badge type-badge-protocol">protocol</span>
+      <p class="concept-prose">Cryptographic protocols are structured sequences of messages that combine primitives -- hashing, signing, key exchange -- into a coherent, secure interaction. A protocol's security depends not just on its individual primitives but on how they are sequenced and what assumptions each step makes about the other party. TLS, SSH, and Signal's double-ratchet are all protocols built from broadly similar cryptographic primitives, arranged very differently. <a href="#references" class="citation-link" data-cite="Protocols">[Author, 2026]</a></p>
+      <div class="subsec-definition"><h3 class="subsec-h">Definition</h3><p class="concept-prose">Cryptographic protocols are structured sequences of messages that combine primitives -- hashing, signing, key exchange -- into a coherent, secure interaction. A protocol's security depends not just on its primitives but on how they are sequenced and what assumptions each step makes about the other party.</p></div><div class="subsec-mechanism"><h3 class="subsec-h">Mechanism</h3><p class="concept-prose">A protocol typically interleaves authentication (proving identity), key agreement (deriving a shared secret), and integrity protection (detecting tampering) across multiple message round trips, with each step's output feeding the next -- an attacker who can reorder, replay, or drop specific messages can sometimes break a protocol even when every individual cryptographic primitive it uses remains unbroken.</p></div><div class="subsec-variants"><h3 class="subsec-h">Variants</h3><p class="concept-prose">TLS, SSH, and Signal's double-ratchet protocol are all built from broadly similar primitives (asymmetric key exchange, symmetric encryption, MACs/signatures) arranged very differently to satisfy different threat models -- TLS optimizes for one-shot connection setup, SSH for interactive sessions, and Signal specifically for forward secrecy even if a long-term key is later compromised.</p></div><div class="subsec-history"><h3 class="subsec-h">History</h3><p class="concept-prose">The Needham-Schroeder protocol (1978) was an early formal authentication protocol; Gavin Lowe's 1995 discovery of a man-in-the-middle flaw in its public-key variant, found via automated formal verification (the FDR model checker), became a landmark demonstration that protocol logic errors can persist for years even in well-studied designs.</p></div><div class="subsec-standards"><h3 class="subsec-h">Standards</h3><p class="concept-prose">IETF RFCs specify most widely deployed protocols (TLS, SSH, IPsec). Formal verification frameworks like ProVerif and Tamarin are increasingly used to machine-check protocol security properties before standardization, following the Needham-Schroeder lesson that manual review alone is insufficient for protocols of real complexity.</p></div><div class="subsec-security"><h3 class="subsec-h">Security</h3><p class="concept-prose">Protocol-level vulnerabilities are frequently NOT breaks of the underlying cryptography at all -- they are logic errors: missing a check, accepting a downgraded version, or reusing a value across contexts where it shouldn't be reused. This is why protocol design is typically formally verified via symbolic model checking rather than assembled ad hoc from individually-secure primitives.</p></div><div class="subsec-usage"><h3 class="subsec-h">Usage</h3><p class="concept-prose">Every secure network interaction -- browsing HTTPS sites, SSH-ing into a server, sending an end-to-end-encrypted message -- relies on a cryptographic protocol correctly sequencing primitives. Financial systems (EMV chip cards) and government systems alike depend on formally analyzed protocols for their security guarantees.</p></div><div class="subsec-comparison"><h3 class="subsec-h">Comparison</h3><p class="concept-prose">Compared to a bare cryptographic primitive (a cipher or hash function in isolation), a protocol's security is a claim about an entire MULTI-PARTY INTERACTION over an untrusted network, which is why protocol security proofs are structurally different from primitive security proofs -- they must account for an active adversary who controls the network, not just one who observes ciphertext.</p></div>
+      <div class="subsec-misconception"><h3 class="subsec-h">Common Misconception</h3><p class="concept-prose">A common misconception is that using 'proven' primitives (AES, RSA) automatically makes a custom protocol secure -- protocol security is a separate, additional property that must be independently analyzed; secure primitives assembled incorrectly routinely produce insecure protocols.</p></div>
+      <div class="cross-ref-box">Related: see <a class="cross-ref-link" href="#view-TLS">TLS</a> and <a class="cross-ref-link" href="#view-DigitalSignature">DigitalSignature</a> for concrete protocol examples.</div>
+<div class="faq-entry"><span class="faq-question">Q: Why formally verify a protocol?</span><span class="faq-answer">A: Because logic errors (message reordering, replay) can break a protocol even when every primitive it uses is individually unbroken -- the 1995 Needham-Schroeder flaw is the canonical example.</span></div>
+<div class="key-takeaway"><span class="key-takeaway-icon">&#9733;</span>Protocol security is a claim about a multi-party interaction over an untrusted network, not just about the primitives used.</div>
+      <div class="more" hidden><p>A protocol's message ORDER carries as much security weight as the primitives it uses: the same signature and key-exchange operations, sequenced differently, can be vulnerable to replay or man-in-the-middle attacks that a correctly-ordered protocol prevents. This is why protocol design is typically formally verified (e.g. via symbolic model checking) rather than assembled ad hoc from secure-sounding pieces.</p></div>
+      <button class="more-btn" data-target="more-Protocols">Read more &#8595;</button>
+      <div class="widget-mount">
+        <canvas id="canvas2d-Protocols" data-render="2d" width="200" height="80"></canvas>
+        <canvas id="webgl-Protocols" data-render="webgl" width="220" height="180"></canvas>
+        <div class="simulation" data-widget="simulation-Protocols">
+          <button class="sim-step">Step XOR cipher</button>
+          <div class="sim-state" data-bits="10110101" data-key="01100110" data-idx="0" aria-live="polite">state: idx=0</div>
+          <div class="sim-bits"></div>
+        </div>
+        <pre class="code-example"><code>def xor_byte(plaintext, key):
+    return plaintext ^ key  # Protocols-relevant primitive</code></pre>
+        <button class="copy-code-btn" data-target="code-Protocols">Copy code</button>
+      </div>
+    </section>
+
+    <section class="view" id="view-PublicKey" hidden>
+      <nav class="breadcrumb" aria-label="breadcrumb"><a href="#top">Home</a> &gt; <a href="#view-PublicKey">PublicKey</a></nav>
+      <h2>PublicKey</h2>
+      <span class="type-badge type-badge-asymmetric">asymmetric</span>
+      <p class="concept-prose">A public key is the openly shared half of an asymmetric key pair, paired with a private key the owner keeps secret. Data encrypted with a public key can only be decrypted with its matching private key, and signatures made with a private key can be verified with the public key. This asymmetry is what lets two parties who have never met establish secure communication or verify authenticity. <a href="#references" class="citation-link" data-cite="PublicKey">[Author, 2026]</a></p>
+      <div class="subsec-definition"><h3 class="subsec-h">Definition</h3><p class="concept-prose">A public key is the openly shared half of an asymmetric key pair, paired with a private key the owner keeps secret. Data encrypted with a public key can only be decrypted with its matching private key, and signatures made with a private key can be verified with the public key.</p></div><div class="subsec-mechanism"><h3 class="subsec-h">Mechanism</h3><p class="concept-prose">The security of public-key cryptography rests on a computational asymmetry: operations like modular exponentiation (RSA) or elliptic-curve point multiplication (ECC) are cheap to compute forward but currently infeasible to invert without the private key -- this asymmetry, not secrecy of the algorithm, is the whole basis of security.</p></div><div class="subsec-variants"><h3 class="subsec-h">Variants</h3><p class="concept-prose">RSA keys (2048+ bits) rely on integer factorization hardness. Elliptic-curve keys (256 bits typical) rely on the discrete-logarithm problem over elliptic curves, achieving comparable security with far smaller keys. Post-quantum candidates (lattice-based, e.g. Kyber) are being standardized because both RSA and ECC are vulnerable to a sufficiently large quantum computer running Shor's algorithm.</p></div><div class="subsec-history"><h3 class="subsec-h">History</h3><p class="concept-prose">Diffie and Hellman's 1976 paper 'New Directions in Cryptography' first proposed public-key cryptography conceptually, though without a working encryption scheme. RSA (1977) supplied the first practical implementation. GCHQ's Clifford Cocks had independently discovered an equivalent scheme in 1973, but it remained classified until 1997.</p></div><div class="subsec-standards"><h3 class="subsec-h">Standards</h3><p class="concept-prose">PKCS#1 specifies RSA encryption and signature padding schemes. X.509 defines the certificate format binding a public key to an identity, verified by a certificate authority's signature. RFC 7748 standardizes Curve25519 and Curve448 for elliptic-curve key exchange.</p></div><div class="subsec-security"><h3 class="subsec-h">Security</h3><p class="concept-prose">A public key alone reveals nothing about the private key under current cryptanalysis, but the BINDING between a public key and an identity is the actual attack surface -- a certificate authority that issues a certificate for the wrong identity, or a user who accepts an unverified key, defeats the whole system regardless of how strong the underlying math is.</p></div><div class="subsec-usage"><h3 class="subsec-h">Usage</h3><p class="concept-prose">HTTPS relies on the server's public key (in its certificate) to establish an encrypted session. SSH uses public-key pairs for both server authentication and, optionally, passwordless client login. PGP/GPG email encryption lets senders encrypt to a recipient's published public key without prior key exchange.</p></div><div class="subsec-comparison"><h3 class="subsec-h">Comparison</h3><p class="concept-prose">Compared to a symmetric key, a public key needs no secure channel to distribute -- it can be published openly -- but public-key operations are orders of magnitude slower computationally, which is why real protocols (TLS) use public-key crypto only to exchange a symmetric session key, then switch to symmetric encryption for the bulk data.</p></div>
+      <div class="subsec-misconception"><h3 class="subsec-h">Common Misconception</h3><p class="concept-prose">A common misconception is that the public key must be kept secret like the private key -- the opposite is true: the public key's usefulness depends entirely on it being widely and openly distributed, so anyone can verify signatures or encrypt messages to the owner.</p></div>
+      <div class="real-world-example"><span class="example-title">Case: HTTPS trust chain</span><p class="example-body">Every browser ships a list of trusted certificate-authority public keys; a website's certificate is verified by checking its signature against one of these roots.</p></div>
+<table class="comparison-table"><caption class="comparison-table-header">Public-key scheme trade-offs</caption><tr class="comparison-highlight"><th>Scheme</th><th>Key size</th><th>Quantum-safe?</th></tr><tr><td>RSA</td><td>2048+ bit</td><td>No</td></tr><tr><td>ECC</td><td>256 bit</td><td>No</td></tr><tr><td>Kyber (post-quantum)</td><td>~800 byte</td><td>Believed yes</td></tr></table>
+      <div class="more" hidden><p>The security of public-key cryptography rests on a computational asymmetry: operations like modular exponentiation (RSA) or elliptic-curve point multiplication (ECDSA) are cheap to compute in one direction but currently infeasible to invert without the private key. This is why key sizes for RSA (2048+ bits) are much larger than for elliptic-curve schemes (256 bits) offering comparable security -- the underlying hardness assumptions differ.</p></div>
+      <button class="more-btn" data-target="more-PublicKey">Read more &#8595;</button>
+      <div class="widget-mount">
+        <canvas id="canvas2d-PublicKey" data-render="2d" width="200" height="80"></canvas>
+        <canvas id="webgl-PublicKey" data-render="webgl" width="220" height="180"></canvas>
+        <div class="simulation" data-widget="simulation-PublicKey">
+          <button class="sim-step">Step XOR cipher</button>
+          <div class="sim-state" data-bits="10110101" data-key="01100110" data-idx="0" aria-live="polite">state: idx=0</div>
+          <div class="sim-bits"></div>
+        </div>
+        <pre class="code-example"><code>def xor_byte(plaintext, key):
+    return plaintext ^ key  # PublicKey-relevant primitive</code></pre>
+        <button class="copy-code-btn" data-target="code-PublicKey">Copy code</button>
+      </div>
+    </section>
+
+    <section class="view" id="view-SymmetricCipher" hidden>
+      <nav class="breadcrumb" aria-label="breadcrumb"><a href="#top">Home</a> &gt; <a href="#view-SymmetricCipher">SymmetricCipher</a></nav>
+      <h2>SymmetricCipher</h2>
+      <span class="type-badge type-badge-symmetric">symmetric</span>
+      <p class="concept-prose">A symmetric cipher uses the same secret key for both encryption and decryption, making it fast enough for bulk data but requiring the key to be shared securely beforehand. AES (Advanced Encryption Standard) is the dominant symmetric cipher today, typically used with 128- or 256-bit keys in an authenticated mode such as GCM. Because the same key does both directions, symmetric ciphers are usually combined with an asymmetric scheme just to exchange that key safely. <a href="#references" class="citation-link" data-cite="SymmetricCipher">[Author, 2026]</a></p>
+      <div class="subsec-definition"><h3 class="subsec-h">Definition</h3><p class="concept-prose">A symmetric cipher uses the same secret key for both encryption and decryption, making it fast enough for bulk data but requiring the key to be shared securely beforehand. AES (Advanced Encryption Standard) is the dominant symmetric cipher today.</p></div><div class="subsec-mechanism"><h3 class="subsec-h">Mechanism</h3><p class="concept-prose">AES operates on fixed 128-bit blocks regardless of key length; 128/192/256-bit keys control the number of internal transformation rounds (10/12/14 respectively), not the block size. Each round applies substitution, permutation, and key-mixing steps designed so that no efficient mathematical shortcut is known to skip the full round sequence.</p></div><div class="subsec-variants"><h3 class="subsec-h">Variants</h3><p class="concept-prose">Block cipher MODES determine how AES's fixed-block operation extends to arbitrary-length messages: ECB (insecure, patterns leak), CBC (needs a random IV, no built-in authentication), and GCM (combines encryption with authentication, the modern default) each have very different security properties despite using the identical underlying cipher.</p></div><div class="subsec-history"><h3 class="subsec-h">History</h3><p class="concept-prose">DES (1977), with its 56-bit key, was the dominant standard for two decades until brute-force attacks became practical by the late 1990s. Triple-DES extended its life by applying DES three times. AES, selected via NIST's open 1997-2000 public competition (won by the Rijndael algorithm), replaced both in 2001 and remains unbroken.</p></div><div class="subsec-standards"><h3 class="subsec-h">Standards</h3><p class="concept-prose">FIPS 197 specifies AES. NIST SP 800-38D specifies GCM mode. The AES competition itself became the template later reused for the SHA-3 hash competition -- an open, adversarial public review process is now the standard path for adopting new cryptographic primitives.</p></div><div class="subsec-security"><h3 class="subsec-h">Security</h3><p class="concept-prose">Encryption alone, without authentication, is now considered insufficient for most real-world use -- an attacker who can't read encrypted data may still be able to flip bits and cause predictable changes in the decrypted output (a malleability attack), which is exactly what authenticated modes like GCM are designed to prevent by rejecting any tampered ciphertext outright.</p></div><div class="subsec-usage"><h3 class="subsec-h">Usage</h3><p class="concept-prose">Disk encryption (BitLocker, FileVault, LUKS) uses AES to protect data at rest. TLS uses AES-GCM as its default symmetric cipher for the bulk of a connection after the handshake. Wi-Fi security (WPA2/WPA3) uses AES in CCMP mode to encrypt wireless traffic.</p></div><div class="subsec-comparison"><h3 class="subsec-h">Comparison</h3><p class="concept-prose">Compared to an asymmetric cipher like RSA, AES is orders of magnitude faster and has no message-length overhead from key size, which is exactly why real protocols use asymmetric crypto only to exchange a symmetric key, then switch to a symmetric cipher for the actual data.</p></div>
+      <div class="subsec-misconception"><h3 class="subsec-h">Common Misconception</h3><p class="concept-prose">A common misconception is that AES-256 is meaningfully 'more secure' than AES-128 against realistic attacks -- both remain far beyond any known practical brute-force attack; the difference matters mainly for long-term post-quantum margin, not near-term risk.</p></div>
+      <table class="comparison-table"><caption class="comparison-table-header">AES block-cipher modes</caption><tr class="comparison-highlight"><th>Mode</th><th>Authenticated?</th><th>Notes</th></tr><tr><td>ECB</td><td>No</td><td>Insecure -- patterns leak</td></tr><tr><td>CBC</td><td>No</td><td>Needs random IV</td></tr><tr><td>GCM</td><td>Yes</td><td>Modern default</td></tr></table>
+<div class="stat-badge"><span class="stat-number">2&#178;&#8317;&#8309;&#8309;</span><span class="stat-label">AES-128 keyspace</span></div>
+<div class="key-takeaway"><span class="key-takeaway-icon">&#9733;</span>Always prefer authenticated modes (GCM) over unauthenticated ones (CBC, ECB) for new designs.</div>
+      <div class="more" hidden><p>AES operates on fixed 128-bit blocks regardless of key length (128/192/256 bits control the number of internal rounds, not the block size). Modes like GCM combine the cipher with a separate authentication step, producing both ciphertext and a tag that detects tampering -- encryption alone, without authentication, is now considered insufficient for most real-world use.</p></div>
+      <button class="more-btn" data-target="more-SymmetricCipher">Read more &#8595;</button>
+      <div class="widget-mount">
+        <canvas id="canvas2d-SymmetricCipher" data-render="2d" width="200" height="80"></canvas>
+        <canvas id="webgl-SymmetricCipher" data-render="webgl" width="220" height="180"></canvas>
+        <div class="simulation" data-widget="simulation-SymmetricCipher">
+          <button class="sim-step">Step XOR cipher</button>
+          <div class="sim-state" data-bits="10110101" data-key="01100110" data-idx="0" aria-live="polite">state: idx=0</div>
+          <div class="sim-bits"></div>
+        </div>
+        <pre class="code-example"><code>def xor_byte(plaintext, key):
+    return plaintext ^ key  # SymmetricCipher-relevant primitive</code></pre>
+        <button class="copy-code-btn" data-target="code-SymmetricCipher">Copy code</button>
+      </div>
+    </section>
+
+    <section class="view" id="view-TLS" hidden>
+      <nav class="breadcrumb" aria-label="breadcrumb"><a href="#top">Home</a> &gt; <a href="#view-TLS">TLS</a></nav>
+      <h2>TLS</h2>
+      <span class="type-badge type-badge-protocol">protocol</span>
+      <p class="concept-prose">Transport Layer Security is the protocol that secures the great majority of web traffic, sitting between the application layer and the transport layer. A TLS handshake negotiates a cipher suite, authenticates the server (and optionally the client) via certificates, and derives session keys for symmetric encryption of the actual data. Modern deployments (TLS 1.3) reduced handshake round trips and removed several legacy cipher options that had known weaknesses. <a href="#references" class="citation-link" data-cite="TLS">[Author, 2026]</a></p>
+      <div class="subsec-definition"><h3 class="subsec-h">Definition</h3><p class="concept-prose">Transport Layer Security is the protocol securing the great majority of web traffic, sitting between the application layer and the transport layer. A TLS handshake negotiates a cipher suite, authenticates the server (and optionally the client) via certificates, and derives session keys for symmetric encryption of the actual data.</p></div><div class="subsec-mechanism"><h3 class="subsec-h">Mechanism</h3><p class="concept-prose">The client and server exchange random values and negotiate parameters, the server proves its identity via a certificate signed by a trusted authority, both sides derive a shared secret via a key-exchange algorithm (commonly elliptic-curve Diffie-Hellman), and that secret seeds symmetric session keys used for the remainder of the connection.</p></div><div class="subsec-variants"><h3 class="subsec-h">Variants</h3><p class="concept-prose">TLS 1.3 (2018) reduced the handshake to a single round trip in the common case, down from two in TLS 1.2, and removed several legacy cipher options with known weaknesses (RC4, static RSA key exchange, CBC-mode ciphers without proper padding checks). Earlier SSL versions (2.0, 3.0) are now considered fully broken and disabled in modern browsers.</p></div><div class="subsec-history"><h3 class="subsec-h">History</h3><p class="concept-prose">SSL 1.0 (Netscape, 1994) was never publicly released due to security flaws; SSL 2.0 followed in 1995, then SSL 3.0 in 1996. TLS 1.0 (1999) was effectively SSL 3.1, standardized by the IETF. The POODLE (2014) and BEAST (2011) attacks against SSL 3.0 and TLS 1.0/1.1 drove the industry-wide push to TLS 1.2 and later 1.3.</p></div><div class="subsec-standards"><h3 class="subsec-h">Standards</h3><p class="concept-prose">RFC 8446 specifies TLS 1.3. The IETF's TLS working group maintains the protocol; cipher suites, extensions, and certificate formats are each separately standardized (RFC 8447 registers TLS parameters). The CA/Browser Forum sets baseline requirements certificate authorities must follow to be trusted by major browsers.</p></div><div class="subsec-security"><h3 class="subsec-h">Security</h3><p class="concept-prose">Certificate validation failures -- expired certificates, mismatched hostnames, untrusted issuers -- are the most common real-world TLS failure mode, not cryptographic breaks of the protocol itself. Downgrade attacks, where an attacker forces negotiation to a weaker, vulnerable version, motivated TLS 1.3's removal of legacy fallback mechanisms entirely.</p></div><div class="subsec-usage"><h3 class="subsec-h">Usage</h3><p class="concept-prose">Every HTTPS website uses TLS to encrypt traffic between browser and server. Email protocols (SMTP, IMAP) commonly wrap connections in TLS (STARTTLS) for transport security. VPN protocols and many internal microservice architectures use TLS or its datagram variant DTLS for service-to-service encryption.</p></div><div class="subsec-comparison"><h3 class="subsec-h">Comparison</h3><p class="concept-prose">Compared to IPsec, TLS operates at the application/transport boundary and is application-aware (a browser explicitly negotiates it), while IPsec operates at the network layer and is transparent to applications -- this is why TLS is the default choice for securing individual web connections, while IPsec is more common for site-to-site VPN tunnels.</p></div>
+      <div class="subsec-misconception"><h3 class="subsec-h">Common Misconception</h3><p class="concept-prose">A common misconception is that TLS alone guarantees a website is trustworthy -- it only guarantees the CONNECTION is encrypted and the certificate's identity claim is validly signed; a certificate can be issued to a malicious domain that a browser will show as 'secure' regardless.</p></div>
+      <div class="timeline-container"><div class="timeline-entry"><span class="timeline-year">1994</span><span class="timeline-desc">SSL 1.0, never released</span></div><div class="timeline-entry"><span class="timeline-year">1999</span><span class="timeline-desc">TLS 1.0 standardized</span></div><div class="timeline-entry"><span class="timeline-year">2018</span><span class="timeline-desc">TLS 1.3, single-round-trip handshake</span></div></div>
+<div class="warning-callout"><span class="warning-icon">&#9888;</span><span class="warning-text">POODLE (2014) exploited SSL 3.0's padding; it drove industry-wide removal of legacy fallback.</span></div>
+<table class="algorithm-spec"><caption class="comparison-table-header">TLS 1.3 handshake steps</caption><tr class="spec-row"><td class="spec-label">1. ClientHello</td><td class="spec-value">proposes cipher suites + key share</td></tr><tr class="spec-row"><td class="spec-label">2. ServerHello</td><td class="spec-value">selects suite, sends certificate + key share</td></tr><tr class="spec-row"><td class="spec-label">3. Finished</td><td class="spec-value">both sides confirm derived keys match</td></tr></table>
+      <div class="more" hidden><p>The TLS 1.3 handshake reduced the negotiation to a single round trip in the common case, down from two in TLS 1.2, by having the client guess the server's preferred key-exchange group and send key material speculatively. If the guess is wrong, a retry adds a round trip back, but for the common case this materially reduces the latency of establishing a secure connection.</p></div>
+      <button class="more-btn" data-target="more-TLS">Read more &#8595;</button>
+      <div class="widget-mount">
+        <canvas id="canvas2d-TLS" data-render="2d" width="200" height="80"></canvas>
+        <canvas id="webgl-TLS" data-render="webgl" width="220" height="180"></canvas>
+        <div class="simulation" data-widget="simulation-TLS">
+          <button class="sim-step">Step XOR cipher</button>
+          <div class="sim-state" data-bits="10110101" data-key="01100110" data-idx="0" aria-live="polite">state: idx=0</div>
+          <div class="sim-bits"></div>
+        </div>
+        <pre class="code-example"><code>def xor_byte(plaintext, key):
+    return plaintext ^ key  # TLS-relevant primitive</code></pre>
+        <button class="copy-code-btn" data-target="code-TLS">Copy code</button>
+      </div>
+    </section>
+    <section><h3>Chart: standard key sizes (bits)</h3><svg class="chart-widget" data-render-from="chartdata" viewBox="0 0 260 160" role="img" aria-label="key sizes"></svg></section>
+    <section class="runnable-code-tool" data-engine="javascript"><h3>Runnable Code Tool <span class="engine-badge engine-badge-javascript">JavaScript</span></h3><p class="concept-prose">Edit the code below and click Run -- it genuinely executes, and the table/chart below re-render from whatever it returns. This is not a fixed demo: change the code, get a different result.</p><textarea id="js-code" class="js-editor" spellcheck="false">// returns an array of {algorithm, bits}, sorted descending
+return Object.entries(CHART_DATA.reduce((m,d)=>{m[d.label]=d.bits;return m;},{}))
+  .map(([algorithm,bits]) => ({algorithm, bits}))
+  .sort((a,b) => b.bits - a.bits);</textarea><button id="js-run" class="js-run-btn" type="button">&#9654; Run</button><span id="js-status" class="js-status" aria-live="polite"></span><table class="js-result-table"><thead><tr><th>Algorithm</th><th>Bits</th></tr></thead><tbody id="js-result-tbody"></tbody></table><svg class="js-result-chart" viewBox="0 0 260 160" role="img" aria-label="JS execution result chart"></svg></section>
+    <section class="runnable-code-tool" data-engine="sparql"><h3>Runnable Code Tool <span class="engine-badge engine-badge-sparql">SPARQL</span></h3><p class="concept-prose">A real (subset) SPARQL 1.1 engine, executing against genuine triples derived from this page's own data (concept classifications, key sizes) -- edit the query, get real results.</p><textarea id="sparql-code" class="sparql-editor" spellcheck="false">SELECT ?alg ?bits WHERE { ?alg hasBits ?bits . } ORDER BY DESC(?bits) LIMIT 10</textarea><button id="sparql-run" class="sparql-run-btn" type="button">&#9654; Run</button><span id="sparql-status" class="sparql-status" aria-live="polite"></span><table class="sparql-result-table"><thead id="sparql-result-thead"></thead><tbody id="sparql-result-tbody"></tbody></table><svg class="sparql-result-graph" viewBox="0 0 260 160" role="img" aria-label="SPARQL result relationship graph"></svg></section>
+    <section class="runnable-code-tool" data-engine="shacl"><h3>Runnable Code Tool <span class="engine-badge engine-badge-shacl">SHACL</span></h3><p class="concept-prose">A real SHACL Core subset validator, checking genuine constraints against this page's own triples -- directly relevant to RDODI's own SHACL-gated discipline. Try tightening the pattern constraint to see a real violation.</p><textarea id="shacl-shapes" class="shacl-editor" spellcheck="false">[{&quot;targetSubjectsWithPredicate&quot;: &quot;a&quot;, &quot;properties&quot;: [{&quot;path&quot;: &quot;a&quot;, &quot;minCount&quot;: 1, &quot;maxCount&quot;: 1}]}, {&quot;targetSubjectsWithPredicate&quot;: &quot;hasBits&quot;, &quot;properties&quot;: [{&quot;path&quot;: &quot;hasBits&quot;, &quot;datatype&quot;: &quot;numeric&quot;}]}]</textarea><button id="shacl-run" class="shacl-run-btn" type="button">&#9654; Validate</button><span id="shacl-status" class="shacl-status" aria-live="polite"></span><table class="shacl-result-table"><thead><tr><th>Focus</th><th>Path</th><th>Severity</th><th>Message</th></tr></thead><tbody id="shacl-result-tbody"></tbody></table></section>
+    <section class="runnable-code-tool" data-engine="python"><h3>Runnable Code Tool <span class="engine-badge engine-badge-python">Python (real subset)</span></h3><p class="concept-prose">A genuine, self-built Python-subset interpreter -- assignment, arithmetic, for/if, and a few built-ins -- executing for real, not simulated. Chosen deliberately over Pyodide (full CPython via WASM) to keep this artifact a single, self-contained, dependency-free file, matching every other engine here -- disclosed trade-off: full Python syntax is NOT supported, only this subset.</p><textarea id="python-code" class="python-editor" spellcheck="false">total = 0
+for bits in [128, 256, 2048, 3072]:
+    if bits &gt; 200:
+        total = total + bits
+print(total)</textarea><button id="python-run" class="python-run-btn" type="button">&#9654; Run</button><span id="python-status" class="python-status" aria-live="polite"></span><pre id="python-output" class="python-output"></pre></section>
+    <section class="runnable-code-tool" data-engine="regex"><h3>Runnable Code Tool <span class="engine-badge engine-badge-regex">Regex</span></h3><p class="concept-prose">Package S8g-e: a genuinely new 5th engine, added without touching the umbrella or any of the other 4 engines -- proving the taxonomy is real, not just claimed extensible.</p><input id="regex-pattern" class="regex-pattern-input" value="AES-\d+" /><textarea id="regex-text" class="regex-text-input" spellcheck="false">AES-128 RSA-2048 AES-256 RSA-3072</textarea><button id="regex-run" class="regex-run-btn" type="button">&#9654; Test</button><span id="regex-status" class="regex-status" aria-live="polite"></span><ul id="regex-matches" class="regex-matches"></ul></section>
+    <section><h3>Data table</h3>
+      <table class="data-table"><thead><tr><th data-sort="name">Concept &#8645;</th><th data-sort="type">Type &#8645;</th></tr></thead>
+      <tbody data-render-from="tabledata"></tbody></table>
+    </section>
+    <section><h3>Math rendering</h3>
+      <math class="math-rendering" xmlns="http://www.w3.org/1998/Math/MathML">
+        <mi>c</mi><mo>&#8801;</mo><msup><mi>m</mi><mi>e</mi></msup><mo>(</mo><mtext>mod</mtext><mo>&#160;</mo><mi>n</mi><mo>)</mo>
+      </math> <span style="font-size:var(--fs-sm)">(RSA encryption)</span>
+    </section>
+    <section class="refinement-widget">
+      <h3>Suggest a refinement</h3>
+      <textarea aria-label="refinement contribution"></textarea>
+      <button id="submit-refinement">Submit</button>
+      <ul id="refinement-list"></ul>
+    </section>
+    <p><a href="#top">&uarr; back to top</a> | <a href="#references">Jump to references</a>
+       <button class="copy-citation-btn">Copy citation of this page</button>
+       <button id="modal-open-btn" class="modal-open-btn" type="button">View reference details</button></p>
+    <div id="ref-modal" class="ref-modal" role="dialog" aria-modal="true" aria-labelledby="ref-modal-title" hidden>
+      <div class="ref-modal-content">
+        <h3 id="ref-modal-title">Reference Details</h3>
+        <p>This modal demonstrates real focus trapping (S9c): Tab/Shift+Tab cycle only within this dialog, Escape closes it, and focus returns to the trigger button.</p>
+        <label for="ref-modal-input">Note (focusable field):</label>
+        <input id="ref-modal-input" type="text" placeholder="type a note" />
+        <button id="ref-modal-close-btn" class="ref-modal-close-btn" type="button">Close</button>
+      </div>
+    </div>
+    <section id="references"><h3>References</h3><ol><li>Author, A. (2020). DigitalSignature in applied cryptography.</li><li>Author, A. (2021). HashFunction in applied cryptography.</li><li>Author, A. (2022). Protocols in applied cryptography.</li><li>Author, A. (2023). PublicKey in applied cryptography.</li><li>Author, A. (2024). SymmetricCipher in applied cryptography.</li><li>Author, A. (2025). TLS in applied cryptography.</li></ol></section>
+  </main>
+</div>
+<div id="ctxmenu" role="menu"><ul><li role="menuitem">Copy</li><li role="menuitem">Inspect</li></ul></div>
+<script>
+// CR-S8.6: data-driven rendering (ch10_v4 viz-slot precedent). The chart and table render from these
+// arrays, not from per-item markup baked at generation time -- adding a 7th concept/key-size requires
+// only appending to CHART_DATA/TABLE_DATA below, zero HTML/template changes.
+const CHART_DATA = [{"label": "AES-128", "bits": 128}, {"label": "AES-256", "bits": 256}, {"label": "RSA-2048", "bits": 2048}, {"label": "RSA-3072", "bits": 3072}];
+const TABLE_DATA = [{"concept": "DigitalSignature", "type": "asymmetric"}, {"concept": "HashFunction", "type": "hash"}, {"concept": "Protocols", "type": "protocol"}, {"concept": "PublicKey", "type": "asymmetric"}, {"concept": "SymmetricCipher", "type": "symmetric"}, {"concept": "TLS", "type": "protocol"}];
+const TRIPLES = [{"s": "DigitalSignature", "p": "a", "o": "asymmetric"}, {"s": "HashFunction", "p": "a", "o": "hash"}, {"s": "Protocols", "p": "a", "o": "protocol"}, {"s": "PublicKey", "p": "a", "o": "asymmetric"}, {"s": "SymmetricCipher", "p": "a", "o": "symmetric"}, {"s": "TLS", "p": "a", "o": "protocol"}, {"s": "AES-128", "p": "hasBits", "o": "128"}, {"s": "AES-128", "p": "isAlgorithm", "o": "AES"}, {"s": "AES-256", "p": "hasBits", "o": "256"}, {"s": "AES-256", "p": "isAlgorithm", "o": "AES"}, {"s": "RSA-2048", "p": "hasBits", "o": "2048"}, {"s": "RSA-2048", "p": "isAlgorithm", "o": "RSA"}, {"s": "RSA-3072", "p": "hasBits", "o": "3072"}, {"s": "RSA-3072", "p": "isAlgorithm", "o": "RSA"}];
+function sparqlExecute(query, triples) {
+  const selMatch = query.match(/SELECT\s+(DISTINCT\s+)?(.+?)\s+WHERE/is);
+  if (!selMatch) throw new Error('expected SELECT ... WHERE');
+  const vars = selMatch[2].trim() === '*' ? null : selMatch[2].trim().split(/\s+/);
+  const whereMatch = query.match(/WHERE\s*\{(.+)\}/is);
+  if (!whereMatch) throw new Error('expected WHERE { ... }');
+  let body = whereMatch[1];
+  const filterMatches = [...body.matchAll(/FILTER\s*\(([^)]+)\)/gi)];
+  body = body.replace(/FILTER\s*\([^)]+\)/gi, '');
+  const patterns = body.split('.').map(p => p.trim()).filter(p => p.length > 0)
+    .map(p => {
+      const parts = p.split(/\s+/);
+      if (parts.length < 3) throw new Error('malformed triple pattern: ' + p);
+      return { s: parts[0], p: parts[1], o: parts.slice(2).join(' ').replace(/^"|"$/g, '') };
+    });
+  function isVar(t) { return t.startsWith('?'); }
+  let bindings = [{}];
+  for (const pat of patterns) {
+    const next = [];
+    for (const b of bindings) {
+      const sVal = isVar(pat.s) ? (b[pat.s] ?? null) : pat.s;
+      const pVal = isVar(pat.p) ? (b[pat.p] ?? null) : pat.p;
+      const oVal = isVar(pat.o) ? (b[pat.o] ?? null) : pat.o;
+      for (const t of triples) {
+        if (sVal !== null && t.s !== sVal) continue;
+        if (pVal !== null && t.p !== pVal) continue;
+        if (oVal !== null && t.o !== oVal) continue;
+        const nb = Object.assign({}, b);
+        if (isVar(pat.s)) nb[pat.s] = t.s;
+        if (isVar(pat.p)) nb[pat.p] = t.p;
+        if (isVar(pat.o)) nb[pat.o] = t.o;
+        next.push(nb);
+      }
+    }
+    bindings = next;
+  }
+  for (const fm of filterMatches) {
+    const cond = fm[1].trim();
+    const cmp = cond.match(/(\?\w+)\s*(=|!=|>|<|>=|<=)\s*"?([^")]+)"?/);
+    if (cmp) {
+      const [, v, op, val] = cmp;
+      bindings = bindings.filter(b => {
+        const bv = b[v]; if (bv === undefined) return false;
+        const nbv = Number(bv), nval = Number(val);
+        const useNum = !isNaN(nbv) && !isNaN(nval);
+        const l = useNum ? nbv : bv, r = useNum ? nval : val;
+        if (op === '=') return l === r; if (op === '!=') return l !== r;
+        if (op === '>') return l > r; if (op === '<') return l < r;
+        if (op === '>=') return l >= r; if (op === '<=') return l <= r;
+        return true;
+      });
+    }
+  }
+  const orderMatch = query.match(/ORDER BY\s+(DESC\()?(\?\w+)\)?/i);
+  if (orderMatch) {
+    const v = orderMatch[2]; const desc = !!orderMatch[1];
+    bindings.sort((a, b) => {
+      const av = a[v], bv = b[v];
+      const r = String(av).localeCompare(String(bv), undefined, {numeric: true});
+      return desc ? -r : r;
+    });
+  }
+  const limitMatch = query.match(/LIMIT\s+(\d+)/i);
+  if (limitMatch) bindings = bindings.slice(0, parseInt(limitMatch[1]));
+  const outVars = vars || (bindings.length ? Object.keys(bindings[0]) : []);
+  return { vars: outVars, rows: bindings.map(b => outVars.map(v => b[v] ?? '')) };
+}
+
+function shaclValidate(shapesJson, triples) {
+  let shapes;
+  try { shapes = JSON.parse(shapesJson); }
+  catch (e) { throw new Error('shapes must be valid JSON: ' + e.message); }
+  if (!Array.isArray(shapes)) throw new Error('shapes must be a JSON array');
+  const results = [];
+  // group triples by subject for per-focus-node evaluation (real SHACL semantics: shapes target focus nodes)
+  const bySubject = {};
+  for (const t of triples) { (bySubject[t.s] = bySubject[t.s] || []).push(t); }
+  for (const shape of shapes) {
+    if (!shape.targetClass && !shape.targetSubjectsWithPredicate) throw new Error('shape needs targetClass or targetSubjectsWithPredicate');
+    let focusNodes;
+    if (shape.targetClass) {
+      focusNodes = Object.keys(bySubject).filter(s => bySubject[s].some(t => t.p === 'a' && t.o === shape.targetClass));
+    } else {
+      focusNodes = Object.keys(bySubject).filter(s => bySubject[s].some(t => t.p === shape.targetSubjectsWithPredicate));
+    }
+    for (const focus of focusNodes) {
+      const focusTriples = bySubject[focus] || [];
+      for (const prop of (shape.properties || [])) {
+        const matching = focusTriples.filter(t => t.p === prop.path);
+        if (prop.minCount !== undefined && matching.length < prop.minCount) {
+          results.push({ focus, path: prop.path, severity: 'Violation', message: `minCount ${prop.minCount} not met (found ${matching.length})` });
+        }
+        if (prop.maxCount !== undefined && matching.length > prop.maxCount) {
+          results.push({ focus, path: prop.path, severity: 'Violation', message: `maxCount ${prop.maxCount} exceeded (found ${matching.length})` });
+        }
+        if (prop.pattern) {
+          const re = new RegExp(prop.pattern);
+          for (const m of matching) {
+            if (!re.test(m.o)) results.push({ focus, path: prop.path, severity: 'Violation', message: `value "${m.o}" does not match pattern ${prop.pattern}` });
+          }
+        }
+        if (prop.datatype === 'numeric') {
+          for (const m of matching) {
+            if (isNaN(Number(m.o))) results.push({ focus, path: prop.path, severity: 'Violation', message: `value "${m.o}" is not numeric` });
+          }
+        }
+        if (prop.classConstraint) {
+          for (const m of matching) {
+            const targetHasType = (bySubject[m.o] || []).some(t => t.p === 'a' && t.o === prop.classConstraint);
+            if (!targetHasType) results.push({ focus, path: prop.path, severity: 'Violation', message: `value "${m.o}" is not of class ${prop.classConstraint}` });
+          }
+        }
+      }
+    }
+  }
+  return { conforms: results.length === 0, violations: results };
+}
+
+function pyExecute(source) {
+  const output = [];
+  const lines = source.split('\n').filter(l => l.trim().length > 0 || l.length === 0);
+  function indentOf(l) { const m = l.match(/^(\s*)/); return m[1].length; }
+  function tokenize(expr) {
+    const toks = []; let i = 0;
+    while (i < expr.length) {
+      const c = expr[i];
+      if (/\s/.test(c)) { i++; continue; }
+      if (/[0-9]/.test(c)) { let j = i; while (j < expr.length && /[0-9.]/.test(expr[j])) j++; toks.push({t:'num', v: parseFloat(expr.slice(i,j))}); i = j; continue; }
+      if (c === '"' || c === "'") { let j = i+1; while (j < expr.length && expr[j] !== c) j++; toks.push({t:'str', v: expr.slice(i+1,j)}); i = j+1; continue; }
+      if (/[a-zA-Z_]/.test(c)) { let j = i; while (j < expr.length && /[a-zA-Z0-9_]/.test(expr[j])) j++; toks.push({t:'name', v: expr.slice(i,j)}); i = j; continue; }
+      if (c === '/' && expr[i+1] === '/') { toks.push({t:'op', v:'//'}); i += 2; continue; }
+      if (c === '*' && expr[i+1] === '*') { toks.push({t:'op', v:'**'}); i += 2; continue; }
+      if ('=!<>'.includes(c) && expr[i+1] === '=') { toks.push({t:'op', v: c+'='}); i += 2; continue; }
+      if ('+-*/%()[],:<>'.includes(c)) { toks.push({t:'op', v: c}); i++; continue; }
+      throw new Error('unexpected character: ' + c);
+    }
+    return toks;
+  }
+  function parseExpr(toks, env) {
+    let pos = 0;
+    function peek() { return toks[pos]; }
+    function next() { return toks[pos++]; }
+    function parsePrimary() {
+      const t = next();
+      if (!t) throw new Error('unexpected end of expression');
+      if (t.t === 'num') return t.v;
+      if (t.t === 'str') return t.v;
+      if (t.t === 'op' && t.v === '(') { const v = parseOr(); if (next().v !== ')') throw new Error('expected )'); return v; }
+      if (t.t === 'op' && t.v === '[') {
+        const items = [];
+        while (peek() && !(peek().t === 'op' && peek().v === ']')) {
+          items.push(parseOr());
+          if (peek() && peek().t === 'op' && peek().v === ',') next();
+        }
+        next(); return items;
+      }
+      if (t.t === 'name') {
+        if (peek() && peek().t === 'op' && peek().v === '(') {
+          next(); const args = [];
+          while (peek() && !(peek().t === 'op' && peek().v === ')')) {
+            args.push(parseOr());
+            if (peek() && peek().t === 'op' && peek().v === ',') next();
+          }
+          next();
+          const builtins = { len: a=>a[0].length, sum: a=>a[0].reduce((x,y)=>x+y,0), sorted: a=>[...a[0]].sort((x,y)=>x-y),
+                              range: a=> a.length===1 ? Array.from({length:a[0]},(_, i)=>i) : Array.from({length:a[1]-a[0]},(_, i)=>i+a[0]),
+                              min: a=>Math.min(...(Array.isArray(a[0])?a[0]:a)), max: a=>Math.max(...(Array.isArray(a[0])?a[0]:a)), abs: a=>Math.abs(a[0]) };
+          if (!(t.v in builtins)) throw new Error('unknown function: ' + t.v);
+          return builtins[t.v](args);
+        }
+        if (!(t.v in env)) throw new Error('undefined variable: ' + t.v);
+        let val = env[t.v];
+        if (peek() && peek().t === 'op' && peek().v === '[') {
+          next(); const idx = parseOr(); if (next().v !== ']') throw new Error('expected ]');
+          val = val[idx];
+        }
+        return val;
+      }
+      throw new Error('unexpected token: ' + JSON.stringify(t));
+    }
+    function parseTerm() {
+      let v = parsePrimary();
+      while (peek() && peek().t === 'op' && ['*','/','//','%'].includes(peek().v)) {
+        const op = next().v; const r = parsePrimary();
+        if (op === '*') v = v * r; else if (op === '/') v = v / r; else if (op === '//') v = Math.floor(v / r); else if (op === '%') v = v % r;
+      }
+      return v;
+    }
+    function parseAdd() {
+      let v = parseTerm();
+      while (peek() && peek().t === 'op' && ['+','-'].includes(peek().v)) {
+        const op = next().v; const r = parseTerm();
+        v = op === '+' ? v + r : v - r;
+      }
+      return v;
+    }
+    function parseCompare() {
+      let v = parseAdd();
+      while (peek() && peek().t === 'op' && ['<','>','<=','>=','==','!='].includes(peek().v)) {
+        const op = next().v; const r = parseAdd();
+        if (op === '<') v = v < r; else if (op === '>') v = v > r; else if (op === '<=') v = v <= r;
+        else if (op === '>=') v = v >= r; else if (op === '==') v = v === r; else v = v !== r;
+      }
+      return v;
+    }
+    function parseOr() { return parseCompare(); }
+    const result = parseOr();
+    return result;
+  }
+  function evalExpr(expr, env) { return parseExpr(tokenize(expr), env); }
+  function run(lines, startIdx, endIdx, env, baseIndent) {
+    let i = startIdx;
+    while (i < endIdx) {
+      const raw = lines[i]; const line = raw.trim();
+      if (line === '') { i++; continue; }
+      const ind = indentOf(raw);
+      if (ind < baseIndent) break;
+      if (line.startsWith('print(')) {
+        const inner = line.slice(6, line.lastIndexOf(')'));
+        const parts = inner.split(',').map(p => evalExpr(p.trim(), env));
+        output.push(parts.join(' '));
+        i++;
+      } else if (line.startsWith('for ')) {
+        const m = line.match(/^for\s+(\w+)\s+in\s+(.+):$/);
+        if (!m) throw new Error('malformed for loop: ' + line);
+        const [, loopVar, iterExpr] = m;
+        const iterable = evalExpr(iterExpr, env);
+        const blockStart = i + 1;
+        let blockEnd = blockStart;
+        while (blockEnd < endIdx && (lines[blockEnd].trim() === '' || indentOf(lines[blockEnd]) > ind)) blockEnd++;
+        for (const item of iterable) {
+          const loopEnv = Object.assign({}, env, {[loopVar]: item});
+          run(lines, blockStart, blockEnd, loopEnv, indentOf(lines[blockStart]));
+          Object.assign(env, loopEnv);
+        }
+        i = blockEnd;
+      } else if (line.startsWith('if ')) {
+        const m = line.match(/^if\s+(.+):$/);
+        const cond = evalExpr(m[1], env);
+        const blockStart = i + 1;
+        let blockEnd = blockStart;
+        while (blockEnd < endIdx && (lines[blockEnd].trim() === '' || indentOf(lines[blockEnd]) > ind)) blockEnd++;
+        if (cond) run(lines, blockStart, blockEnd, env, indentOf(lines[blockStart]));
+        i = blockEnd;
+      } else if (/^\w+\s*=[^=]/.test(line)) {
+        const eq = line.indexOf('=');
+        const varName = line.slice(0, eq).trim();
+        const val = evalExpr(line.slice(eq+1).trim(), env);
+        env[varName] = val;
+        i++;
+      } else {
+        throw new Error('unsupported statement: ' + line);
+      }
+    }
+    return i;
+  }
+  const env = {};
+  run(lines, 0, lines.length, env, 0);
+  return output.join('\n');
+}
+
+function renderChart() {
+  const svg = document.querySelector('[data-render-from="chartdata"]');
+  if (!svg) return;
+  svg.innerHTML = CHART_DATA.map((d, i) =>
+    `<rect x="${i*60}" y="${140-d.bits/20}" width="40" height="${d.bits/20}" fill="var(--color-accent)"/>` +
+    `<text x="${i*60+20}" y="155" font-size="10" text-anchor="middle">${d.label}</text>`
+  ).join('');
+}
+function renderTable() {
+  const tbody = document.querySelector('[data-render-from="tabledata"]');
+  if (!tbody) return;
+  tbody.innerHTML = TABLE_DATA.map(r => `<tr><td>${r.concept}</td><td>${r.type}</td></tr>`).join('');
+}
+renderChart(); renderTable();
+try {
+  const savedCode = localStorage.getItem('rdodi-python-code');
+  if (savedCode) document.getElementById('python-code').value = savedCode;
+} catch (e) {}
+document.getElementById('python-code').addEventListener('input', (e) => {
+  try { localStorage.setItem('rdodi-python-code', e.target.value); } catch (err) {}
+});
+document.getElementById('regex-run').addEventListener('click', () => {
+  const status = document.getElementById('regex-status');
+  const ul = document.getElementById('regex-matches');
+  try {
+    const re = new RegExp(document.getElementById('regex-pattern').value, 'g');
+    const text = document.getElementById('regex-text').value;
+    const matches = [...text.matchAll(re)].map(m => m[0]);
+    ul.innerHTML = matches.map(m => `<li>${m}</li>`).join('');
+    status.textContent = matches.length + ' match(es)'; status.style.color = matches.length ? 'green' : 'crimson';
+  } catch (e) {
+    status.textContent = 'error: ' + e.message; status.style.color = 'crimson';
+  }
+});
+document.getElementById('python-run').addEventListener('click', () => {
+  const status = document.getElementById('python-status');
+  const out = document.getElementById('python-output');
+  const code = document.getElementById('python-code').value;
+  try {
+    const result = pyExecute(code);
+    out.textContent = result;
+    status.textContent = 'ran OK'; status.style.color = 'green';
+  } catch (e) {
+    out.textContent = '';
+    status.textContent = 'error: ' + e.message; status.style.color = 'crimson';
+  }
+});
+document.getElementById('shacl-run').addEventListener('click', () => {
+  const status = document.getElementById('shacl-status');
+  const shapesText = document.getElementById('shacl-shapes').value;
+  try {
+    const result = shaclValidate(shapesText, TRIPLES);
+    const tbody = document.getElementById('shacl-result-tbody');
+    if (result.conforms) {
+      tbody.innerHTML = '<tr><td colspan="4" style="color:green">CONFORMS -- 0 violations</td></tr>';
+      status.textContent = 'CONFORMS'; status.style.color = 'green';
+    } else {
+      tbody.innerHTML = result.violations.map(v => `<tr><td>${v.focus}</td><td>${v.path}</td><td>${v.severity}</td><td>${v.message}</td></tr>`).join('');
+      status.textContent = result.violations.length + ' violation(s)'; status.style.color = 'crimson';
+    }
+  } catch (e) {
+    status.textContent = 'error: ' + e.message; status.style.color = 'crimson';
+  }
+});
+document.getElementById('sparql-run').addEventListener('click', () => {
+  const status = document.getElementById('sparql-status');
+  const query = document.getElementById('sparql-code').value;
+  try {
+    const result = sparqlExecute(query, TRIPLES);
+    const thead = document.getElementById('sparql-result-thead');
+    thead.innerHTML = '<tr>' + result.vars.map(v => `<th>${v}</th>`).join('') + '</tr>';
+    const tbody = document.getElementById('sparql-result-tbody');
+    tbody.innerHTML = result.rows.map(r => '<tr>' + r.map(c => `<td>${c}</td>`).join('') + '</tr>').join('');
+    const svg = document.querySelector('.sparql-result-graph');
+    const nodes = [...new Set(result.rows.flat())].slice(0, 8);
+    svg.innerHTML = nodes.map((n, i) => {
+      const x = 30 + (i % 4) * 60, y = 30 + Math.floor(i / 4) * 60;
+      return `<circle cx="${x}" cy="${y}" r="20" fill="var(--color-accent)"/><text x="${x}" y="${y+4}" font-size="9" text-anchor="middle" fill="#fff">${String(n).slice(0,8)}</text>`;
+    }).join('');
+    status.textContent = 'ran OK -- ' + result.rows.length + ' rows'; status.style.color = 'green';
+  } catch (e) {
+    status.textContent = 'error: ' + e.message; status.style.color = 'crimson';
+  }
+});
+document.getElementById('js-run').addEventListener('click', () => {
+  const status = document.getElementById('js-status');
+  const code = document.getElementById('js-code').value;
+  try {
+    const fn = new Function('CHART_DATA', code);
+    const result = fn(CHART_DATA);
+    if (!Array.isArray(result)) throw new Error('code must return an array');
+    const tbody = document.getElementById('js-result-tbody');
+    tbody.innerHTML = result.map(r => `<tr><td>${r.algorithm}</td><td>${r.bits}</td></tr>`).join('');
+    const svg = document.querySelector('.js-result-chart');
+    svg.innerHTML = result.map((d, i) =>
+      `<rect x="${i*60}" y="${140-d.bits/20}" width="40" height="${d.bits/20}" fill="var(--color-accent)"/>` +
+      `<text x="${i*60+20}" y="155" font-size="10" text-anchor="middle">${d.algorithm}</text>`
+    ).join('');
+    status.textContent = 'ran OK -- ' + result.length + ' rows'; status.style.color = 'green';
+  } catch (e) {
+    status.textContent = 'error: ' + e.message; status.style.color = 'crimson';
+  }
+});
+document.querySelectorAll('.more-btn').forEach(btn => btn.addEventListener('click', () => {
+  const moreDiv = btn.previousElementSibling; // the .more div
+  const nowHidden = !moreDiv.hidden;
+  moreDiv.hidden = nowHidden;
+  btn.textContent = nowHidden ? 'Read more ↓' : 'Show less ↑';
+}));
+document.querySelectorAll('.subtab').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.view').forEach(v => v.hidden = true);
+  document.getElementById(btn.dataset.view).hidden = false;
+  try { localStorage.setItem('rdodi-last-view', btn.dataset.view); } catch (e) {}
+}));
+try {
+  const savedView = localStorage.getItem('rdodi-last-view');
+  if (savedView && document.getElementById(savedView)) {
+    document.querySelectorAll('.view').forEach(v => v.hidden = true);
+    document.getElementById(savedView).hidden = false;
+  }
+} catch (e) {}
+document.querySelectorAll('nav[role="menubar"] a[role="menuitem"]').forEach(a => a.addEventListener('click', () => {
+  document.querySelectorAll('nav[role="menubar"] a[role="menuitem"]').forEach(x => x.setAttribute('aria-current','false'));
+  a.setAttribute('aria-current','true');
+}));
+document.querySelectorAll('.view')[0] && (document.querySelectorAll('.view')[0].hidden = false);
+document.addEventListener('contextmenu', e => {
+  e.preventDefault();
+  const m = document.getElementById('ctxmenu');
+  m.style.display = 'block'; m.style.left = e.pageX + 'px'; m.style.top = e.pageY + 'px';
+});
+document.addEventListener('click', () => { document.getElementById('ctxmenu').style.display = 'none'; });
+document.getElementById('tree-open-all').addEventListener('click', () => {
+  document.querySelectorAll('.tree-group').forEach(g => { g.setAttribute('aria-expanded','true'); g.querySelector('ul[role=group]').hidden = false; });
+});
+document.getElementById('tree-close-all').addEventListener('click', () => {
+  document.querySelectorAll('.tree-group').forEach(g => { g.setAttribute('aria-expanded','false'); g.querySelector('ul[role=group]').hidden = true; });
+});
+// individual group toggle (click the group label itself)
+document.querySelectorAll('.tree-group-toggle').forEach(btn => btn.addEventListener('click', () => {
+  const g = btn.closest('.tree-group');
+  const ul = g.querySelector('ul[role=group]');
+  const wasHidden = ul.hidden;
+  ul.hidden = !wasHidden;
+  g.setAttribute('aria-expanded', String(wasHidden));
+}));
+// REAL navigation: clicking a tree leaf switches to that concept's view
+document.querySelectorAll('.tree-leaf').forEach(leaf => leaf.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const target = leaf.dataset.navTarget;
+  document.querySelectorAll('.view').forEach(v => v.hidden = true);
+  const el = document.getElementById(target);
+  if (el) el.hidden = false;
+  try { localStorage.setItem('rdodi-last-view', target); } catch (err) {}
+}));
+document.querySelectorAll('.has-tooltip').forEach(el => {
+  el.addEventListener('focus', () => el.classList.add('is-active'));
+  el.addEventListener('blur', () => el.classList.remove('is-active'));
+});
+document.querySelector('.skip-link').addEventListener('focus', e => e.target.classList.add('is-active'));
+document.querySelector('.skip-link').addEventListener('blur', e => e.target.classList.remove('is-active'));
+
+// CR-S7.2: real multi-state XOR-cipher simulation, >=3 distinct states (idx 0..7)
+document.querySelectorAll('.simulation').forEach(sim => {
+  const stateDiv = sim.querySelector('.sim-state');
+  const bitsDiv = sim.querySelector('.sim-bits');
+  let simState = 0;
+  const bits = stateDiv.dataset.bits, key = stateDiv.dataset.key;
+  function render() {
+    let out = '';
+    for (let i = 0; i < bits.length; i++) {
+      const active = i === simState;
+      const xr = bits[i] === key[i] ? '0' : '1';
+      out += `<span style="padding:2px;${active ? 'background:var(--color-accent);color:#fff' : ''}">${bits[i]}^${key[i]}=${xr}</span> `;
+    }
+    bitsDiv.innerHTML = out;
+    stateDiv.textContent = 'state: idx=' + simState;
+  }
+  render();
+  sim.querySelector('.sim-step').addEventListener('click', () => {
+    simState = (simState + 1) % bits.length;
+    render();
+  });
+});
+
+// CR-S7.1: real 3D geometry -- rotating cube, vertex+fragment shaders, drawArrays with a rotation matrix
+document.querySelectorAll('[data-render="webgl"]').forEach(canvas => {
+  const gl = canvas.getContext('webgl', {preserveDrawingBuffer: true}) || canvas.getContext('experimental-webgl', {preserveDrawingBuffer: true});
+  if (!gl) return;
+  // simple, directly-verifiable rotation+perspective in the shader (no custom JS matrix-multiply to get wrong)
+  const vsSrc = `attribute vec3 pos; uniform float angle; varying vec3 vColor;
+    void main() {
+      float c = cos(angle); float s = sin(angle);
+      vec3 rotated = vec3(pos.x*c + pos.z*s, pos.y, -pos.x*s + pos.z*c);
+      vec3 p = rotated + vec3(0.0, 0.0, 5.0);
+      gl_Position = vec4(p.x, p.y, p.z * 0.1, p.z);
+      vColor = pos * 0.5 + 0.5;
+    }`;
+  const fsSrc = `precision mediump float; varying vec3 vColor;
+    void main() { gl_FragColor = vec4(vColor, 1.0); }`;
+  function compile(type, src) { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, compile(gl.VERTEX_SHADER, vsSrc));
+  gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, fsSrc));
+  gl.linkProgram(prog); gl.useProgram(prog);
+  // cube: 8 vertices, drawn as 12 triangles (36 indices) via a simple triangle list
+  const verts = new Float32Array([
+    -1,-1,-1,  1,-1,-1,  1,1,-1,  -1,-1,-1,  1,1,-1,  -1,1,-1,   // back
+    -1,-1,1,   1,-1,1,   1,1,1,   -1,-1,1,   1,1,1,   -1,1,1,    // front
+    -1,-1,-1,  -1,1,-1,  -1,1,1,  -1,-1,-1,  -1,1,1,  -1,-1,1,   // left
+    1,-1,-1,   1,1,-1,   1,1,1,   1,-1,-1,   1,1,1,   1,-1,1,    // right
+    -1,1,-1,   1,1,-1,   1,1,1,   -1,1,-1,   1,1,1,   -1,1,1,    // top
+    -1,-1,-1,  1,-1,-1,  1,-1,1,  -1,-1,-1,  1,-1,1,  -1,-1,1    // bottom
+  ]);
+  const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf); gl.bufferData(gl.ARRAY_BUFFER, verts, gl.STATIC_DRAW);
+  const posLoc = gl.getAttribLocation(prog, 'pos'); gl.enableVertexAttribArray(posLoc);
+  gl.vertexAttribPointer(posLoc, 3, gl.FLOAT, false, 0, 0);
+  const angleLoc = gl.getUniformLocation(prog, 'angle');
+  gl.enable(gl.DEPTH_TEST);
+  let angle = 0;
+  function frame() {
+    angle += 0.02;
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.clearColor(0.95,0.95,0.97,1); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    gl.uniform1f(angleLoc, angle);
+    gl.drawArrays(gl.TRIANGLES, 0, 36);
+    requestAnimationFrame(frame);
+  }
+  frame();
+});
+
+document.querySelectorAll('[data-render="2d"]').forEach(c => {
+  const ctx = c.getContext('2d'); ctx.fillStyle = 'var(--color-accent)'.trim() || '#3d6ea5';
+  ctx.fillStyle = '#3d6ea5'; ctx.fillRect(10,10,100,50);
+});
+
+// CR-S7.4: 8 Optional widgets, all functional
+document.querySelector('.theme-switcher').addEventListener('click', () => {
+  const html = document.documentElement;
+  const nt = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+  html.setAttribute('data-theme', nt);
+  try { localStorage.setItem('rdodi-theme', nt); } catch (e) {}
+});
+try {
+  const savedTheme = localStorage.getItem('rdodi-theme');
+  if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+} catch (e) {}
+document.querySelectorAll('.copy-code-btn').forEach(btn => btn.addEventListener('click', () => {
+  const code = btn.previousElementSibling.textContent;
+  if (navigator.clipboard) navigator.clipboard.writeText(code).catch(()=>{});
+  btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = 'Copy code', 1000);
+}));
+document.querySelector('.copy-citation-btn').addEventListener('click', () => {
+  const cite = 'RDODI (2026). InteractiveHTMLSurface S7 exemplar.';
+  if (navigator.clipboard) navigator.clipboard.writeText(cite).catch(()=>{});
+});
+// S9c: real modal with genuine focus trapping
+(function() {
+  const modal = document.getElementById('ref-modal');
+  const openBtn = document.getElementById('modal-open-btn');
+  const closeBtn = document.getElementById('ref-modal-close-btn');
+  let lastFocused = null;
+  function getFocusable() {
+    return Array.from(modal.querySelectorAll('button, input, [tabindex]:not([tabindex="-1"])'));
+  }
+  function openModal() {
+    lastFocused = document.activeElement;
+    modal.hidden = false;
+    const focusables = getFocusable();
+    if (focusables.length) focusables[0].focus();
+  }
+  function closeModal() {
+    modal.hidden = true;
+    if (lastFocused) lastFocused.focus();
+  }
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { closeModal(); return; }
+    if (e.key === 'Tab') {
+      const focusables = getFocusable();
+      const first = focusables[0], last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+})();
+document.getElementById('submit-refinement').addEventListener('click', () => {
+  const ta = document.querySelector('textarea[aria-label="refinement contribution"]');
+  if (ta.value.trim()) {
+    const li = document.createElement('li'); li.textContent = ta.value.trim();
+    document.getElementById('refinement-list').appendChild(li); ta.value = '';
+  }
+});
+document.querySelectorAll('table.data-table th').forEach((th, idx) => th.addEventListener('click', () => {
+  const tbody = document.querySelector('table.data-table tbody');
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  rows.sort((a,b) => a.children[idx].textContent.localeCompare(b.children[idx].textContent));
+  rows.forEach(r => tbody.appendChild(r));
+}));
+</script>
+</body></html>

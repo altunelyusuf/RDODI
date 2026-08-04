@@ -1,0 +1,9 @@
+@prefix stg: <http://example.org/stg/governance#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+stg:SourceConformanceRule a owl:Class ; rdfs:subClassOf stg:ConformanceRule ;
+  skos:definition "A conformance rule checking presence of a verifiable source."@en ; dct:conformsTo <http://example.org/external-authority#ExternalOEAuthority> .
+stg:NamingConformanceRule a owl:Class ; rdfs:subClassOf stg:ConformanceRule ;
+  skos:definition "A conformance rule checking naming-convention adherence."@en ; dct:conformsTo <http://example.org/external-authority#ExternalOEAuthority> .
