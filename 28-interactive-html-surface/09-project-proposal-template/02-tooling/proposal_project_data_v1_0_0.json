@@ -1,0 +1,250 @@
+{
+  "_comment": "Project data that used to be written into the document generator's code. Everything here is this project's, not the template's: a new proposal replaces this file. Work-item and goal references use the register's local names and are resolved to labels at build time; unknown names fail the build.",
+  "title": "Agentic Software Development Framework with Variant Algebra",
+  "subtitle": "COM8090 Capstone Project Proposal",
+  "course_line": "Capstone Project (COM8090), 2026–2027 Fall",
+  "institution_line": "Department of Computer Engineering, İstanbul Kültür Üniversitesi",
+  "advisor": "Yusuf Altunel, PhD",
+  "advisor_email": "y.altunel@iku.edu.tr",
+  "owner_name": "Yusuf Altunel",
+  "framework": {
+    "label": "the Variant Algebra Framework",
+    "repo": "altunelyusuf/VAF",
+    "ontology_file": "variant_algebra_v3_2_6.ttl",
+    "namespace": "http://example.org/variant-algebra#",
+    "prefix": "va",
+    "pin_commit": "d310082"
+  },
+  "project_namespace": "http://example.org/scamps#",
+  "instances_namespace": "http://example.org/scamps/pipeline#",
+  "other_namespaces": {
+    "http://example.org/agentic-sdlc#": {
+      "prefix": "agdev",
+      "label": "agentic-sdlc"
+    }
+  },
+  "team_extra_rows": [
+    [
+      "Yusuf Altunel, PhD",
+      "Advisor and mission owner",
+      "All packages (review)",
+      "Weekly review"
+    ],
+    [
+      "Yusuf Altunel, as maintainer of altunelyusuf/VAF",
+      "External party",
+      "Addressee of enhancement proposals",
+      "On request"
+    ]
+  ],
+  "risks": [
+    [
+      "R-1",
+      "The framework changes in a way the project relies on",
+      "External dependency",
+      "{wi:WI_PinFrameworkVersion}; {wi:WI_GuardFrameworkDrift}"
+    ],
+    [
+      "R-2",
+      "The framework needs runtime packages it does not declare",
+      "External dependency",
+      "{wi:WI_DeclareFrameworkDependencies}; proposal filed upstream"
+    ],
+    [
+      "R-3",
+      "Proposals in the framework inbox are not accepted",
+      "{external_blocked}",
+      "Two items stay blocked; {gaps_semantic} coverage gaps stay recorded"
+    ],
+    [
+      "R-4",
+      "The evaluation finds against the project",
+      "{wi:WI_EvaluateAgainstUnguided}",
+      "{wi:WI_WriteUpFindings} is required to report it"
+    ],
+    [
+      "R-5",
+      "Team formation is delayed",
+      "All work items",
+      "Register complete; no planning event until the team exists"
+    ]
+  ],
+  "institution": [
+    [
+      "Institution",
+      "İstanbul Kültür Üniversitesi"
+    ],
+    [
+      "Department",
+      "Computer Engineering"
+    ],
+    [
+      "Programme",
+      "B.Sc. Computer Engineering"
+    ],
+    [
+      "Course",
+      "Capstone Project (COM8090)"
+    ],
+    [
+      "Academic year and semester",
+      "2026–2027, Fall"
+    ],
+    [
+      "Advisor",
+      "Yusuf Altunel, PhD (y.altunel@iku.edu.tr)"
+    ]
+  ],
+  "supervision": [
+    [
+      "Primary advisor",
+      "Yusuf Altunel, PhD",
+      "y.altunel@iku.edu.tr",
+      "Mission owner"
+    ],
+    [
+      "Co-advisor / industry",
+      "TBD",
+      "TBD",
+      "TBD"
+    ]
+  ],
+  "learning_objectives": [
+    [
+      "LO-1",
+      "Consume a governed external framework through its own interface and ontology without restating or modifying it",
+      "Apply",
+      "Integration probe holds; framework pinned",
+      "{goal:Goal_M1_AlgebraicallyGoverned}"
+    ],
+    [
+      "LO-2",
+      "Keep work inside a declared scope and trace every work item to an area and a deliverable",
+      "Analyse",
+      "Register validates clean",
+      "{goal:Goal_Containment}; {goals_facing:Scope}"
+    ],
+    [
+      "LO-3",
+      "Prove that every gate discriminates by showing it fails a known-bad input",
+      "Evaluate",
+      "Negative fixtures for every gate",
+      "{goal:Goal_S4_ProbabilisticGuardCovered}"
+    ],
+    [
+      "LO-4",
+      "Evaluate a formal approach against a baseline and report the result whichever way it goes",
+      "Evaluate",
+      "Comparison and write-up Done",
+      "{goal:Goal_M4_CleanReuseReplacesAdHoc}"
+    ]
+  ],
+  "academic_milestones_first": [
+    "Proposal defence",
+    "Register complete with zero violations",
+    "Week of 14 September 2026",
+    "10%"
+  ],
+  "academic_milestone_weights": [
+    "15%",
+    "15%",
+    "60%"
+  ],
+  "peer_evaluation": [
+    [
+      "Task completion",
+      "25%",
+      "Owned work items reach Done under the Definition of Done"
+    ],
+    [
+      "Technical quality",
+      "25%",
+      "Register validates clean; gates discriminate; framework really called"
+    ],
+    [
+      "Collaboration",
+      "20%",
+      "Teamwork, review and peer support"
+    ],
+    [
+      "Communication",
+      "15%",
+      "Documentation generated from the register rather than typed"
+    ],
+    [
+      "Initiative",
+      "15%",
+      "Proposals raised where the framework or the register falls short"
+    ]
+  ],
+  "signatures": [
+    [
+      "Advisor",
+      "Yusuf Altunel, PhD",
+      "",
+      ""
+    ],
+    [
+      "Student (lead)",
+      "TBD",
+      "",
+      ""
+    ],
+    [
+      "Student",
+      "TBD",
+      "",
+      ""
+    ],
+    [
+      "Student",
+      "TBD",
+      "",
+      ""
+    ]
+  ],
+  "abbreviations": {
+    "VAF": "Variant Algebra Framework",
+    "BRSF": "Backlog and Roadmap Semantic Framework",
+    "SHACL": "Shapes Constraint Language",
+    "SPARQL": "SPARQL Protocol and RDF Query Language",
+    "OWL": "Web Ontology Language",
+    "DSL": "domain-specific language",
+    "OE": "Ontology Engineering",
+    "TBox": "terminology box",
+    "RDODI": "Research, Documentation, Ontology, Development and Interaction pipeline",
+    "RDF": "Resource Description Framework",
+    "TBD": "to be determined",
+    "PhD": "Doctor of Philosophy",
+    "SHA": "Secure Hash Algorithm",
+    "IRI": "Internationalized Resource Identifier",
+    "API": "application programming interface",
+    "AST": "abstract syntax tree",
+    "FR": "functional requirement",
+    "NFR": "non-functional requirement",
+    "LO": "learning objective",
+    "DO": "design assurance document",
+    "IEC": "International Electrotechnical Commission",
+    "ISO": "International Organization for Standardization",
+    "COM": "Computer Engineering course code",
+    "SEN": "Software Engineering course code",
+    "WI": "work item",
+    "VAFAP": "VAF Agentic Pipeline",
+    "ABox": "assertion box",
+    "LLM": "large language model",
+    "OOM": "out of memory",
+    "CPU": "central processing unit",
+    "AI": "artificial intelligence",
+    "CM": "change management record",
+    "VAP": "vaf-agentic-pipeline namespace prefix",
+    "TR": "W3C Technical Report address path",
+    "FRACTAL": "the Fractal component model, written in capitals by its authors",
+    "RICE": "Reach, Impact, Confidence and Effort scoring",
+    "SDLC": "software development lifecycle",
+    "ASK": "SPARQL boolean query form",
+    "URL": "Uniform Resource Locator",
+    "B.Sc.": "Bachelor of Science",
+    "SCAMPS": "Source Code, Algebra, Model, Persistency, Synthesis"
+  },
+  "review_note": "Every handoff is gated by a named SHACL shape; any operator whose provenance traces to a probabilistic calculus passes the Tier-5 human review gate."
+}

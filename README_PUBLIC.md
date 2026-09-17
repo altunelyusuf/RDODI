@@ -4,6 +4,9 @@
 
 This is the **public teaching edition**, prepared for colleagues and students. It is derived from the governed RDODI ecosystem (see `PROVENANCE.md` for the exact lineage, SHA-chained) with personal projects and internal working records removed. Everything here is runnable and self-verifying.
 
+| `28-interactive-html-surface/08-brsf-corpus-template/` | A generic corpus-to-interactive-page instantiation tool and template: point it at a source page and a corpus JSON (principles/items, categories, framework citations, relations) and it produces a self-contained interactive HTML knowledge base -- sidebar, relation map, ontology graph, agent Q&A console, in-browser Python code lab, SPARQL console. |
+| `28-interactive-html-surface/09-project-proposal-template/` | A capstone/project-proposal interactive page template and its generator, built from a governed register. |
+| `28-interactive-html-surface/10-programmable-content-template/` | A second corpus-instantiation template, demonstrating the same pattern against different worked content. |
 ## What's inside
 
 | Area | Content |

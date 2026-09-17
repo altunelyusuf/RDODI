@@ -1,0 +1,381 @@
+{
+  "MISSION": "Formalize software-component variability as a closed algebra of 12 real operators, discoverable and composable, with variants configurable hierarchically through Profile Family.",
+  "CATEGORIES": {
+    "variability": {
+      "label": "Variability Operators (constraint-level)"
+    },
+    "algebraic": {
+      "label": "Algebraic Operators (set-level)"
+    },
+    "profile": {
+      "label": "Profile Family (hierarchical configuration)"
+    }
+  },
+  "FRAMEWORKS": {
+    "thesis": {
+      "name": "Altunel (2013), PhD Thesis, Istanbul University",
+      "url": "https://example.org/variant-algebra",
+      "note": "Introduces the algebraic approach for generating software component variants -- source of all 12 operators' real definitions and precedence table (Tablo 2.5)."
+    },
+    "gurov2012": {
+      "name": "Gurov, Ostvold, Schaefer (2012), ISoLA",
+      "url": "https://doi.org/10.1007/978-3-642-34026-0_29",
+      "note": "Hierarchical variability modeling for software product lines -- real literature grounding for the ProfileFamily recursive structure."
+    },
+    "haber2011": {
+      "name": "Haber et al. (2011), SPLC",
+      "url": "https://dl.acm.org/doi/10.1145/2019136.2019172",
+      "note": "Real literature grounding for taxonomy-based configuration, cited by the accepted Profile Family proposal."
+    }
+  },
+  "PRINCIPLES": [
+    {
+      "id": "OP01",
+      "n": 1,
+      "cat": "variability",
+      "short": "Mandatory",
+      "en": "The feature must appear in every variant. Thesis section 2.3: zorunluluk.",
+      "en_short": "Always present, no precedence value -- the algebra's default.",
+      "fw": [
+        "thesis"
+      ],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [
+        "OP02"
+      ],
+      "apply": "va:Profile's base case: every profile's own hasMandatoryElement is present in every variant it admits.",
+      "roles": [
+        "VAF maintainer"
+      ]
+    },
+    {
+      "id": "OP02",
+      "n": 2,
+      "cat": "variability",
+      "short": "Optional",
+      "en": "Thesis section 2.3, equation 2.36: the feature may or may not appear in a given variant.",
+      "en_short": "May or may not appear. Precedence 6 -- binds loosest of all 12.",
+      "fw": [
+        "thesis"
+      ],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [],
+      "apply": "P_BasicWebApp's Telemetry: present in some real generated variants, absent in others.",
+      "roles": [
+        "VAF maintainer"
+      ]
+    },
+    {
+      "id": "OP03",
+      "n": 3,
+      "cat": "variability",
+      "short": "Exclusive",
+      "en": "Thesis equation 2.35: exactly one of two operands appears in a variant, never both, never neither.",
+      "en_short": "Exactly one, never both. Precedence 1 -- binds tightest alongside Or and Repetition.",
+      "fw": [
+        "thesis"
+      ],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [
+        "OP04"
+      ],
+      "apply": "PF_StorageOptions: SSD xor HDD -- a real generated variant never selects both.",
+      "roles": [
+        "VAF maintainer"
+      ]
+    },
+    {
+      "id": "OP04",
+      "n": 4,
+      "cat": "variability",
+      "short": "Or",
+      "en": "Thesis equation 2.34: one operand, the other, or both may appear in a variant.",
+      "en_short": "One, the other, or both. Precedence 1.",
+      "fw": [
+        "thesis"
+      ],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [
+        "OP03"
+      ],
+      "apply": "PF_ComputeOptions: CPU or GPU, a real deployment can genuinely have both.",
+      "roles": [
+        "VAF maintainer"
+      ]
+    },
+    {
+      "id": "OP05",
+      "n": 5,
+      "cat": "variability",
+      "short": "Dependency",
+      "en": "Thesis equation 2.37: if feature a appears, feature b must also appear. Directional.",
+      "en_short": "Directional requirement. Precedence 4.",
+      "fw": [
+        "thesis"
+      ],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [
+        "OP11"
+      ],
+      "apply": "AdminPanel requires Authentication -- verified in P_AdvancedWebService's real 432 generated variants: never one without the other.",
+      "roles": [
+        "VAF maintainer"
+      ]
+    },
+    {
+      "id": "OP06",
+      "n": 6,
+      "cat": "variability",
+      "short": "Repetition",
+      "en": "Thesis equation 2.39: zero or more repetitions of a feature, also expressible in bracketed form.",
+      "en_short": "Bounded or unbounded repeat count. Precedence 1.",
+      "fw": [
+        "thesis"
+      ],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [],
+      "apply": "PF_StorageOptions: 1 to 3 real Volume instances per generated variant.",
+      "roles": [
+        "VAF maintainer"
+      ]
+    },
+    {
+      "id": "OP07",
+      "n": 7,
+      "cat": "algebraic",
+      "short": "Addition",
+      "en": "Thesis equation 2.28: co-inclusion of two elements in the feature space -- both or neither.",
+      "en_short": "Co-inclusion, weaker than both being independently Mandatory. Precedence 2.",
+      "fw": [
+        "thesis"
+      ],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [
+        "OP05"
+      ],
+      "apply": "Caching and CacheInvalidation: real generated variants show they always appear together, translated into two real Dependency statements (A requires B, B requires A) since the DSL has no native co-inclusion statement -- a disclosed, defensible translation.",
+      "roles": [
+        "VAF maintainer"
+      ]
+    },
+    {
+      "id": "OP08",
+      "n": 8,
+      "cat": "algebraic",
+      "short": "Subtraction",
+      "en": "Thesis equation 2.29: introduces the inverse of the second operand. Non-commutative, associative left-to-right.",
+      "en_short": "Removes B's real variants from A's set. Precedence 2.",
+      "fw": [
+        "thesis"
+      ],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [
+        "OP10"
+      ],
+      "apply": "Real cross-family combinator: Subtraction(EnterpriseCloud, EnterpriseOnPrem) keeps EnterpriseCloud's own real generated variants where the two branches' sets are genuinely distinct.",
+      "roles": [
+        "VAF maintainer"
+      ]
+    },
+    {
+      "id": "OP09",
+      "n": 9,
+      "cat": "algebraic",
+      "short": "Cartesian",
+      "en": "Thesis equations 2.30-2.31: the Cartesian product over two feature sets, generating all pairings.",
+      "en_short": "Every real combination of A's and B's variants. Precedence 3.",
+      "fw": [
+        "thesis"
+      ],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [],
+      "apply": "Real cross-family combinator: PF_ComputeOptions (4 real variants) x PF_StorageOptions (9 real variants) = 36 real joint configurations, verified exact.",
+      "roles": [
+        "VAF maintainer"
+      ]
+    },
+    {
+      "id": "OP10",
+      "n": 10,
+      "cat": "algebraic",
+      "short": "Division",
+      "en": "Thesis equations 2.32-2.33: set division, removes common elements. Non-commutative, not associative.",
+      "en_short": "Strips B's universally-shared features from A. Precedence 3.",
+      "fw": [
+        "thesis"
+      ],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [
+        "OP08"
+      ],
+      "apply": "Real cross-family combinator: Division(EnterpriseCloud, CommunityCloud) strips CoreEngine+Logging (common to all of CommunityCloud's real variants), leaving MultiTenancy+SSO.",
+      "roles": [
+        "VAF maintainer"
+      ]
+    },
+    {
+      "id": "OP11",
+      "n": 11,
+      "cat": "algebraic",
+      "short": "Intersection",
+      "en": "Set-theoretic intersection of two variant sets -- the variants that appear in both.",
+      "en_short": "Real exact-match variants shared by two sets. No declared precedence (added later than the original 11).",
+      "fw": [
+        "thesis"
+      ],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [
+        "OP09"
+      ],
+      "apply": "Real cross-family combinator: Intersection(EnterpriseCloud, CommunityCloud) is genuinely empty -- their real variant sets share no exact match.",
+      "roles": [
+        "VAF maintainer"
+      ]
+    },
+    {
+      "id": "OP12",
+      "n": 12,
+      "cat": "algebraic",
+      "short": "Inverse",
+      "en": "Thesis section 2.2.3: unary inverse -- produces an element removed from the variant's feature space.",
+      "en_short": "The one operator that overrides, not just adds. Precedence 5.",
+      "fw": [
+        "thesis"
+      ],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [
+        "OP01"
+      ],
+      "apply": "PF_EnterpriseOnPrem genuinely removes the root's inherited Logging via a real hasExcludedElement assertion -- verified: Logging is absent from its real accumulated Mandatory set, not just unmentioned.",
+      "roles": [
+        "VAF maintainer"
+      ]
+    },
+    {
+      "id": "PF01",
+      "n": 13,
+      "cat": "profile",
+      "short": "Profile (base case)",
+      "en": "A real <Element, Constraint, Attribute> configuration binding -- the base case Profile Family's recursion builds on.",
+      "en_short": "The non-recursive base: a plain va:Profile.",
+      "fw": [
+        "thesis"
+      ],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [
+        "PF02"
+      ],
+      "apply": "P_BasicWebApp: a real single-level profile, no ProfileFamily recursion, 2 real generated variants.",
+      "roles": [
+        "VAF maintainer"
+      ]
+    },
+    {
+      "id": "PF02",
+      "n": 14,
+      "cat": "profile",
+      "short": "ProfileFamily (recursive structure)",
+      "en": "A closed element/constraint core inherited by every descendant, discriminated among children via real Exclusive/Or operators over a designated type element.",
+      "en_short": "Hierarchical configuration -- real accumulation via SHACL-AF, verified 3 levels deep.",
+      "fw": [
+        "thesis",
+        "gurov2012",
+        "haber2011"
+      ],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [
+        "PF01"
+      ],
+      "apply": "PF_EnterpriseCloud (depth 2) genuinely accumulates all 4 real levels' Mandatory elements: CoreEngine + Logging + SSO + MultiTenancy, verified by direct query, not assumed.",
+      "roles": [
+        "VAF maintainer"
+      ]
+    }
+  ],
+  "RELATIONS": [
+    {
+      "source": "OP01",
+      "target": "OP02",
+      "type": "semantic",
+      "subtype": "complements",
+      "evidence": "Mandatory and Optional are the two base presence-operators every other VariabilityOperator builds structure on top of."
+    },
+    {
+      "source": "OP03",
+      "target": "OP04",
+      "type": "semantic",
+      "subtype": "contrasts",
+      "evidence": "Exclusive (exactly one) and Or (one, the other, or both) are the two group-discrimination operators, differing only in whether co-selection is allowed."
+    },
+    {
+      "source": "OP05",
+      "target": "OP07",
+      "type": "structural",
+      "subtype": "derivation",
+      "evidence": "Addition (co-inclusion) has no native DSL statement -- the real bridge translates it into two real Dependency statements (A requires B, B requires A), a disclosed, defensible reduction of one real operator to another."
+    },
+    {
+      "source": "OP08",
+      "target": "OP10",
+      "type": "semantic",
+      "subtype": "contrasts",
+      "evidence": "Subtraction removes whole matching variants (exact-match test); Division removes individual features common to all of the second operand's variants -- verified genuinely different real outputs on the same real EnterpriseCloud/CommunityCloud pair."
+    },
+    {
+      "source": "OP09",
+      "target": "OP11",
+      "type": "semantic",
+      "subtype": "contrasts",
+      "evidence": "Cartesian combines everything (cross-product); Intersection keeps only exact matches -- verified on real data: Cartesian(Compute,Storage)=36, Intersection(EnterpriseCloud,CommunityCloud)=0."
+    },
+    {
+      "source": "OP12",
+      "target": "OP01",
+      "type": "structural",
+      "subtype": "overrides",
+      "evidence": "Inverse is the one operator capable of removing what Mandatory would otherwise guarantee -- verified: PF_EnterpriseOnPrem's real Inverse exclusion genuinely removes an inherited Mandatory element."
+    },
+    {
+      "source": "PF01",
+      "target": "PF02",
+      "type": "structural",
+      "subtype": "composition",
+      "evidence": "va:ProfileFamily is rdfs:subClassOf va:Profile -- a family's own closed core IS a profile in exactly va:Profile's sense; the recursion is additional structure, not a different kind of thing."
+    },
+    {
+      "source": "PF02",
+      "target": "OP03",
+      "type": "behavioral",
+      "subtype": "uses",
+      "evidence": "ProfileFamily's real discriminatedBy property uses Exclusive or Or directly -- verified on 3 real worked examples (PF_ProjectProposal uses Or, PF_PaymentMethod and PF_Platform use Exclusive)."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+    "$comment": "Corpus contract for the RDODI interactive HTML template. Every key maps to exactly one top-level const in the source page. MEASURED on lcw_kb_interactive_v0_71_0.html (1,116,524 bytes): these constants are 296,337 bytes = 27% of the file. The other 73% - engines, the 11-agent team, the UI shell, and 540,115 bytes of corpus-INDEPENDENT BRSF governance - is reused unchanged. Replacing this contract is the whole of instantiating a new corpus. v1.1.0 corrects a real gap found by vaf-agentic-pipeline (2026-09-09, HANDOVER_vaf-agentic-pipeline_to_RDODI_stage4-template-keeps-source-shell_v1_0_0.md): the source package's shell strings (title, tab labels, regression questions, intent prototypes, SPARQL examples, synonyms, SEMTECH catalogue) were never documented in this contract at all, and instantiate_corpus never touched them -- so every instantiated page silently kept the SOURCE package's own identity in these fields. COMPANY_DATA was ALSO undocumented this way, but testing found it cannot be safely auto-emptied like the others: buildCompanyView() hardcodes its 5 company keys rather than deriving them from the data, so an emptied COMPANY_DATA crashes the page on load -- fixing that needs the shell's own code patched, not just a data swap, and stays a disclosed, open gap (see COMPANY_DATA's own entry below). 'UI shell reused unchanged' below still means structure (tab mechanism, stylesheet); it never meant content that names the source package, and this version says so explicitly.",
+    "version": "1.1.0",
+    "required": {
+        "MISSION": {
+            "js_type": "string",
+            "role": "The standing mission. Agents test requests AGAINST it and must never regenerate it - a standing scope exclusion in the source lineage.",
+            "example": "Help <audience> understand, apply, and realize <the corpus>, and answer their real questions about it."
+        },
+        "CATEGORIES": {
+            "js_type": "object",
+            "shape": "{ key: { label: string, css: string } }",
+            "role": "Top-level grouping of corpus entries. css must match a class in the stylesheet or entries render unstyled."
+        },
+        "PRINCIPLES": {
+            "js_type": "array",
+            "shape": "[{ id, cat, short, en, en_short, apply, fw: [], reinforces: [], roles: [] }]",
+            "role": "The corpus entries. `id` must be unique and is what every other structure references.",
+            "notes": "Name is historical - the first corpus was a principle set. Read it as 'the corpus entry list' for any domain. Renaming the const is NOT supported: retrieval, SPARQL materialisation and the Pyodide bridge all bind to it by name."
+        },
+        "FRAMEWORKS": {
+            "js_type": "object",
+            "shape": "{ key: { name, url, note } }",
+            "role": "External bodies of work the entries cite. May be empty for a corpus with no external citations."
+        },
+        "RELATIONS": {
+            "js_type": "array",
+            "shape": "[{ source, target, type, subtype, evidence }]",
+            "role": "Typed edges between entries and other nodes. Drives the relation map and multi-hop traversal. `evidence` is displayed verbatim - it is what makes an edge auditable rather than asserted."
+        },
+        "CITATIONS": {
+            "js_type": "array",
+            "role": "Numbered sources backing the corpus. Must match the research document's own numbering exactly or the Citations tab misattributes."
+        },
+        "TITLE": {
+            "js_type": "string",
+            "role": "The rendered <title> and top banner. OPTIONAL to supply explicitly -- if absent, derived from MISSION's first clause plus a fixed suffix. Was previously left as the SOURCE package's own title (the exact defect this version fixes); now always corpus-derived, never left blank.",
+            "example": "RDODI Lineage Interactive -- <subject>"
+        }
+    },
+    "optional": {
+        "COMPANY_DATA": "Comparative dataset. Omit when there is nothing to compare against. NOT auto-emptied if omitted (unlike the other optional shell fields as of v1.1.0) -- buildCompanyView() hardcodes compKeys=[\"amazon\",\"musk\",\"nvidia\",\"google\",\"apple\"] rather than deriving them from Object.keys(COMPANY_DATA.companies), so an emptied COMPANY_DATA throws on page load (confirmed by testing, not assumed safe). Still carries the SOURCE package's company data unless explicitly overridden -- a real, disclosed, open gap; fixing it requires patching buildCompanyView's own hardcoded key list, out of scope for a corpus-contract-only fix.",
+        "SKOS_TTL": "Concept scheme for the corpus, loaded into the real SPARQL store.",
+        "BIAS_TTL": "Known-bias vocabulary. Omit if the domain has no bias model.",
+        "AGENTIC_TTL": "Agentic-layer vocabulary.",
+        "PROV_TTL": "Provenance graph.",
+        "SNIPPETS": "Starter Python for the Code Lab, written against this corpus's own shape.",
+        "TOP_TABS": "Override for the 5-tab {id,label} array. Only the 'explorer' tab's label ('Principle Explorer' in the source) is genuinely source-specific; the other 4 (Overview/Interact/Citations/About) are already generic. If omitted, instantiate_corpus patches only the 'explorer' label to a generic 'Explorer' -- ids and the other 4 labels are left untouched (3 subsystems bind to ids, not labels).",
+        "SYNONYMS": "Turkish/English (or other) term-pair index for search. Emptied to {} if the corpus does not supply one -- was previously left as the source corpus's own pairs.",
+        "SEMTECH_CATALOGUE": "Source's own semantic-technology comparison list. Emptied to [] if absent -- previously leaked from source.",
+        "REGRESSION_QUESTIONS": "Regression test question set, previously asked about the SOURCE corpus's own entries (e.g. 'P17', 'P16') regardless of what the new corpus contains. Emptied to [] if the new corpus does not supply its own -- matches the EPICS-emptying precedent below rather than leaking another corpus's entry ids.",
+        "INTENT_PROTOTYPES": "Intent-classification training examples. Emptied to {} if absent -- previously leaked from source.",
+        "SPARQL_EXAMPLES": "Example queries shown in the SPARQL console, previously hardcoded to the source's own internal namespace. Emptied to {} if the new corpus does not supply its own -- a console demonstrating queries against a namespace the new corpus never used was the exact shape of drift this fix closes."
+    },
+    "governed_by_lineage_not_corpus": {
+        "$comment": "NOT corpus data. These come from the development's own BRSF lineage and are regenerated from the real governed TTL - never hand-edited in the page.",
+        "LINEAGE_TTL": "The development's own governed lineage, embedded so in-browser SHACL is genuine rather than simulated.",
+        "EPICS": "Mirror of the lineage Epic states. Kept in sync by lineage_audit_v1_0_0.py (SYNC check) - hand-editing it is exactly what that check catches.",
+        "LINEAGE_TASKS": "Mirror of the ExecutionTask set with real Gherkin acceptance criteria.",
+        "OBJECTIVES": "Mirror of the lineage Objectives with baseline/current/target."
+    },
+    "reused_unchanged": [
+        "BACKLOG_TBOX_TTL, BACKLOG_ABOX_TTL, BACKLOG_SHACL_TTL, BACKLOG_RULES_TTL - the real framework governance, corpus-independent",
+        "AGENT_REGISTRY and all 11 agent functions",
+        "engine layer: TF-IDF, transformers.js embeddings, WebLLM, Oxigraph, Pyodide, pySHACL via micropip",
+        "UI shell STRUCTURE, tab mechanism, stylesheet, error banner, session and Code Lab logging -- structure only; shell CONTENT that names the source package (title, tab labels, regression questions, etc.) is corpus-owned as of v1.1.0, not reused"
+    ]
+}

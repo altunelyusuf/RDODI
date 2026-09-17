@@ -1,0 +1,185 @@
+{
+  "MISSION": "Help maintenance engineers understand, apply, and realize the 6 reliability-centred maintenance strategies, and answer their real questions about them.",
+  "CATEGORIES": {
+    "predictive": {
+      "label": "Predictive & Condition-Based",
+      "css": "strategy"
+    },
+    "preventive": {
+      "label": "Preventive & Scheduled",
+      "css": "execution"
+    },
+    "corrective": {
+      "label": "Corrective & Run-to-Failure",
+      "css": "people"
+    }
+  },
+  "PRINCIPLES": [
+    {
+      "id": "R01",
+      "cat": "predictive",
+      "short": "Monitor condition, not the calendar",
+      "en": "Base intervention on measured asset condition rather than elapsed time.",
+      "en_short": "Condition over calendar",
+      "apply": "Instrument the asset, set an alarm threshold from real failure data, and intervene when the threshold is crossed.",
+      "fw": [
+        "rcm"
+      ],
+      "reinforces": [
+        "R02"
+      ],
+      "roles": [
+        "Reliability Engineer"
+      ]
+    },
+    {
+      "id": "R02",
+      "cat": "predictive",
+      "short": "Find the P-F interval before you plan",
+      "en": "Know how long an asset runs between detectable potential failure and functional failure.",
+      "en_short": "Know the P-F interval",
+      "apply": "Derive the interval from real failure history, then set inspection frequency below it.",
+      "fw": [
+        "rcm"
+      ],
+      "reinforces": [
+        "R01"
+      ],
+      "roles": [
+        "Reliability Engineer",
+        "Planner"
+      ]
+    },
+    {
+      "id": "R03",
+      "cat": "preventive",
+      "short": "Schedule only where failure is age-related",
+      "en": "Time-based replacement helps only when failure probability genuinely rises with age.",
+      "en_short": "Schedule age-related failures",
+      "apply": "Plot the hazard curve from real data; if it is flat, scheduled replacement adds cost and risk without benefit.",
+      "fw": [
+        "rcm",
+        "weibull"
+      ],
+      "reinforces": [
+        "R04"
+      ],
+      "roles": [
+        "Planner"
+      ]
+    },
+    {
+      "id": "R04",
+      "cat": "preventive",
+      "short": "Every task must change an outcome",
+      "en": "A maintenance task that cannot change the failure outcome is waste however diligently performed.",
+      "en_short": "Tasks must change outcomes",
+      "apply": "For each task ask what failure it prevents or detects; delete it if the answer is neither.",
+      "fw": [
+        "rcm"
+      ],
+      "reinforces": [
+        "R03"
+      ],
+      "roles": [
+        "Planner",
+        "Supervisor"
+      ]
+    },
+    {
+      "id": "R05",
+      "cat": "corrective",
+      "short": "Run-to-failure is a decision, not neglect",
+      "en": "For low-consequence assets, deliberate run-to-failure is the correct strategy.",
+      "en_short": "Run-to-failure is a choice",
+      "apply": "Record the consequence assessment that justified it, so the choice is auditable rather than assumed.",
+      "fw": [
+        "rcm"
+      ],
+      "reinforces": [
+        "R06"
+      ],
+      "roles": [
+        "Reliability Engineer"
+      ]
+    },
+    {
+      "id": "R06",
+      "cat": "corrective",
+      "short": "Consequence drives strategy",
+      "en": "Safety and environmental consequences change the acceptable failure probability, not just the cost case.",
+      "en_short": "Consequence drives strategy",
+      "apply": "Classify each failure mode by consequence before selecting any task.",
+      "fw": [
+        "rcm",
+        "iso14224"
+      ],
+      "reinforces": [
+        "R05"
+      ],
+      "roles": [
+        "Reliability Engineer",
+        "Safety Lead"
+      ]
+    }
+  ],
+  "FRAMEWORKS": {
+    "rcm": {
+      "name": "Reliability-Centred Maintenance (SAE JA1011)",
+      "url": "https://www.sae.org/standards/content/ja1011_200908/",
+      "note": "The evaluation criteria an RCM process must satisfy."
+    },
+    "weibull": {
+      "name": "Weibull hazard analysis",
+      "url": "https://en.wikipedia.org/wiki/Weibull_distribution",
+      "note": "Used to test whether failure is genuinely age-related."
+    },
+    "iso14224": {
+      "name": "ISO 14224 failure data collection",
+      "url": "https://www.iso.org/standard/64076.html",
+      "note": "Standardised taxonomy for equipment failure records."
+    }
+  },
+  "RELATIONS": [
+    {
+      "source": "R01",
+      "target": "R02",
+      "type": "reinforces",
+      "subtype": "prerequisite",
+      "evidence": "Condition monitoring is only actionable once the P-F interval sets the inspection frequency."
+    },
+    {
+      "source": "R03",
+      "target": "weibull",
+      "type": "cites",
+      "subtype": "method",
+      "evidence": "The hazard curve test for age-related failure is a Weibull shape-parameter question."
+    },
+    {
+      "source": "R06",
+      "target": "R05",
+      "type": "constrains",
+      "subtype": "precondition",
+      "evidence": "Run-to-failure is only admissible after consequence classification clears it."
+    },
+    {
+      "source": "R04",
+      "target": "R03",
+      "type": "reinforces",
+      "subtype": "filter",
+      "evidence": "The outcome test is what removes scheduled tasks that the hazard curve does not justify."
+    }
+  ],
+  "CITATIONS": [
+    {
+      "n": 1,
+      "text": "SAE JA1011: Evaluation Criteria for Reliability-Centred Maintenance Processes.",
+      "url": "https://www.sae.org/standards/content/ja1011_200908/"
+    },
+    {
+      "n": 2,
+      "text": "ISO 14224: Collection and exchange of reliability and maintenance data for equipment.",
+      "url": "https://www.iso.org/standard/64076.html"
+    }
+  ]
+}

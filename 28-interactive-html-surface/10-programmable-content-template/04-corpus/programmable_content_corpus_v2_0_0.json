@@ -1,0 +1,207 @@
+{
+  "MISSION": "Help a student build a small, real set of evidence-based study habits.",
+  "CATEGORIES": {
+    "memory": {
+      "label": "Memory & Recall"
+    },
+    "planning": {
+      "label": "Planning & Scheduling"
+    },
+    "focus": {
+      "label": "Focus & Environment"
+    }
+  },
+  "FRAMEWORKS": {
+    "spacedrep": {
+      "name": "Spaced Repetition",
+      "url": "https://en.wikipedia.org/wiki/Spaced_repetition",
+      "note": "Reviewing material at increasing intervals rather than cramming once."
+    },
+    "pomodoro": {
+      "name": "Pomodoro Technique",
+      "url": "https://en.wikipedia.org/wiki/Pomodoro_Technique",
+      "note": "Timeboxed focus intervals with short breaks."
+    }
+  },
+  "PRINCIPLES": [
+    {
+      "id": "P01",
+      "n": 1,
+      "cat": "memory",
+      "short": "Spaced repetition",
+      "en": "Review material at increasing intervals rather than cramming once.",
+      "en_short": "Review at increasing intervals, not all at once.",
+      "fw": [
+        "spacedrep"
+      ],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [
+        "P02"
+      ],
+      "apply": "Before your next exam, schedule three review passes spaced days apart instead of one long session.",
+      "roles": [
+        "Student"
+      ]
+    },
+    {
+      "id": "P02",
+      "n": 2,
+      "cat": "memory",
+      "short": "Active recall",
+      "en": "Test yourself on material instead of re-reading it passively.",
+      "en_short": "Test yourself; don't just re-read.",
+      "fw": [],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [],
+      "apply": "Close the book and write down everything you remember before checking it again.",
+      "roles": [
+        "Student"
+      ]
+    },
+    {
+      "id": "P03",
+      "n": 3,
+      "cat": "planning",
+      "short": "Weekly review",
+      "en": "Set aside fixed time each week to plan the next week's study blocks.",
+      "en_short": "Plan next week's study blocks on a fixed weekly slot.",
+      "fw": [],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [
+        "P04"
+      ],
+      "apply": "Put a 20-minute weekly planning slot on your calendar and treat it as non-negotiable.",
+      "roles": [
+        "Student",
+        "Instructor"
+      ]
+    },
+    {
+      "id": "P04",
+      "n": 4,
+      "cat": "planning",
+      "short": "Interleaving",
+      "en": "Mix multiple subjects or problem types in one session rather than blocking by topic.",
+      "en_short": "Mix subjects/problem types instead of one block per topic.",
+      "fw": [],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [],
+      "apply": "In your next practice session, alternate between two subjects every 20 minutes instead of finishing one first.",
+      "roles": [
+        "Student"
+      ]
+    },
+    {
+      "id": "P05",
+      "n": 5,
+      "cat": "focus",
+      "short": "Pomodoro blocks",
+      "en": "Work in fixed, timed intervals with short breaks between them.",
+      "en_short": "Work in timed intervals with short breaks.",
+      "fw": [
+        "pomodoro"
+      ],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [
+        "P06"
+      ],
+      "apply": "Set a 25-minute timer for your next study block and take a 5-minute break when it ends, no exceptions.",
+      "roles": [
+        "Student",
+        "Instructor"
+      ]
+    },
+    {
+      "id": "P06",
+      "n": 6,
+      "cat": "focus",
+      "short": "Environment control",
+      "en": "Remove predictable distractions from the study environment before starting.",
+      "en_short": "Remove predictable distractions before you start.",
+      "fw": [],
+      "tools": [],
+      "biases": [],
+      "ceremonies": [],
+      "reinforces": [],
+      "apply": "Before your next session, silence your phone and close every browser tab you don't need.",
+      "roles": [
+        "Student"
+      ]
+    }
+  ],
+  "RELATIONS": [
+    {
+      "source": "P01",
+      "target": "P02",
+      "type": "semantic",
+      "subtype": "reinforces",
+      "evidence": "Both are retrieval-strengthening techniques -- spaced repetition schedules the retrieval attempts active recall performs."
+    },
+    {
+      "source": "P03",
+      "target": "P04",
+      "type": "structural",
+      "subtype": "composition",
+      "evidence": "A weekly review typically schedules the interleaved sessions P04 describes."
+    },
+    {
+      "source": "P05",
+      "target": "P06",
+      "type": "behavioral",
+      "subtype": "co-occurs",
+      "evidence": "Pomodoro blocks are commonly paired with environment control -- the timer alone doesn't help if the phone is still buzzing."
+    },
+    {
+      "source": "Cat_memory",
+      "target": "P01",
+      "type": "structural",
+      "subtype": "generalization",
+      "evidence": "P01 is-a member of category memory"
+    },
+    {
+      "source": "Cat_memory",
+      "target": "P02",
+      "type": "structural",
+      "subtype": "generalization",
+      "evidence": "P02 is-a member of category memory"
+    },
+    {
+      "source": "Cat_planning",
+      "target": "P03",
+      "type": "structural",
+      "subtype": "generalization",
+      "evidence": "P03 is-a member of category planning"
+    },
+    {
+      "source": "Cat_planning",
+      "target": "P04",
+      "type": "structural",
+      "subtype": "generalization",
+      "evidence": "P04 is-a member of category planning"
+    },
+    {
+      "source": "Cat_focus",
+      "target": "P05",
+      "type": "structural",
+      "subtype": "generalization",
+      "evidence": "P05 is-a member of category focus"
+    },
+    {
+      "source": "Cat_focus",
+      "target": "P06",
+      "type": "structural",
+      "subtype": "generalization",
+      "evidence": "P06 is-a member of category focus"
+    }
+  ]
+}

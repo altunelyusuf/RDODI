@@ -39,3 +39,78 @@ Parse **66/66** TTLs · SHACL **domain** and **interactive-page** suites: confor
 1. **BP-D7 misalignment in governed `scp_domain_tbox_v3_17_0.ttl`**: `versionInfo "3.17.0"` vs `versionIRI …/3.16.1` — carried since v3.17.0's metadata patch.
 2. **Version clutter in governed `28-…/06-s6-exemplar/`**: 15 generator versions and 2 exemplar versions shipped side-by-side, against the no-multi-version-clutter rule.
 3. `13-pipeline/PACKAGE_13_DEFINITION_CONFORMANCE_BACKLOG_v1_0_0.md` is retained here as a frozen historical planning record; its line-number references describe the v1_9_0-era generator.
+
+---
+
+# Update v1.1.0 (2026-09-17)
+
+**Derived from:** governed `rdodi-ecosystem` v1.124.0, repo `main @ f014066`.
+
+**Scope, deliberately partial and disclosed as such**: this update adds
+three new sub-packages under `28-interactive-html-surface/` —
+`08-brsf-corpus-template`, `09-project-proposal-template`,
+`10-programmable-content-template` — built since the v1.0.0 base
+(v1.74.0-era). It does **not** attempt a full re-sync of every directory
+that has since drifted from v1.74.0; the governed tree has moved in
+`01-stage-vocabularies/`, `02-gates/`, `12-enforcement/`, `14-bootstrap/`,
+`01-profiles/`, `03-procedure/` and others too, none of which are
+touched here. Those remain a separate, future update.
+
+## Included
+
+- `08-brsf-corpus-template/`: the schema contract, the instantiation
+  tool (`instantiate_corpus_v1_2_0.py`, genericized — see below), two
+  example corpora, and a built, verified instance
+  (`rdodi_lineage_interactive_v14_0_0.html`).
+- `09-project-proposal-template/`: included in full — checked and found
+  to already carry zero internal-source references throughout (schema,
+  tooling, source reference, and built instance alike).
+- `10-programmable-content-template/`: the corpus data, both built
+  instances, and the verification script.
+
+## Excluded
+
+- `08-brsf-corpus-template/05-source-reference/` (two raw internal
+  source templates, each heavily branded with the internal company this
+  package's own development used as its working example) and
+  `10-programmable-content-template/05-source-reference/` (the same
+  raw template) — matching this edition's own v1.0.0 precedent of
+  excluding raw internal sources rather than trying to genericize them
+  wholesale.
+- `08-brsf-corpus-template/07-handovers-received/` and the entire
+  `09-handover-response/` package — internal cross-session governance
+  records naming a specific internal package throughout (as a citable
+  reference implementation, by name, repeatedly) rather than reusable
+  public teaching material. Matches this edition's own precedent of
+  excluding internal session/handover records (see the original
+  exclusion of `05-documentation/`).
+
+## Modified
+
+| File | Change |
+|---|---|
+| `08-brsf-corpus-template/02-tooling/instantiate_corpus_v1_2_0.py` | The literal find/replace table this package's own development used against its internal source template (~44 lines, all pairing internal-source-specific strings with generic ones) removed and replaced with a comment explaining the technique it demonstrated; that table is meaningless without the excluded source and its literal old-side strings are themselves exactly the internal content this edition excludes. Every other transform in the function — dark mode, sidebar filter, tree restructure, the force-directed ontology graph, and the real UI-layout fixes — is source-agnostic and shipped unchanged, verified still functional (re-run end to end, 20 of the original transforms still apply cleanly). One further, minor comment reference to the internal source's naming genericized for consistency. |
+| `08-brsf-corpus-template/BUILD_INSTRUCTIONS_v1_0_0.md` | One reference to an internal identifier count genericized. |
+| `08-brsf-corpus-template/01-schema/corpus_contract_v1_1_0.json` | One reference to the internal source's own namespace genericized. |
+| `08-brsf-corpus-template/README_v1_0_0.md` | Not genericized line-by-line — replaced outright with a fresh, short public README, since the original is a full internal development diary referencing the internal source by name throughout (closer in kind to a session record than reusable documentation, so treated the same way this edition already treats those). |
+| `10-programmable-content-template/README_v2_3_0.md` | Three verification-result mentions of internal identifiers genericized ("zero X present" style statements; no internal content was actually described, just confirmed absent). |
+| `08-brsf-corpus-template/06-instance/rdodi_lineage_interactive_v14_0_0.html`, `10-programmable-content-template/06-instance/programmable_content_generation_v3_0_0.html`, `10-programmable-content-template/06-instance/vaf_operators_knowledge_base_v1_0_0.html` | A real finding made during this update's own absence-verification pass, not anticipated going in: all three embed the shared, standard `backlog-roadmap-framework` TBox verbatim as a data constant, and that TBox's own v1.0.0 header comment documents its origin as a generalisation of an internal product-backlog deposit tied to a specific named personal business. Genericized in all three (the specific business name and its internal deposit path removed from the embedded comment; the rest of the governed ontology text, including every substantive definition, left untouched). |
+
+## Verification performed on this update (executed, not asserted)
+
+Comprehensive case-insensitive grep across every file included in this
+update for the internal source's own name/abbreviation, the personal
+business name found during the pass above, and the author's employer
+name: zero occurrences, content and filenames both. The genericized
+tool re-run end to end against its own internal test source (this
+sandbox only, not shipped) to confirm it still functions after the
+excision. All three edited HTML instances re-checked for valid
+JavaScript syntax after the embedded-TTL edit.
+
+## Not yet done, and named rather than left silent
+
+A full re-sync against governed `rdodi-ecosystem` v1.124.0 covering
+every directory this edition originally derived from — the drift is
+real (new ontology versions, new gates, new profiles) and has not been
+reviewed for public-safety here. This update is scoped to the three new
+sub-packages only, as agreed before starting.
