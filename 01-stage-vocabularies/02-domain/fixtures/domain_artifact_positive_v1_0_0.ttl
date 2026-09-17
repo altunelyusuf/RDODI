@@ -1,0 +1,19 @@
+@prefix rdodi-domain: <http://example.org/rdodi/domain-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Positive fixture: the same artifact, now carrying all three v1.2.0
+# requirements -- proving a real, conforming DomainOntologyArtifact is
+# actually reachable, not just that the negative case fails.
+<http://example.org/fixture/domain#VAFDomainArtifact> a rdodi-domain:DomainOntologyArtifact, owl:NamedIndividual ;
+    rdfs:label "VAF domain ontology (fixture, v1.2.0-conformant shape)"@en ;
+    rdodi-domain:hasCompetencyQuestion <http://example.org/fixture/domain#VAFCQSet> ;
+    rdodi-domain:hasSourceProvenance rdodi-domain:AuthoredForDomainOntologyV1 ;
+    rdodi-domain:hasReusabilityScope rdodi-domain:RS_GeneralDomain .
+
+<http://example.org/fixture/domain#VAFCQSet> a rdodi-domain:CompetencyQuestionSet, owl:NamedIndividual ;
+    rdfs:label "VAF domain competency questions (fixture)"@en ;
+    rdodi-domain:containsCompetencyQuestion <http://example.org/fixture/domain#CQ1> .
+
+<http://example.org/fixture/domain#CQ1> a rdodi-domain:CompetencyQuestion, owl:NamedIndividual ;
+    rdfs:label "Does this operator set correspond to a recognised formalism in Software Product Line Engineering, and which one?"@en .

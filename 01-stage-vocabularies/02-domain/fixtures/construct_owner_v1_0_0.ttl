@@ -1,0 +1,32 @@
+@prefix rdodi-domain: <http://example.org/rdodi/domain-ontology#> .
+@prefix apb: <http://example.org/testdrive/apb-fixture#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+# Real fixture: "append" is a genuinely ambiguous bare name (list.append,
+# bytearray.append, deque.append, array.append all exist) -- exactly the
+# kind of unchecked claim HANDOVER_automate-python-book_to_RDODI_chapter-domain-ontology-gaps_v1_0_0.md
+# measured 94 of 123 bare names as. hasOwningConcept converts it into a
+# checkable one: does list actually carry an operation named "append"?
+# (hasattr(list, "append") == True, verified.)
+
+apb:append a owl:NamedIndividual ;
+    rdfs:label "append"@en ;
+    rdodi-domain:hasOwningConcept apb:list_type .
+
+apb:list_type a owl:NamedIndividual ;
+    rdfs:label "list"@en ;
+    skos:definition "Python's built-in list type."@en .
+
+apb:sort a owl:NamedIndividual ;
+    rdfs:label "sort"@en ;
+    rdodi-domain:hasOwningConcept apb:list_type ;
+    rdodi-domain:hasRuntimeEffect apb:sort_effect ;
+    rdodi-domain:hasIOExample apb:sort_io1 .
+
+apb:sort_effect a rdodi-domain:RuntimeEffect, owl:NamedIndividual ;
+    rdfs:label "sorts the list in place and returns None"@en .
+
+apb:sort_io1 a rdodi-domain:IOExample, owl:NamedIndividual ;
+    rdfs:label "[3,1,2].sort() -> None; list is now [1,2,3]"@en .

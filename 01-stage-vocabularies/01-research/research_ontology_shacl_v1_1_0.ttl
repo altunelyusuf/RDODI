@@ -1,0 +1,51 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix res: <http://example.org/rdodi/research-ontology#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/rdodi/research-ontology/shacl> a owl:Ontology ;
+    rdfs:label "RDODI Research Ontology shacl v1.1.0"@en ;
+    dcterms:created "2026-08-27"^^xsd:date ;
+    dcterms:creator <http://example.org/rdodi/agent/YusufAltunel> ;
+    dcterms:description "RDODI Research Ontology shacl. Part of the four-subject RDODI ecosystem: Research, Domain, Document, Interactive Page."@en ;
+    dcterms:identifier "research_ontology_shacl_v1_1_0" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-08-27"^^xsd:date ;
+    dcterms:publisher <http://example.org/rdodi/agent/IstanbulKulturUniversity> ;
+    dcterms:rights "Copyright (c) 2026 Yusuf Altunel. Licensed CC BY 4.0."@en ;
+    dcterms:rightsHolder <http://example.org/rdodi/agent/YusufAltunel> ;
+    rdfs:comment "MINOR bump replacing v1.0.1's shipped fragment (8 anonymous, unanchored sh:Warning shapes covering classes Acceptance-ArchivalStage alphabetically, none of them sh:targetClass-bound, none of them the classes any real artifact instantiates). v1.1.0 targets the two classes 09-worked-example/ch10-current actually uses (res:ResearchProject, res:Publication) with real sh:targetClass bindings and sh:Violation severity. HONEST SCOPE: this does not attempt full 171-class coverage -- it fixes the load-bearing gap a parallel session found (Stage1.B silently checked nothing because the procedure instructed a non-existent class and the shipped shapes targeted nothing). Extending coverage to the remaining 169 classes is a real, separate, larger undertaking, named here rather than implied complete."@en ;
+    rdfs:comment "Derived from research_ontology_shacl_v1_0_1.ttl (SHA-256 of that file recorded in this package's own MANIFEST_SHA256). ORIGINATION lineage: not a continuation of any prior ecosystem."@en ;
+    owl:versionIRI <http://example.org/rdodi/research-ontology/shacl/1.1.0> ;
+    owl:versionInfo "1.1.0" ;
+    prov:wasAttributedTo <http://example.org/rdodi/agent/YusufAltunel> ;
+    prov:wasRevisionOf <http://example.org/rdodi/research-ontology/shacl/1.0.1> .
+
+res:ResearchProjectShape a sh:NodeShape ;
+    sh:targetClass res:ResearchProject ;
+    rdfs:label "A ResearchProject has a label and at least one member publication (L2)"@en ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "A ResearchProject instance MUST have at least one rdfs:label -- this is the class the four-stage procedure actually instructs Stage 1 to produce (RDODI_FourStage_Pipeline_Procedure_v1_2_1.md SS2.2), and an unlabeled research corpus cannot be cited by later stages."@en ;
+    ] ;
+    sh:property [
+        sh:path rdfs:member ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "A ResearchProject instance MUST have at least one rdfs:member. A research corpus with zero members is not a corpus -- this is the property the shipped worked example actually uses to link the project to its Publications, so it is enforced rather than left to convention."@en ;
+    ] .
+
+res:PublicationShape a sh:NodeShape ;
+    sh:targetClass res:Publication ;
+    rdfs:label "A Publication has a label (L2)"@en ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "A Publication instance MUST have at least one rdfs:label -- every Publication cited by a ResearchProject needs a human-readable identity; an unlabeled source cannot be checked by a reader against what the corpus claims to have reviewed."@en ;
+    ] .

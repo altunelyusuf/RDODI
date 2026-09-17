@@ -1,0 +1,139 @@
+@prefix backlog: <http://example.org/backlog#> .
+@prefix fg:      <http://example.org/REPLACE_ME-fitgap#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+
+# fitgap_backlog_template.ttl — starter skeleton, generalized from the
+# skeleton semtech-landscape itself began from (fitgap_backlog_v1_0_0.ttl),
+# authored against the Backlog & Roadmap Semantic Framework (BRSF,
+# https://github.com/altunelyusuf/backlog-roadmap-framework). Check for the
+# CURRENT BRSF version before adopting this template — it drifts, and this
+# byproduct's own delivery history had to re-sync against it multiple times
+# (v1.26.0 -> v1.27.0 -> v1.32.0 -> v1.33.0 across one project's lifetime).
+#
+# HOW TO USE: replace every REPLACE_ME token, replace the fg: namespace
+# with your own byproduct's identifier, delete the worked example Epic
+# (fg:EP1 below) once you understand the shape, and validate against the
+# CURRENT BRSF tooling (backlog_validate_vX.py) before treating this as
+# real — do not assume this template is still schema-current without
+# checking; BRSF's own SHACL shapes have changed the required predicates
+# on ReleaseEvidence and Objective at least twice in this byproduct's
+# lifetime (see the handover's R20 pattern for why a stale assumption
+# about a denominator, or here a required predicate, must be re-verified
+# rather than carried forward unchecked).
+#
+# THIS TEMPLATE WAS ITSELF VALIDATED (0 Violation, CONFORMANT) against
+# BRSF v1.33.0's real tooling before being included here, not merely
+# written to look plausible. Two real, non-obvious shape requirements
+# were found and fixed in the process, worth knowing before you fill
+# this in: (1) backlog:hasMissionStatement's SHACL shape requires a
+# PLAIN xsd:string — an @en language-tagged literal fails validation
+# even though it looks correct; (2) a Backlog container's asserted
+# backlog:hasState must agree with the state actually derivable from
+# its member work items (an InProgress backlog whose only member is
+# Proposed is flagged) — start a new backlog at backlog:Proposed and
+# only move it to InProgress once a member actually is.
+
+fg:Profile a backlog:AdoptionProfile ;
+    rdfs:label "REPLACE_ME byproduct's BRSF adoption profile"@en ;
+    backlog:profileAppliesTo "REPLACE_ME what this profile governs" ;
+    backlog:bindsNamespace "http://example.org/REPLACE_ME-fitgap#" ;
+    backlog:governsBacklog fg:Backlog ;
+    backlog:hasConformanceLevel backlog:L1_Core ;
+    backlog:hasTargetConformanceLevel backlog:L2_EvidenceBound ;
+    backlog:hasLevelReviewDate "2026-12-01T00:00:00Z"^^xsd:dateTime ; # REPLACE_ME: pick a real review date
+    backlog:hasDecisionRationale "REPLACE_ME: why L1_Core (or your chosen level) was chosen, decided by whom, and when."@en ;
+    backlog:decidedBy backlog:Owner ;
+    backlog:adoptsFacet backlog:CoreFacet , backlog:PrioritizationFacet , backlog:RoadmapFacet .
+
+fg:Mission a backlog:Mission ;
+    rdfs:label "REPLACE_ME mission label"@en ;
+    backlog:hasMissionStatement "REPLACE_ME the actual one-paragraph mission statement, in the stakeholder's own terms where possible." ;
+    backlog:missionFor fg:Backlog ;
+    backlog:decidedBy backlog:Owner ;
+    backlog:hasDecisionRationale "REPLACE_ME: the specific thing the commissioning stakeholder said that this mission traces to, with a date."@en .
+
+fg:Initiative a backlog:Initiative ;
+    rdfs:label "REPLACE_ME initiative name"@en ;
+    backlog:hasIdentifier "REPLACE_ME-INIT-1" ;
+    backlog:hasTitle "REPLACE_ME one-line initiative scope"@en ;
+    backlog:hasState backlog:Proposed ;
+    backlog:memberOfContainer fg:Backlog ;
+    backlog:scheduledInHorizon backlog:Next ;
+    backlog:contributesToMilestone fg:MS1 ;
+    backlog:notYetScoreable true ;
+    backlog:hasScoreabilityReason "REPLACE_ME: umbrella items are typically scored at epic level so the parent does not double-count with its children — state your own reason." ;
+    backlog:decomposesInto fg:EP1 .
+    # ^ list every epic here as the backlog grows; this is the single
+    #   place that must stay in sync with which fg:EPn individuals exist
+    #   below — exactly the kind of aggregation point Pattern R18 warns
+    #   goes stale if only the epic block itself is added and this list
+    #   is forgotten.
+
+fg:Backlog a backlog:Backlog ;
+    rdfs:label "REPLACE_ME byproduct fit-gap backlog"@en ;
+    backlog:hasIdentifier "REPLACE_ME-BL" ;
+    backlog:hasTitle "REPLACE_ME backlog title"@en ;
+    backlog:hasState backlog:Proposed ;
+    backlog:appliesDefinitionOfDone backlog:DoD_Baseline .
+
+fg:Roadmap a backlog:Roadmap ;
+    rdfs:label "REPLACE_ME roadmap label"@en ;
+    backlog:hasTitle "REPLACE_ME roadmap title"@en ;
+    backlog:roadmapOf fg:Backlog .
+
+#################################################################
+#  Worked example epic — delete once you understand the shape
+#################################################################
+fg:EP1 a backlog:Epic ;
+    rdfs:label "REPLACE_ME epic title"@en ;
+    backlog:hasIdentifier "FG-EP1" ;
+    backlog:hasTitle "REPLACE_ME one-line scope statement"@en ;
+    backlog:hasRationale "REPLACE_ME: quote the specific stakeholder request or finding this epic answers, with a date, so the traceability is checkable rather than asserted."@en ;
+    backlog:hasState backlog:Proposed ;
+    backlog:memberOfContainer fg:Backlog ;
+    backlog:scheduledInHorizon backlog:Later ;
+    backlog:contributesToMilestone fg:MS1 ;
+    backlog:notYetScoreable true ;
+    backlog:hasScoreabilityReason "REPLACE_ME: state honestly why this cannot yet be scored (no estimate, no owner, no start date) rather than inventing a number." .
+    # A Proposed epic with no hasEvidence/deliveredInRelease is legitimate
+    # and expected before work starts. Do NOT add fake evidence to make
+    # the register look further along than it is — an honestly-Proposed,
+    # not-yet-scored item is exactly what BRSF's notYetScoreable +
+    # hasScoreabilityReason mechanism exists for; see R20 in the
+    # accompanying handover for why carried-forward numbers specifically
+    # must be re-derived, not assumed, when an item is later closed.
+
+fg:MS1 a backlog:Milestone ;
+    rdfs:label "REPLACE_ME first milestone"@en ;
+    backlog:hasIdentifier "REPLACE_ME-MS-1" ;
+    backlog:hasTitle "REPLACE_ME milestone title"@en ;
+    backlog:hasTargetDate "2026-12-01T00:00:00Z"^^xsd:dateTime . # REPLACE_ME: pick a real target date
+
+#################################################################
+#  When an epic is actually delivered, its block gains (at minimum):
+#    backlog:hasState backlog:Done ;
+#    backlog:hasEvidence fg:EvidenceN ;
+#    backlog:deliveredInRelease "REPLACE_ME e.g. 1.0.0" ;
+#    backlog:appliesDefinitionOfDone backlog:DoD_Baseline .
+#
+#  and a matching fg:EvidenceN individual:
+#
+#  fg:EvidenceN a backlog:ReleaseEvidence ;
+#      rdfs:label "REPLACE_ME evidence label"@en ;
+#      backlog:hasIdentifier "FG-EV-N" ;
+#      skos:definition "REPLACE_ME: what gates ran (name each program from
+#          your R21 four-program chain and its pass count), what tag/commit
+#          this was published as, and an unauthenticated-clone verification
+#          if you mirror to a public repo — every claim here should be
+#          independently re-checkable, the same discipline R17 applies to
+#          verifying a claimed commit actually exists."@en ;
+#      backlog:hasReleaseVersion "REPLACE_ME e.g. 1.0.0" ;
+#      backlog:hasPackageSHA256 "REPLACE_ME the real manifest hash — this
+#          predicate is REQUIRED by BRSF's own SHACL shape; omitting it on
+#          a verification-only pass with no new package still requires
+#          citing the hash of whatever package WAS actually verified,
+#          not a placeholder." .
+#################################################################

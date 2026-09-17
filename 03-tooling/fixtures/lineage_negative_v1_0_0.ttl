@@ -1,0 +1,315 @@
+@prefix core:     <http://example.org/core#> .
+@prefix backlog:  <http://example.org/backlog#> .
+@prefix ex:       <http://example.org/rdodi/handover-response#> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+
+#################################################################
+#  rdodi-handover-response-lineage — ABox
+#  Reuses backlog: vocabulary directly (L-105/BP-D2: reuse, don't
+#  reparallel) from backlog-roadmap-framework/01-ontologies/
+#  backlog_tbox_v1_24_0.ttl, owl:imported by reference below.
+#  Built retroactively over already-completed, already-verified work
+#  (v1.91.0/v1.91.1) after being asked to confirm the lineage was
+#  ever formally built -- it had not been; this register is that
+#  build, not a plan for future work. Dates below are this register's
+#  own real creation time; item dates are the real commit timestamps
+#  from this session's own oe_publish runs, not invented.
+#################################################################
+
+<http://example.org/rdodi/handover-response-lineage> a owl:Ontology ;
+    owl:imports <http://example.org/backlog> ;
+    owl:versionInfo "1.0.0" ;
+    owl:versionIRI <http://example.org/rdodi/handover-response-lineage/v1_0_0> ;
+    dcterms:title "RDODI handover-response lineage — Mission/Backlog/Roadmap register"@en ;
+    dcterms:description "Governed BRSF register for the semtech-landscape-to-RDODI handover response (SPARQL engine tier + semantic-retrieval vocabulary), built retroactively over v1.91.0/v1.91.1."@en ;
+    dcterms:created "2026-08-20"^^xsd:date .
+
+#################################################################
+#  Adoption profile / declared level
+#################################################################
+
+ex:Profile a backlog:AdoptionProfile ;
+    rdfs:label "handover-response — adoption profile"@en ;
+    backlog:profileAppliesTo "The interactive-html-surface additions responding to HANDOVER_semtech-landscape_to_RDODI_v1_0_0.md"^^xsd:string ;
+    backlog:bindsNamespace "http://example.org/rdodi/handover-response#" ;
+    backlog:governsBacklog ex:Backlog ;
+    backlog:hasConformanceLevel backlog:L2_EvidenceBound ;
+    backlog:hasTargetConformanceLevel backlog:L3_Governed ;
+    backlog:hasLevelReviewDate "2026-11-20T00:00:00"^^xsd:dateTime ;
+    backlog:adoptsFacet backlog:CoreFacet, backlog:EvidenceFacet ;
+    backlog:hasDecisionRationale "Raised from the prose-only L1_Core this development was declared at in LINEAGE_CEREMONY_v1_0_0.md (2026-08-20, same day) once real, re-checkable evidence existed for every objective below -- a Playwright end-to-end run for the SPARQL engine, a real SHACL conformance run for the ontology edits. Not raised to L3/L4: no Iteration/DeploymentUnit/PlanningEvent machinery existed before this register, and retrofitting a release history onto already-shipped v1.91.0/v1.91.1 without a formal PlanningEvent that preceded the work would be exactly the fabricated-history error L-112 and this framework's own standing rules forbid. The PlanningEvent below is dated at ITS OWN real creation time (this register's build), not backdated to before the work happened."^^xsd:string ;
+    backlog:decidedBy backlog:Owner .
+
+#################################################################
+#  Mission
+#################################################################
+
+ex:Mission a backlog:Mission ;
+    backlog:missionFor ex:Backlog ;
+    rdfs:label "handover-response mission"@en ;
+    backlog:hasMissionStatement "Respond to the semtech-landscape-to-RDODI handover's two raised, governance-decided proposals with real, evidenced additions to interactive-html-surface, without fabricating scope the handover itself did not ask for."^^xsd:string ;
+    backlog:decidedBy backlog:Owner ;
+    dcterms:source "HANDOVER_semtech-landscape_to_RDODI_v1_0_0.md, 08-brsf-corpus-template/07-handovers-received/"^^xsd:string .
+
+#################################################################
+#  Scope (fixed before goals, per v3.1.0 ceremony order)
+#################################################################
+
+ex:Scope a backlog:ScopeStatement ;
+    rdfs:label "handover-response scope"@en ;
+    backlog:hasScopeExclusion ex:ExclEditInternalKb, ex:ExclEditRegexEngine, ex:ExclSecondFullPage, ex:ExclFormalLineageRDF ;
+    backlog:scopeRealizesObjective ex:ObjEngineArtifact, ex:ObjVocabExtension, ex:ObjSparqlDefEnriched ;
+    rdfs:comment "IN: a second, evidenced realization of ipo:SPARQLEngine (real Oxigraph); a new ipo:Cap_SemanticRetrieval capability family; disclosure guidance for embedding-vs-lexical retrieval. OUT: see exclusions."@en .
+
+ex:ExclEditInternalKb a backlog:ScopeExclusion ;
+    rdfs:label "No edits to this ecosystem's own internal knowledge-base package itself"@en ;
+    backlog:excludesConcern "Editing any file inside this ecosystem's own internal knowledge-base package"^^xsd:string ;
+    backlog:hasExclusionRationale "B1: own your package, raise findings about another rather than editing it. that package was only read and cited, matching the handover's own restraint."^^xsd:string ;
+    backlog:decidedBy backlog:Owner .
+
+ex:ExclEditRegexEngine a backlog:ScopeExclusion ;
+    rdfs:label "No edits to the existing regex SPARQL engine"@en ;
+    backlog:excludesConcern "Modifying 06-s6-exemplar/sparql_engine_js.txt"^^xsd:string ;
+    backlog:hasExclusionRationale "The handover is explicit this is additive, not corrective; the exemplar's own minimal-dependency scope decision is preserved, not overridden by inference."^^xsd:string ;
+    backlog:decidedBy backlog:Owner .
+
+ex:ExclSecondFullPage a backlog:ScopeExclusion ;
+    rdfs:label "No second full HTML exemplar page"@en ;
+    backlog:excludesConcern "Building a second 1MB+ HTML page duplicating the existing exemplar's shell"^^xsd:string ;
+    backlog:hasExclusionRationale "The handover's own package-contents section says to inspect cited implementations directly rather than receive a copy that could drift from source; a real engine-tier artifact plus governed vocabulary is the proportionate response."^^xsd:string ;
+    backlog:decidedBy backlog:Owner .
+
+ex:ExclFormalLineageRDF a backlog:ScopeExclusion ;
+    rdfs:label "No formal BRSF Iteration/PlanningEvent RDF (SUPERSEDED — see ex:SC01)"@en ;
+    backlog:excludesConcern "Building a queryable Mission/Scope/Goal/Objective register as RDF individuals"^^xsd:string ;
+    backlog:hasExclusionRationale "At original declaration (2026-08-20, LINEAGE_CEREMONY_v1_0_0.md), consistent with the L1_Core level then declared."^^xsd:string ;
+    backlog:decidedBy backlog:Owner ;
+    backlog:hasDocumentStatus backlog:Superseded ;
+    backlog:hasSupersessionReason "The operator directly asked why no lineage had been built and asked for one, and to check it against current state -- a real, evidence-driven reason to admit the excluded work, not a silent scope drift."^^xsd:string ;
+    backlog:supersededBy ex:SC01 .
+
+ex:SC01 a backlog:ScopeChange ;
+    rdfs:label "Admit formal lineage register into scope"@en ;
+    backlog:changesScope ex:Scope ;
+    backlog:admitsItem ex:Epic01 ;
+    backlog:hasDecisionRationale "Operator directly asked why the lineage had not been built and asked for it to be built and checked against current state (2026-08-20). This register IS that admission -- the exclusion is superseded, not deleted, per G6."^^xsd:string ;
+    backlog:decidedBy backlog:Owner ;
+    backlog:hasDocumentStatus backlog:Live ;
+    backlog:hasScopeChangeRationale "The exclusion cost nothing to keep while no queryable register existed; once asked to build and check one, admitting it into scope traded a documentation-only prose ceremony for a real, SHACL-checkable register — the trade this framework requires be stated, not just performed."^^xsd:string ;
+    dcterms:created "2026-08-20"^^xsd:date .
+
+#################################################################
+#  Goal
+#################################################################
+
+ex:Goal01 a backlog:Goal ;
+    rdfs:label "interactive-html-surface's governed taxonomy accurately reflects both evidenced SPARQL-engine depths and the retrieval-strategy choice"@en ;
+    backlog:contributesToMission ex:Mission ;
+    backlog:decidedBy backlog:Owner .
+
+#################################################################
+#  Objectives — measurable, with real observed values (not projected)
+#################################################################
+
+ex:ObjEngineArtifact a backlog:Objective ;
+    rdfs:label "A real, executable Oxigraph-backed SPARQL engine tier exists and is verified end-to-end"@en ;
+    backlog:contributesToGoal ex:Goal01 ;
+    backlog:hasSuccessMetric "Count of engine-tier files under 06-s6-exemplar/ demonstrating real Oxigraph SPARQL 1.1, verified by actual headless execution (not read-only adaptation review)" ;
+    backlog:hasBaselineValue "0"^^xsd:decimal ;
+    backlog:hasTargetValue "1"^^xsd:decimal ;
+    backlog:hasTargetDirection backlog:Dir_Increase .
+
+ex:ObjVocabExtension a backlog:Objective ;
+    rdfs:label "Governed vocabulary for retrieval strategy exists where none did"@en ;
+    backlog:contributesToGoal ex:Goal01 ;
+    backlog:hasSuccessMetric "Count of ipo:Cap_SemanticRetrieval parent + named alternative members present in the TBox, grep-confirmed absent beforehand" ;
+    backlog:hasBaselineValue "0"^^xsd:decimal ;
+    backlog:hasTargetValue "3"^^xsd:decimal ;
+    backlog:hasTargetDirection backlog:Dir_Increase .
+
+ex:ObjSparqlDefEnriched a backlog:Objective ;
+    rdfs:label "ipo:SPARQLEngine's own definition discloses both evidenced depths"@en ;
+    backlog:contributesToGoal ex:Goal01 ;
+    backlog:hasSuccessMetric "Count of evidenced implementation depths named in ipo:SPARQLEngine's skos:definition" ;
+    backlog:hasBaselineValue "1"^^xsd:decimal ;
+    backlog:hasTargetValue "2"^^xsd:decimal ;
+    backlog:hasTargetDirection backlog:Dir_Increase .
+
+#################################################################
+#  Backlog / Epic / Tasks (granularity: Feature, per LINEAGE_CEREMONY_v1_0_0.md §3)
+#################################################################
+
+ex:DoD a backlog:DefinitionOfDone ;
+    rdfs:label "handover-response Definition of Done"@en ;
+    rdfs:comment "Content is sourced (dcterms:source or a real file re-checked on bytes), and for code artifacts, independently executed (not just read) before being marked Done."@en .
+
+ex:Backlog a backlog:Backlog ;
+    backlog:hasState backlog:InProgress ;
+    backlog:appliesDefinitionOfDone ex:DoD ;
+    backlog:hasIdentifier "BL-HANDOVER-RESPONSE-1" ;
+    backlog:hasTitle "Handover-response backlog" ;
+    backlog:hasState backlog:Done ;
+    backlog:hasCommitment ex:Commit01 .
+
+ex:Commit01 a backlog:Commitment ;
+    backlog:commitsToGoal ex:Goal01 .
+
+ex:Epic01 a backlog:Epic ;
+    backlog:hasIdentifier "HR-EP01" ;
+    backlog:hasTitle "Process the semtech-landscape handover: SPARQL engine tier + semantic-retrieval vocabulary" ;
+    backlog:memberOfContainer ex:Backlog ;
+    backlog:hasState backlog:Done ;
+    backlog:hasExecutionModality backlog:Mode_Automated ;
+    backlog:startedAt "2026-08-20T00:00:00"^^xsd:dateTime ;
+    backlog:finishedAt "2026-08-20T13:22:01"^^xsd:dateTime ;
+    backlog:decomposesInto ex:T01, ex:T02, ex:T03 ;
+    backlog:pursuesObjective ex:ObjEngineArtifact, ex:ObjVocabExtension, ex:ObjSparqlDefEnriched ;
+    backlog:effectiveDefinitionOfDone ex:DoD ;
+    backlog:hasAcceptanceCriterion ex:Epic01_AC ;
+    backlog:hasEvidence ex:Epic01_Evidence ;
+    backlog:memberOfContainer ex:Deploy01 .
+
+ex:Epic01_AC a backlog:AcceptanceCriterion ;
+    backlog:hasGherkinText "Given the handover's two proposals, When processed, Then a real executed engine artifact exists for the first and governed vocabulary plus honest disclosure guidance exists for the second, with neither editing that package nor the existing regex engine." .
+
+ex:Epic01_Evidence a backlog:ArtifactEvidence ;
+    backlog:evidenceVerified true ;
+    a backlog:TestEvidence ;
+    backlog:verifiedByTool "Playwright (headless Chromium, cert-relaxed run), pyshacl, rdflib, curl" ;
+    backlog:hasTestSpec "manual verification this session — no committed release_check for this package" ;
+    backlog:attestsCriterion ex:Epic01_AC ;
+    backlog:hasArtifactPath "28-interactive-html-surface/06-s6-exemplar/sparql_engine_oxigraph_v1_0_0.txt; 01-stage-vocabularies/04-interactive-page/interactive_page_ontology_tbox_v1_9_0.ttl; 28-interactive-html-surface/06-s6-exemplar/EMBEDDING_RETRIEVAL_GUIDANCE_v1_0_0.md" ;
+    backlog:hasVerificationMethod "Published as rdodi-ecosystem v1.91.0 (commit 74ba953) then v1.91.1 (commit 9481a95) after a real gap was found and closed: the engine file's success path was unexecuted at v1.91.0, confirmed by an actual headless run that first failed on this sandbox's own TLS-intercepting proxy (curl to the same CDN URL independently returned HTTP 200), then succeeded with certificate validation relaxed — real Oxigraph load, real Turtle ingest, 4 real SPARQL result rows, 0 page errors." .
+
+ex:T01 a backlog:ExecutionTask ;
+    backlog:hasIdentifier "HR-EP01-T1" ;
+    backlog:hasTitle "Build and verify the Oxigraph SPARQL engine tier" ;
+    backlog:memberOfContainer ex:Iteration01 ;
+    backlog:hasState backlog:Done ;
+    backlog:startedAt "2026-08-20T12:37:31"^^xsd:dateTime ;
+    backlog:finishedAt "2026-08-20T13:22:01"^^xsd:dateTime ;
+    backlog:pursuesObjective ex:ObjEngineArtifact ;
+    backlog:hasAcceptanceCriterion ex:T01_AC ;
+    backlog:hasEvidence ex:T01_Evidence ;
+    backlog:effectiveDefinitionOfDone ex:DoD .
+
+ex:T01_AC a backlog:AcceptanceCriterion ;
+    backlog:hasGherkinText "Given the adapted engine file, When loaded in a real browser and enabled, Then it fetches Oxigraph from CDN, loads real Turtle, and a real SPARQL SELECT returns real result rows with 0 page errors." .
+
+ex:T01_Evidence a backlog:ArtifactEvidence ;
+    backlog:evidenceVerified true ;
+    a backlog:TestEvidence ;
+    backlog:verifiedByTool "Playwright headless Chromium" ;
+    backlog:hasTestSpec "ad hoc harness, /home/claude/session/oxigraph_test/test_harness.html" ;
+    backlog:attestsCriterion ex:T01_AC ;
+    backlog:hasArtifactPath "28-interactive-html-surface/06-s6-exemplar/sparql_engine_oxigraph_v1_0_0.txt" ;
+    backlog:hasVerificationMethod "First run: status 'Could not load Oxigraph ... ERR_CERT_AUTHORITY_INVALID' — sandbox TLS interception, confirmed non-network via curl 200 on the identical URL. Second run (--ignore-certificate-errors): status 'Ready - real SPARQL 1.1 engine active (4 triples loaded)'; SELECT * returned 4 real rows; 0 page errors; 0 uncaught console errors." .
+
+ex:T02 a backlog:ExecutionTask ;
+    backlog:hasIdentifier "HR-EP01-T2" ;
+    backlog:hasTitle "Enrich ipo:SPARQLEngine and mint ipo:Cap_SemanticRetrieval, per L-110" ;
+    backlog:memberOfContainer ex:Iteration01 ;
+    backlog:hasState backlog:Done ;
+    backlog:startedAt "2026-08-20T12:37:31"^^xsd:dateTime ;
+    backlog:finishedAt "2026-08-20T13:14:00"^^xsd:dateTime ;
+    backlog:pursuesObjective ex:ObjVocabExtension, ex:ObjSparqlDefEnriched ;
+    backlog:hasAcceptanceCriterion ex:T02_AC ;
+    backlog:hasEvidence ex:T02_Evidence ;
+    backlog:effectiveDefinitionOfDone ex:DoD .
+
+ex:T02_AC a backlog:AcceptanceCriterion ;
+    backlog:hasGherkinText "Given the enriched TBox, When parsed and validated against the package's own domain SHACL shape, Then it parses cleanly and conforms with 0 violations." .
+
+ex:T02_Evidence a backlog:ArtifactEvidence ;
+    backlog:evidenceVerified true ;
+    a backlog:TestEvidence ;
+    backlog:verifiedByTool "rdflib, pyshacl" ;
+    backlog:hasTestSpec "01-stage-vocabularies/04-interactive-page/interactive_page_ontology_shacl_v1_1_0.ttl" ;
+    backlog:attestsCriterion ex:T02_AC ;
+    backlog:hasArtifactPath "01-stage-vocabularies/04-interactive-page/interactive_page_ontology_tbox_v1_9_0.ttl" ;
+    backlog:hasVerificationMethod "rdflib parse: 2241 triples, 0 errors. pyshacl.validate against interactive_page_ontology_shacl_v1_1_0.ttl (found and run after nearly asserting it did not exist): CONFORMS True, 0 violations." .
+
+ex:T03 a backlog:ExecutionTask ;
+    backlog:hasIdentifier "HR-EP01-T3" ;
+    backlog:hasTitle "Write embedding-vs-lexical disclosure guidance" ;
+    backlog:memberOfContainer ex:Iteration01 ;
+    backlog:hasState backlog:Done ;
+    backlog:startedAt "2026-08-20T12:37:31"^^xsd:dateTime ;
+    backlog:finishedAt "2026-08-20T13:14:00"^^xsd:dateTime ;
+    backlog:pursuesObjective ex:ObjVocabExtension ;
+    backlog:hasAcceptanceCriterion ex:T03_AC ;
+    backlog:hasEvidence ex:T03_Evidence ;
+    backlog:effectiveDefinitionOfDone ex:DoD .
+
+ex:T03_AC a backlog:AcceptanceCriterion ;
+    backlog:hasGherkinText "Given the disclosure guidance document, When checked against its cited source, Then the cited real, mixed evidence (a win case and a loss case) is accurate to what that source actually says." .
+
+ex:T03_Evidence a backlog:ArtifactEvidence ;
+    backlog:evidenceVerified true ;
+    a backlog:TestEvidence ;
+    backlog:verifiedByTool "manual text comparison against that package's own governed lineage TTL (its own relevant rdfs:comment), read directly this session" ;
+    backlog:hasTestSpec "manual — no code to execute; this Task's evidence is citation-accuracy, not execution, disclosed as a weaker evidence class than T01/T02 rather than presented at equal rigor" ;
+    backlog:attestsCriterion ex:T03_AC ;
+    backlog:hasArtifactPath "28-interactive-html-surface/06-s6-exemplar/EMBEDDING_RETRIEVAL_GUIDANCE_v1_0_0.md" ;
+    backlog:hasVerificationMethod "The zero-vocabulary-overlap win case and the idiom-heavy second-place loss case were both read directly from that package's own relevant rdfs:comment this session (surfaced via an incidental full-file grep), not paraphrased from a summary or invented." .
+
+#################################################################
+#  Real MetricObservations — observed AFTER the fact, from real checks
+#################################################################
+
+ex:Obs_Engine a backlog:MetricObservation ;
+    backlog:observesMetric ex:Metric_Engine ;
+    backlog:observationFor ex:ObjEngineArtifact ;
+    backlog:hasObservedValue "1"^^xsd:decimal ;
+    backlog:hasObservationMethod "File exists (sparql_engine_oxigraph_v1_0_0.txt) AND independently executed end-to-end per T01_Evidence." ;
+    backlog:observedAt "2026-08-20T13:22:01"^^xsd:dateTime .
+
+ex:Obs_Vocab a backlog:MetricObservation ;
+    backlog:observesMetric ex:Metric_Vocab ;
+    backlog:observationFor ex:ObjVocabExtension ;
+    backlog:hasObservedValue "3"^^xsd:decimal ;
+    backlog:hasObservationMethod "grep count of ipo:Cap_SemanticRetrieval + ipo:Cap_SemanticRetrieval_Lexical + ipo:Cap_SemanticRetrieval_Embedding in the current TBox." ;
+    backlog:observedAt "2026-08-20T13:22:01"^^xsd:dateTime .
+
+ex:Obs_SparqlDef a backlog:MetricObservation ;
+    backlog:observesMetric ex:Metric_SparqlDef ;
+    backlog:observationFor ex:ObjSparqlDefEnriched ;
+    backlog:hasObservedValue "2"^^xsd:decimal ;
+    backlog:hasObservationMethod "Direct read of ipo:SPARQLEngine's current skos:definition string, counting named evidenced depths." ;
+    backlog:observedAt "2026-08-20T13:22:01"^^xsd:dateTime .
+
+ex:Metric_Engine a core:Metric ; rdfs:label "Executed real SPARQL-1.1 engine artifacts under 06-s6-exemplar/"@en .
+ex:Metric_Vocab a core:Metric ; rdfs:label "ipo:Cap_SemanticRetrieval family members present"@en .
+ex:Metric_SparqlDef a core:Metric ; rdfs:label "Evidenced implementation depths named in ipo:SPARQLEngine"@en .
+
+#################################################################
+#  Planning / Iteration / Deployment — dated at real creation time,
+#  not backdated (matches this register's own build moment, per
+#  L-112 and this framework's own retroactive-planning discipline)
+#################################################################
+
+ex:Iteration01 a backlog:Iteration ;
+    backlog:hasIdentifier "ITER-HR-1" ;
+    rdfs:label "2026-08-20 — handover response build + this register's own retroactive formalization"@en ;
+    backlog:iterationStart "2026-08-20T00:00:00"^^xsd:dateTime ;
+    backlog:iterationEnd "2026-08-20T23:59:59"^^xsd:dateTime .
+
+ex:PE01 a backlog:PlanningEvent ;
+    backlog:plansItem ex:Epic01 ;
+    backlog:plannedInto ex:Iteration01 ;
+    backlog:producesTask ex:T01, ex:T02, ex:T03 ;
+    backlog:plannedAt "2026-08-20T13:30:00"^^xsd:dateTime ;
+    backlog:plannedBy backlog:Owner ;
+    rdfs:comment "Retroactive governance assignment, honestly dated at its own real creation time (this register's build), not backdated to before the work happened — matching this framework's own established convention for assigning already-completed work into a real historical Iteration."@en .
+
+ex:Deploy01 a backlog:DeploymentUnit ;
+    backlog:hasIdentifier "DU-HR-v1.91.1" ;
+    rdfs:label "rdodi-ecosystem v1.91.0 then v1.91.1"@en ;
+    backlog:deploysItem ex:Epic01 ;
+    backlog:deployedAt "2026-08-20T13:22:01"^^xsd:dateTime ;
+    backlog:hasDeploymentDate "2026-08-20T13:22:01"^^xsd:dateTime ;
+    rdfs:comment "Real published tags rdodi-ecosystem-v1.91.0 (commit 74ba953) and rdodi-ecosystem-v1.91.1 (commit 9481a95, patch closing the verification gap found when directly asked about it)."@en .

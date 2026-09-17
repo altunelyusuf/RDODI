@@ -1,0 +1,9 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix doc: <http://example.org/rdodi/document-ontology#> .
+
+# Positive fixture: the one structural individual with an external claim IS cited.
+<http://example.org/fixture/document#Claim1> a doc:ConceptSection, owl:NamedIndividual ;
+    rdfs:label "Fixture claim, cited"@en ;
+    skos:definition "Smith (2020) found the effect held across all conditions tested."@en .

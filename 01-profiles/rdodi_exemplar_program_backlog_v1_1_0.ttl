@@ -1,0 +1,160 @@
+@prefix backlog: <http://example.org/backlog#> .
+@prefix rex:     <http://example.org/rdodi-exemplar-fitgap#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+
+# rdodi_exemplar_program_backlog_v1_0_0.ttl — BRSF register for the
+# "exemplar-level byproducts" program, instantiated from
+# 14-bootstrap/templates/fitgap_backlog_template_v1_0_0.ttl against
+# BRSF v1.33.0 (backlog-roadmap-framework/, checked 2026-08-06).
+# Validated with backlog_validate_v1_3_0.py before shipping.
+
+rex:Profile a backlog:AdoptionProfile ;
+    rdfs:label "RDODI exemplar-program BRSF adoption profile"@en ;
+    backlog:profileAppliesTo "The RDODI ecosystem's program of bringing every future byproduct to the exemplar standard (01-profiles/RDODI_EXEMPLAR_STANDARD_v1_0_0.md)." ;
+    backlog:bindsNamespace "http://example.org/rdodi-exemplar-fitgap#" ;
+    backlog:governsBacklog rex:Backlog ;
+    backlog:hasConformanceLevel backlog:L1_Core ;
+    backlog:hasTargetConformanceLevel backlog:L2_EvidenceBound ;
+    backlog:hasLevelReviewDate "2026-10-01T00:00:00Z"^^xsd:dateTime ;
+    backlog:hasDecisionRationale "L1_Core chosen at program start by the RDODI governor (2026-08-06): the register is new, evidence-binding is already practiced for Done items, and the L2 review is set for the first post-exemplar byproduct closure."@en ;
+    backlog:decidedBy backlog:Owner ;
+    backlog:adoptsFacet backlog:CoreFacet , backlog:PrioritizationFacet , backlog:RoadmapFacet .
+
+rex:Mission a backlog:Mission ;
+    rdfs:label "Exemplar-level byproducts mission"@en ;
+    backlog:hasMissionStatement "Every future RDODI byproduct reaches the level demonstrated by semtech-landscape v6.9.0 - the four-artifact set (research, domain ontology, document, interactive page) built under the R21 gate chain, closed with an R16/R17 healthcheck, tracked BRSF-compliant - using the adopted templates so the level is inherited, not rediscovered." ;
+    backlog:missionFor rex:Backlog ;
+    backlog:decidedBy backlog:Owner ;
+    backlog:hasDecisionRationale "Traces to the governor's instruction of 2026-08-06: 'the domain ontology, research, report and interactive html file be an exemplar work, keep them as templates and in future RDODI sessions ensure to reach at that level.'"@en .
+
+rex:Backlog a backlog:Backlog ;
+    rdfs:label "RDODI exemplar-program backlog"@en ;
+    backlog:hasIdentifier "REX-BL" ;
+    backlog:hasTitle "Exemplar-level byproducts program backlog"@en ;
+    backlog:hasState backlog:InProgress ;
+    backlog:appliesDefinitionOfDone backlog:DoD_Baseline .
+
+rex:Roadmap a backlog:Roadmap ;
+    rdfs:label "Exemplar-program roadmap"@en ;
+    backlog:hasTitle "From adopted patterns to enforced default"@en ;
+    backlog:roadmapOf rex:Backlog .
+
+rex:Initiative a backlog:Initiative ;
+    rdfs:label "Bring every RDODI byproduct to the exemplar standard"@en ;
+    backlog:hasIdentifier "REX-INIT-1" ;
+    backlog:hasTitle "Exemplar-level byproducts"@en ;
+    backlog:hasState backlog:InProgress ;
+    backlog:memberOfContainer rex:Backlog ;
+    backlog:scheduledInHorizon backlog:Now ;
+    backlog:contributesToMilestone rex:MS1 ;
+    backlog:notYetScoreable true ;
+    backlog:hasScoreabilityReason "Umbrella initiative; scoring happens at epic level to avoid double-counting with its children." ;
+    backlog:decomposesInto rex:EP1 , rex:EP2 , rex:EP3 , rex:EP4 , rex:EP5 , rex:EP6 .
+
+rex:MS1 a backlog:Milestone ;
+    rdfs:label "First post-exemplar byproduct passes the bar"@en ;
+    backlog:hasIdentifier "REX-MS-1" ;
+    backlog:hasTitle "A new byproduct, started from the bootstrap templates, closes with a clean healthcheck against the exemplar standard"@en ;
+    backlog:hasTargetDate "2026-10-01T00:00:00Z"^^xsd:dateTime .
+
+#################################################################
+# Delivered this release (rdodi-ecosystem v1.76.0)
+#################################################################
+
+rex:EP1 a backlog:Epic ;
+    rdfs:label "Codify the exemplar standard"@en ;
+    backlog:hasIdentifier "REX-EP1" ;
+    backlog:hasTitle "Pin semtech-landscape v6.9.0 artifacts by SHA-256 and state the measurable bar"@en ;
+    backlog:hasRationale "Governor instruction 2026-08-06 (exemplar designation); mechanism details from the adopted semtech-landscape proposal sections 2-4."@en ;
+    backlog:hasState backlog:Done ;
+    backlog:memberOfContainer rex:Backlog ;
+    backlog:scheduledInHorizon backlog:Now ;
+    backlog:contributesToMilestone rex:MS1 ;
+    backlog:hasEvidence rex:EV1 ;
+    backlog:deliveredInRelease "1.76.0" ;
+    backlog:appliesDefinitionOfDone backlog:DoD_Baseline .
+
+rex:EP2 a backlog:Epic ;
+    rdfs:label "Development environment bootstrap"@en ;
+    backlog:hasIdentifier "REX-EP2" ;
+    backlog:hasTitle "One-script session rehydration: toolchain + R17-compliant clone/fetch + gates on the fresh tree"@en ;
+    backlog:hasRationale "Governor instruction 2026-08-06 ('build the development environment'); L-85 container wipes make rehydration the first cost of every session."@en ;
+    backlog:hasState backlog:Done ;
+    backlog:memberOfContainer rex:Backlog ;
+    backlog:scheduledInHorizon backlog:Now ;
+    backlog:contributesToMilestone rex:MS1 ;
+    backlog:hasEvidence rex:EV1 ;
+    backlog:deliveredInRelease "1.76.0" ;
+    backlog:appliesDefinitionOfDone backlog:DoD_Baseline .
+
+rex:EP3 a backlog:Epic ;
+    rdfs:label "CI scoping fix for the shared monorepo"@en ;
+    backlog:hasIdentifier "REX-EP3" ;
+    backlog:hasTitle "Path-filter the root gates workflow to rdodi-ecosystem and add concurrency cancellation"@en ;
+    backlog:hasRationale "Runs on the private monorepo were queue-starved and auto-cancelled (conclusion=failure with zero steps executed) across ~60 parallel-session pushes; siblings own their own gates per GOVERNANCE.md."@en ;
+    backlog:hasState backlog:Done ;
+    backlog:memberOfContainer rex:Backlog ;
+    backlog:scheduledInHorizon backlog:Now ;
+    backlog:contributesToMilestone rex:MS1 ;
+    backlog:hasEvidence rex:EV1 ;
+    backlog:deliveredInRelease "1.76.0" ;
+    backlog:appliesDefinitionOfDone backlog:DoD_Baseline .
+
+rex:EV1 a backlog:ReleaseEvidence ;
+    rdfs:label "v1.76.0 delivery evidence"@en ;
+    backlog:hasIdentifier "REX-EV-1" ;
+    skos:definition "Gates run on the verified baseline this change-set was built on and re-run before packaging: rdodi manifest self-check 283/283 (v1.75.0 baseline), kb_gates_v1_1_0 CERTIFIED (21 patterns), TTL parse 79/79, BRSF backlog_validate_v1_3_0 CONFORMANT on this register; delivery tag rdodi-ecosystem-v1.76.0 on the governed monorepo (base commit 4dc4f9d6e6b09d05344d14b0e3a0f6251cfb6228). Package hash below is the SHA-256 of MANIFEST_SHA256_v1_75_0.txt - the verified predecessor state - cited to avoid the self-reference a same-release manifest hash would create; v1.76.0's own manifest hash is recorded in CHANGELOG_v1_77_0 next release, per the template's guidance to cite the hash of what was actually verified."@en ;
+    backlog:hasReleaseVersion "1.76.0" ;
+    backlog:hasPackageSHA256 "5c2336880cad4a2ba9e17c8c78638bf050d33e8a73404cb36103c625e9e22d6d" .
+
+#################################################################
+# Open (honestly Proposed, unscored)
+#################################################################
+
+rex:EP4 a backlog:Epic ;
+    rdfs:label "Ratification decision on R16-R21"@en ;
+    backlog:hasIdentifier "REX-EP4" ;
+    backlog:hasTitle "Governor decides Ratified vs Proposed for the six adopted patterns (with R5, R7, R8, R12, R14 also awaiting)"@en ;
+    backlog:hasRationale "kb_gates audit lists 11 patterns AWAITING RATIFICATION after v1.75.0; ratification is a governance decision, not a session decision."@en ;
+    backlog:hasState backlog:Done ;
+    backlog:memberOfContainer rex:Backlog ;
+    backlog:scheduledInHorizon backlog:Now ;
+    backlog:contributesToMilestone rex:MS1 ;
+    backlog:hasEvidence rex:EV2 ;
+    backlog:deliveredInRelease "1.78.0" ;
+    backlog:appliesDefinitionOfDone backlog:DoD_Baseline .
+
+rex:EP5 a backlog:Epic ;
+    rdfs:label "Wire the R21 gate chain as bootstrap default (Enhancement Plan item C2)"@en ;
+    backlog:hasIdentifier "REX-EP5" ;
+    backlog:hasTitle "rdodi_bootstrap scaffolds a new byproduct with the four-program chain pre-instantiated from the templates"@en ;
+    backlog:hasRationale "Proposal section 7 recommendation; depends on EP4 (making a Proposed pattern the enforced default would front-run ratification)."@en ;
+    backlog:hasState backlog:Done ;
+    backlog:memberOfContainer rex:Backlog ;
+    backlog:scheduledInHorizon backlog:Now ;
+    backlog:contributesToMilestone rex:MS1 ;
+    backlog:hasEvidence rex:EV2 ;
+    backlog:deliveredInRelease "1.78.0" ;
+    backlog:appliesDefinitionOfDone backlog:DoD_Baseline .
+
+rex:EP6 a backlog:Epic ;
+    rdfs:label "First post-exemplar byproduct"@en ;
+    backlog:hasIdentifier "REX-EP6" ;
+    backlog:hasTitle "Run a new byproduct from template instantiation to clean closure healthcheck against the exemplar standard"@en ;
+    backlog:hasRationale "The standard is only proven transferable when a byproduct that did not invent the mechanisms passes the bar using them."@en ;
+    backlog:hasState backlog:InProgress ;
+    backlog:memberOfContainer rex:Backlog ;
+    backlog:scheduledInHorizon backlog:Now ;
+    backlog:contributesToMilestone rex:MS1 ;
+    backlog:notYetScoreable true ;
+    backlog:hasScoreabilityReason "Commissioned 2026-08-06: agentic-systems. v0.1.0 scaffold -> v0.2.0 domain ontology -> v0.3.0 Stage 3/4 draft (fidelity 21/21) -> v0.9.0 -> v0.11.0: proceeded with Stage3/4 content per governor. EP10: 5 sections authored for the generator-invisible classes, coverage genuinely 8/8 (one false-negative in own check caught before reporting). Found and reversed a real regression: EP5 had stripped sources verified only against pyshacl, never the real validator gates - restoring them fixed 2 genuine FAILs the fix had silently introduced. All 10 real validator gates now PASS, run directly, not assumed. Roadmap: nothing startable - register genuinely complete." .
+
+rex:EV2 a backlog:ReleaseEvidence ;
+    rdfs:label "v1.78.0 ratification + bootstrap-default evidence"@en ;
+    backlog:hasIdentifier "REX-EV-2" ;
+    skos:definition "EP4: R16-R21 Proposed -> Ratified in rdodi_knowledgebase_abox_v1_6_0.ttl on the governor's 2026-08-06 instruction (recorded in the abox ratification block); kb_gates_v1_1_0 re-run: CERTIFIED, counts Ratified:6, Proposed:5, AlreadyAdoptedAtGateLevel:10. EP5: rdodi_bootstrap_v1_2_0.py scaffolds the R21 four-program chain into every new byproduct by default; PROVEN BY EXECUTION against scp_domain_tbox_v3_17_0 - 03-tooling/ (release_check.sh, healthcheck.py, gate_suite/) plus fitgap_backlog_v0_1_0.ttl delivered into the bootstrapped output, full pipeline ran with its honest advisory items intact. Package hash below is the SHA-256 of MANIFEST_SHA256_v1_77_0.txt, the verified predecessor state (same non-self-reference rule as REX-EV-1); v1.78.0's own manifest hash is recorded in the next changelog."@en ;
+    backlog:hasReleaseVersion "1.78.0" ;
+    backlog:hasPackageSHA256 "dcdbb7738b1496d18b2910ea79d0d0c87ab4d6d9c8d257779f63f65e10e8a5da" .

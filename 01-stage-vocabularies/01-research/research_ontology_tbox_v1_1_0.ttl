@@ -1,0 +1,2512 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdodi-research: <http://example.org/rdodi/research-ontology#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+rdodi-research:Acceptance a owl:Class ;
+    rdfs:label "Acceptance"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Publication acceptance"@en .
+
+rdodi-research:Accessibility a owl:Class ;
+    rdfs:label "Accessibility"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:FAIRPrinciple ;
+    skos:definition "Accessibility principle"@en .
+
+rdodi-research:AlphaVersion a owl:Class ;
+    rdfs:label "AlphaVersion"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchProject ;
+    owl:disjointWith rdodi-research:BetaVersion,
+        rdodi-research:ProductionVersion ;
+    skos:definition "Alpha version prototype"@en .
+
+rdodi-research:AltMetric a owl:Class ;
+    rdfs:label "AltMetric"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Alternative metric"@en .
+
+rdodi-research:Authorship a owl:Class ;
+    rdfs:label "Authorship"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en,
+        "SCoRO alignment v6.3.0: http://purl.org/spar/scoro/ContributorshipAttribution retrieved from sparontologies.github.io 2026-05-06."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/scoro/ContributorshipAttribution> ;
+    rdfs:subClassOf <http://vivoweb.org/ontology/core#Authorship> ;
+    owl:equivalentClass <http://vivoweb.org/ontology/core#Authorship> ;
+    skos:definition "Reified authorship relationship with ranking and contribution details"@en .
+
+rdodi-research:AwardDecision a owl:Class ;
+    rdfs:label "AwardDecision"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Award decision"@en .
+
+rdodi-research:BasicResearch a owl:Class ;
+    rdfs:label "Basic Research"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchProject ;
+    owl:disjointWith rdodi-research:AppliedResearch ;
+    skos:definition "Research aimed at fundamental knowledge without immediate application"@en .
+
+rdodi-research:BookChapter a owl:Class ;
+    rdfs:label "BookChapter"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Publication ;
+    skos:definition "Book chapter"@en .
+
+rdodi-research:CallForProposals a owl:Class ;
+    rdfs:label "CallForProposals"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Call for proposals"@en .
+
+rdodi-research:Citation a owl:Class ;
+    rdfs:label "Citation"@en ;
+    dcterms:source "SPAR CiTO http://purl.org/spar/cito/ retrieved 2026-05-06"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/cito/Citation> ;
+    skos:definition "A reference from one publication to another, indicating that the citing publication uses, supports, or extends content of the cited one. Aligned to CiTO Citation."@en .
+
+rdodi-research:CitationChainSelection a owl:Class ;
+    rdfs:label "citation chain selection"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.1; Hjørland (2013) on citation chain methodology"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:SelectionStrategy ;
+    skos:definition "Selects resources based on their position in citation chains from seed resources. Selects for traversability rather than centrality."@en .
+
+rdodi-research:CitationChainTraversal a owl:Class ;
+    rdfs:label "citation chain traversal"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.3"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:DiscoveryMethod ;
+    skos:definition "A discovery action following citation links from known seed resources outward (forward via :citedBy, backward via :cites) to find related work."@en .
+
+rdodi-research:CitationCountWeighted a owl:Class ;
+    rdfs:label "citation-count-weighted selection"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.1; Garfield (1955) Citation Indexes for Science"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:SelectionStrategy ;
+    skos:definition "Selects resources weighted by citation count. Highly-cited works receive higher selection priority. Subject to selection bias toward established works."@en .
+
+rdodi-research:CitationMetric a owl:Class ;
+    rdfs:label "CitationMetric"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Citation metric"@en .
+
+rdodi-research:ComputationalResearch a owl:Class ;
+    rdfs:label "ComputationalResearch"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchArea ;
+    skos:definition "Computational research"@en .
+
+rdodi-research:Copyright a owl:Class ;
+    rdfs:label "Copyright"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:IntellectualProperty ;
+    skos:definition "Copyright"@en .
+
+rdodi-research:DOI a owl:Class ;
+    rdfs:label "DOI"@en ;
+    dcterms:source "SPAR DataCite — DigitalObjectIdentifier retrieved 2026-05-06"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/datacite/DigitalObjectIdentifier> ;
+    rdfs:subClassOf rdodi-research:Identifier ;
+    skos:definition "Digital Object Identifier — a persistent identifier widely used for publications and datasets, managed via the International DOI Foundation. Subclass of Identifier; aligned to DataCite DigitalObjectIdentifier."@en .
+
+rdodi-research:DataAnalysis a owl:Class ;
+    rdfs:label "DataAnalysis"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchActivity ;
+    skos:definition "Data analysis activity"@en .
+
+rdodi-research:DataCleaning a owl:Class ;
+    rdfs:label "DataCleaning"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:DataQuality ;
+    skos:definition "Data cleaning process"@en .
+
+rdodi-research:DataCollection a owl:Class ;
+    rdfs:label "DataCollection"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchActivity ;
+    skos:definition "Data collection activity"@en .
+
+rdodi-research:DataGovernance a owl:Class ;
+    rdfs:label "DataGovernance"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Data governance framework"@en .
+
+rdodi-research:DataValidation a owl:Class ;
+    rdfs:label "DataValidation"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:DataQuality ;
+    skos:definition "Data validation process"@en .
+
+rdodi-research:DatabaseBrowse a owl:Class ;
+    rdfs:label "database browse"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.3"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:DiscoveryMethod ;
+    skos:definition "A discovery action browsing a curated database or repository's index without specific structured query."@en .
+
+rdodi-research:DeFactoStandard a owl:Class ;
+    rdfs:label "de facto standard selection"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.1; Booth et al. (2016)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:SelectionStrategy ;
+    skos:definition "Selects resources that have become de facto standards in their field — widely cited, widely cited-by, treated as reference points by subsequent work."@en .
+
+rdodi-research:DisciplinaryArea a owl:Class ;
+    rdfs:label "DisciplinaryArea"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchArea ;
+    skos:definition "Single discipline area"@en .
+
+rdodi-research:DisciplinaryRepository a owl:Class ;
+    rdfs:label "Disciplinary Repository"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab5,
+        _:n6ba35be4fce441e7a0b07f53a1709beab6,
+        _:n6ba35be4fce441e7a0b07f53a1709beab7,
+        rdodi-research:Repository,
+        rdodi-research:SubjectRepository,
+        dcat:Catalog ;
+    skos:definition "Repository for specific academic discipline"@en .
+
+rdodi-research:Disproven a owl:Class ;
+    rdfs:label "disproven"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.2"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:RejectionCriterion ;
+    skos:definition "Resource's central claims have been disproven by subsequent work."@en .
+
+rdodi-research:DownloadStatistic a owl:Class ;
+    rdfs:label "DownloadStatistic"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Download statistics"@en .
+
+rdodi-research:DuplicateContent a owl:Class ;
+    rdfs:label "duplicate content"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.2"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:RejectionCriterion ;
+    skos:definition "Resource is a duplicate or near-duplicate of an already-selected resource."@en .
+
+rdodi-research:EmergingField a owl:Class ;
+    rdfs:label "EmergingField"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchArea ;
+    owl:disjointWith rdodi-research:EstablishedField ;
+    skos:definition "Emerging field"@en .
+
+rdodi-research:ExclusiveLicense a owl:Class ;
+    rdfs:label "Exclusive License"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab8,
+        _:n6ba35be4fce441e7a0b07f53a1709beab9,
+        rdodi-research:License ;
+    owl:disjointWith rdodi-research:NonExclusiveLicense,
+        rdodi-research:SoleExclusiveLicense ;
+    skos:definition "License granting sole rights to licensee"@en .
+
+rdodi-research:Experiment a owl:Class ;
+    rdfs:label "Experiment"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchActivity ;
+    skos:definition "Controlled experiment"@en .
+
+rdodi-research:ExpertRecommendation a owl:Class ;
+    rdfs:label "expert recommendation"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.3"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:DiscoveryMethod ;
+    skos:definition "A discovery action sourcing candidate resources from a domain expert's recommendation."@en .
+
+rdodi-research:Findability a owl:Class ;
+    rdfs:label "Findability"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:FAIRPrinciple ;
+    skos:definition "Findability principle"@en .
+
+rdodi-research:FunderRepository a owl:Class ;
+    rdfs:label "Funder Repository"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab5,
+        _:n6ba35be4fce441e7a0b07f53a1709beab6,
+        _:n6ba35be4fce441e7a0b07f53a1709beab7,
+        rdodi-research:Repository,
+        dcat:Catalog ;
+    skos:definition "Repository mandated by research funding organization"@en .
+
+rdodi-research:Gate a owl:Class ;
+    rdfs:label "Gate"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Decision point evaluating stage deliverables"@en .
+
+rdodi-research:GeneralPurposeRepository a owl:Class ;
+    rdfs:label "General Purpose Repository"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab5,
+        _:n6ba35be4fce441e7a0b07f53a1709beab6,
+        _:n6ba35be4fce441e7a0b07f53a1709beab7,
+        rdodi-research:Repository,
+        dcat:Catalog ;
+    skos:definition "Repository accepting diverse content across disciplines"@en .
+
+rdodi-research:GoToMarketStrategy a owl:Class ;
+    rdfs:label "GoToMarketStrategy"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:Commercialization ;
+    skos:definition "Go-to-market strategy"@en .
+
+rdodi-research:GrantReview a owl:Class ;
+    rdfs:label "GrantReview"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Grant review process"@en .
+
+rdodi-research:HypothesisFormulation a owl:Class ;
+    rdfs:label "HypothesisFormulation"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchActivity ;
+    skos:definition "Hypothesis formulation"@en .
+
+rdodi-research:IPStrategy a owl:Class ;
+    rdfs:label "IPStrategy"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "IP strategy"@en .
+
+rdodi-research:ImpactFactor a owl:Class ;
+    rdfs:label "ImpactFactor"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Journal impact factor"@en .
+
+rdodi-research:InquiryStage a owl:Class ;
+    rdfs:label "inquiry stage"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.4; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Where the resource sits in the inquiry lifecycle: Exploratory, Confirmatory, Translational, Synthesizing."@en .
+
+rdodi-research:InstitutionalRepository a owl:Class ;
+    rdfs:label "Institutional Repository"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab5,
+        _:n6ba35be4fce441e7a0b07f53a1709beab6,
+        _:n6ba35be4fce441e7a0b07f53a1709beab7,
+        rdodi-research:Repository,
+        dcat:Catalog ;
+    owl:disjointWith rdodi-research:DataRepository,
+        rdodi-research:SubjectRepository ;
+    skos:definition "Repository maintained by academic/research institution"@en ;
+    skos:example "DSpace, EPrints, Fedora"@en .
+
+rdodi-research:InterdisciplinaryArea a owl:Class ;
+    rdfs:label "InterdisciplinaryArea"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchArea ;
+    skos:definition "Interdisciplinary area"@en .
+
+rdodi-research:Investigation a owl:Class ;
+    rdfs:label "Investigation"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchActivity ;
+    skos:definition "Systematic investigation"@en .
+
+rdodi-research:JournalArticle a owl:Class ;
+    rdfs:label "Journal Article"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        [ a owl:Restriction ;
+            owl:onProperty rdodi-research:publishedIn ;
+            owl:someValuesFrom rdodi-research:Journal ],
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Publication,
+        <http://purl.org/spar/fabio#JournalArticle> ;
+    owl:disjointWith rdodi-research:ConferencePaper,
+        rdodi-research:Preprint,
+        rdodi-research:Thesis ;
+    owl:equivalentClass <http://purl.org/spar/fabio#JournalArticle>,
+        <http://purl.org/spar/fabio/JournalArticle> ;
+    skos:definition "Article published in peer-reviewed journal"@en .
+
+rdodi-research:KeywordFrame a owl:Class ;
+    rdfs:label "keyword frame"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ScopeFrame ;
+    skos:definition "A scope frame defined primarily by a controlled set of search keywords, often with Boolean operators or thesaurus expansion. Used when conceptual decomposition into PICO/SPICE/CIMO is premature or inappropriate."@en .
+
+rdodi-research:Letter a owl:Class ;
+    rdfs:label "Letter"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Publication ;
+    skos:definition "Letter to editor"@en .
+
+rdodi-research:LicenseAgreement a owl:Class ;
+    rdfs:label "LicenseAgreement"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab8,
+        _:n6ba35be4fce441e7a0b07f53a1709beab9,
+        rdodi-research:License ;
+    skos:definition "License agreement"@en .
+
+rdodi-research:LiteratureReview a owl:Class ;
+    rdfs:label "LiteratureReview"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchActivity ;
+    skos:definition "Literature review"@en .
+
+rdodi-research:ManufacturingCapability a owl:Class ;
+    rdfs:label "ManufacturingCapability"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Manufacturing capability"@en .
+
+rdodi-research:MarketEntry a owl:Class ;
+    rdfs:label "MarketEntry"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:Commercialization ;
+    skos:definition "Market entry"@en .
+
+rdodi-research:MarketValidation a owl:Class ;
+    rdfs:label "MarketValidation"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:Commercialization ;
+    skos:definition "Market validation"@en .
+
+rdodi-research:MassProduction a owl:Class ;
+    rdfs:label "MassProduction"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ManufacturingProcess ;
+    owl:disjointWith rdodi-research:CustomProduction ;
+    skos:definition "Mass production"@en .
+
+rdodi-research:MediatedAccess a owl:Class ;
+    rdfs:label "Mediated Access"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:AccessPolicy,
+        rdodi-research:RestrictedAccess ;
+    skos:definition "Access requiring approval from data custodian"@en .
+
+rdodi-research:MetaData a owl:Class ;
+    rdfs:label "MetaData"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab11,
+        _:n6ba35be4fce441e7a0b07f53a1709beab12,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Dataset,
+        rdodi-research:Publication,
+        <http://purl.org/spar/fabio#Dataset>,
+        dcat:Dataset ;
+    skos:definition "Metadata about data"@en .
+
+rdodi-research:NationalRepository a owl:Class ;
+    rdfs:label "National Repository"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab5,
+        _:n6ba35be4fce441e7a0b07f53a1709beab6,
+        _:n6ba35be4fce441e7a0b07f53a1709beab7,
+        rdodi-research:Repository,
+        dcat:Catalog ;
+    skos:definition "Repository operated at national level"@en .
+
+rdodi-research:ORCID a owl:Class ;
+    rdfs:label "ORCID"@en ;
+    dcterms:source "SPAR DataCite — ORCID retrieved 2026-05-06"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/datacite/OpenResearcherContributorID> ;
+    rdfs:subClassOf rdodi-research:Identifier ;
+    skos:definition "Open Researcher and Contributor ID — persistent identifier for individual researchers. Subclass of Identifier; aligned to DataCite OpenResearcherContributorID."@en .
+
+rdodi-research:OpenAccess a owl:Class ;
+    rdfs:label "Open Access"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty rdodi-research:embargoDate ],
+        rdodi-research:AccessPolicy ;
+    owl:disjointWith rdodi-research:ClosedAccess,
+        rdodi-research:RestrictedAccess ;
+    skos:definition "Unrestricted access to all users"@en .
+
+rdodi-research:OpenFrame a owl:Class ;
+    rdfs:label "open frame"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1; Booth et al. (2016) on exploratory reviews"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ScopeFrame ;
+    skos:definition "A research scope that is intentionally not constrained by a structured frame. Used when exploratory inquiry is appropriate. Carries a free-text description and optional initial keywords."@en .
+
+rdodi-research:OutOfDate a owl:Class ;
+    rdfs:label "out of date"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.2"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:RejectionCriterion ;
+    skos:definition "Resource is rejected because it predates the temporal scope or has been superseded by newer authoritative work."@en .
+
+rdodi-research:OutOfScope a owl:Class ;
+    rdfs:label "out of scope"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.2"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:RejectionCriterion ;
+    skos:definition "Resource does not satisfy the ResearchScope's inclusion criteria or hits an exclusion criterion."@en .
+
+rdodi-research:PatentApplication a owl:Class ;
+    rdfs:label "PatentApplication"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Patent application"@en .
+
+rdodi-research:PatentPortfolio a owl:Class ;
+    rdfs:label "PatentPortfolio"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Patent portfolio"@en .
+
+rdodi-research:PeerReviewActivity a owl:Class ;
+    rdfs:label "PeerReviewActivity"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchActivity ;
+    skos:definition "Peer review activity"@en .
+
+rdodi-research:PermanentPreservation a owl:Class ;
+    rdfs:label "Permanent Preservation"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:LongTermPreservation,
+        rdodi-research:PreservationPolicy ;
+    skos:definition "Indefinite preservation"@en .
+
+rdodi-research:PilotProduction a owl:Class ;
+    rdfs:label "PilotProduction"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ManufacturingProcess ;
+    skos:definition "Pilot production"@en .
+
+rdodi-research:PlanningStage a owl:Class ;
+    rdfs:label "Planning Stage"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:DataLifecycleStage ;
+    owl:disjointWith rdodi-research:AnalysisStage,
+        rdodi-research:ArchivalStage,
+        rdodi-research:CollectionStage,
+        rdodi-research:PreservationStage,
+        rdodi-research:ProcessingStage,
+        rdodi-research:ReuseStage,
+        rdodi-research:SharingStage ;
+    skos:definition "Data management planning"@en .
+
+rdodi-research:PrecisionMaximizing a owl:Class ;
+    rdfs:label "precision-maximizing selection"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.1; Booth et al. (2016) on recall-precision tradeoffs"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:SelectionStrategy ;
+    skos:definition "Selects narrowly to maximize precision (positive predictive value); accepts missing some relevant work. Used when reviewer time is the limiting factor."@en .
+
+rdodi-research:PredatoryVenue a owl:Class ;
+    rdfs:label "predatory venue"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.2"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:RejectionCriterion ;
+    skos:definition "Resource was published in a venue identified as predatory or non-peer-reviewed when peer review was claimed."@en .
+
+rdodi-research:ProcessOptimization a owl:Class ;
+    rdfs:label "ProcessOptimization"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ManufacturingProcess ;
+    skos:definition "Process optimization"@en .
+
+rdodi-research:ProductLaunch a owl:Class ;
+    rdfs:label "ProductLaunch"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:Commercialization ;
+    skos:definition "Product launch"@en .
+
+rdodi-research:ProductionCapacity a owl:Class ;
+    rdfs:label "ProductionCapacity"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Production capacity"@en .
+
+rdodi-research:ProductionLine a owl:Class ;
+    rdfs:label "ProductionLine"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ManufacturingProcess ;
+    skos:definition "Production line"@en .
+
+rdodi-research:ProofOfConcept a owl:Class ;
+    rdfs:label "ProofOfConcept"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchProject ;
+    skos:definition "Proof of concept demonstration"@en .
+
+rdodi-research:ProposalSubmission a owl:Class ;
+    rdfs:label "ProposalSubmission"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Proposal submission"@en .
+
+rdodi-research:ProvenanceData a owl:Class ;
+    rdfs:label "ProvenanceData"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab11,
+        _:n6ba35be4fce441e7a0b07f53a1709beab12,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Dataset,
+        rdodi-research:Publication,
+        <http://purl.org/spar/fabio#Dataset>,
+        dcat:Dataset ;
+    skos:definition "Data provenance information"@en .
+
+rdodi-research:QualityControl a owl:Class ;
+    rdfs:label "QualityControl"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ManufacturingProcess ;
+    skos:definition "Quality control process"@en .
+
+rdodi-research:RawData a owl:Class ;
+    rdfs:label "RawData"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab11,
+        _:n6ba35be4fce441e7a0b07f53a1709beab12,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Dataset,
+        rdodi-research:Publication,
+        <http://purl.org/spar/fabio#Dataset>,
+        dcat:Dataset ;
+    owl:disjointWith rdodi-research:DerivedData,
+        rdodi-research:ProcessedData ;
+    skos:definition "Raw, unprocessed data"@en .
+
+rdodi-research:RecallMaximizing a owl:Class ;
+    rdfs:label "recall-maximizing selection"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.1; Booth et al. (2016) on recall-precision tradeoffs"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:SelectionStrategy ;
+    skos:definition "Selects broadly to maximize recall (true-positive rate); accepts more noise. Used when missing relevant work is more costly than processing irrelevant work."@en .
+
+rdodi-research:RecencyWeighted a owl:Class ;
+    rdfs:label "recency-weighted selection"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.1; Garfield (2006) on temporal weighting in citation analysis"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:SelectionStrategy ;
+    skos:definition "Selects resources weighted by publication recency. Newer publications receive higher selection priority. Configurable decay parameters."@en .
+
+rdodi-research:ResearchGroup a owl:Class ;
+    rdfs:label "ResearchGroup"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf foaf:Organization ;
+    skos:definition "Research group"@en .
+
+rdodi-research:Retracted a owl:Class ;
+    rdfs:label "retracted"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.2"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:RejectionCriterion ;
+    skos:definition "Resource has been formally retracted by the publisher or authors."@en .
+
+rdodi-research:Review a owl:Class ;
+    rdfs:label "Review"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Publication ;
+    owl:disjointWith rdodi-research:Editorial ;
+    skos:definition "Review article"@en .
+
+rdodi-research:Revision a owl:Class ;
+    rdfs:label "Revision"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Publication revision"@en .
+
+rdodi-research:ScaleUp a owl:Class ;
+    rdfs:label "ScaleUp"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ManufacturingProcess ;
+    skos:definition "Scale-up process"@en .
+
+rdodi-research:ScholarlyImpact a owl:Class ;
+    rdfs:label "ScholarlyImpact"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Scholarly impact measure"@en .
+
+rdodi-research:SearchEngineQuery a owl:Class ;
+    rdfs:label "search engine query"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.3"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:DiscoveryMethod ;
+    skos:definition "A discovery action issuing a structured query to a search engine, database, or repository and collecting matching resources."@en .
+
+rdodi-research:ShortTermPreservation a owl:Class ;
+    rdfs:label "Short-Term Preservation"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:PreservationPolicy ;
+    owl:disjointWith rdodi-research:LongTermPreservation,
+        rdodi-research:MediumTermPreservation ;
+    skos:definition "Preservation for 3-5 years"@en .
+
+rdodi-research:SnowballSampling a owl:Class ;
+    rdfs:label "snowball sampling"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.3"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:DiscoveryMethod ;
+    skos:definition "A discovery action where each found resource's references are themselves searched, iteratively until a stopping criterion."@en .
+
+rdodi-research:Submission a owl:Class ;
+    rdfs:label "Submission"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Publication submission"@en .
+
+rdodi-research:TechnicalReport a owl:Class ;
+    rdfs:label "TechnicalReport"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Publication ;
+    skos:definition "Technical report"@en .
+
+rdodi-research:TechnologyAssessment a owl:Class ;
+    rdfs:label "TechnologyAssessment"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Technology assessment"@en .
+
+rdodi-research:TheoreticalResearch a owl:Class ;
+    rdfs:label "TheoreticalResearch"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchArea ;
+    owl:disjointWith rdodi-research:ExperimentalResearch ;
+    skos:definition "Theoretical research"@en .
+
+rdodi-research:TheoryDevelopment a owl:Class ;
+    rdfs:label "TheoryDevelopment"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchActivity ;
+    skos:definition "Theory development"@en .
+
+rdodi-research:TieredAccess a owl:Class ;
+    rdfs:label "Tiered Access"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:AccessPolicy ;
+    skos:definition "Different access levels based on user credentials"@en .
+
+rdodi-research:TradeSecret a owl:Class ;
+    rdfs:label "TradeSecret"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:IntellectualProperty ;
+    skos:definition "Trade secret"@en .
+
+rdodi-research:Trademark a owl:Class ;
+    rdfs:label "Trademark"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:IntellectualProperty ;
+    skos:definition "Trademark"@en .
+
+rdodi-research:UtilityPatent a owl:Class ;
+    rdfs:label "Utility Patent"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab14,
+        _:n6ba35be4fce441e7a0b07f53a1709beab15,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        rdodi-research:Patent ;
+    owl:disjointWith rdodi-research:DesignPatent,
+        rdodi-research:PlantPatent ;
+    skos:definition "Patent for processes, machines, or compositions"@en .
+
+rdodi-research:VenueGated a owl:Class ;
+    rdfs:label "venue-gated selection"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.1; Petticrew & Roberts (2006) on venue restriction in systematic reviews"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:SelectionStrategy ;
+    skos:definition "Selects only resources from named venues (e.g., specific journals, conferences, publishers). Trades coverage for trust."@en .
+
+rdodi-research:WorkingPaper a owl:Class ;
+    rdfs:label "WorkingPaper"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Publication ;
+    owl:disjointWith rdodi-research:WhitePaper ;
+    skos:definition "Working paper"@en .
+
+rdodi-research:addressesResearchQuestion a owl:DatatypeProperty ;
+    rdfs:label "addresses research question"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.4; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Free-text description of the research question(s) this resource addresses."@en .
+
+rdodi-research:affiliatedWith a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "affiliated with"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain foaf:Person ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range foaf:Organization ;
+    owl:propertyChainAxiom ( rdodi-research:memberOf rdodi-research:partOf ) ;
+    skos:closeMatch <http://vivoweb.org/ontology/core#affiliatedOrganization> ;
+    skos:definition "Researcher affiliated with institution"@en .
+
+rdodi-research:atStage a owl:ObjectProperty ;
+    rdfs:label "at stage"@en,
+        "atStage"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain rdodi-research:StageGateProcess ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range _:n6ba35be4fce441e7a0b07f53a1709beab18,
+        rdodi-research:Stage ;
+    skos:definition "Process at stage"@en .
+
+rdodi-research:awardedBy a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "awarded by"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain <http://purl.org/cerif/frapo/Grant> ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range <http://purl.org/cerif/frapo/FundingAgency>,
+        foaf:Organization ;
+    skos:definition "Grant awarded by agency"@en .
+
+rdodi-research:cites a owl:ObjectProperty ;
+    rdfs:label "cites"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Publication ;
+    owl:inverseOf rdodi-research:citedBy ;
+    skos:definition "Object property 'cites'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:compositionLogic a owl:DatatypeProperty ;
+    rdfs:label "composition logic"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.1"@en ;
+    rdfs:domain rdodi-research:CompositeStrategy ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Specifies how component strategies combine: 'intersect' (resource selected only if ALL components select), 'union' (any component), 'weighted' (numeric combination)."@en .
+
+rdodi-research:creates a owl:ObjectProperty ;
+    rdfs:label "creates"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain foaf:Person ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab11,
+        _:n6ba35be4fce441e7a0b07f53a1709beab12,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Dataset,
+        rdodi-research:Publication,
+        <http://purl.org/spar/fabio#Dataset>,
+        dcat:Dataset ;
+    owl:inverseOf rdodi-research:createdBy ;
+    skos:definition "Object property 'creates'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:depositedIn a owl:ObjectProperty ;
+    rdfs:label "deposited in"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab11,
+        _:n6ba35be4fce441e7a0b07f53a1709beab12,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Dataset,
+        rdodi-research:Publication,
+        <http://purl.org/spar/fabio#Dataset>,
+        dcat:Dataset ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range _:n6ba35be4fce441e7a0b07f53a1709beab5,
+        _:n6ba35be4fce441e7a0b07f53a1709beab6,
+        _:n6ba35be4fce441e7a0b07f53a1709beab7,
+        rdodi-research:Repository,
+        dcat:Catalog ;
+    skos:definition "Dataset deposited in repository"@en .
+
+rdodi-research:discourseRole a owl:DatatypeProperty ;
+    rdfs:label "discourse role"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.5; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Role the resource plays in scholarly discourse: 'foundational', 'extending', 'critiquing', 'synthesizing', 'replicating', 'translating'."@en .
+
+rdodi-research:discoveredBy a owl:ObjectProperty ;
+    rdfs:label "discovered by"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.3"@en ;
+    rdfs:domain rdodi-research:DiscoveredResource ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:DiscoveryAttempt ;
+    skos:definition "Links a DiscoveredResource to the DiscoveryAttempt that found it."@en .
+
+rdodi-research:discoveryDate a owl:DatatypeProperty ;
+    rdfs:label "discovery date"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.3"@en ;
+    rdfs:domain rdodi-research:DiscoveryAttempt ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range xsd:dateTime ;
+    skos:definition "Date the DiscoveryAttempt was performed. Use xsd:dateTime for full timestamp."@en .
+
+rdodi-research:discoveryYield a owl:DatatypeProperty ;
+    rdfs:label "discovery yield"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.3"@en ;
+    rdfs:domain rdodi-research:DiscoveryAttempt ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range xsd:integer ;
+    skos:definition "Count of resources yielded by a DiscoveryAttempt."@en .
+
+rdodi-research:endDate a owl:DatatypeProperty ;
+    rdfs:label "end date"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range xsd:dateTime ;
+    rdfs:subPropertyOf <http://purl.org/cerif/frapo/hasEndDate> ;
+    owl:equivalentProperty <http://purl.org/cerif/frapo/hasEndDate> ;
+    skos:definition "End date"@en .
+
+rdodi-research:fillsKnowledgeGap a owl:DatatypeProperty ;
+    rdfs:label "fills knowledge gap"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.4; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Free-text description of what knowledge gap the resource fills."@en .
+
+rdodi-research:forDegree a owl:ObjectProperty ;
+    rdfs:label "forDegree"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab19,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Publication,
+        rdodi-research:Thesis,
+        <http://purl.org/spar/fabio#Thesis> ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Object property 'forDegree'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:foundAtDepth a owl:DatatypeProperty ;
+    rdfs:label "found at depth"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.6"@en ;
+    rdfs:domain rdodi-research:DiscoveredResource ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range xsd:integer ;
+    skos:definition "Depth in citation chain at which the resource was found (0 = seed; 1 = direct neighbor; etc.)."@en .
+
+rdodi-research:foundOnIteration a owl:DatatypeProperty ;
+    rdfs:label "found on iteration"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.6"@en ;
+    rdfs:domain rdodi-research:DiscoveredResource ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range xsd:integer ;
+    skos:definition "Iteration number on which this resource was discovered (e.g., iteration 3 of a snowball search)."@en .
+
+rdodi-research:foundViaStrategy a owl:ObjectProperty ;
+    rdfs:label "found via strategy"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.6"@en ;
+    rdfs:domain rdodi-research:DiscoveredResource ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:SelectionStrategy ;
+    skos:definition "Links a DiscoveredResource to the SelectionStrategy that surfaced it."@en .
+
+rdodi-research:fundedBy a owl:ObjectProperty ;
+    rdfs:label "funded by"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain rdodi-research:ResearchProject ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range <http://purl.org/cerif/frapo/Grant> ;
+    owl:inverseOf rdodi-research:funds ;
+    skos:definition "Project funded by grant"@en .
+
+rdodi-research:grantNumber a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "grant number"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain <http://purl.org/cerif/frapo/Grant> ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf <http://purl.org/cerif/frapo/hasGrantNumber> ;
+    owl:equivalentProperty <http://purl.org/cerif/frapo/hasGrantNumber> ;
+    skos:definition "Unique grant identifier"@en .
+
+rdodi-research:handsOffToSynthesis a owl:ObjectProperty ;
+    rdfs:label "hands off to synthesis"@en ;
+    dcterms:source "Sprint 7 contract wiring; Research_Ontology_Requirements_v1_0_2 §3 Layer 3 deferred"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Links Research outputs to the os:SynthesisProject that consumes them as SourceDocuments. This is the operational hand-off — the receiving end of Contract 1."@en .
+
+rdodi-research:hasAccessCost a owl:DatatypeProperty ;
+    rdfs:label "has access cost"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.3; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Cost (monetary or non-monetary) to access the resource. Free-text or structured."@en .
+
+rdodi-research:hasAdvocacyAffiliation a owl:DatatypeProperty ;
+    rdfs:label "has advocacy affiliation"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.3; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Affiliation with advocacy organizations that may influence the resource's perspective."@en .
+
+rdodi-research:hasAuthorContext a owl:DatatypeProperty ;
+    rdfs:label "has author context"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.1; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Free-text or structured description of the author's institutional or expertise context relevant to evaluating the resource's authority."@en .
+
+rdodi-research:hasAuthoritySoundness a owl:DatatypeProperty ;
+    rdfs:label "has authority soundness"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.1; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "An assessment of how robust the credentialing mechanism is. Free-text or rated scale."@en .
+
+rdodi-research:hasCommercialMotivation a owl:DatatypeProperty ;
+    rdfs:label "has commercial motivation"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.3; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Description of any commercial motivation behind the resource's production or distribution."@en .
+
+rdodi-research:hasComparison a owl:DatatypeProperty ;
+    rdfs:label "has comparison"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1; Richardson et al. (1995) PICO framework for clinical questions; Booth et al. (2016)"@en ;
+    rdfs:domain rdodi-research:PICOFrame ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "PICO Comparison component — what is the alternative or control."@en .
+
+rdodi-research:hasComponentStrategy a owl:ObjectProperty ;
+    rdfs:label "has component strategy"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.1"@en ;
+    rdfs:domain rdodi-research:CompositeStrategy ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:SelectionStrategy ;
+    skos:definition "Links a CompositeStrategy to one of its component sub-strategies. Multi-valued."@en .
+
+rdodi-research:hasConflictOfInterest a owl:DatatypeProperty ;
+    rdfs:label "has conflict of interest"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.3; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Declared or identifiable conflicts of interest relevant to the resource's claims."@en .
+
+rdodi-research:hasContext a owl:DatatypeProperty ;
+    rdfs:label "has context"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1; Pawson et al. (2005) CIMO framework for management/organizational research"@en ;
+    rdfs:domain rdodi-research:CIMOFrame ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "CIMO Context component — situational conditions in which the intervention is deployed."@en .
+
+rdodi-research:hasContextualAuthority a owl:DatatypeProperty ;
+    rdfs:label "has contextual authority"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.1; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "An assessment of the resource's authority for a specific use context, recognizing that authority is constructed and contextual."@en .
+
+rdodi-research:hasCredentialingMechanism a owl:DatatypeProperty ;
+    rdfs:label "has credentialing mechanism"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.1; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "The mechanism by which the resource's authority was credentialed (peer review, editorial review, post-publication review, none)."@en .
+
+rdodi-research:hasEvaluation a owl:DatatypeProperty ;
+    rdfs:label "has evaluation"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1; Booth (2006) SPICE framework for qualitative reviews"@en ;
+    rdfs:domain rdodi-research:SPICEFrame ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "SPICE Evaluation component — how outcomes are judged (qualitative emphasis)."@en .
+
+rdodi-research:hasExclusionCriterion a owl:DatatypeProperty ;
+    rdfs:label "has exclusion criterion"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1"@en ;
+    rdfs:domain rdodi-research:ResearchScope ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Natural-language statement of a criterion that excludes a resource from scope. Multi-valued."@en .
+
+rdodi-research:hasInclusionCriterion a owl:DatatypeProperty ;
+    rdfs:label "has inclusion criterion"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1"@en ;
+    rdfs:domain rdodi-research:ResearchScope ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Natural-language statement of a criterion that resources must satisfy to be included in scope. Multi-valued."@en .
+
+rdodi-research:hasInstitutionalBacking a owl:DatatypeProperty ;
+    rdfs:label "has institutional backing"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.1; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "The institution or organization backing the resource (publisher, sponsor, host institution)."@en .
+
+rdodi-research:hasIntervention a owl:DatatypeProperty ;
+    rdfs:label "has intervention"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1; Richardson et al. (1995) PICO framework for clinical questions; Booth et al. (2016)"@en ;
+    rdfs:domain rdodi-research:PICOFrame ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "PICO Intervention component — what is done."@en .
+
+rdodi-research:hasInvention a owl:ObjectProperty ;
+    rdfs:label "has invention"@en,
+        "hasInvention"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain rdodi-research:ResearchProject ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:InventionDisclosure ;
+    skos:definition "Project has invention"@en .
+
+rdodi-research:hasKeyword a owl:DatatypeProperty ;
+    rdfs:label "has keyword"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1"@en ;
+    rdfs:domain rdodi-research:ScopeFrame ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "A search keyword associated with a scope. Multi-valued."@en .
+
+rdodi-research:hasLifecycleState a owl:ObjectProperty ;
+    rdfs:label "has lifecycle state"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.3"@en ;
+    rdfs:domain rdodi-research:DiscoveredResource ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:ResourceLifecycleState ;
+    skos:definition "Links a DiscoveredResource to its current ResourceLifecycleState."@en .
+
+rdodi-research:hasManufacturingReadiness a owl:ObjectProperty ;
+    rdfs:label "has manufacturing readiness"@en,
+        "hasManufacturingReadiness"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain rdodi-research:ResearchProject ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range _:n6ba35be4fce441e7a0b07f53a1709beab20,
+        _:n6ba35be4fce441e7a0b07f53a1709beab21,
+        rdodi-research:ManufacturingReadinessLevel ;
+    skos:definition "Project has MRL"@en .
+
+rdodi-research:hasMechanism a owl:DatatypeProperty ;
+    rdfs:label "has mechanism"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1; Pawson et al. (2005) CIMO framework for management/organizational research"@en ;
+    rdfs:domain rdodi-research:CIMOFrame ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "CIMO Mechanism component — the explanatory mechanism by which the intervention produces the outcome."@en .
+
+rdodi-research:hasOutcome a owl:DatatypeProperty ;
+    rdfs:label "has outcome"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1; Richardson et al. (1995) PICO framework for clinical questions; Booth et al. (2016)"@en ;
+    rdfs:domain rdodi-research:PICOFrame ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "PICO Outcome component — what is measured."@en .
+
+rdodi-research:hasPerspective a owl:DatatypeProperty ;
+    rdfs:label "has perspective"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1; Booth (2006) SPICE framework for qualitative reviews"@en ;
+    rdfs:domain rdodi-research:SPICEFrame ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "SPICE Perspective component — whose viewpoint is centered."@en .
+
+rdodi-research:hasPopulation a owl:DatatypeProperty ;
+    rdfs:label "has population"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1; Richardson et al. (1995) PICO framework for clinical questions; Booth et al. (2016)"@en ;
+    rdfs:domain rdodi-research:PICOFrame ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "PICO Population component — who or what is studied."@en .
+
+rdodi-research:hasPreservationPolicy a owl:ObjectProperty ;
+    rdfs:label "has preservation policy"@en,
+        "hasPreservationPolicy"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain _:n6ba35be4fce441e7a0b07f53a1709beab5,
+        _:n6ba35be4fce441e7a0b07f53a1709beab6,
+        _:n6ba35be4fce441e7a0b07f53a1709beab7,
+        rdodi-research:Repository,
+        dcat:Catalog ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:PreservationPolicy ;
+    skos:definition "Repository has preservation policy"@en .
+
+rdodi-research:hasProductionProcessType a owl:DatatypeProperty ;
+    rdfs:label "has production process type"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.2; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Type of production process that created the resource (peer-reviewed journal article, preprint, blog post, technical report, etc.)."@en .
+
+rdodi-research:hasProductionRigor a owl:DatatypeProperty ;
+    rdfs:label "has production rigor"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.2; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "An assessment of the rigor applied during production (length of peer review, methodological transparency, replication standards followed)."@en .
+
+rdodi-research:hasProductionTimeframe a owl:DatatypeProperty ;
+    rdfs:label "has production timeframe"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.2; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Free-text description of how long the production took (relevant to assessing currency vs. depth)."@en .
+
+rdodi-research:hasProductionTraceability a owl:DatatypeProperty ;
+    rdfs:label "has production traceability"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.2; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Assessment of how traceable the production process is (e.g., open peer review records, preregistration, data availability)."@en .
+
+rdodi-research:hasRejectionCriterion a owl:ObjectProperty ;
+    rdfs:label "has rejection criterion"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.2"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:RejectionCriterion ;
+    skos:definition "Links a DiscoveredResource (or a Selection action) to the RejectionCriterion that explains rejection."@en .
+
+rdodi-research:hasResearchArea a owl:ObjectProperty ;
+    rdfs:label "has research area"@en,
+        "hasResearchArea"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain foaf:Person ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:ResearchArea ;
+    rdfs:subPropertyOf <http://vivoweb.org/ontology/core#hasResearchArea> ;
+    owl:equivalentProperty <http://vivoweb.org/ontology/core#hasResearchArea> ;
+    owl:inverseOf rdodi-research:isResearchAreaOf ;
+    skos:definition "Researcher has research area"@en .
+
+rdodi-research:hasResearchQuestion a owl:DatatypeProperty ;
+    rdfs:label "has research question"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1"@en ;
+    rdfs:domain rdodi-research:ResearchScope ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Natural-language statement of the question the research is intended to answer. Multi-valued: a scope may have a primary question plus secondary questions."@en .
+
+rdodi-research:hasReuseLicense a owl:DatatypeProperty ;
+    rdfs:label "has reuse license"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.3; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "License governing reuse (CC-BY, CC-BY-SA, copyrighted-all-rights-reserved, etc.)."@en .
+
+rdodi-research:hasRevisionHistory a owl:DatatypeProperty ;
+    rdfs:label "has revision history"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.2; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Description of revisions the resource has undergone (versions, errata, retractions)."@en .
+
+rdodi-research:hasScopeFrame a owl:ObjectProperty ;
+    rdfs:label "has scope frame"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1"@en ;
+    rdfs:domain rdodi-research:ResearchScope ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:ScopeFrame ;
+    skos:definition "Links a ResearchScope to its operational ScopeFrame instance."@en .
+
+rdodi-research:hasSelectionStrategy a owl:ObjectProperty ;
+    rdfs:label "has selection strategy"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.1"@en ;
+    rdfs:domain rdodi-research:ResearchScope ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:SelectionStrategy ;
+    skos:definition "Links a ResearchScope to the SelectionStrategy used for that scope."@en .
+
+rdodi-research:hasSetting a owl:DatatypeProperty ;
+    rdfs:label "has setting"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1; Booth (2006) SPICE framework for qualitative reviews"@en ;
+    rdfs:domain rdodi-research:SPICEFrame ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "SPICE Setting component — context in which the research takes place."@en .
+
+rdodi-research:hasSubtopic a owl:DatatypeProperty ;
+    rdfs:label "has subtopic"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1"@en ;
+    rdfs:domain rdodi-research:SubtopicFrame ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "A subtopic decomposition entry for SubtopicFrame. Multi-valued."@en .
+
+rdodi-research:hasSynthesizedDomainOntology a owl:ObjectProperty ;
+    rdfs:label "has synthesized domain ontology"@en ;
+    dcterms:source "Sprint 7 contract wiring; Research_Ontology_Requirements_v1_0_2 §3 Layer 3 deferred"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:SynthesizedDomainOntology ;
+    skos:definition "Links a Research project to the SynthesizedDomainOntology it produces (via an os:OntologySynthesisProject's synthesis activity chain)."@en .
+
+rdodi-research:hasTechnologyReadiness a owl:ObjectProperty ;
+    rdfs:label "has technology readiness"@en,
+        "hasTechnologyReadiness"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain rdodi-research:ResearchProject ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range _:n6ba35be4fce441e7a0b07f53a1709beab20,
+        _:n6ba35be4fce441e7a0b07f53a1709beab22,
+        rdodi-research:TechnologyReadinessLevel ;
+    skos:definition "Project has TRL"@en .
+
+rdodi-research:hasTimeWindow a owl:DatatypeProperty ;
+    rdfs:label "has time window"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1"@en ;
+    rdfs:domain rdodi-research:ResearchScope ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Time-window constraint on resources (e.g., 'published 2015-2026'). Free-text or date-range string."@en .
+
+rdodi-research:hasValueAlignment a owl:DatatypeProperty ;
+    rdfs:label "has value alignment"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.3; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Assessment of how the resource's stance aligns or conflicts with values relevant to the using context."@en .
+
+rdodi-research:opensFurtherQuestions a owl:DatatypeProperty ;
+    rdfs:label "opens further questions"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.4; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Free-text description of further questions raised by the resource."@en .
+
+rdodi-research:participatesInDiscourseAround a owl:ObjectProperty ;
+    rdfs:label "participates in discourse around"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.5; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Links a resource to a topic or claim it engages with as part of scholarly discourse."@en .
+
+rdodi-research:precedesTRL a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "precedes TRL"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain _:n6ba35be4fce441e7a0b07f53a1709beab20,
+        _:n6ba35be4fce441e7a0b07f53a1709beab22,
+        rdodi-research:TechnologyReadinessLevel ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range _:n6ba35be4fce441e7a0b07f53a1709beab20,
+        _:n6ba35be4fce441e7a0b07f53a1709beab22,
+        rdodi-research:TechnologyReadinessLevel ;
+    skos:definition "Object property 'precedesTRL'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:processes a owl:ObjectProperty ;
+    rdfs:label "processes"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain foaf:Organization ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:InventionDisclosure ;
+    owl:inverseOf rdodi-research:processedBy ;
+    skos:definition "Object property 'processes'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:queryString a owl:DatatypeProperty ;
+    rdfs:label "query string"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.3"@en ;
+    rdfs:domain rdodi-research:DiscoveryAttempt ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "The query string or search expression used by a DiscoveryAttempt. Untyped literal preserves whatever form the query took (text, structured query, URL)."@en .
+
+rdodi-research:references a owl:ObjectProperty ;
+    rdfs:label "references"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:inverseOf rdodi-research:referencedBy ;
+    skos:definition "Object property 'references'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:refutes a owl:ObjectProperty ;
+    rdfs:label "refutes"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.5; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:Publication ;
+    owl:inverseOf rdodi-research:refutedBy ;
+    skos:definition "The subject resource refutes a claim or finding of the object resource. Critical for selection: Refuted resources may be rejected via :Disproven criterion."@en .
+
+rdodi-research:reproducesExistingClaim a owl:DatatypeProperty ;
+    rdfs:label "reproduces existing claim"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.4; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range xsd:boolean ;
+    skos:definition "True if the resource is a replication or reproduction of an existing claim."@en .
+
+rdodi-research:requiresStrictScope a owl:DatatypeProperty ;
+    rdfs:label "requires strict scope"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.2"@en ;
+    rdfs:domain rdodi-research:ResearchScope ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range xsd:boolean ;
+    skos:definition "Boolean flag on a ResearchScope: when true, scope must satisfy frame-specific completeness (e.g., PICO requires all four components). When false (default), missing components produce advisory warnings only. Used by SHACL sufficiency shapes."@en .
+
+rdodi-research:retracts a owl:ObjectProperty ;
+    rdfs:label "retracts"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.5; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:Publication ;
+    owl:inverseOf rdodi-research:retractedBy ;
+    skos:definition "The subject is a retraction notice for the object resource. Resources retracted are rejected via :Retracted criterion."@en .
+
+rdodi-research:startDate a owl:DatatypeProperty ;
+    rdfs:label "start date"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range xsd:dateTime ;
+    rdfs:subPropertyOf <http://purl.org/cerif/frapo/hasStartDate> ;
+    owl:equivalentProperty <http://purl.org/cerif/frapo/hasStartDate> ;
+    skos:definition "Start date"@en .
+
+rdodi-research:submittedTo a owl:ObjectProperty ;
+    rdfs:label "submittedTo"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain rdodi-research:InventionDisclosure ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range foaf:Organization ;
+    owl:inverseOf rdodi-research:receives ;
+    skos:definition "Object property 'submittedTo'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:supersedes a owl:ObjectProperty ;
+    rdfs:label "supersedes"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.5; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:Publication ;
+    owl:inverseOf rdodi-research:supersededBy ;
+    skos:definition "The subject resource supersedes the object — the object is treated as obsolete in favor of the subject. Critical for selection: Superseded resources may be rejected via :OutOfDate criterion."@en .
+
+rdodi-research:usesMethod a owl:ObjectProperty ;
+    rdfs:label "uses method"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.3"@en ;
+    rdfs:domain rdodi-research:DiscoveryAttempt ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:DiscoveryMethod ;
+    skos:definition "Links a DiscoveryAttempt to the DiscoveryMethod employed."@en .
+
+<http://example.org/rdodi/research-ontology/tbox> a owl:Ontology ;
+    rdfs:label "RDODI Research Ontology tbox v1.0.1"@en ;
+    dcterms:created "2026-05-20"^^xsd:date ;
+    dcterms:creator <http://example.org/rdodi/agent/YusufAltunel> ;
+    dcterms:description "RDODI Research Ontology tbox. Part of the four-subject RDODI ecosystem: Research, Domain, Document, Interactive Page."@en ;
+    dcterms:identifier "research_ontology_tbox_v1_0_1" ;
+    dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-05-20"^^xsd:date ;
+    dcterms:publisher <http://example.org/rdodi/agent/IstanbulKulturUniversity> ;
+    dcterms:rights "Copyright (c) 2026 Yusuf Altunel. Licensed CC BY 4.0."@en ;
+    dcterms:rightsHolder <http://example.org/rdodi/agent/YusufAltunel> ;
+    rdfs:comment "RDODI v1.0.1 tbox for the Research Ontology. Derived from 02-research-ontology/research_ontology_tbox_v6_9_2.ttl (SHA-256 466f9d019bfde2b3adcb528b5dc8f6357402e8d05bfb89cda1547ae2b2f77ea9). ORIGINATION lineage: not a continuation of any prior ecosystem."@en ;
+    owl:versionIRI <http://example.org/rdodi/research-ontology/tbox/1.0.1> ;
+    owl:versionInfo "1.0.1" ;
+    prov:wasAttributedTo <http://example.org/rdodi/agent/YusufAltunel> ;
+    prov:wasGeneratedBy <http://example.org/rdodi/activity/RDODIOrigination_v1_0_1> .
+
+rdfs:comment a owl:AnnotationProperty .
+
+rdfs:isDefinedBy a owl:AnnotationProperty .
+
+rdfs:label a owl:AnnotationProperty .
+
+rdfs:seeAlso a owl:AnnotationProperty .
+
+owl:backwardCompatibleWith a owl:AnnotationProperty .
+
+owl:deprecated a owl:AnnotationProperty .
+
+owl:incompatibleWith a owl:AnnotationProperty .
+
+owl:priorVersion a owl:AnnotationProperty .
+
+owl:versionInfo a owl:AnnotationProperty .
+
+rdodi-research:AppliedResearch a owl:Class ;
+    rdfs:label "Applied Research"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchProject ;
+    skos:definition "Research directed toward practical applications"@en .
+
+rdodi-research:BetaVersion a owl:Class ;
+    rdfs:label "BetaVersion"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchProject ;
+    owl:disjointWith rdodi-research:ProductionVersion ;
+    skos:definition "Beta version prototype"@en .
+
+rdodi-research:CollectionStage a owl:Class ;
+    rdfs:label "Collection Stage"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:DataLifecycleStage ;
+    owl:disjointWith rdodi-research:AnalysisStage,
+        rdodi-research:ArchivalStage,
+        rdodi-research:PreservationStage,
+        rdodi-research:ProcessingStage,
+        rdodi-research:ReuseStage,
+        rdodi-research:SharingStage ;
+    skos:definition "Data generation and collection"@en .
+
+rdodi-research:CustomProduction a owl:Class ;
+    rdfs:label "CustomProduction"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ManufacturingProcess ;
+    skos:definition "Custom production"@en .
+
+rdodi-research:DesignPatent a owl:Class ;
+    rdfs:label "Design Patent"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab14,
+        _:n6ba35be4fce441e7a0b07f53a1709beab15,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        rdodi-research:Patent ;
+    owl:disjointWith rdodi-research:PlantPatent ;
+    skos:definition "Patent for ornamental designs"@en .
+
+rdodi-research:Editorial a owl:Class ;
+    rdfs:label "Editorial"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Publication ;
+    skos:definition "Editorial publication"@en .
+
+rdodi-research:EmbargoedAccess a owl:Class ;
+    rdfs:label "Embargoed Access"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab23,
+        rdodi-research:AccessPolicy,
+        rdodi-research:RestrictedAccess ;
+    skos:definition "Temporary access restriction until specified date"@en .
+
+rdodi-research:EstablishedField a owl:Class ;
+    rdfs:label "EstablishedField"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchArea ;
+    skos:definition "Established field"@en .
+
+rdodi-research:ExperimentalResearch a owl:Class ;
+    rdfs:label "ExperimentalResearch"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchArea ;
+    skos:definition "Experimental research"@en .
+
+rdodi-research:Journal a owl:Class ;
+    rdfs:label "Journal"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Academic journal"@en .
+
+rdodi-research:MediumTermPreservation a owl:Class ;
+    rdfs:label "Medium-Term Preservation"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:PreservationPolicy ;
+    owl:disjointWith rdodi-research:LongTermPreservation ;
+    skos:definition "Preservation for 10-20 years"@en .
+
+rdodi-research:NonExclusiveLicense a owl:Class ;
+    rdfs:label "Non-Exclusive License"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab8,
+        _:n6ba35be4fce441e7a0b07f53a1709beab9,
+        rdodi-research:License ;
+    owl:disjointWith rdodi-research:SoleExclusiveLicense ;
+    skos:definition "License allowing multiple licensees"@en .
+
+rdodi-research:ProcessedData a owl:Class ;
+    rdfs:label "ProcessedData"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab11,
+        _:n6ba35be4fce441e7a0b07f53a1709beab12,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Dataset,
+        rdodi-research:Publication,
+        <http://purl.org/spar/fabio#Dataset>,
+        dcat:Dataset ;
+    owl:disjointWith rdodi-research:DerivedData ;
+    skos:definition "Processed data"@en .
+
+rdodi-research:ResourceLifecycleState a owl:Class ;
+    rdfs:label "resource lifecycle state"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.3"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "The current state of a resource in the research workflow: Discovered, Assessed, Selected, Cited, Rejected. Transitions are tracked as activities for provenance."@en .
+
+rdodi-research:StageGateProcess a owl:Class ;
+    rdfs:label "Stage-Gate Process"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Structured innovation process with stages and gates"@en .
+
+rdodi-research:SubtopicFrame a owl:Class ;
+    rdfs:label "subtopic frame"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1; Greenhalgh et al. (2005) on meta-narrative reviews"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ScopeFrame ;
+    skos:definition "A scope frame organized as an initial topic plus a structured set of subtopics. Used in scoping reviews and meta-narrative reviews where the topic decomposition is part of the scope itself."@en .
+
+rdodi-research:SynthesizedDomainOntology a owl:Class ;
+    rdfs:label "synthesized domain ontology"@en ;
+    dcterms:source "Sprint 7 contract wiring; Research_Ontology_Requirements_v1_0_2 §3 Layer 3 deferred"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Kind of os:OntologyVersion."@en .
+
+rdodi-research:WhitePaper a owl:Class ;
+    rdfs:label "WhitePaper"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Publication ;
+    skos:definition "White paper"@en .
+
+rdodi-research:authored a owl:ObjectProperty ;
+    rdfs:label "authored"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain foaf:Person ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Publication ;
+    owl:propertyChainAxiom ( rdodi-research:leadsProject rdodi-research:produces ) ;
+    skos:definition "Researcher authored publication"@en .
+
+rdodi-research:citedBy a owl:ObjectProperty ;
+    rdfs:label "citedBy"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Object property 'citedBy'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:createdBy a owl:ObjectProperty ;
+    rdfs:label "createdBy"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Object property 'createdBy'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:depositsIn a owl:ObjectProperty ;
+    rdfs:label "depositsIn"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab11,
+        _:n6ba35be4fce441e7a0b07f53a1709beab12,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Dataset,
+        rdodi-research:Publication,
+        <http://purl.org/spar/fabio#Dataset>,
+        dcat:Dataset ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range _:n6ba35be4fce441e7a0b07f53a1709beab5,
+        _:n6ba35be4fce441e7a0b07f53a1709beab6,
+        _:n6ba35be4fce441e7a0b07f53a1709beab7,
+        rdodi-research:Repository,
+        dcat:Catalog ;
+    owl:inverseOf rdodi-research:contains ;
+    skos:definition "Object property 'depositsIn'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:funds a owl:ObjectProperty ;
+    rdfs:label "funds"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain <http://purl.org/cerif/frapo/Grant> ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:ResearchProject ;
+    rdfs:subPropertyOf <http://purl.org/cerif/frapo/funds> ;
+    owl:equivalentProperty <http://purl.org/cerif/frapo/funds> ;
+    skos:definition "Grant funds research project"@en .
+
+rdodi-research:grantedTo a owl:ObjectProperty ;
+    rdfs:label "grantedTo"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain _:n6ba35be4fce441e7a0b07f53a1709beab8,
+        _:n6ba35be4fce441e7a0b07f53a1709beab9,
+        rdodi-research:License ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:inverseOf rdodi-research:holds ;
+    skos:definition "Object property 'grantedTo'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:holds a owl:ObjectProperty ;
+    rdfs:label "holds"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Object property 'holds'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:hosts a owl:ObjectProperty ;
+    rdfs:label "hosts"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Object property 'hosts'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:isResearchAreaOf a owl:ObjectProperty ;
+    rdfs:label "isResearchAreaOf"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Object property 'isResearchAreaOf'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:leadsProject a owl:AsymmetricProperty,
+        owl:IrreflexiveProperty,
+        owl:ObjectProperty ;
+    rdfs:label "leads project"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain foaf:Person ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:ResearchProject ;
+    rdfs:subPropertyOf rdodi-research:conducts ;
+    skos:definition "PI leads research project"@en .
+
+rdodi-research:licensedVia a owl:ObjectProperty ;
+    rdfs:label "licensedVia"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Object property 'licensedVia'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:licensesIP a owl:ObjectProperty ;
+    rdfs:label "licensesIP"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain _:n6ba35be4fce441e7a0b07f53a1709beab8,
+        _:n6ba35be4fce441e7a0b07f53a1709beab9,
+        rdodi-research:License ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range _:n6ba35be4fce441e7a0b07f53a1709beab14,
+        _:n6ba35be4fce441e7a0b07f53a1709beab15,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        rdodi-research:Patent ;
+    owl:inverseOf rdodi-research:licensedVia ;
+    skos:definition "Object property 'licensesIP'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:memberOf a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "member of"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain foaf:Person ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range <http://vivoweb.org/ontology/core#Department>,
+        foaf:Organization ;
+    skos:definition "Researcher member of department"@en .
+
+rdodi-research:presentedAt a owl:ObjectProperty ;
+    rdfs:label "presentedAt"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab26,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:ConferencePaper,
+        rdodi-research:Publication,
+        <http://purl.org/spar/fabio#ConferencePaper> ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:Conference ;
+    owl:inverseOf rdodi-research:hosts ;
+    skos:definition "Object property 'presentedAt'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:processedBy a owl:ObjectProperty ;
+    rdfs:label "processedBy"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Object property 'processedBy'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:producedBy a owl:ObjectProperty ;
+    rdfs:label "producedBy"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:closeMatch prov:wasGeneratedBy ;
+    skos:definition "Object property 'producedBy'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:produces a owl:ObjectProperty ;
+    rdfs:label "produces"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain rdodi-research:ResearchProject ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:inverseOf rdodi-research:producedBy ;
+    skos:definition "Object property 'produces'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:publishedIn a owl:ObjectProperty ;
+    rdfs:label "published in"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Publication published in venue"@en .
+
+rdodi-research:receives a owl:ObjectProperty ;
+    rdfs:label "receives"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Object property 'receives'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:referencedBy a owl:ObjectProperty ;
+    rdfs:label "referencedBy"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Object property 'referencedBy'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:refutedBy a owl:ObjectProperty ;
+    rdfs:label "refuted by"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.5"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:Publication ;
+    skos:definition "Inverse of :refutes."@en .
+
+rdodi-research:resultsInPatent a owl:ObjectProperty ;
+    rdfs:label "resultsInPatent"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain rdodi-research:InventionDisclosure ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range _:n6ba35be4fce441e7a0b07f53a1709beab14,
+        _:n6ba35be4fce441e7a0b07f53a1709beab15,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        rdodi-research:Patent ;
+    skos:definition "Object property 'resultsInPatent'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:retractedBy a owl:ObjectProperty ;
+    rdfs:label "retracted by"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.5"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:Publication ;
+    skos:definition "Inverse of :retracts."@en .
+
+rdodi-research:stageNumber a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "stage number"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain _:n6ba35be4fce441e7a0b07f53a1709beab18,
+        rdodi-research:Stage ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range xsd:integer ;
+    skos:definition "Numeric stage identifier"@en .
+
+rdodi-research:supersededBy a owl:ObjectProperty ;
+    rdfs:label "superseded by"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §4.5; ACRL Framework for Information Literacy in Higher Education (2016)"@en ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:Publication ;
+    skos:definition "Inverse of :supersedes — the subject is superseded by the object."@en .
+
+rdodi-research:CIMOFrame a owl:Class ;
+    rdfs:label "CIMO frame"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1; Pawson et al. (2005) CIMO framework for management/organizational research"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ScopeFrame ;
+    skos:definition "A scope frame from management/organizational research: Context, Intervention, Mechanism, Outcome. Used in realist reviews and organizational evidence synthesis."@en .
+
+rdodi-research:ClosedAccess a owl:Class ;
+    rdfs:label "Closed Access"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:AccessPolicy ;
+    skos:definition "No public access; metadata only"@en .
+
+rdodi-research:CompositeStrategy a owl:Class ;
+    rdfs:label "composite strategy"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.1"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:SelectionStrategy ;
+    skos:definition "A SelectionStrategy that combines two or more sub-strategies. Composition is via :hasComponentStrategy property; semantics of composition (intersect, union, weighted) is specified by :compositionLogic."@en .
+
+rdodi-research:Conference a owl:Class ;
+    rdfs:label "Conference"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Academic conference"@en .
+
+rdodi-research:ConferencePaper a owl:Class ;
+    rdfs:label "Conference Paper"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab26,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Publication,
+        <http://purl.org/spar/fabio#ConferencePaper> ;
+    owl:disjointWith rdodi-research:Preprint,
+        rdodi-research:Thesis ;
+    owl:equivalentClass <http://purl.org/spar/fabio#ConferencePaper>,
+        <http://purl.org/spar/fabio/ConferencePaper> ;
+    skos:definition "Paper presented at academic conference"@en .
+
+rdodi-research:DataQuality a owl:Class ;
+    rdfs:label "DataQuality"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Data quality assessment"@en .
+
+rdodi-research:DataRepository a owl:Class ;
+    rdfs:label "Data Repository"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab5,
+        _:n6ba35be4fce441e7a0b07f53a1709beab6,
+        _:n6ba35be4fce441e7a0b07f53a1709beab7,
+        rdodi-research:Repository,
+        dcat:Catalog ;
+    skos:definition "Repository specifically for research datasets"@en ;
+    skos:example "Dryad, Figshare, Zenodo"@en .
+
+rdodi-research:DerivedData a owl:Class ;
+    rdfs:label "DerivedData"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab11,
+        _:n6ba35be4fce441e7a0b07f53a1709beab12,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Dataset,
+        rdodi-research:Publication,
+        <http://purl.org/spar/fabio#Dataset>,
+        dcat:Dataset ;
+    skos:definition "Derived data product"@en .
+
+rdodi-research:FAIRPrinciple a owl:Class ;
+    rdfs:label "FAIRPrinciple"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "FAIR data principle"@en .
+
+rdodi-research:Identifier a owl:Class ;
+    rdfs:label "Identifier"@en ;
+    dcterms:source "SPAR DataCite http://purl.org/spar/datacite/ retrieved 2026-05-06"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/datacite/Identifier> ;
+    skos:definition "A persistent identifier for a research entity (publication, dataset, researcher, project). Aligned to DataCite Identifier; covers DOI, ORCID, ROR, ISNI, and other persistent IDs."@en .
+
+rdodi-research:ManufacturingReadinessLevel a owl:Class ;
+    rdfs:label "Manufacturing Readiness Level"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab20,
+        _:n6ba35be4fce441e7a0b07f53a1709beab21 ;
+    skos:definition "Measure of manufacturing maturity for technology"@en .
+
+rdodi-research:PlantPatent a owl:Class ;
+    rdfs:label "Plant Patent"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab14,
+        _:n6ba35be4fce441e7a0b07f53a1709beab15,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        rdodi-research:Patent ;
+    skos:definition "Patent for plant varieties"@en .
+
+rdodi-research:ProcessingStage a owl:Class ;
+    rdfs:label "Processing Stage"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:DataLifecycleStage ;
+    owl:disjointWith rdodi-research:AnalysisStage,
+        rdodi-research:ArchivalStage,
+        rdodi-research:PreservationStage,
+        rdodi-research:ReuseStage,
+        rdodi-research:SharingStage ;
+    skos:definition "Data cleaning and transformation"@en .
+
+rdodi-research:ProductionVersion a owl:Class ;
+    rdfs:label "ProductionVersion"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ResearchProject ;
+    skos:definition "Production-ready version"@en .
+
+rdodi-research:SoleExclusiveLicense a owl:Class ;
+    rdfs:label "Sole Exclusive License"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab8,
+        _:n6ba35be4fce441e7a0b07f53a1709beab9,
+        rdodi-research:License ;
+    skos:definition "Exclusive but allowing licensor to practice"@en .
+
+rdodi-research:Stage a owl:Class ;
+    rdfs:label "Stage"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab18 ;
+    skos:definition "Phase of work with prescribed activities"@en .
+
+rdodi-research:SubjectRepository a owl:Class ;
+    rdfs:label "Subject Repository"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab5,
+        _:n6ba35be4fce441e7a0b07f53a1709beab6,
+        _:n6ba35be4fce441e7a0b07f53a1709beab7,
+        rdodi-research:Repository,
+        dcat:Catalog ;
+    owl:disjointWith rdodi-research:DataRepository ;
+    skos:definition "Repository focused on specific subject domain"@en ;
+    skos:example "PubMed Central, arXiv, GenBank"@en .
+
+rdodi-research:conducts a owl:ObjectProperty ;
+    rdfs:label "conducts"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain foaf:Person ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:ResearchProject ;
+    skos:definition "Researcher conducts research project"@en .
+
+rdodi-research:contains a owl:ObjectProperty ;
+    rdfs:label "contains"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Object property 'contains'; relates research-ontology entities. See domain/range for typing constraints."@en .
+
+rdodi-research:embargoDate a owl:DatatypeProperty ;
+    rdfs:label "embargo date"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain _:n6ba35be4fce441e7a0b07f53a1709beab23,
+        rdodi-research:AccessPolicy,
+        rdodi-research:EmbargoedAccess,
+        rdodi-research:RestrictedAccess ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range xsd:dateTime ;
+    skos:definition "Date when embargo expires"@en .
+
+rdodi-research:hasAccessPolicy a owl:ObjectProperty ;
+    rdfs:label "has access policy"@en,
+        "hasAccessPolicy"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain _:n6ba35be4fce441e7a0b07f53a1709beab5,
+        _:n6ba35be4fce441e7a0b07f53a1709beab6,
+        _:n6ba35be4fce441e7a0b07f53a1709beab7,
+        rdodi-research:Repository,
+        dcat:Catalog ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range rdodi-research:AccessPolicy ;
+    skos:definition "Repository has access policy"@en .
+
+rdodi-research:levelNumber a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "level number"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:domain _:n6ba35be4fce441e7a0b07f53a1709beab20 ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:range xsd:integer ;
+    skos:definition "Numeric level (1-9 for TRL, 1-10 for MRL)"@en .
+
+rdodi-research:AnalysisStage a owl:Class ;
+    rdfs:label "Analysis Stage"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:DataLifecycleStage ;
+    owl:disjointWith rdodi-research:ArchivalStage,
+        rdodi-research:PreservationStage,
+        rdodi-research:ReuseStage,
+        rdodi-research:SharingStage ;
+    skos:definition "Data analysis and interpretation"@en .
+
+rdodi-research:IntellectualProperty a owl:Class ;
+    rdfs:label "IntellectualProperty"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Intellectual property"@en .
+
+rdodi-research:LongTermPreservation a owl:Class ;
+    rdfs:label "Long-Term Preservation"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:PreservationPolicy ;
+    skos:definition "Preservation for 50+ years"@en .
+
+rdodi-research:Preprint a owl:Class ;
+    rdfs:label "Preprint"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Publication,
+        <http://purl.org/spar/fabio#Preprint> ;
+    owl:equivalentClass <http://purl.org/spar/fabio#Preprint> ;
+    skos:definition "Manuscript shared before peer review"@en .
+
+rdodi-research:SPICEFrame a owl:Class ;
+    rdfs:label "SPICE frame"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1; Booth (2006) SPICE framework for qualitative reviews"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ScopeFrame ;
+    skos:definition "A scope frame from qualitative library/information science research: Setting, Perspective, Intervention, Comparison, Evaluation. Adapted for non-clinical qualitative work."@en .
+
+rdodi-research:Thesis a owl:Class ;
+    rdfs:label "Thesis"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab19,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Publication,
+        <http://purl.org/spar/fabio#Thesis> ;
+    owl:disjointWith rdodi-research:Preprint ;
+    owl:equivalentClass <http://purl.org/spar/fabio#Thesis>,
+        <http://purl.org/spar/fabio/Thesis> ;
+    skos:definition "Dissertation for academic degree"@en .
+
+rdodi-research:Commercialization a owl:Class ;
+    rdfs:label "Commercialization"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Commercialization process"@en .
+
+rdodi-research:InventionDisclosure a owl:Class ;
+    rdfs:label "Invention Disclosure"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Formal submission of invention to TTO"@en .
+
+rdodi-research:PICOFrame a owl:Class ;
+    rdfs:label "PICO frame"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1; Richardson et al. (1995) PICO framework for clinical questions; Booth et al. (2016)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:ScopeFrame ;
+    skos:definition "A scope frame from clinical research: Population/Patient, Intervention, Comparison, Outcome. Used to formulate answerable clinical or empirical questions."@en .
+
+rdodi-research:PreservationStage a owl:Class ;
+    rdfs:label "Preservation Stage"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:DataLifecycleStage ;
+    owl:disjointWith rdodi-research:ArchivalStage,
+        rdodi-research:ReuseStage,
+        rdodi-research:SharingStage ;
+    skos:definition "Long-term data preservation"@en .
+
+rdodi-research:RestrictedAccess a owl:Class ;
+    rdfs:label "Restricted Access"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:AccessPolicy ;
+    owl:disjointWith rdodi-research:ClosedAccess ;
+    skos:definition "Access limited to authorized users"@en .
+
+rdodi-research:TechnologyReadinessLevel a owl:Class ;
+    rdfs:label "Technology Readiness Level"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab20,
+        _:n6ba35be4fce441e7a0b07f53a1709beab22 ;
+    skos:definition "Measure of technology maturity (ISO 16290:2013)"@en .
+
+rdodi-research:DiscoveredResource a owl:Class ;
+    rdfs:label "discovered resource"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.3; rdfs:seeAlso prov:Entity per Pattern 2"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:seeAlso prov:Entity ;
+    skos:definition "A resource located by a DiscoveryAttempt before any quality assessment or selection. Carries minimal identity (IRI, title) and provenance (which attempt found it)."@en .
+
+rdodi-research:DiscoveryAttempt a owl:Class ;
+    rdfs:label "discovery attempt"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:seeAlso prov:Activity ;
+    skos:definition "An action that searches for or otherwise locates candidate research resources. Records the method used, query parameters, agent, time bounds, and yielded resources."@en .
+
+rdodi-research:PreservationPolicy a owl:Class ;
+    rdfs:label "Preservation Policy"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Strategy for long-term data retention"@en .
+
+rdodi-research:SharingStage a owl:Class ;
+    rdfs:label "Sharing Stage"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:DataLifecycleStage ;
+    owl:disjointWith rdodi-research:ArchivalStage,
+        rdodi-research:ReuseStage ;
+    skos:definition "Data publication and dissemination"@en .
+
+rdodi-research:DiscoveryMethod a owl:Class ;
+    rdfs:label "discovery method"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.3"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "The kind of action used to discover sources. Subclasses: SearchEngineQuery, CitationChainTraversal, ExpertRecommendation, SnowballSampling, DatabaseBrowse."@en .
+
+rdodi-research:License a owl:Class ;
+    rdfs:label "License"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab8,
+        _:n6ba35be4fce441e7a0b07f53a1709beab9 ;
+    skos:definition "Agreement granting rights to use IP"@en .
+
+rdodi-research:ReuseStage a owl:Class ;
+    rdfs:label "Reuse Stage"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:DataLifecycleStage ;
+    owl:disjointWith rdodi-research:ArchivalStage ;
+    skos:definition "Data reuse by researchers"@en .
+
+rdodi-research:ArchivalStage a owl:Class ;
+    rdfs:label "Archival Stage"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf rdodi-research:DataLifecycleStage ;
+    skos:definition "Final archiving or disposal"@en .
+
+rdodi-research:ManufacturingProcess a owl:Class ;
+    rdfs:label "ManufacturingProcess"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Manufacturing process"@en .
+
+rdodi-research:Patent a owl:Class ;
+    rdfs:label "Patent"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab14,
+        _:n6ba35be4fce441e7a0b07f53a1709beab15,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2 ;
+    skos:definition "Intellectual property protection for inventions"@en .
+
+rdodi-research:RejectionCriterion a owl:Class ;
+    rdfs:label "rejection criterion"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.2"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "A criterion under which a DiscoveredResource is rejected from selection regardless of what positive selection strategies might select it."@en .
+
+rdodi-research:ResearchScope a owl:Class ;
+    rdfs:label "research scope"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "The bounded specification of what research is and is not in scope. A ResearchScope MAY be operationalized via one or more ScopeFrame instances; if a ScopeFrame is provided, it constrains what is searched, selected, and synthesized."@en .
+
+rdodi-research:AccessPolicy a owl:Class ;
+    rdfs:label "Access Policy"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Rules governing repository content access"@en .
+
+rdodi-research:DataLifecycleStage a owl:Class ;
+    rdfs:label "Data Lifecycle Stage"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Phase in research data lifecycle"@en .
+
+rdodi-research:ResearchActivity a owl:Class ;
+    rdfs:label "ResearchActivity"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Activity conducted as part of research"@en .
+
+rdodi-research:ResearchArea a owl:Class ;
+    rdfs:label "Research Area"@en,
+        "ResearchArea"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "Domain or field of research"@en,
+        "Field or discipline of research"@en .
+
+rdodi-research:ScopeFrame a owl:Class ;
+    rdfs:label "scope frame"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §3.1"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "An abstract template specifying which dimensions of a research scope must be filled in. Concrete sub-frames (PICO, SPICE, CIMO, Open, Keyword, Subtopic) provide specific decompositions appropriate to different research traditions."@en .
+
+rdodi-research:Dataset a owl:Class ;
+    rdfs:label "Dataset"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab11,
+        _:n6ba35be4fce441e7a0b07f53a1709beab12,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4,
+        rdodi-research:Publication,
+        <http://purl.org/spar/fabio#Dataset>,
+        dcat:Dataset ;
+    owl:equivalentClass <http://purl.org/spar/fabio#Dataset>,
+        dcat:Dataset ;
+    skos:closeMatch dcat:Dataset,
+        prov:Entity ;
+    skos:definition "Collection of research data"@en .
+
+rdodi-research:SelectionStrategy a owl:Class ;
+    rdfs:label "selection strategy"@en ;
+    dcterms:source "Research_Ontology_Requirements_v1_0_2 §5.1; Booth et al. (2016) on selection criteria for systematic reviews"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    skos:definition "A strategy or composition of strategies for selecting which DiscoveredResources are selected for inclusion in research synthesis. Concrete sub-strategies provide specific selection logics (recency-weighted, citation-weighted, etc.)."@en .
+
+rdodi-research:Repository a owl:Class ;
+    rdfs:label "Repository"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab5,
+        _:n6ba35be4fce441e7a0b07f53a1709beab6,
+        _:n6ba35be4fce441e7a0b07f53a1709beab7,
+        dcat:Catalog ;
+    owl:disjointWith rdodi-research:Publication ;
+    skos:closeMatch dcat:Catalog ;
+    skos:definition "Structured storage system for research data and digital assets"@en .
+
+rdodi-research:ResearchProject a owl:Class ;
+    rdfs:label "Research Project"@en ;
+    dcterms:source "FRAPO alignment v6.3.0: http://purl.org/spar/frapo/Project retrieved from sparontologies.github.io 2026-05-06."@en,
+        "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:comment "Combines administrative (Project) and research (Investigation) aspects"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:seeAlso <http://purl.org/spar/frapo/Project> ;
+    owl:equivalentClass <http://vivoweb.org/ontology/core#Project> ;
+    skos:definition "Organized research activity with defined objectives and timeline"@en .
+
+rdodi-research:Publication a owl:Class ;
+    rdfs:label "Publication"@en ;
+    dcterms:source "Research Ontology v6.1.0 — synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:subClassOf _:n6ba35be4fce441e7a0b07f53a1709beab1,
+        _:n6ba35be4fce441e7a0b07f53a1709beab2,
+        _:n6ba35be4fce441e7a0b07f53a1709beab3,
+        _:n6ba35be4fce441e7a0b07f53a1709beab4 ;
+    skos:closeMatch <http://vivoweb.org/ontology/core#Publication> ;
+    skos:definition "Scholarly work disseminated to research community"@en .
+
+<http://example.org/rdodi/research-ontology> dcterms:bibliographicCitation "Altunel, Y. (2026). PATCH bump v6.9.1 -> v6.9.2."@en ;
+    dcterms:source "Research Ontology v6.1.0 -> v6.9.x lineage; synthesizes SPAR (FaBiO/FRAPO/CiTO/DataCite), VIVO, FOAF, PROV-O, DCAT and CRediT (ANSI/NISO Z39.104-2022) for academic research domain modeling."@en ;
+    prov:wasRevisionOf <http://example.org/rdodi/research-ontology/6.9.1> .
+
+[] a owl:Restriction ;
+    owl:maxQualifiedCardinality "5"^^xsd:nonNegativeInteger ;
+    owl:onClass rdodi-research:Patent ;
+    owl:onProperty rdodi-research:resultsInPatent .
+
+[] a owl:Restriction ;
+    owl:maxQualifiedCardinality "10"^^xsd:nonNegativeInteger ;
+    owl:onClass rdodi-research:ResearchProject ;
+    owl:onProperty rdodi-research:conducts .
+
+_:n6ba35be4fce441e7a0b07f53a1709beab29 rdf:first rdodi-research:TechnologyReadinessLevel ;
+    rdf:rest ( rdodi-research:ManufacturingReadinessLevel ) .
+
+_:n6ba35be4fce441e7a0b07f53a1709beab31 owl:inverseOf rdodi-research:authored .
+
+_:n6ba35be4fce441e7a0b07f53a1709beab21 a owl:Restriction ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onProperty rdodi-research:levelNumber .
+
+_:n6ba35be4fce441e7a0b07f53a1709beab23 a owl:Restriction ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onProperty rdodi-research:embargoDate .
+
+_:n6ba35be4fce441e7a0b07f53a1709beab26 a owl:Restriction ;
+    owl:onProperty rdodi-research:presentedAt ;
+    owl:someValuesFrom rdodi-research:Conference .
+
+_:n6ba35be4fce441e7a0b07f53a1709beab18 a owl:Restriction ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onProperty rdodi-research:stageNumber .
+
+_:n6ba35be4fce441e7a0b07f53a1709beab22 a owl:Restriction ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onProperty rdodi-research:levelNumber .
+
+_:n6ba35be4fce441e7a0b07f53a1709beab20 owl:unionOf _:n6ba35be4fce441e7a0b07f53a1709beab29 .
+
+_:n6ba35be4fce441e7a0b07f53a1709beab8 a owl:Restriction ;
+    owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onProperty rdodi-research:grantedTo .
+
+_:n6ba35be4fce441e7a0b07f53a1709beab9 a owl:Restriction ;
+    owl:onProperty rdodi-research:licensesIP ;
+    owl:someValuesFrom rdodi-research:Patent .
+
+_:n6ba35be4fce441e7a0b07f53a1709beab12 a owl:Restriction ;
+    owl:onProperty rdodi-research:depositsIn ;
+    owl:someValuesFrom rdodi-research:Repository .
+
+_:n6ba35be4fce441e7a0b07f53a1709beab5 a owl:Restriction ;
+    owl:allValuesFrom rdodi-research:Dataset ;
+    owl:onProperty rdodi-research:contains .
+
+_:n6ba35be4fce441e7a0b07f53a1709beab6 a owl:Restriction ;
+    owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onProperty rdodi-research:hasAccessPolicy .
+
+_:n6ba35be4fce441e7a0b07f53a1709beab7 a owl:Restriction ;
+    owl:minCardinality 1 ;
+    owl:onProperty rdodi-research:hasAccessPolicy .
+
+_:n6ba35be4fce441e7a0b07f53a1709beab1 a owl:Restriction ;
+    owl:minCardinality 1 ;
+    owl:onProperty _:n6ba35be4fce441e7a0b07f53a1709beab31 .
+
+_:n6ba35be4fce441e7a0b07f53a1709beab3 a owl:Restriction ;
+    owl:cardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onProperty rdodi-research:publicationYear .
+
+_:n6ba35be4fce441e7a0b07f53a1709beab4 a owl:Restriction ;
+    owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+    owl:onProperty rdodi-research:authoredBy .
+
+
+#################################################################
+#  v1.1.0 -- machine-readable Publication verification status
+#  Added per Proposal_RDODI_Stage3F_Wiring_v1_0_0.md (b), filed by the
+#  code-abundance-rdodi session (github.com/altunelyusuf/RDODI-Research):
+#  "For (a)'s refs[].status to be more than a hardcoded 'verified', Stage 1's
+#  rdodi-research:Publication individuals need an actual status property... rather than
+#  a downstream reader having to parse prose to reconstruct it."
+#  Enumerated-individual pattern, matching backlog-roadmap-framework's own
+#  MissionOrigin/IntentOrigin convention (L-105 -- reusing an established
+#  ecosystem pattern rather than inventing a bare string property with no
+#  formal enumeration). Values match reference_rule_gate_v1_0_0.py's own
+#  three literal strings exactly ('verified'/'unavailable_flagged'/
+#  'unverified'), via skos:notation, so a bridge can emit the gate's
+#  expected string without a lookup table drifting from the code.
+#################################################################
+
+rdodi-research:VerificationStatus a owl:Class ;
+    rdfs:label "Verification Status"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    owl:oneOf ( rdodi-research:Status_Verified rdodi-research:Status_UnavailableFlagged rdodi-research:Status_Unverified ) ;
+    skos:definition "Whether a Publication's claim has been independently confirmed, honestly disclosed as unconfirmed, or left unverified. Machine-readable so a downstream reader (e.g. a Stage3.F bridge) does not have to parse free-text prose to reconstruct what a Stage 1 quality scorecard already determined."@en .
+
+rdodi-research:Status_Verified a owl:NamedIndividual , rdodi-research:VerificationStatus ;
+    rdfs:label "Verified"@en ;
+    skos:notation "verified" ;
+    skos:definition "Independently confirmed against a source the research artifact could open and check."@en .
+
+rdodi-research:Status_UnavailableFlagged a owl:NamedIndividual , rdodi-research:VerificationStatus ;
+    rdfs:label "Unavailable, flagged"@en ;
+    skos:notation "unavailable_flagged" ;
+    skos:definition "The claim could not be independently confirmed, and this was disclosed honestly rather than silently assumed true. Acceptable per reference_rule_gate_v1_0_0.py -- honest disclosure is not a defect."@en .
+
+rdodi-research:Status_Unverified a owl:NamedIndividual , rdodi-research:VerificationStatus ;
+    rdfs:label "Unverified"@en ;
+    skos:notation "unverified" ;
+    skos:definition "Neither confirmed nor disclosed as unconfirmable. The one status reference_rule_gate_v1_0_0.py actually fails a citation for."@en .
+
+rdodi-research:hasVerificationStatus a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain rdodi-research:Publication ;
+    rdfs:range rdodi-research:VerificationStatus ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:label "has verification status"@en ;
+    skos:definition "Links a Publication to its VerificationStatus. No existing research ABox in rdodi-ecosystem sets this yet -- see CHANGELOG for the honest disclosure that this ships the vocabulary, not a retrofit of existing data (which is code-abundance-rdodi's own, not this package's to edit, per B1)."@en .

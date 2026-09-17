@@ -1,0 +1,11 @@
+{
+  "_comment": "Template validator config, generalized from semtech-landscape's own semtech_validation_config_vX.json. Fill in REPLACE_ME paths for a new byproduct. This config feeds the standard RDODI Stage 1-4 structural validator (rdodi_pipeline_validator or equivalent).",
+  "stage1_research": "REPLACE_ME/research_corpus.ttl",
+  "stage2_domain_tbox": "REPLACE_ME/domain_tbox.ttl",
+  "stage2_domain_abox": "REPLACE_ME/domain_abox.ttl",
+  "stage2_shacl": "REPLACE_ME/domain_shacl.ttl",
+  "stage3_document": "REPLACE_ME/document.ttl",
+  "stage4_page_abox": "REPLACE_ME/page_abox.ttl",
+  "expected_version": "REPLACE_ME e.g. 1.0.0",
+  "_note_on_R21": "This validator is program 1 of the four-program R21 chain. It checks parse-level and stage-conformance correctness only; content-specific checks belong in the supplementary gates (program 2), and cross-stage properties belong in the procedure audit (program 3)."
+}

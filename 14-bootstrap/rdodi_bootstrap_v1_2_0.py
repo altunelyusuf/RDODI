@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""RDODI Bootstrap v1.0.0 (C2) — one command: pick a genre, point at a source ontology.
+"""RDODI Bootstrap v1.2.0 (C2; R21 default per REX-EP5) — one command: pick a genre, point at a source ontology.
 
 Chain: detect -> generate (document + page) -> validate -> assess -> emit an HONEST consolidated report.
 
@@ -8,7 +8,7 @@ tier-C caveats and the assessor's REJECT/ADVISORY reasons. It NEVER collapses to
 status distinguishes "structurally generated + validated" from "substance/provenance proven" — the latter is
 never claimed, because the gates cannot certify it.
 
-Usage: python3 rdodi_bootstrap_v1_0_0.py <domain.ttl> <ProfileLocalName> <profiles.ttl> <out_dir> \
+Usage: python3 rdodi_bootstrap_v1_2_0.py <domain.ttl> <ProfileLocalName> <profiles.ttl> <out_dir> \
          <doc_tbox> <doc_shacl> <page_tbox> <page_shacl>
 """
 import sys, os, json, importlib.util
@@ -17,9 +17,33 @@ def _load(path, name):
     spec = importlib.util.spec_from_file_location(name, path)
     m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m); return m
 
+
+def _scaffold_gate_suite(outdir):
+    """v1.2.0 (REX-EP5): every bootstrapped byproduct starts with the R21 four-program
+    gate-chain scaffold from 14-bootstrap/templates/ (Ratified R21), REPLACE_ME markers kept."""
+    import shutil as _sh
+    tdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "templates")
+    dst = os.path.join(outdir, "03-tooling")
+    os.makedirs(os.path.join(dst, "gate_suite"), exist_ok=True)
+    pairs = [("release_check_template_v1_0_0.sh", "release_check.sh"),
+             ("healthcheck_template_v1_0_0.py", "healthcheck.py"),
+             ("fitgap_backlog_template_v1_0_0.ttl", os.path.join("..", "fitgap_backlog_v0_1_0.ttl")),
+             (os.path.join("gate_suite_template", "supplementary_gates_template_v1_0_0.py"), os.path.join("gate_suite", "supplementary_gates.py")),
+             (os.path.join("gate_suite_template", "validator_config_template_v1_0_0.json"), os.path.join("gate_suite", "validator_config.json"))]
+    for s, d in pairs:
+        _sh.copy(os.path.join(tdir, s), os.path.join(dst, d))
+    with open(os.path.join(dst, "GATES_README.md"), "w") as f:
+        f.write("# R21 gate chain (scaffolded by rdodi_bootstrap v1.2.0)\n\n"
+                "Fill every REPLACE_ME, then wire release_check.sh into your publish step so a failing\n"
+                "run blocks the push. Per the RDODI Exemplar Standard: gates grow with every fixed defect;\n"
+                "close the byproduct with healthcheck.py (R16+R17); track in the fitgap backlog and validate\n"
+                "it against backlog-roadmap-framework/ CURRENT shapes.\n")
+    print(f"  R21 gate-suite scaffold -> {dst} (5 files + README)")
+
 def run(domain, profile, profiles, outdir, doc_tbox, doc_shacl, page_tbox, page_shacl, mods, html_path=None):
     GEN, VAL, ASR = mods["gen"], mods["val"], mods["asr"]
     os.makedirs(outdir, exist_ok=True)
+    _scaffold_gate_suite(outdir)
     report = {"input": {"domain": domain, "profile": profile}, "verdicts": [], "human_judgment_required": []}
 
     # 1) GENERATE

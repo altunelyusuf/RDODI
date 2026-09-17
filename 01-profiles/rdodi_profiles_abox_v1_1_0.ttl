@@ -1,0 +1,98 @@
+@prefix prof: <http://rdodi.org/profiles#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix doc:  <http://example.org/rdodi/document-ontology#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<http://rdodi.org/profiles> a owl:Ontology ;
+    owl:versionInfo "1.1.0" ;
+    owl:versionIRI <http://rdodi.org/profiles/1.1.0> ;
+    owl:priorVersion <http://rdodi.org/profiles/1.0.0> ;
+    owl:imports <http://example.org/rdodi/document-ontology> ;
+    rdfs:comment "RDODI output-profile registry (A2). Profiles are doc:ArtifactKindSpec individuals over the existing genre/template abstraction. Course-companion is profile #1; technical-report and whitepaper are contrasting genres proving type-agnosticism."@en .
+
+# ---- Genres (doc:ArtifactGenre instances) ----
+prof:genre_CourseDocument a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "course-document"@en .
+prof:genre_TechnicalReport a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "technical-report"@en .
+prof:genre_Whitepaper a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "whitepaper"@en .
+
+# ---- Shared form vocabulary (instances) ----
+prof:voice_Instructional a doc:VoiceConstraint, owl:NamedIndividual ; rdfs:label "instructional, second-person, scaffolded"@en .
+prof:voice_FormalTechnical a doc:VoiceConstraint, owl:NamedIndividual ; rdfs:label "formal, third-person, precise"@en .
+prof:voice_Persuasive a doc:VoiceConstraint, owl:NamedIndividual ; rdfs:label "persuasive, benefit-led, concise"@en .
+prof:cite_Academic a doc:CitationForm, owl:NamedIndividual ; rdfs:label "academic numbered/author-date"@en .
+prof:cite_IEEE a doc:CitationForm, owl:NamedIndividual ; rdfs:label "IEEE bracketed numeric"@en .
+prof:cite_InlineLinked a doc:CitationForm, owl:NamedIndividual ; rdfs:label "inline linked sources"@en .
+
+# ================= PROFILE #1 — Course Companion =================
+prof:CourseCompanionKind a doc:ArtifactKindSpec, owl:NamedIndividual ;
+    rdfs:label "Course-Companion profile (RDODI profile #1)"@en ;
+    skos:definition "A student-facing companion to a primary source: scaffolded concept sections, worked examples, and self-check review questions. The proving-ground profile."@en ;
+    doc:hasGenre prof:genre_CourseDocument ;
+    doc:hasStructuralTemplate prof:tmpl_CourseCompanion ;
+    doc:hasVoiceConstraint prof:voice_Instructional ;
+    doc:hasCitationForm prof:cite_Academic .
+prof:tmpl_CourseCompanion a doc:StructuralTemplate, owl:NamedIndividual ;
+    rdfs:label "Course-companion structural template"@en ;
+    doc:requiredSectionName "Abstract", "Introduction", "Concept Sections", "Worked Examples", "Review Questions", "Abbreviations", "References" ;
+    doc:sectionOrder 7 .
+
+# ================= Contrasting genre — Technical Report =================
+prof:TechnicalReportKind a doc:ArtifactKindSpec, owl:NamedIndividual ;
+    rdfs:label "Technical-Report profile"@en ;
+    skos:definition "A formal technical report: structured methods/results/discussion for an expert reader. Structurally distinct from the course companion (no review questions, no scaffolding)."@en ;
+    doc:hasGenre prof:genre_TechnicalReport ;
+    doc:hasStructuralTemplate prof:tmpl_TechReport ;
+    doc:hasVoiceConstraint prof:voice_FormalTechnical ;
+    doc:hasCitationForm prof:cite_IEEE .
+prof:tmpl_TechReport a doc:StructuralTemplate, owl:NamedIndividual ;
+    rdfs:label "Technical-report structural template"@en ;
+    doc:requiredSectionName "Abstract", "Introduction", "Background", "Method", "Results", "Discussion", "Conclusion", "References" ;
+    doc:sectionOrder 8 .
+
+# ================= Contrasting genre — Whitepaper =================
+prof:WhitepaperKind a doc:ArtifactKindSpec, owl:NamedIndividual ;
+    rdfs:label "Whitepaper profile"@en ;
+    skos:definition "A persuasive whitepaper: problem framing, approach, evidence, and a call to action for a decision-maker. Structurally distinct again (executive summary, CTA)."@en ;
+    doc:hasGenre prof:genre_Whitepaper ;
+    doc:hasStructuralTemplate prof:tmpl_Whitepaper ;
+    doc:hasVoiceConstraint prof:voice_Persuasive ;
+    doc:hasCitationForm prof:cite_InlineLinked .
+prof:tmpl_Whitepaper a doc:StructuralTemplate, owl:NamedIndividual ;
+    rdfs:label "Whitepaper structural template"@en ;
+    doc:requiredSectionName "Executive Summary", "The Problem", "Our Approach", "Evidence", "Benefits", "Call to Action", "References" ;
+    doc:sectionOrder 7 .
+
+
+# ================= PROFILE #4 — Roadmap Report =================
+# Added per PROPOSAL_backlog-roadmap-framework_to_RDODI_roadmap-report-profile_v1_0_0.md
+# (07-handover-inbox/accepted/), independently re-verified against this file and
+# document_ontology_tbox_v1_0_1.ttl before building -- not built from the proposal's
+# quotes alone. One correction made: the proposal's own justification for omitting
+# doc:hasCitationForm appealed to prof:CourseCompanionKind as a precedent for optionality;
+# checked directly and that precedent does not hold -- CourseCompanionKind, TechnicalReportKind,
+# and WhitepaperKind all set a citation form; none omits it. The omission is kept because it is
+# independently sound (a computed report has no external sources to cite, unlike all three
+# authored precedents), not because of the (incorrect) precedent originally cited -- see
+# 07-handover-inbox/HANDOVER_LOG.md for the full disposition.
+prof:genre_ProgressReport a doc:ArtifactGenre, owl:NamedIndividual ;
+    rdfs:label "progress-report"@en .
+
+prof:voice_Computational a doc:VoiceConstraint, owl:NamedIndividual ;
+    rdfs:label "computed, third-person, unresolved-disagreement-displayed"@en ;
+    skos:definition "Reports what the scoring computed, including disagreement between models, without resolving it in the artifact's own voice -- a resolution requires a recorded owner decision, and the report displays that decision only if one exists."@en .
+
+prof:tmpl_RoadmapReport a doc:StructuralTemplate, owl:NamedIndividual ;
+    rdfs:label "Roadmap-report structural template"@en ;
+    doc:requiredSectionName "Header", "NEXT (throughput model)", "NEXT (launch-scoped model)", "Full ranked backlog" ;
+    doc:sectionOrder 4 .
+
+prof:RoadmapReportKind a doc:ArtifactKindSpec, owl:NamedIndividual ;
+    rdfs:label "Roadmap-Report profile (RDODI profile #4)"@en ;
+    skos:definition "A computed, point-in-time projection of a backlog's own priority ordering under one or more scoring models, distinct from a course companion, technical report, or whitepaper in that its content is entirely derived from live register state at run time rather than authored -- structurally consistent by construction (the same code path every run), not by editorial convention. No citation form: a computed report cites nothing, unlike this registry's three authored precedents (Course-Companion, Technical-Report, Whitepaper), which all set one -- checked directly against each, not assumed."@en ;
+    doc:hasGenre prof:genre_ProgressReport ;
+    doc:hasStructuralTemplate prof:tmpl_RoadmapReport ;
+    doc:hasVoiceConstraint prof:voice_Computational ;
+    dcterms:source "backlog-roadmap-framework: 03-tooling/backlog_roadmap_report_v1_5_0.py output, run against backlog_framework_register_abox_v9_24_0.ttl, 2026-09-03. (Corrected from the proposal's own doc:referenceArtifact, which is not a declared property anywhere in this TBox -- caught before publishing, not shipped from an unverified detail.)"^^xsd:string .

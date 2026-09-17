@@ -1,0 +1,154 @@
+# Public edition note: one internal-assessor reference genericized ("PAMG assessor" -> "the assessing body") relative to governed v1.4.0. Everything else byte-identical.
+
+@prefix prof: <http://rdodi.org/profiles#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix doc:  <http://example.org/rdodi/document-ontology#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<http://rdodi.org/profiles> a owl:Ontology ;
+    owl:versionInfo "1.4.0" ;
+    owl:versionIRI <http://rdodi.org/profiles/1.3.0> ;
+    owl:priorVersion <http://rdodi.org/profiles/1.2.0> ;
+    owl:imports <http://example.org/rdodi/document-ontology> ;
+    rdfs:comment "RDODI output-profile registry (A2). Profiles are doc:ArtifactKindSpec individuals over the existing genre/template abstraction. Course-companion is profile #1; technical-report and whitepaper are contrasting genres proving type-agnosticism."@en .
+
+# ---- Genres (doc:ArtifactGenre instances) ----
+prof:genre_CourseDocument a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "course-document"@en .
+prof:genre_TechnicalReport a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "technical-report"@en .
+prof:genre_Whitepaper a doc:ArtifactGenre, owl:NamedIndividual ; rdfs:label "whitepaper"@en .
+
+# ---- Shared form vocabulary (instances) ----
+prof:voice_Instructional a doc:VoiceConstraint, owl:NamedIndividual ; rdfs:label "instructional, second-person, scaffolded"@en .
+prof:voice_FormalTechnical a doc:VoiceConstraint, owl:NamedIndividual ; rdfs:label "formal, third-person, precise"@en .
+prof:voice_Persuasive a doc:VoiceConstraint, owl:NamedIndividual ; rdfs:label "persuasive, benefit-led, concise"@en .
+prof:cite_Academic a doc:CitationForm, owl:NamedIndividual ; rdfs:label "academic numbered/author-date"@en .
+prof:cite_IEEE a doc:CitationForm, owl:NamedIndividual ; rdfs:label "IEEE bracketed numeric"@en .
+prof:cite_InlineLinked a doc:CitationForm, owl:NamedIndividual ; rdfs:label "inline linked sources"@en .
+
+# ================= PROFILE #1 — Course Companion =================
+prof:CourseCompanionKind a doc:ArtifactKindSpec, owl:NamedIndividual ;
+    rdfs:label "Course-Companion profile (RDODI profile #1)"@en ;
+    skos:definition "A student-facing companion to a primary source: scaffolded concept sections, worked examples, and self-check review questions. The proving-ground profile."@en ;
+    doc:hasGenre prof:genre_CourseDocument ;
+    doc:hasStructuralTemplate prof:tmpl_CourseCompanion ;
+    doc:hasVoiceConstraint prof:voice_Instructional ;
+    doc:hasCitationForm prof:cite_Academic .
+prof:tmpl_CourseCompanion a doc:StructuralTemplate, owl:NamedIndividual ;
+    rdfs:label "Course-companion structural template"@en ;
+    doc:requiredSectionName "Abstract", "Introduction", "Concept Sections", "Worked Examples", "Review Questions", "Abbreviations", "References" ;
+    doc:sectionOrder 7 .
+
+# ================= Contrasting genre — Technical Report =================
+prof:TechnicalReportKind a doc:ArtifactKindSpec, owl:NamedIndividual ;
+    rdfs:label "Technical-Report profile"@en ;
+    skos:definition "A formal technical report: structured methods/results/discussion for an expert reader. Structurally distinct from the course companion (no review questions, no scaffolding)."@en ;
+    doc:hasGenre prof:genre_TechnicalReport ;
+    doc:hasStructuralTemplate prof:tmpl_TechReport ;
+    doc:hasVoiceConstraint prof:voice_FormalTechnical ;
+    doc:hasCitationForm prof:cite_IEEE .
+prof:tmpl_TechReport a doc:StructuralTemplate, owl:NamedIndividual ;
+    rdfs:label "Technical-report structural template"@en ;
+    doc:requiredSectionName "Abstract", "Introduction", "Background", "Method", "Results", "Discussion", "Conclusion", "References" ;
+    doc:sectionOrder 8 .
+
+# ================= Contrasting genre — Whitepaper =================
+prof:WhitepaperKind a doc:ArtifactKindSpec, owl:NamedIndividual ;
+    rdfs:label "Whitepaper profile"@en ;
+    skos:definition "A persuasive whitepaper: problem framing, approach, evidence, and a call to action for a decision-maker. Structurally distinct again (executive summary, CTA)."@en ;
+    doc:hasGenre prof:genre_Whitepaper ;
+    doc:hasStructuralTemplate prof:tmpl_Whitepaper ;
+    doc:hasVoiceConstraint prof:voice_Persuasive ;
+    doc:hasCitationForm prof:cite_InlineLinked .
+prof:tmpl_Whitepaper a doc:StructuralTemplate, owl:NamedIndividual ;
+    rdfs:label "Whitepaper structural template"@en ;
+    doc:requiredSectionName "Executive Summary", "The Problem", "Our Approach", "Evidence", "Benefits", "Call to Action", "References" ;
+    doc:sectionOrder 7 .
+
+
+# ================= PROFILE #4 — Roadmap Report =================
+# Added per PROPOSAL_backlog-roadmap-framework_to_RDODI_roadmap-report-profile_v1_0_0.md
+# (07-handover-inbox/accepted/), independently re-verified against this file and
+# document_ontology_tbox_v1_0_1.ttl before building -- not built from the proposal's
+# quotes alone. One correction made: the proposal's own justification for omitting
+# doc:hasCitationForm appealed to prof:CourseCompanionKind as a precedent for optionality;
+# checked directly and that precedent does not hold -- CourseCompanionKind, TechnicalReportKind,
+# and WhitepaperKind all set a citation form; none omits it. The omission is kept because it is
+# independently sound (a computed report has no external sources to cite, unlike all three
+# authored precedents), not because of the (incorrect) precedent originally cited -- see
+# 07-handover-inbox/HANDOVER_LOG.md for the full disposition.
+prof:genre_ProgressReport a doc:ArtifactGenre, owl:NamedIndividual ;
+    rdfs:label "progress-report"@en .
+
+prof:voice_Computational a doc:VoiceConstraint, owl:NamedIndividual ;
+    rdfs:label "computed, third-person, unresolved-disagreement-displayed"@en ;
+    skos:definition "Reports what the scoring computed, including disagreement between models, without resolving it in the artifact's own voice -- a resolution requires a recorded owner decision, and the report displays that decision only if one exists."@en .
+
+prof:tmpl_RoadmapReport a doc:StructuralTemplate, owl:NamedIndividual ;
+    rdfs:label "Roadmap-report structural template"@en ;
+    doc:requiredSectionName "Header", "NEXT (throughput model)", "NEXT (launch-scoped model)", "Full ranked backlog" ;
+    doc:sectionOrder 4 .
+
+prof:RoadmapReportKind a doc:ArtifactKindSpec, owl:NamedIndividual ;
+    rdfs:label "Roadmap-Report profile (RDODI profile #4)"@en ;
+    skos:definition "A computed, point-in-time projection of a backlog's own priority ordering under one or more scoring models, distinct from a course companion, technical report, or whitepaper in that its content is entirely derived from live register state at run time rather than authored -- structurally consistent by construction (the same code path every run), not by editorial convention. No citation form: a computed report cites nothing, unlike this registry's three authored precedents (Course-Companion, Technical-Report, Whitepaper), which all set one -- checked directly against each, not assumed."@en ;
+    doc:hasGenre prof:genre_ProgressReport ;
+    doc:hasStructuralTemplate prof:tmpl_RoadmapReport ;
+    doc:hasVoiceConstraint prof:voice_Computational ;
+    dcterms:source "backlog-roadmap-framework: 03-tooling/backlog_roadmap_report_v1_5_0.py output, run against backlog_framework_register_abox_v9_24_0.ttl, 2026-09-03. (Corrected from the proposal's own doc:referenceArtifact, which is not a declared property anywhere in this TBox -- caught before publishing, not shipped from an unverified detail.)"^^xsd:string .
+
+
+# ================= PROFILE #5 — Project Proposal =================
+# Added per PROPOSAL_course-project_to_RDODI_project-proposal-profile_v1_0_0.md
+# (07-handover-inbox/, from the course-project ecosystem's formal-proposal-intake-session),
+# independently re-verified before building, not built from the proposal's quotes alone:
+# - Cloned github.com/altunelyusuf/course-project directly; the cited proposal DOCX exists at
+#   the exact path claimed, and its SHA-256 (46c58e46d980...) matches byte-for-byte.
+# - Extracted the DOCX's own real content (python-docx): all seven claimed sections (Project
+#   Overview, Mission, Scope S1-S6/E1-E3, Goals G1-G4 with real metrics/targets, Objectives
+#   O1-O6 with real baselines/targets, Requirements, Recommended Resources) are genuinely
+#   present -- though five of the seven are inline labeled sub-paragraphs within one DOCX form
+#   field ("DESCRIPTION"), not each a separate top-level form field as the proposal's "map
+#   directly to form fields" phrasing slightly overstates. Content is real; that one framing
+#   detail is imprecise, not fabricated -- noted, not treated as disqualifying.
+# - Every proposed class/property, including two not seen in any prior accepted proposal
+#   (rdodi-document:QualityScorecardForm, rdodi-document:hasQualityScorecardForm), grep-
+#   confirmed present in document_ontology_tbox_v1_0_1.ttl with the exact domain/range the
+#   proposal assumes.
+# - No duplicate individuals: none of the five new IRIs below existed in this file already.
+# - The citation-form precedent claim (RoadmapReportKind is the only other profile that
+#   omits one) re-verified: true, 3 of the other 4 profiles set one, RoadmapReportKind does not.
+prof:genre_ProjectProposal a doc:ArtifactGenre, owl:NamedIndividual ;
+    rdfs:label "project-proposal"@en ;
+    skos:definition "A formally scoped, BRSF-lineage-bearing project proposal: one project, one team, one advisor, one semester. Structurally distinct from a technical report, course companion, and whitepaper in that its primary purpose is to commit the team to a bounded scope, measurable goals, and verifiable objectives before work begins -- and to serve as the grading baseline at project close."@en .
+
+prof:voice_CommitmentBearing a doc:VoiceConstraint, owl:NamedIndividual ;
+    rdfs:label "commitment-bearing, declarative, scope-first"@en ;
+    skos:definition "Prose declares bounded commitments (scope, goals, objectives) in precise, declarative language. Every goal names a metric; every objective names a baseline and target. The voice must be quotable as a grading criterion at project close. Excludes speculative or exploratory language."@en .
+
+prof:tmpl_ProjectProposal a doc:StructuralTemplate, owl:NamedIndividual ;
+    rdfs:label "Project-proposal structural template (corrected v1.4.0 — adds Monitoring & Measurement, Progress Reporting, Closure Plan; section numbering starts at 1, a BRSF session's own correction, attached to the operator's message rather than found published, per L-113)"@en ;
+    rdfs:comment "v1.4.0: ADDS three new mandatory sections (Monitoring and Measurement Plan, Progress Reporting Plan, Closure Plan) to the 15 sections established in v1.3.0, bringing the total to 18. Section numbering now starts at 1 (not 0 as in the earlier Part 0 convention). The three new sections correspond to backlog:MetricObservation, backlog:RoadmapReport/SprintCeremony, and backlog:ClosureReport. Parts II-VII (Academic/Industrial/Startup/Governance/Technology, Appendices) remain explicitly optional."@en ;
+    doc:requiredSectionName
+        "Mission", "Scope", "Goals", "Objectives",
+        "High-Level Backlog (Proposed PBIs)", "Proposed Roadmap and Package Definitions",
+        "Executive Summary", "Problem Context", "Requirements", "Methodology",
+        "Team Structure", "Timeline & Milestones", "Risk Management", "Deliverables",
+        "Monitoring and Measurement Plan", "Progress Reporting Plan", "Closure Plan",
+        "Recommended Resources" ;
+    doc:sectionOrder 18 .
+
+prof:qsf_ProjectProposal a doc:QualityScorecardForm, owl:NamedIndividual ;
+    rdfs:label "Project-proposal quality scorecard"@en ;
+    skos:definition "Four scorecard dimensions: (1) Lineage completeness: Mission, Scope, Goals, Objectives all present and linked (fillsScope); (2) Metric coverage: every Goal carries a named metric and target; every Objective carries a metric, baseline, and target; (3) Scope boundary integrity: at least one ScopeExclusion with rationale present; (4) Grading readiness: Objectives are stated in terms measurable at project close (an assessor can determine pass/fail without additional author interpretation)."@en .
+
+prof:ProjectProposalKind a doc:ArtifactKindSpec, owl:NamedIndividual ;
+    rdfs:label "Project-Proposal profile (RDODI profile #5)"@en ;
+    skos:definition "A formally scoped, BRSF-lineage-bearing capstone project proposal that commits a student team to a bounded scope, measurable goals, and verifiable objectives, and serves as the grading baseline at project close. Produced by the RDODI four-stage pipeline; Stage 3 document populates the 15 mandatory sections of the corrected v1.3.0 structural template (BRSF Lineage Part 0 + Core Part I -- see tmpl_ProjectProposal); Stage 4 interactive page makes the proposal explorable by the team, advisor, and the assessing body. Structurally distinct from technical report, course companion, whitepaper, and roadmap report. No citation form, matching the RoadmapReportKind precedent: a project proposal is a commitment document, not an authored claim about external facts -- unchanged by the v1.3.0 correction, which was a structural-completeness fix (7 thin sections -> 15 real ones), not a citation-form question."@en ;
+    doc:hasGenre prof:genre_ProjectProposal ;
+    doc:hasStructuralTemplate prof:tmpl_ProjectProposal ;
+    doc:hasVoiceConstraint prof:voice_CommitmentBearing ;
+    doc:hasQualityScorecardForm prof:qsf_ProjectProposal ;
+    dcterms:source "course-project: courses/COM8090/2026-2027-Fall/AgenticSoftwareDevelopmentFrameworkWithVariantAlgebra/00-proposal/Project Proposal_AgenticSoftwareDevelopmentFrameworkWithVariantAlgebra.docx (SHA 46c58e46d98018509166235d3eb04245c5ff9a14a7381db916637e14be6bfa9a), 2026-09-08 -- re-verified byte-for-byte this session, not trusted from the proposal's own citation. Structural template corrected 2026-09-08 per PROJECT_PROPOSAL_TEMPLATE_BRSF_v6_0.docx (a BRSF session's own correction; not found published anywhere on GitHub after checking Ontologies, RDODI-Research, and course-project directly, so used from the operator's direct attachment rather than pulled -- L-113's own fallback path, disclosed rather than silently substituted)."^^xsd:string .

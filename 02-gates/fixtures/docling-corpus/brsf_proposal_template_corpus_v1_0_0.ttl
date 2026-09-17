@@ -1,0 +1,18 @@
+@prefix rdodi-domain: <http://example.org/rdodi/domain-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Produced by docling_corpus_bridge_v1_0_0.py -- real conversion, not simulated.
+# Source: /home/claude/session/docling_test/PROJECT_PROPOSAL_TEMPLATE_BRSF_v6_0.docx (SHA-256 8e946d0b4efa22eae3f73ddf2340c19b7af9324d88be128a016bd8579f1934a1)
+# Structured output: /home/claude/session/docling_bridge_test/corpus.md (SHA-256 1d2564b475d577912221b8fefc076d6fea549212204525cd6f796f18f2a4c675)
+# Docling version: 2.127.0
+# Converted: 2026-09-15T09:58:54Z
+# Measured (not validated): 76 headings, 248 table rows recovered.
+
+<http://example.org/rdodi-corpus-bridge#BRSFProposalTemplate_TestDrive> a rdodi-domain:DomainCorpus, owl:NamedIndividual ;
+    rdfs:label "BRSFProposalTemplate_TestDrive"@en ;
+    dcterms:source "Converted by Docling v2.127.0 from /home/claude/session/docling_test/PROJECT_PROPOSAL_TEMPLATE_BRSF_v6_0.docx (SHA-256 8e946d0b4efa22eae3f73ddf2340c19b7af9324d88be128a016bd8579f1934a1), 2026-09-15T09:58:54Z. Structured output at /home/claude/session/docling_bridge_test/corpus.md (SHA-256 1d2564b475d577912221b8fefc076d6fea549212204525cd6f796f18f2a4c675), 76 headings and 248 table rows recovered -- measured directly from the real conversion, not asserted."^^xsd:string ;
+    skos:definition "Structured Markdown produced from a real, non-code source document via Docling -- the syntactic/mechanic layer this session's research established RDODI's Stage 2 lacked natively for artifact types with no upstream parser (requirements/design documents, unlike source code's own AST parser)."@en .

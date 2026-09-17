@@ -1,0 +1,46 @@
+@prefix demor: <http://rdodi.org/demo/research#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix res: <http://example.org/rdodi/research-ontology#> .
+
+demor:DemoResearchCorpus a res:ResearchArtifact,
+        owl:NamedIndividual ;
+    rdfs:label "Demo research corpus (refreshed for the quality-management restructure)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> ;
+    rdfs:member demor:CMMI,
+        demor:Crosby1979,
+        demor:Deming1986,
+        demor:ISO9001,
+        demor:Juran1951,
+        demor:PMBOK .
+
+demor:CMMI a res:Publication,
+        owl:NamedIndividual ;
+    rdfs:label "CMMI maturity model"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> .
+
+demor:Crosby1979 a res:Publication,
+        owl:NamedIndividual ;
+    rdfs:label "Crosby — Quality Is Free (CoQ, zero defects)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> .
+
+demor:Deming1986 a res:Publication,
+        owl:NamedIndividual ;
+    rdfs:label "Deming — Out of the Crisis (PDCA, 14 points)"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> .
+
+demor:ISO9001 a res:Publication,
+        owl:NamedIndividual ;
+    rdfs:label "ISO 9001 quality management systems"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> .
+
+demor:Juran1951 a res:Publication,
+        owl:NamedIndividual ;
+    rdfs:label "Juran — Quality Control Handbook"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> .
+
+demor:PMBOK a res:Publication,
+        owl:NamedIndividual ;
+    rdfs:label "PMBOK quality management knowledge area"@en ;
+    rdfs:isDefinedBy <http://example.org/rdodi/research-ontology> .
+

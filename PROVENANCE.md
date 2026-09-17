@@ -114,3 +114,125 @@ every directory this edition originally derived from — the drift is
 real (new ontology versions, new gates, new profiles) and has not been
 reviewed for public-safety here. This update is scoped to the three new
 sub-packages only, as agreed before starting.
+
+---
+
+# Update v1.2.0 (2026-09-17) — full re-sync against governed rdodi-ecosystem v1.124.0
+
+**Derived from:** governed `rdodi-ecosystem` v1.124.0, repo `main`.
+
+**Scope:** every directory this edition draws from was checked against the
+current governed tree, not just the three packages v1.1.0 added. Where
+governed had moved since the v1.0.0/v1.1.0 basis, new content was reviewed
+for safety and included or excluded on the same footing as the original
+export. Where a file's version number differed but governed had NOT
+actually moved past what this edition was already built from, nothing was
+touched — confirmed individually, not assumed from a differing filename.
+
+## A real finding, corrected before anything else in this update
+
+While re-verifying `08-brsf-corpus-template`'s own already-published
+content (added in v1.1.0) against a fuller marker set than was checked at
+the time, one more internal-session reference was found still present:
+principle R13's text, embedded both in the raw corpus JSON and in the
+built HTML instance, named a specific internal cross-session codename
+("PAMG CogniTwin session") that the equivalent record in
+`09-knowledgebase-stage` had already had genericized. This means the
+public repo carried this reference from the moment v1.1.0 was published
+until this update. Fixed in both files (the same substitution already
+used elsewhere: the codename removed, "a parallel session" retained),
+verified both files still parse (valid JSON; valid JavaScript inside the
+HTML). A full re-scan of this file for every other embedded governed-TTL
+constant it carries (`BACKLOG_ABOX_TTL`, `BACKLOG_RULES_TTL`,
+`BACKLOG_SHACL_TTL`, `AGENTIC_TTL`, `BIAS_TTL`, `LINEAGE_TTL`,
+`PROV_TTL`, `SKOS_TTL`) found nothing further.
+
+## Included (new since v1.0.0/v1.1.0, reviewed and confirmed safe)
+
+- `01-stage-vocabularies/`: new research (v1.1.0), domain (shacl v1.2.0,
+  tbox v1.3.0, a RULING record, 3 fixtures), and document (abox v1.1.0)
+  ontology versions.
+- `01-profiles/`: versions v1.1.0 through v1.4.0, plus
+  `RDODI_EXEMPLAR_STANDARD_v1_1_1.md` and
+  `rdodi_exemplar_program_backlog_v1_1_0.ttl`. One internal-assessor
+  reference ("PAMG assessor") genericized to "the assessing body" in
+  v1.2.0-v1.4.0; noted at the top of each affected file.
+- `09-knowledgebase-stage`: rebuilt as v1.6.1 (superseding the stale
+  v1.4.1) — the same 4 parallel-session references the original v1.4.1
+  had already genericized, re-applied to the newer v1.6.0 content;
+  confirmed no new sensitive references in the R16-R21 additions it
+  brings in.
+- `02-gates/`: two new pipeline-validator versions, a docling-corpus
+  bridge and its fixture set, three new stage3f fixtures. One script's
+  comments and one fixture's namespace (referencing the excluded
+  worked-example material and a chapter-numbered identifier
+  respectively) genericized to match this edition's existing "ch9/ch10
+  -> demo" convention.
+- `03-procedure/`: versions v1.2.1 through v1.6.0. A citation of a
+  specific internal package by name, carried unchanged across four
+  versions, genericized in all four.
+- `03-tooling/` (new directory): the disk-audit tool and release-check
+  script, both clean as-is; one negative test fixture had the same
+  internal-package citation pattern as several other files, genericized
+  the same way.
+- `14-bootstrap/`: the current bootstrap script, a new stage4-nav-gates
+  script, and a full new `templates/` subdirectory, all confirmed clean.
+- `21-worked-example-stg/`: one new file (`JOURNEY_stg_candidate.md`) —
+  read directly rather than only keyword-scanned, since the original
+  edition had excluded it; found to be a short, generic gate-status
+  table with no sensitive content, included.
+- `28-interactive-html-surface/README_v1_15_0.md`: the package's own
+  navigation/index document, genuinely useful and general-purpose (not
+  a session diary), included with its own internal-source citations and
+  its now-broken cross-references to the excluded `08-brsf-corpus-
+  template/README_v1_0_0.md` genericized or redirected.
+
+## Confirmed already correct, nothing to do
+
+A large fraction of the apparent drift turned out to be files where
+governed had not moved since the original export, and the public
+edition's own existing (differently-versioned) file was already the
+correct, current genericization: `08-academic-authoring-stage`,
+`10-knowledgebase-ext-stage`, `18-provenance`, `19-oquare-aggregation`,
+`12-enforcement`'s non-excluded files, `13-pipeline`'s conformance gate,
+`21-worked-example-stg`'s governance TTLs, `24-cite-not-import-
+modularity` (the OEE -> external-authority pattern, all five files),
+`25-scp-fair-completeness`, and `26-stage4-navigation-adoption`'s vocab
+delta. Verified individually in each case (checking the file's own
+`priorVersion`/basis against governed's current state, or diffing
+directly), not assumed from a differing filename — one redundant copy
+was caught and removed during this process before it shipped
+(`document_ontology_abox_v1_1_0.ttl`, already correctly superseded by
+the existing `v1_1_1.ttl`).
+
+`06-widget-stage`, `07-pedagogy-professional-stage`,
+`11-documentation-standards-stage`, `13-pipeline` (structure),
+`15-presentation`, `17-stage-discipline`, `20-upper-alignment`,
+`22-validation-harness`, `23-module-assembly` showed zero content
+difference from governed at all.
+
+## Still excluded, matching the v1.0.0 precedent exactly
+
+`00-dev-env/`, `00-responses/`, `04-worked-example/`, `05-documentation/`,
+`07-handover-inbox/`, `08-brsf-corpus-template/{05-source-reference,
+07-handovers-received}/`, `09-handover-response/`,
+`10-programmable-content-template/05-source-reference/`,
+`12-enforcement/{OE_FORWARDED_PROPOSALS_NOTE, R11_PREFILTER_PROVENANCE,
+rdodi_variant_admissibility_gate}`,
+`13-oee-compliance/`, `24-vaf-adaptation/`,
+`26-stage4-navigation-adoption/{ASSESSMENT,PROOF_VERIFICATION,
+SOURCE_proposal,WIRING}` — confirmed still present and still matching
+the same exclusion rationale (internal session records, raw sources
+tied to unpublished internal material, or cross-session governance
+records naming other internal packages throughout).
+
+## Verification performed on this update
+
+Comprehensive case-insensitive scan, across the entire tree, for: the
+internal source's own name/abbreviation, the personal business name
+found in the previous update, the author's employer name, and the
+internal session codename found and fixed in this one. Confirmed clean
+except four lines that are this edition's own traceability notes
+describing what was fixed (naming the removed term, as this document
+also does) — not the sensitive content itself. Both PAMG-bearing files
+re-verified as syntactically valid after the fix.

@@ -1,0 +1,11 @@
+@prefix rdodi-domain: <http://example.org/rdodi/domain-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# Negative fixture: a real DomainOntologyArtifact carrying NONE of the three
+# now-required declarations -- reproducing exactly the shape of
+# altunelyusuf/VAF's real vaf_domain_corpus_v1_0_0.ttl (11 externally-grounded
+# classes, zero dcterms:source, zero CompetencyQuestion, no reusability
+# statement) before this release, per HANDOVER_pib-vaf-rdodi_to_RDODI_domain-ontology-scope-gap_v1_0_0.md.
+<http://example.org/fixture/domain#VAFDomainArtifact> a rdodi-domain:DomainOntologyArtifact, owl:NamedIndividual ;
+    rdfs:label "VAF domain ontology (fixture, pre-fix shape)"@en .
